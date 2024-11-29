@@ -41,7 +41,6 @@ void GameApplication::Start() {
 
     auto transform = new Transform();
     player->AddComponent<Transform>(transform);
-       
 }
 
 // Handle input
