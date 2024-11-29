@@ -5,19 +5,19 @@
 #include "SDL2/SDL.h"
 
 struct GameApplication {
-    SDL_Window* mWindow = NULL;
-    SDL_Renderer* mRenderer = NULL;
-    bool mGameIsRunning = true;
+    SDL_Window* m_window = NULL;
+    SDL_Renderer* m_renderer = NULL;
+    bool m_gameIsRunning = true;
 
     // Constructor
     GameApplication(std::string title);
     ~GameApplication();
 
-    void Start(); 
-    void Input();
-    void Update();
-    void Render();
+    void start(); 
+    void input();
+    void update();
+    void render();
 
-    void AdvanceFrame();
-    void RunLoop();
+    void advanceFrame();
+    void runLoop();
 };

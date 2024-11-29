@@ -1,4 +1,5 @@
 #include <string>
+#include <iostream>
 
 #include "component.h"
 #include "gameobject.h"
@@ -7,30 +8,30 @@ Component::Component() : m_name(""), m_owner(NULL) {}
 Component::Component(std::string name) : m_name(name), m_owner(NULL) {}
 Component::~Component() {}
 
-std::string Component::GetName() {
+std::string Component::getName() {
     return m_name;
 }
 
-GameObject* Component::GetOwner() {
+GameObject* Component::getOwner() {
     return m_owner;
 }
 
-void Component::SetName(std::string name) {
+void Component::setName(std::string name) {
     m_name = name;
 }
 
-void Component::SetOwner(GameObject* owner) {
+void Component::setOwner(GameObject* owner) {
     m_owner = owner;
 }
 
-void Component::Input() {
+void Component::input() {
 
 }
 
-void Component::Update() {
+void Component::update() {
 
 }
 
-void Component::Render() {
-    
+void Component::render() {
+    // std::cout << "Rendering component " << m_name << std::endl;
 }

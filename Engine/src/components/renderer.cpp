@@ -1,44 +1,37 @@
 #include "gameobject.h"
-#include "components/transform.cpp"
+#include "transform.h"
+#include "renderer.h"
 
-#include "SDL2/SDL.h"
+Renderer::Renderer(SDL_Renderer* renderer) {
+    setName("renderer");
+    m_renderer = renderer;
+    m_texture = NULL;
+}
 
-class Renderer : public Component {
-    private:
-        SDL_Renderer* mRenderer;
-        SDL_Texture* mTexture;
+void Renderer::setTexture(SDL_Texture* texture)
+{
+    m_texture = texture;
+}
 
-    public:
-        Renderer(SDL_Renderer* renderer) {
-            mRenderer = renderer;
-            mTexture = NULL;
-        }
+void Renderer::setRenderer(SDL_Renderer* renderer)
+{
+    m_renderer = renderer;
+}
 
-        void SetTexture(SDL_Texture* texture)
-        {
-            mTexture = texture;
-        }
+SDL_Renderer* Renderer::getRenderer()
+{
+    return m_renderer;
+}
 
-        void SetRenderer(SDL_Renderer* renderer)
-        {
-            mRenderer = renderer;
-        }
+SDL_Texture* Renderer::getTexture()
+{
+    return m_texture;
+}
 
-        SDL_Renderer* GetRenderer()
-        {
-            return mRenderer;
-        }
+void Renderer::render()
+{
+    SDL_Rect* rect = m_owner->getComponent<Transform>()->getRect();
+    SDL_Rect* frame = NULL; // NULL means render the entire texture
 
-        SDL_Texture* GetTexture()
-        {
-            return mTexture;
-        }
-
-        void Render()
-        {
-            SDL_Rect* rect = m_owner->GetComponent<Transform>()->GetRect();
-            SDL_Rect* frame = NULL; // if no frame is specified, render the whole texture
-
-            SDL_RenderCopy(mRenderer, mTexture, frame, rect);
-        }
-};
+    SDL_RenderCopy(m_renderer, m_texture, frame, rect);
+}

@@ -9,23 +9,23 @@ Script::Script(std::string name) {
 Script::~Script() {
 }
 
-std::string Script::GetName() {
+std::string Script::getName() {
     return m_name;
 }
 
-GameObject* Script::GetOwner() {
+GameObject* Script::getOwner() {
     return m_owner;
 }
 
-void Script::SetOwner(GameObject* owner) {
+void Script::setOwner(GameObject* owner) {
     m_owner = owner;
 }
 
-void Script::Input() {
+void Script::input() {
 }
 
-void Script::Update() {
+void Script::update() {
 }
 
-void Script::Render() {
+void Script::render() {
 }

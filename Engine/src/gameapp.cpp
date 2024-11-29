@@ -3,10 +3,14 @@
 
 #include "gameapp.h"
 #include "gameobject.h"
+#include "resourcemanager.h"
 
-#include "components/transform.cpp"
+#include "transform.h"
+#include "renderer.h"
 
 #include "SDL2/SDL.h"
+
+GameObject* player;
 
 // Constructor
 GameApplication::GameApplication(std::string title) {
@@ -18,61 +22,74 @@ GameApplication::GameApplication(std::string title) {
     }
 
     const char* ctitle = title.c_str();
-    mWindow = SDL_CreateWindow(ctitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, SDL_WINDOW_SHOWN);
-    if (mWindow == NULL) {
+    m_window = SDL_CreateWindow(ctitle, SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, 640, 480, SDL_WINDOW_SHOWN);
+    if (m_window == NULL) {
         std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
         return;
     }
     
-    mRenderer = SDL_CreateRenderer(mWindow,-1,SDL_RENDERER_ACCELERATED);
+    m_renderer = SDL_CreateRenderer(m_window,-1,SDL_RENDERER_ACCELERATED);
 }
 
 // Destructor
 GameApplication::~GameApplication() {
     // Destroy our renderer
-    SDL_DestroyRenderer(mRenderer);
+    SDL_DestroyRenderer(m_renderer);
     // Destroy our window
-    SDL_DestroyWindow(mWindow);
+    SDL_DestroyWindow(m_window);
 }
 
-void GameApplication::Start() {
+void GameApplication::start() {
     // test player gameobject
-    GameObject* player = new GameObject("Player");
+    player = new GameObject("Player");
+
+    auto renderer = new Renderer(m_renderer);
+    ResourceManager::getInstance().setRenderer(m_renderer);
+    SDL_Texture* texture = ResourceManager::getInstance().loadTexture("../Assets/test.bmp");
+    renderer->setTexture(texture);
 
     auto transform = new Transform();
-    player->AddComponent<Transform>(transform);
+    transform->setSize(40, 40);
+    transform->setPosition(200, 200);
+
+    player->addComponent<Renderer>(renderer);
+    player->addComponent<Transform>(transform);
 }
 
 // Handle input
-void GameApplication::Input() {
+void GameApplication::input() {
     SDL_Event event;
     // Start our event loop
     while (SDL_PollEvent(&event)) {
         // Handle each specific event
         if (event.type == SDL_QUIT) {
-            mGameIsRunning = false;
+            m_gameIsRunning = false;
         }
     }
 }
 
-void GameApplication::Update() {
+void GameApplication::update() {
+
 }
 
-void GameApplication::Render() {
-    SDL_SetRenderDrawColor(mRenderer, 100, 190, 255, SDL_ALPHA_OPAQUE);
-    SDL_RenderClear(mRenderer);
-    SDL_RenderPresent(mRenderer);
+void GameApplication::render() {
+    SDL_SetRenderDrawColor(m_renderer, 100, 190, 255, SDL_ALPHA_OPAQUE);
+    SDL_RenderClear(m_renderer);
+
+    player->render();
+
+    SDL_RenderPresent(m_renderer);
 }
 
-void GameApplication::AdvanceFrame() {
-    Input();
-    Update();
-    Render();
+void GameApplication::advanceFrame() {
+    input();
+    update();
+    render();
 }
 
-void GameApplication::RunLoop()
+void GameApplication::runLoop()
 {
-    while(mGameIsRunning) {
-        AdvanceFrame();	
+    while(m_gameIsRunning) {
+        advanceFrame();	
     }
 }

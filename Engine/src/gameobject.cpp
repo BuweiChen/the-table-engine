@@ -1,4 +1,7 @@
+#include <iostream>
+
 #include "gameobject.h"
+#include "renderer.h"
 
 std::atomic<uint64_t> GameObject::m_totalObjects = 0;
 std::atomic<uint64_t> GameObject::m_aliveObjects = 0;
@@ -14,37 +17,37 @@ GameObject::~GameObject() {
     m_aliveObjects--;
 }
 
-std::string GameObject::GetId() {
+std::string GameObject::getId() {
     return m_id;
 }
 
-std::string GameObject::GetTag() {
+std::string GameObject::getTag() {
     return m_tag;
 }
 
-void GameObject::Input() {
+void GameObject::input() {
     for (auto component : m_components) {
-        component->Input();
+        component->input();
     }
     for (auto script : m_scripts) {
-        script->Input();
+        script->input();
     }
 }
 
-void GameObject::Update() {
+void GameObject::update() {
     for (auto component : m_components) {
-        component->Update();
+        component->update();
     }
     for (auto script : m_scripts) {
-        script->Update();
+        script->update();
     }
 }
 
-void GameObject::Render() {
+void GameObject::render() {
     for (auto component : m_components) {
-        component->Render();
+        component->render();
     }
     for (auto script : m_scripts) {
-        script->Render();
+        script->render();
     }
 }

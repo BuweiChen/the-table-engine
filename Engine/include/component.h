@@ -12,14 +12,14 @@ class Component
     public:
         Component();
         Component(std::string name);
-        ~Component();
+        virtual ~Component();
 
-        std::string GetName();
-        GameObject* GetOwner();
-        void SetName(std::string name);
-        void SetOwner(GameObject* owner);
+        std::string getName();
+        GameObject* getOwner();
+        void setName(std::string name);
+        void setOwner(GameObject* owner);
 
-        void Input();
-        void Update();
-        void Render();
+        void input();
+        void update();
+        virtual void render();
 };

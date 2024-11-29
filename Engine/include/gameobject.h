@@ -23,24 +23,26 @@ class GameObject {
         GameObject(std::string tag);
         ~GameObject();
 
-        std::string GetId();
-        std::string GetTag();
+        std::string getId();
+        std::string getTag();
 
         template <typename T>
-        T* GetComponent();
+        T* getComponent();
         template <typename T>
-        void AddComponent(T* component);
+        void addComponent(T* component);
         
         template <typename T>
-        void AddScript(T* script);
+        T* getScript();
+        template <typename T>
+        void addScript(T* script);
 
-        void Input();
-        void Update();
-        void Render();
+        void input();
+        void update();
+        void render();
 };
 
 template <typename T>
-T* GameObject::GetComponent() {
+T* GameObject::getComponent() {
     for (auto component : m_components) {
         if (dynamic_cast<T*>(component) != nullptr) {
             return static_cast<T*>(component);
@@ -50,15 +52,25 @@ T* GameObject::GetComponent() {
 }
 
 template <typename T>
-void GameObject::AddComponent(T* component) {
+void GameObject::addComponent(T* component) {
     auto base_component = static_cast<Component*>(component);
     GameObject::m_components.push_back(base_component);
-    component->SetOwner(this);
+    component->setOwner(this);
 }
 
 template <typename T>
-void GameObject::AddScript(T* script) {
+T* GameObject::getScript() {
+    for (auto script : m_scripts) {
+        if (dynamic_cast<T*>(script) != nullptr) {
+            return static_cast<T*>(script);
+        }
+    }
+    return nullptr;
+}
+
+template <typename T>
+void GameObject::addScript(T* script) {
     auto base_script = static_cast<Script*>(script);
     m_scripts.push_back(base_script);
-    script->SetOwner(this);
+    base_script->setOwner(this);
 }

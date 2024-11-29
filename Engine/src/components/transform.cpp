@@ -1,63 +1,57 @@
-#include "component.h"
-
+#include "transform.h"
 #include "SDL2/SDL.h"
 
-class Transform : public Component {
-    private:
-        SDL_Rect* mTransform;
+Transform::Transform()
+{
+    setName("transform");
+    mTransform = new SDL_Rect();
+}
 
-    public:
-        Transform()
-        {
-            mTransform = new SDL_Rect();
-        }
+Transform::Transform(int x, int y)
+{
+    Transform();
+    mTransform->x = x;
+    mTransform->y = y;
+}
 
-        Transform(int x, int y)
-        {
-            mTransform = new SDL_Rect();
-            mTransform->x = x;
-            mTransform->y = y;
-        }
+Transform::~Transform()
+{
+    delete mTransform;
+}
 
-        ~Transform()
-        {
-            delete mTransform;
-        }
+SDL_Rect* Transform::getRect()
+{
+    return mTransform;
+}
 
-        SDL_Rect* GetRect()
-        {
-            return mTransform;
-        }
+int Transform::getPositionX()
+{
+    return mTransform->x;
+}
 
-        int GetPositionX()
-        {
-            return mTransform->x;
-        }
+int Transform::getPositionY()
+{
+    return mTransform->y;
+}
 
-        int GetPositionY()
-        {
-            return mTransform->y;
-        }
+int Transform::getSizeW()
+{
+    return mTransform->w;
+}
 
-        int GetSizeW()
-        {
-            return mTransform->w;
-        }
+int Transform::getSizeH()
+{
+    return mTransform->h;
+}
 
-        int GetSizeH()
-        {
-            return mTransform->h;
-        }
+void Transform::setPosition(int x, int y)
+{
+    mTransform->x = x;
+    mTransform->y = y;
+}
 
-        void SetPosition(int x, int y)
-        {
-            mTransform->x = x;
-            mTransform->y = y;
-        }
-
-        void SetSize(int w, int h)
-        {
-            mTransform->w = w;
-            mTransform->h = h;
-        }
-};
+void Transform::setSize(int w, int h)
+{
+    mTransform->w = w;
+    mTransform->h = h;
+}

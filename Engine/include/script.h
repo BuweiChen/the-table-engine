@@ -11,11 +11,11 @@ class Script {
         Script(std::string name);
         virtual ~Script();
 
-        std::string GetName();
-        GameObject* GetOwner();
-        void SetOwner(GameObject* owner);
+        std::string getName();
+        GameObject* getOwner();
+        void setOwner(GameObject* owner);
 
-        void Input();
-        void Update();
-        void Render();
+        void input();
+        void update();
+        void render();
 };
