@@ -7,7 +7,7 @@
 #include "scenemanager.h"
 
 #include "transform.h"
-#include "renderer.h"
+#include "texture.h"
 
 #include "SDL2/SDL.h"
 
@@ -42,7 +42,7 @@ void GameApplication::start() {
     ResourceManager::getInstance().setRenderer(m_renderer);
     SceneManager::getInstance().setRenderer(m_renderer);
 
-    SceneManager::getInstance().setSceneTree(SceneManager::getInstance().createScene1());
+    SceneManager::getInstance().getNextScene();
 }
 
 // Handle input

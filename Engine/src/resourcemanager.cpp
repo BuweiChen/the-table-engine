@@ -5,6 +5,11 @@
 #include "resourcemanager.h"
 #include <SDL2/SDL.h>
 
+SDL_Renderer* ResourceManager::getRenderer()
+{
+    return m_renderer;
+}
+
 void ResourceManager::setRenderer(SDL_Renderer* renderer)
 {
     m_renderer = renderer;

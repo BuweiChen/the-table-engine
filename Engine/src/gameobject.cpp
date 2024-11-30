@@ -1,7 +1,7 @@
 #include <iostream>
 
 #include "gameobject.h"
-#include "renderer.h"
+#include "texture.h"
 
 std::atomic<uint64_t> GameObject::m_totalObjects = 0;
 std::atomic<uint64_t> GameObject::m_aliveObjects = 0;

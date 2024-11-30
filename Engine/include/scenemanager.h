@@ -12,6 +12,8 @@ class SceneManager
         SDL_Renderer* m_renderer; // renderer to render the game objects
         SceneTree* m_sceneTree; // scene tree to manage game objects
 
+        int m_currentSceneIndex = 0;
+
         // private constructor
         SceneManager() {}
         SceneManager(const SceneManager&) = delete;
@@ -22,8 +24,8 @@ class SceneManager
         static SceneManager& getInstance();
 
         void setRenderer(SDL_Renderer* renderer);
-        void setSceneTree(SceneTree* sceneTree);
 
+        void getNextScene();
         SceneTree* createScene1();
 
         void input();

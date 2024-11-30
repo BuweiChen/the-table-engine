@@ -29,7 +29,7 @@ class SceneTree
         SceneTree();
         ~SceneTree();
 
-        SceneNode* getRoot();
+        void addChild(GameObject* child);
 
         void traverseTree(std::function<void(SceneNode*)> callback);
         void traverseTree(SceneNode* node, std::function<void(SceneNode*)> callback);

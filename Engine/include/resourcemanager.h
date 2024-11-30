@@ -25,6 +25,7 @@ class ResourceManager
         }
 
         void setRenderer(SDL_Renderer* renderer);
+        SDL_Renderer* getRenderer();
 
         // for images
         SDL_Texture* loadTexture(std::string path);

@@ -58,8 +58,8 @@ SceneTree::~SceneTree() {
     delete m_root;
 }
 
-SceneNode* SceneTree::getRoot() {
-    return m_root;
+void SceneTree::addChild(GameObject* child) {
+    m_root->addChild(child);
 }
 
 void SceneTree::traverseTree(std::function<void(SceneNode*)> callback) {
