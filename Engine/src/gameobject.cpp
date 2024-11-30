@@ -25,6 +25,14 @@ std::string GameObject::getTag() {
     return m_tag;
 }
 
+SceneNode* GameObject::getSceneNode() {
+    return m_sceneNode;
+}
+
+void GameObject::setSceneNode(SceneNode* sceneNode) {
+    m_sceneNode = sceneNode;
+}
+
 void GameObject::input() {
     for (auto component : m_components) {
         component->input();

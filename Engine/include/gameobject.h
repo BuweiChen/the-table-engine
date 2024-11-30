@@ -1,7 +1,8 @@
 #pragma once
+class SceneNode;
 
-#include <vector>
 #include <atomic>
+#include <vector>
 
 #include "component.h"
 #include "script.h"
@@ -18,6 +19,8 @@ class GameObject {
 
         std::vector<Component*> m_components;
         std::vector<Script*> m_scripts;
+        
+        SceneNode* m_sceneNode;
 
     public:
         GameObject(std::string tag);
@@ -35,6 +38,9 @@ class GameObject {
         T* getScript();
         template <typename T>
         void addScript(T* script);
+
+        SceneNode* getSceneNode();
+        void setSceneNode(SceneNode* sceneNode);
 
         void input();
         void update();

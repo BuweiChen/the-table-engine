@@ -4,13 +4,12 @@
 #include "gameapp.h"
 #include "gameobject.h"
 #include "resourcemanager.h"
+#include "scenemanager.h"
 
 #include "transform.h"
 #include "renderer.h"
 
 #include "SDL2/SDL.h"
-
-GameObject* player;
 
 // Constructor
 GameApplication::GameApplication(std::string title) {
@@ -40,20 +39,10 @@ GameApplication::~GameApplication() {
 }
 
 void GameApplication::start() {
-    // test player gameobject
-    player = new GameObject("Player");
-
-    auto renderer = new Renderer(m_renderer);
     ResourceManager::getInstance().setRenderer(m_renderer);
-    SDL_Texture* texture = ResourceManager::getInstance().loadTexture("../Assets/test.bmp");
-    renderer->setTexture(texture);
+    SceneManager::getInstance().setRenderer(m_renderer);
 
-    auto transform = new Transform();
-    transform->setSize(40, 40);
-    transform->setPosition(200, 200);
-
-    player->addComponent<Renderer>(renderer);
-    player->addComponent<Transform>(transform);
+    SceneManager::getInstance().setSceneTree(SceneManager::getInstance().createScene1());
 }
 
 // Handle input
@@ -65,18 +54,20 @@ void GameApplication::input() {
         if (event.type == SDL_QUIT) {
             m_gameIsRunning = false;
         }
+
+        SceneManager::getInstance().input();
     }
 }
 
 void GameApplication::update() {
-
+    SceneManager::getInstance().update();
 }
 
 void GameApplication::render() {
     SDL_SetRenderDrawColor(m_renderer, 100, 190, 255, SDL_ALPHA_OPAQUE);
     SDL_RenderClear(m_renderer);
 
-    player->render();
+    SceneManager::getInstance().render();
 
     SDL_RenderPresent(m_renderer);
 }
