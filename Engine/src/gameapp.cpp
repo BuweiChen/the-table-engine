@@ -40,8 +40,8 @@ GameApplication::~GameApplication() {
 
 void GameApplication::start() {
     ResourceManager::getInstance().setRenderer(m_renderer);
-    SceneManager::getInstance().setRenderer(m_renderer);
 
+    SceneManager::getInstance().setRenderer(m_renderer);
     SceneManager::getInstance().getNextScene();
 }
 

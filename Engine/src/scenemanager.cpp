@@ -3,6 +3,7 @@
 #include "resourcemanager.h"
 #include "texture.h"
 #include "scenemanager.h"
+#include "gameobjectfactory.h"
 
 #include <iostream>
 
@@ -19,7 +20,7 @@ void SceneManager::getNextScene() {
     ++m_currentSceneIndex;
     switch (m_currentSceneIndex) {
         case 1:
-            m_sceneTree = createScene1();
+            m_sceneTree = createSceneTest1();
             break;
         default:
             m_sceneTree = nullptr;
@@ -27,21 +28,9 @@ void SceneManager::getNextScene() {
     }
 }
 
-SceneTree* SceneManager::createScene1() {
+SceneTree* SceneManager::createSceneTest1() {
     SceneTree* sceneTree = new SceneTree();
-
-    GameObject* player = new GameObject("Player");
-
-    auto texture = new Texture();
-    SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture("../Assets/test.bmp");
-    texture->setTexture(sdl_texture);
-    player->addComponent<Texture>(texture);
-
-    auto transform = new Transform();
-    transform->setSize(40, 40);
-    transform->setPosition(200, 200);
-    player->addComponent<Transform>(transform);
-
+    GameObject* player = GameObjectFactory::createPlayerTest();
     sceneTree->addChild(player);
     return sceneTree;
 }

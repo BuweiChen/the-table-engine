@@ -9,6 +9,10 @@ Texture::Texture() {
     m_texture = NULL;
 }
 
+Texture::Texture(SDL_Texture* texture) : Texture() {
+    m_texture = texture;
+}
+
 SDL_Texture* Texture::getTexture()
 {
     return m_texture;

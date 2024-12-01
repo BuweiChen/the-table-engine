@@ -9,6 +9,7 @@ class Texture : public Component {
 
     public:
         Texture();
+        Texture(SDL_Texture* texture);
 
         SDL_Texture* getTexture();
         void setTexture(SDL_Texture* texture);
