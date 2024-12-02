@@ -1,9 +1,9 @@
 CXX = g++
-CXXFLAGS = -std=c++17 -I../include -I../src -Wall -Wextra
+CXXFLAGS = -std=c++17 -I../include -I../src -I../lib -Wall -Wextra
 TARGET = ../bin/game
 SRCS = $(wildcard *.cpp components/*.cpp)
 OBJS = $(SRCS:%.cpp=../bin/obj/%.o)
-LDFLAGS = -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
+LDFLAGS = -L../lib -lSDL2 -lSDL2_image -lSDL2_ttf
 
 all: $(TARGET)
 
@@ -21,4 +21,4 @@ run: $(TARGET)
 	./$(TARGET)
 
 clean:
-	rm -rf ../bin 
+	rm -rf ../bin
