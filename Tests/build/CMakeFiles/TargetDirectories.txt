@@ -1,5 +1,0 @@
-/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Tests/build/CMakeFiles/example_module.dir
-/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Tests/build/CMakeFiles/edit_cache.dir
-/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Tests/build/CMakeFiles/rebuild_cache.dir
-/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Tests/build/pybind11/CMakeFiles/edit_cache.dir
-/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Tests/build/pybind11/CMakeFiles/rebuild_cache.dir
