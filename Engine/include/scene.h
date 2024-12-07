@@ -3,6 +3,7 @@ class GameObject;
 
 #include <functional>
 #include <vector>
+#include <string>
 
 class SceneNode
 {
