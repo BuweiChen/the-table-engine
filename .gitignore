@@ -1,2 +1,7 @@
 .vscode/
 Engine/bin/
+
+*.so
+*.pyd
+*.dylib
+build/
