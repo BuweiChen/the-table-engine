@@ -19,6 +19,6 @@ class Transform : public Component {
         int getSizeW();
         int getSizeH();
         
-        void setPosition(int x, int y);
-        void setSize(int w, int h);
+        void setPositionInScreen(int x, int y);
+        void setSizeInScreen(int w, int h);
 };

@@ -8,6 +8,9 @@ class Texture : public Component {
         SDL_Renderer* m_renderer;
 
         SDL_Rect* m_spriteBox;
+        SDL_Rect* m_spriteClip; // section of sprite box rendered
+        int m_rows, m_cols;
+        float m_time;
 
     public:
         Texture();
@@ -16,5 +19,12 @@ class Texture : public Component {
         SDL_Texture* getTexture();
         void setTexture(SDL_Texture* texture);
 
+        void setSizeInSpriteMap(int w, int h);
+        void setPositionInSpriteMap(int x, int y);
+
+        void setAnimationRowsCols(int rows, int cols);
+        void setAnimationTime(float time);
+
+        void update() override;
         void render() override;
 };

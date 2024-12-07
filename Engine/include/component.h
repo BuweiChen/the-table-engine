@@ -20,6 +20,6 @@ class Component
         void setOwner(GameObject* owner);
 
         void input();
-        void update();
+        virtual void update();
         virtual void render();
 };

@@ -34,6 +34,9 @@ SceneTree* SceneManager::createSceneTest1() {
     sceneTree->addChild(player);
     GameObject* axe = GameObjectFactory::createAxe();
     player->getSceneNode()->addChild(axe);
+    
+    GameObject* enemy = GameObjectFactory::createEnemyWarriorDying();
+    sceneTree->addChild(enemy);
     return sceneTree;
 }
 

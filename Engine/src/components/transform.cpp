@@ -44,13 +44,13 @@ int Transform::getSizeH()
     return mTransform->h;
 }
 
-void Transform::setPosition(int x, int y)
+void Transform::setPositionInScreen(int x, int y)
 {
     mTransform->x = x;
     mTransform->y = y;
 }
 
-void Transform::setSize(int w, int h)
+void Transform::setSizeInScreen(int w, int h)
 {
     mTransform->w = w;
     mTransform->h = h;
