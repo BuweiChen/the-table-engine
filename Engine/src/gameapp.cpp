@@ -10,7 +10,7 @@
 #include "texture.h"
 
 #include "SDL2/SDL.h"
-
+ 
 // Constructor
 GameApplication::GameApplication(std::string title) {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
@@ -26,7 +26,7 @@ GameApplication::GameApplication(std::string title) {
         std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
         return;
     }
-    
+
     m_renderer = SDL_CreateRenderer(m_window,-1,SDL_RENDERER_ACCELERATED);
 }
 
