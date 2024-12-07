@@ -1,35 +1,4 @@
-cmake ..                                      
-CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
-  Compatibility with CMake < 3.10 will be removed from a future version of
-  CMake.
-
-  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
-  to tell CMake that the project requires at least <min> but has been updated
-  to work with policies introduced by <max> or earlier.
-
-
--- Found Python3: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12 (found version "3.12.3") found components: Interpreter Development Development.Module Development.Embed
-CMake Deprecation Warning at /Users/arnavnarula/Documents/Yale/GameEngines/finalproject-jeffreylinkennyliarnavnarulabuweichen/extern/pybind11/CMakeLists.txt:13 (cmake_minimum_required):
-  Compatibility with CMake < 3.10 will be removed from a future version of
-  CMake.
-
-  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
-  to tell CMake that the project requires at least <min> but has been updated
-  to work with policies introduced by <max> or earlier.
-
-
--- pybind11 v2.13.6 
--- Using Python: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12
--- Python version: 3.12.3
--- Configuring done (0.8s)
--- Generating done (0.0s)
--- Build files have been written to: /Users/arnavnarula/Documents/Yale/GameEngines/finalproject-jeffreylinkennyliarnavnarulabuweichen/Tests/build
-arnavnarula@Arnavs-MBP build % cd ..
-arnavnarula@Arnavs-MBP Tests % rm -rf build
-arnavnarula@Arnavs-MBP Tests % mkdir build                                   
-arnavnarula@Arnavs-MBP Tests % cd build
-arnavnarula@Arnavs-MBP build % cmake ..                                      
-CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
+Make Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
   Compatibility with CMake < 3.10 will be removed from a future version of
   CMake.
 
@@ -50,7 +19,7 @@ CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
 -- Check for working CXX compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
--- Found Python3: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12 (found version "3.12.3") found components: Interpreter Development Development.Module Development.Embed
+-- Found Python3: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 (found version "3.12.3") found components: Interpreter Development Development.Module Development.Embed
 CMake Deprecation Warning at /Users/arnavnarula/Documents/Yale/GameEngines/finalproject-jeffreylinkennyliarnavnarulabuweichen/extern/pybind11/CMakeLists.txt:13 (cmake_minimum_required):
   Compatibility with CMake < 3.10 will be removed from a future version of
   CMake.
@@ -65,53 +34,15 @@ CMake Deprecation Warning at /Users/arnavnarula/Documents/Yale/GameEngines/final
 -- Found PythonLibs: /Library/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib
 -- Performing Test HAS_FLTO_THIN
 -- Performing Test HAS_FLTO_THIN - Success
--- Using Python: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3.12
--- Python version: 3.12.3
--- Configuring done (2.7s)
+-- Python Path: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3
+-- Python Version: 3.12.3
+-- Configuring done (3.7s)
 -- Generating done (0.0s)
 -- Build files have been written to: /Users/arnavnarula/Documents/Yale/GameEngines/finalproject-jeffreylinkennyliarnavnarulabuweichen/Tests/build
-
-
-
-cmake ..
-CMake Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
-  Compatibility with CMake < 3.10 will be removed from a future version of
-  CMake.
-
-  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
-  to tell CMake that the project requires at least <min> but has been updated
-  to work with policies introduced by <max> or earlier.
-
-
--- The C compiler identification is AppleClang 16.0.0.16000026
--- The CXX compiler identification is AppleClang 16.0.0.16000026
--- Detecting C compiler ABI info
--- Detecting C compiler ABI info - done
--- Check for working C compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc - skipped
--- Detecting C compile features
--- Detecting C compile features - done
--- Detecting CXX compiler ABI info
--- Detecting CXX compiler ABI info - done
--- Check for working CXX compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ - skipped
--- Detecting CXX compile features
--- Detecting CXX compile features - done
--- Found Python3: /usr/local/Frameworks/Python.framework/Versions/3.13/bin/python3.13 (found version "3.13.0") found components: Interpreter Development Development.Module Development.Embed
-CMake Deprecation Warning at /Users/arnavnarula/Documents/Yale/GameEngines/finalproject-jeffreylinkennyliarnavnarulabuweichen/extern/pybind11/CMakeLists.txt:13 (cmake_minimum_required):
-  Compatibility with CMake < 3.10 will be removed from a future version of
-  CMake.
-
-  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
-  to tell CMake that the project requires at least <min> but has been updated
-  to work with policies introduced by <max> or earlier.
-
-
--- pybind11 v2.13.6 
--- Found PythonInterp: /usr/local/Frameworks/Python.framework/Versions/3.13/bin/python3.13 (found suitable version "3.13", minimum required is "3.13.0")
--- Found PythonLibs: /usr/local/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/lib/libpython3.13.dylib
--- Performing Test HAS_FLTO_THIN
--- Performing Test HAS_FLTO_THIN - Success
--- Using Python: /usr/local/Frameworks/Python.framework/Versions/3.13/bin/python3.13
--- Python version: 3.13.0
--- Configuring done (4.4s)
--- Generating done (0.0s)
--- Build files have been written to: /Users/arnavnarula/Documents/Yale/GameEngines/finalproject-jeffreylinkennyliarnavnarulabuweichen/Tests/build
+[ 50%] Building CXX object CMakeFiles/example_module.dir/example.cpp.o
+[100%] Linking CXX shared module example_module.cpython-37m-darwin.so
+[100%] Built target example_module
+Traceback (most recent call last):
+  File "/Users/arnavnarula/Documents/Yale/GameEngines/finalproject-jeffreylinkennyliarnavnarulabuweichen/Tests/build/../test_example.py", line 1, in <module>
+    import example_module
+ModuleNotFoundError: No module named 'example_module'
