@@ -13,5 +13,7 @@ cd build
 CMAKE_PREFIX_PATH=$(dirname $(dirname $PYTHON_EXE)) cmake -DPython3_EXECUTABLE=$PYTHON_EXE ..
 make
 
+cd ..
+
 # Run the test with the same Python
-$PYTHON_EXE ../test_example.py
+PYTHONPATH=build python3 test_example.py
