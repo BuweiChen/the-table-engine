@@ -1,12 +1,4 @@
-Make Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
-  Compatibility with CMake < 3.10 will be removed from a future version of
-  CMake.
-
-  Update the VERSION argument <min> value.  Or, use the <min>...<max> syntax
-  to tell CMake that the project requires at least <min> but has been updated
-  to work with policies introduced by <max> or earlier.
-
-
+arnavnarula@Arnavs-MBP Tests % ./run.sh
 -- The C compiler identification is AppleClang 16.0.0.16000026
 -- The CXX compiler identification is AppleClang 16.0.0.16000026
 -- Detecting C compiler ABI info
@@ -19,7 +11,7 @@ Make Deprecation Warning at CMakeLists.txt:1 (cmake_minimum_required):
 -- Check for working CXX compiler: /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ - skipped
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
--- Found Python3: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3 (found version "3.12.3") found components: Interpreter Development Development.Module Development.Embed
+-- Found Python3: /usr/local/Frameworks/Python.framework/Versions/3.13/bin/python3.13 (found version "3.13.0") found components: Interpreter Development Development.Module Development.Embed
 CMake Deprecation Warning at /Users/arnavnarula/Documents/Yale/GameEngines/finalproject-jeffreylinkennyliarnavnarulabuweichen/extern/pybind11/CMakeLists.txt:13 (cmake_minimum_required):
   Compatibility with CMake < 3.10 will be removed from a future version of
   CMake.
@@ -30,17 +22,16 @@ CMake Deprecation Warning at /Users/arnavnarula/Documents/Yale/GameEngines/final
 
 
 -- pybind11 v2.13.6 
--- Found PythonInterp: /Library/Frameworks/Python.framework/Versions/3.7/bin/python3.7 (found suitable version "3.7.9", minimum required is "3.7")
--- Found PythonLibs: /Library/Frameworks/Python.framework/Versions/3.7/lib/libpython3.7m.dylib
 -- Performing Test HAS_FLTO_THIN
 -- Performing Test HAS_FLTO_THIN - Success
--- Python Path: /Library/Frameworks/Python.framework/Versions/3.12/bin/python3
--- Python Version: 3.12.3
--- Configuring done (3.7s)
+-- Using Python executable: /usr/local/Frameworks/Python.framework/Versions/3.13/bin/python3.13
+-- Using Python libraries: /usr/local/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/lib/libpython3.13.dylib
+-- Using Python include dirs: /usr/local/opt/python@3.13/Frameworks/Python.framework/Versions/3.13/include/python3.13
+-- Configuring done (3.4s)
 -- Generating done (0.0s)
 -- Build files have been written to: /Users/arnavnarula/Documents/Yale/GameEngines/finalproject-jeffreylinkennyliarnavnarulabuweichen/Tests/build
 [ 50%] Building CXX object CMakeFiles/example_module.dir/example.cpp.o
-[100%] Linking CXX shared module example_module.cpython-37m-darwin.so
+[100%] Linking CXX shared module example_module.cpython-313-darwin.so
 [100%] Built target example_module
 Traceback (most recent call last):
   File "/Users/arnavnarula/Documents/Yale/GameEngines/finalproject-jeffreylinkennyliarnavnarulabuweichen/Tests/build/../test_example.py", line 1, in <module>
