@@ -1,0 +1,1 @@
+`cmake -DPython3_EXECUTABLE=$(which python3) ..`
