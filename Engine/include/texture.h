@@ -7,6 +7,8 @@ class Texture : public Component {
         SDL_Texture* m_texture;
         SDL_Renderer* m_renderer;
 
+        SDL_Rect* m_spriteBox;
+
     public:
         Texture();
         Texture(SDL_Texture* texture);
