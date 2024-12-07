@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -std=c++17 -I../include -I../src -I../lib -Wall -Wextra
+CXXFLAGS = -std=c++17 -I../include -I../src -Wall -Wextra
 TARGET = ../bin/game
 SRCS = $(wildcard *.cpp components/*.cpp)
 OBJS = $(SRCS:%.cpp=../bin/obj/%.o)
@@ -20,6 +20,7 @@ else ifeq ($(UNAME_S), Darwin)
     ifeq ($(UNAME_M), arm64)
         # macOS ARM (M1/M2)
         LDFLAGS += -rpath /Library/Frameworks -F/Library/Frameworks -framework SDL2 -framework SDL2_ttf
+		LDFLAGS += -I../lib
     else ifeq ($(UNAME_M), x86_64)
         # macOS x86
         LDFLAGS += -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
