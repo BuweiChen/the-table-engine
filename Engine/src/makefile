@@ -20,7 +20,7 @@ else ifeq ($(UNAME_S), Darwin)
     ifeq ($(UNAME_M), arm64)
         # macOS ARM (M1/M2)
         LDFLAGS += -rpath /Library/Frameworks -F/Library/Frameworks -framework SDL2 -framework SDL2_ttf
-		LDFLAGS += -I../lib
+		CXXFLAGS += -I../lib
     else ifeq ($(UNAME_M), x86_64)
         # macOS x86
         LDFLAGS += -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
