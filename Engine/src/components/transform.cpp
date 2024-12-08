@@ -55,3 +55,9 @@ void Transform::setSizeInScreen(int w, int h)
     mTransform->w = w;
     mTransform->h = h;
 }
+
+void Transform::updatePositionInScreen(int dx, int dy)
+{
+    mTransform->x += dx;
+    mTransform->y += dy;
+}

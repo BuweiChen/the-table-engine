@@ -46,7 +46,7 @@ void Texture::setPositionInSpriteMap(int x, int y)
     m_spriteBox->y = y;
 }
 
-void Texture::setAnimationRowsCols(int rows, int cols)
+void Texture::setRowsColsInSpriteMap(int rows, int cols)
 {
     m_rows = rows;
     m_cols = cols;

@@ -22,7 +22,7 @@ class Texture : public Component {
         void setSizeInSpriteMap(int w, int h);
         void setPositionInSpriteMap(int x, int y);
 
-        void setAnimationRowsCols(int rows, int cols);
+        void setRowsColsInSpriteMap(int rows, int cols);
         void setAnimationTime(float time);
 
         void update() override;

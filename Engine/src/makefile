@@ -2,7 +2,7 @@ CXX = g++
 CXXFLAGS = -std=c++17 -I../include -I../src -Wall -Wextra -fPIC
 TARGET = ../bin/game
 LIB_TARGET = ../lib/libengine.a
-SRCS = $(wildcard *.cpp components/*.cpp)
+SRCS = $(wildcard *.cpp components/*.cpp scripts/*.cpp) 
 GAME_OBJS = $(SRCS:%.cpp=../bin/obj/%.o)
 LIB_OBJS = $(SRCS:%.cpp=../bin/obj/lib/%.o)
 
@@ -46,10 +46,12 @@ $(LIB_TARGET): $(LIB_OBJS)
 
 bin:
 	mkdir -p ../bin/obj
+	mkdir -p ../bin/obj/scripts
 	mkdir -p ../bin/obj/components
 
 bin_lib:
 	mkdir -p ../bin/obj/lib
+	mkdir -p ../bin/obj/lib/scripts
 	mkdir -p ../bin/obj/lib/components
 
 run: $(TARGET)

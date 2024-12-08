@@ -32,8 +32,8 @@ SceneTree* SceneManager::createSceneTest1() {
     SceneTree* sceneTree = new SceneTree();
     GameObject* player = GameObjectFactory::createPlayerTest();
     sceneTree->addChild(player);
-    GameObject* axe = GameObjectFactory::createAxe();
-    player->getSceneNode()->addChild(axe);
+    GameObject* bow = GameObjectFactory::createBow();
+    player->getSceneNode()->addChild(bow);
     
     GameObject* enemy = GameObjectFactory::createEnemyWarriorDying();
     sceneTree->addChild(enemy);

@@ -19,7 +19,7 @@ class Component
         void setName(std::string name);
         void setOwner(GameObject* owner);
 
-        void input();
+        virtual void input();
         virtual void update();
         virtual void render();
 };

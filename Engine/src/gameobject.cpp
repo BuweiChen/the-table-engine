@@ -33,6 +33,18 @@ void GameObject::setSceneNode(SceneNode* sceneNode) {
     m_sceneNode = sceneNode;
 }
 
+std::vector<GameObject*> GameObject::getChildren() {
+    if (m_sceneNode == nullptr) {
+        return std::vector<GameObject*>();
+    }
+
+    std::vector<GameObject*> children;
+    for (auto childSceneNode : m_sceneNode->getChildren()) {
+        children.push_back(childSceneNode->getGameObject());
+    }
+    return children;
+}
+
 void GameObject::input() {
     for (auto component : m_components) {
         component->input();

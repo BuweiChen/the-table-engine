@@ -2,7 +2,9 @@
 
 #include "texture.h"
 #include "transform.h"
+#include "input.h"
 #include "resourcemanager.h"
+#include "player_test_script.h"
 
 GameObject* GameObjectFactory::createPlayerTest() 
 {
@@ -13,31 +15,37 @@ GameObject* GameObjectFactory::createPlayerTest()
     player->addComponent<Texture>(texture);
 
     auto transform = new Transform();
-    transform->setSizeInScreen(40, 40);
     transform->setPositionInScreen(200, 200);
+    transform->setSizeInScreen(40, 40);
     player->addComponent<Transform>(transform);
+
+    auto input = new Input();
+    player->addComponent<Input>(input);
+
+    auto playerMovement = new PlayerTestScript("player_test_script");
+    player->addScript<PlayerTestScript>(playerMovement);
 
     return player;
 }
 
-GameObject* GameObjectFactory::createAxe() 
+GameObject* GameObjectFactory::createBow() 
 {
-    GameObject* axe = new GameObject("Axe");
+    GameObject* bow = new GameObject("Bow");
 
     SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Weapons/Wood/Wood.bmp");
     auto texture = new Texture(sdl_texture);
     texture->setPositionInSpriteMap(48, 48);
     texture->setSizeInSpriteMap(48, 32);
-    texture->setAnimationRowsCols(1, 3);
-    texture->setAnimationTime(0.2);
-    axe->addComponent<Texture>(texture);
+    texture->setRowsColsInSpriteMap(1, 3);
+    texture->setAnimationTime(0.4);
+    bow->addComponent<Texture>(texture);
 
     auto transform = new Transform();
-    transform->setSizeInScreen(40, 40);
-    transform->setPositionInScreen(300, 300);
-    axe->addComponent<Transform>(transform);
+    transform->setPositionInScreen(225, 208);
+    transform->setSizeInScreen(30, 30);
+    bow->addComponent<Transform>(transform);
 
-    return axe;
+    return bow;
 }
 
 GameObject* GameObjectFactory::createEnemyWarriorDying() 
@@ -46,8 +54,8 @@ GameObject* GameObjectFactory::createEnemyWarriorDying()
 
     SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Enemy/OrcCrew/Warrior/Death/Death-Sheet.bmp");
     auto texture = new Texture(sdl_texture);
-    texture->setAnimationRowsCols(1, 6);
-    texture->setAnimationTime(0.2);
+    texture->setRowsColsInSpriteMap(1, 6);
+    texture->setAnimationTime(0.4);
     enemy->addComponent<Texture>(texture);
 
     auto transform = new Transform();

@@ -1,11 +1,11 @@
 #pragma once
-class SceneNode;
-
+ 
 #include <atomic>
 #include <vector>
 
 #include "component.h"
 #include "script.h"
+#include "scene.h"
 
 #include "SDL2/SDL.h"
 
@@ -41,6 +41,8 @@ class GameObject {
 
         SceneNode* getSceneNode();
         void setSceneNode(SceneNode* sceneNode);
+
+        std::vector<GameObject*> getChildren();
 
         void input();
         void update();
