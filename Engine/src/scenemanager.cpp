@@ -35,6 +35,10 @@ void SceneManager::getNextScene() {
     }
 }
 
+SDL_Renderer* SceneManager::getRenderer() {
+    return m_renderer;
+}
+
 SceneTree* SceneManager::createSceneTest1() {
     SceneTree* sceneTree = new SceneTree();
     GameObject* player = GameObjectFactory::createPlayerTest();

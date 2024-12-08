@@ -2,11 +2,14 @@
 
 #include "texture.h"
 #include "transform.h"
+#include "collide.h"
 #include "input.h"
 #include "resourcemanager.h"
 #include "player_test_script.h"
 #include "arrow_test_script.h"
 #include "enemy_ai_script.h"
+#include "collide_test_script.h"
+#include "collide_script.h"
 
 GameObject* GameObjectFactory::createPlayerTest() 
 {
@@ -26,6 +29,14 @@ GameObject* GameObjectFactory::createPlayerTest()
 
     auto playerMovement = new PlayerTestScript();
     player->addScript<PlayerTestScript>(playerMovement);
+
+    auto playerCollide = new Collide();
+    playerCollide->setPositionInScreen(transform->getPositionX(), transform->getPositionY());
+    playerCollide->setSizeInScreen(transform->getSizeW(), transform->getSizeH());
+    player->addComponent<Collide>(playerCollide);
+
+    auto collideScript = new CollideScript();
+    player->addScript<CollideScript>(collideScript);
 
     return player;
 }
@@ -67,6 +78,9 @@ GameObject* GameObjectFactory::createArrow(std::string direction)
     auto arrowMovement = new ArrowTestScript();
     arrow->addScript<ArrowTestScript>(arrowMovement);
 
+    auto collideScript = new CollideScript();
+    arrow->addScript<CollideScript>(collideScript);
+
     return arrow;
 }
 
@@ -87,6 +101,17 @@ GameObject* GameObjectFactory::createEnemyWarrior()
 
     auto enemyAI = new EnemyAIScript();
     enemy->addScript<EnemyAIScript>(enemyAI);
+
+    auto enemyCollide = new Collide();
+    enemyCollide->setPositionInScreen(transform->getPositionX(), transform->getPositionY());
+    enemyCollide->setSizeInScreen(transform->getSizeW(), transform->getSizeH());
+    enemy->addComponent<Collide>(enemyCollide);
+
+    auto collideTest = new CollideTestScript();
+    enemy->addScript<CollideTestScript>(collideTest);
+
+    auto collideScript = new CollideScript();
+    enemy->addScript<CollideScript>(collideScript);
 
     return enemy;
 }

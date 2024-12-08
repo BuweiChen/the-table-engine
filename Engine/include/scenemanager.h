@@ -28,6 +28,7 @@ class SceneManager
 
         void setRenderer(SDL_Renderer* renderer);
         void getNextScene();
+        SDL_Renderer* getRenderer();
 
         SceneTree* getSceneTree();
 
