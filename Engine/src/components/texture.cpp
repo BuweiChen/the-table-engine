@@ -15,6 +15,9 @@ Texture::Texture() {
     m_rows = 1;
     m_cols = 1;
     m_time = 1;
+
+    m_flipHorizontal = false;
+    m_flipVertical = false;
 }
 
 Texture::Texture(SDL_Texture* texture) : Texture() {
@@ -57,6 +60,16 @@ void Texture::setAnimationTime(float time)
     m_time = time;
 }
 
+void Texture::setFlipHorizontal(bool flip)
+{
+    m_flipHorizontal = flip;
+}
+
+void Texture::setFlipVertical(bool flip)
+{
+    m_flipVertical = flip;
+}
+
 void Texture::update()
 {
     if (m_rows == 1 && m_cols == 1) 
@@ -78,5 +91,10 @@ void Texture::update()
 void Texture::render()
 {
     SDL_Rect* rect = m_owner->getComponent<Transform>()->getRect();
-    SDL_RenderCopy(m_renderer, m_texture, m_spriteClip, rect);
+
+    int hFlip = (m_flipHorizontal ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
+    int vFlip = (m_flipVertical ? SDL_FLIP_VERTICAL : SDL_FLIP_NONE);
+    SDL_RendererFlip flip = (SDL_RendererFlip) (hFlip | vFlip);
+
+    SDL_RenderCopyEx(m_renderer, m_texture, m_spriteClip, rect, 0, NULL, flip);
 }

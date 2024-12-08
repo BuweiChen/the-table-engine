@@ -24,8 +24,9 @@ class SceneManager
         static SceneManager& getInstance();
 
         void setRenderer(SDL_Renderer* renderer);
-
         void getNextScene();
+
+        SceneTree* getSceneTree();
 
         // add all custom made scenes here
         SceneTree* createSceneTest1();

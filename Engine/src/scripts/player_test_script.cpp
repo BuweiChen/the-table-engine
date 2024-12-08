@@ -3,12 +3,17 @@
 
 #include "input.h"
 #include "transform.h"
+#include "texture.h"
 #include "gameobject.h"
+#include "gameobjectfactory.h"
+#include "scenemanager.h"
 
 #include  <iostream>
+#include <string>
 
-PlayerTestScript::PlayerTestScript(std::string name) : Script(name) {}
-PlayerTestScript::~PlayerTestScript() {}
+PlayerTestScript::PlayerTestScript() {
+    m_lastFireTimeInMs = -10000;
+}
 
 void PlayerTestScript::update() {
     auto input = m_owner->getComponent<Input>();
@@ -32,11 +37,6 @@ void PlayerTestScript::update() {
         y += 1;
     }
 
-    if (input->mouseLeftPressed) {
-        x = input->m_mouseX - w / 2;
-        y = input->m_mouseY - h / 2;
-    }
-
     // clamp positions to screen
     if (x < 0) x = 0;
     if (y < 0) y = 0;
@@ -49,9 +49,22 @@ void PlayerTestScript::update() {
     transform->setPositionInScreen(x, y);
 
     // move the player's bow with the player
-    for (auto child : m_owner->getChildren()) {
-        auto childTransform = child->getComponent<Transform>();
-        if (childTransform == nullptr) { continue; }
-        childTransform->updatePositionInScreen(dx, dy);
-    };
+    auto bow = m_owner->getChildren()[0];
+    bow->getComponent<Transform>()->updatePositionInScreen(dx, dy);
+
+    // fire bow if mouse left is pressed
+    if (input->mouseLeftPressed && ((int) SDL_GetTicks() - m_lastFireTimeInMs) > 1000 / m_fireRatePerSecond) {
+        m_lastFireTimeInMs = SDL_GetTicks();
+
+        std::string shootDir = input->m_mouseX < bow->getComponent<Transform>()->getPositionX() ? "left" : "right";
+        auto arrow = GameObjectFactory::createArrow(shootDir);
+        arrow->getComponent<Transform>()->setPositionInScreen(x + 30, y + 15);
+        arrow->getComponent<Texture>()->setFlipHorizontal(shootDir == "left");
+
+        auto bow = m_owner->getChildren()[0];
+        bow->getComponent<Texture>()->setFlipHorizontal(shootDir == "left");
+
+        auto sceneTree = SceneManager::getInstance().getSceneTree();
+        sceneTree->addChild(arrow);
+    }
 }

@@ -16,6 +16,10 @@ void SceneManager::setRenderer(SDL_Renderer* renderer) {
     m_renderer = renderer;
 }
 
+SceneTree* SceneManager::getSceneTree() {
+    return m_sceneTree;
+}
+
 void SceneManager::getNextScene() {
     ++m_currentSceneIndex;
     switch (m_currentSceneIndex) {

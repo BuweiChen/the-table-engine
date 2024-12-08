@@ -5,6 +5,7 @@
 #include "input.h"
 #include "resourcemanager.h"
 #include "player_test_script.h"
+#include "arrow_test_script.h"
 
 GameObject* GameObjectFactory::createPlayerTest() 
 {
@@ -22,7 +23,7 @@ GameObject* GameObjectFactory::createPlayerTest()
     auto input = new Input();
     player->addComponent<Input>(input);
 
-    auto playerMovement = new PlayerTestScript("player_test_script");
+    auto playerMovement = new PlayerTestScript();
     player->addScript<PlayerTestScript>(playerMovement);
 
     return player;
@@ -46,6 +47,26 @@ GameObject* GameObjectFactory::createBow()
     bow->addComponent<Transform>(transform);
 
     return bow;
+}
+
+GameObject* GameObjectFactory::createArrow(std::string direction) 
+{
+    GameObject* arrow = new GameObject(direction + " arrow");
+
+    SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Weapons/Wood/Wood.bmp");
+    auto texture = new Texture(sdl_texture);
+    texture->setPositionInSpriteMap(32, 0);
+    texture->setSizeInSpriteMap(16, 16);
+    arrow->addComponent<Texture>(texture);
+
+    auto transform = new Transform();
+    transform->setSizeInScreen(15, 15);
+    arrow->addComponent<Transform>(transform);
+
+    auto arrowMovement = new ArrowTestScript();
+    arrow->addScript<ArrowTestScript>(arrowMovement);
+
+    return arrow;
 }
 
 GameObject* GameObjectFactory::createEnemyWarriorDying() 
