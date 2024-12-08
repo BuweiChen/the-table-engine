@@ -6,6 +6,7 @@ SRCS = $(wildcard *.cpp components/*.cpp scripts/*.cpp)
 GAME_OBJS = $(SRCS:%.cpp=../bin/obj/%.o)
 LIB_OBJS = $(SRCS:%.cpp=../bin/obj/lib/%.o)
 
+
 # Configure LDFLAGS based on platform
 UNAME_S := $(shell uname -s)
 UNAME_M := $(shell uname -m)
@@ -21,8 +22,8 @@ ifeq ($(UNAME_S), Linux)
 else ifeq ($(UNAME_S), Darwin)
     ifeq ($(UNAME_M), arm64)
         # macOS ARM (M1/M2)
-        LDFLAGS += -rpath /Library/Frameworks -F/Library/Frameworks -framework SDL2 -framework SDL2_ttf
-        CXXFLAGS += -I../lib
+        LDFLAGS += -rpath /Library/Frameworks -F/Library/Frameworks -framework SDL2 -framework SDL2_ttf -framework SDL2_mixer
+		CXXFLAGS += -I../lib -F/Library/Frameworks
     else ifeq ($(UNAME_M), x86_64)
         # macOS x86
         LDFLAGS += -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
