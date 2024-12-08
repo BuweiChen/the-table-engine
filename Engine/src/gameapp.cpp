@@ -80,7 +80,17 @@ void GameApplication::advanceFrame() {
 
 void GameApplication::runLoop()
 {
+    int frameRatePerS = 60;
+    int frameDelayInMs = 1000 / frameRatePerS;
+
     while(m_gameIsRunning) {
+        Uint32 frameStartTime = SDL_GetTicks();
+
         advanceFrame();	
+
+        int frameTimeDurationInMs = SDL_GetTicks() - frameStartTime;
+        if (frameDelayInMs > frameTimeDurationInMs) {
+            SDL_Delay(frameDelayInMs - frameTimeDurationInMs);
+        }
     }
 }

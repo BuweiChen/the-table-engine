@@ -44,6 +44,9 @@ class GameObject {
 
         std::vector<GameObject*> getChildren();
 
+        int getAliveObjects();
+        int getTotalObjects();
+
         void input();
         void update();
         void render();

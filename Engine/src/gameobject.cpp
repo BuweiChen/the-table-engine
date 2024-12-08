@@ -15,6 +15,13 @@ GameObject::GameObject(std::string tag) {
 
 GameObject::~GameObject() {
     m_aliveObjects--;
+
+    for (auto component : m_components) {
+        delete component;
+    }
+    for (auto script : m_scripts) {
+        delete script;
+    }
 }
 
 std::string GameObject::getId() {
@@ -23,6 +30,14 @@ std::string GameObject::getId() {
 
 std::string GameObject::getTag() {
     return m_tag;
+}
+
+int GameObject::getAliveObjects() {
+    return m_aliveObjects;
+}
+
+int GameObject::getTotalObjects() {
+    return m_totalObjects;
 }
 
 SceneNode* GameObject::getSceneNode() {

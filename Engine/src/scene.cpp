@@ -1,5 +1,6 @@
 #include <vector>
 #include <functional>
+#include <iostream>
 
 #include "scene.h"
 #include "gameobject.h"
@@ -13,12 +14,12 @@ SceneNode::SceneNode(GameObject* gameObject) {
 }
 
 SceneNode::~SceneNode() {
+    delete m_gameObject;
     for (auto child : m_children) {
         delete child;
     }
     m_parent = nullptr;
     m_children.clear();
-    delete m_gameObject;
 }
 
 void SceneNode::addChild(GameObject* child) {
@@ -29,7 +30,8 @@ void SceneNode::addChild(GameObject* child) {
 
 bool SceneNode::removeChild(std::string id) {
     for (auto it = m_children.begin(); it != m_children.end(); ++it) {
-        if ((*it)->getGameObject()->getId() == id) {
+        if ((*it)->getGameObject() && (*it)->getGameObject()->getId() == id) {
+            std::cout << "Removing child with id " << id << std::endl;
             m_children.erase(it);
             delete *it;
             return true;
@@ -76,7 +78,7 @@ void SceneTree::traverseTree(SceneNode* node, std::function<void(SceneNode*)> ca
 GameObject* SceneTree::findGameObjectById(std::string id) {
     GameObject* idGameObject = nullptr;
     traverseTree(m_root, [&idGameObject, id](SceneNode* node) {
-        if (node->getGameObject()->getId() == id) {
+        if (node->getGameObject() && node->getGameObject()->getId() == id) {
             idGameObject = node->getGameObject();
         }
     });
@@ -86,7 +88,7 @@ GameObject* SceneTree::findGameObjectById(std::string id) {
 std::vector<GameObject*> SceneTree::findGameObjectsByTag(std::string tag) {
     std::vector<GameObject*> taggedGameObjects;
     traverseTree(m_root, [&taggedGameObjects, tag](SceneNode* node) {
-        if (node->getGameObject()->getTag() == tag) {
+        if (node->getGameObject() && node->getGameObject()->getTag() == tag) {
             taggedGameObjects.push_back(node->getGameObject());
         }
     });

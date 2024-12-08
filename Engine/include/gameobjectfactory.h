@@ -6,5 +6,5 @@ class GameObjectFactory {
         static GameObject* createPlayerTest();
         static GameObject* createBow();
         static GameObject* createArrow(std::string direction);
-        static GameObject* createEnemyWarriorDying();
+        static GameObject* createEnemyWarrior();
 };

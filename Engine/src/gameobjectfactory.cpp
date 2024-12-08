@@ -6,6 +6,7 @@
 #include "resourcemanager.h"
 #include "player_test_script.h"
 #include "arrow_test_script.h"
+#include "enemy_ai_script.h"
 
 GameObject* GameObjectFactory::createPlayerTest() 
 {
@@ -69,20 +70,23 @@ GameObject* GameObjectFactory::createArrow(std::string direction)
     return arrow;
 }
 
-GameObject* GameObjectFactory::createEnemyWarriorDying() 
+GameObject* GameObjectFactory::createEnemyWarrior() 
 {
     GameObject* enemy = new GameObject("Warrior");
 
-    SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Enemy/OrcCrew/Warrior/Death/Death-Sheet.bmp");
+    SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Enemy/OrcCrew/Warrior/Run/Run-Sheet.bmp");
     auto texture = new Texture(sdl_texture);
     texture->setRowsColsInSpriteMap(1, 6);
-    texture->setAnimationTime(0.4);
+    texture->setAnimationTime(0.5);
     enemy->addComponent<Texture>(texture);
 
     auto transform = new Transform();
     transform->setSizeInScreen(80, 80);
     transform->setPositionInScreen(50, 50);
     enemy->addComponent<Transform>(transform);
+
+    auto enemyAI = new EnemyAIScript();
+    enemy->addScript<EnemyAIScript>(enemyAI);
 
     return enemy;
 }

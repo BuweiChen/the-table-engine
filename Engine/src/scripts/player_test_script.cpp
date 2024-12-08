@@ -25,16 +25,16 @@ void PlayerTestScript::update() {
     int h = transform->getSizeH();
 
     if (input->leftPressed) {
-        x -= 1;
+        x -= m_playerSpeed;
     }
     if (input->rightPressed) {
-        x += 1;
+        x += m_playerSpeed;
     }
     if (input->upPressed) {
-        y -= 1;
+        y -= m_playerSpeed;
     }
     if (input->downPressed) {
-        y += 1;
+        y += m_playerSpeed;
     }
 
     // clamp positions to screen
