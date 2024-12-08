@@ -8,6 +8,7 @@
 
 #include "transform.h"
 #include "texture.h"
+#include "sound.h"
 
 #include "SDL2/SDL.h"
  
@@ -43,6 +44,9 @@ void GameApplication::start() {
 
     SceneManager::getInstance().setRenderer(m_renderer);
     SceneManager::getInstance().getNextScene();
+
+    Sound* music = ResourceManager::getInstance().loadSound("../Assets/Sounds/music.mp3");
+    music->play(-1);
 }
 
 // Handle input

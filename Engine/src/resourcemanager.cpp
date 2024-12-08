@@ -4,6 +4,7 @@
 
 #include "resourcemanager.h"
 #include <SDL2/SDL.h>
+#include <SDL2/SDL_mixer.h>
 
 SDL_Renderer* ResourceManager::getRenderer()
 {
@@ -47,4 +48,11 @@ SDL_Texture* ResourceManager::loadText(std::string font_path, std::string text, 
     SDL_FreeSurface(surface);
 
     return texture;
+}
+
+// for sounds
+Sound* ResourceManager::loadSound(std::string path)
+{
+    Sound* sound = new Sound(path);
+    return sound;
 }
