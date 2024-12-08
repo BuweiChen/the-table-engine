@@ -12,7 +12,6 @@ class SceneNode
         ~SceneNode();
 
         void addChild(GameObject* child);
-        bool removeChild(std::string id);
 
         std::vector<SceneNode*> getChildren();
         SceneNode* getParent();

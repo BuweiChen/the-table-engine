@@ -23,6 +23,9 @@ class SceneManager
         // singleton instance
         static SceneManager& getInstance();
 
+        static std::atomic<uint64_t> m_totalObjects;
+        static std::atomic<uint64_t> m_aliveObjects;
+
         void setRenderer(SDL_Renderer* renderer);
         void getNextScene();
 

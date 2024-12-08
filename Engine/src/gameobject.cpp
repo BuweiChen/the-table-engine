@@ -1,20 +1,18 @@
 #include <iostream>
 
 #include "gameobject.h"
+#include "scenemanager.h"
 #include "texture.h"
-
-std::atomic<uint64_t> GameObject::m_totalObjects = 0;
-std::atomic<uint64_t> GameObject::m_aliveObjects = 0;
 
 GameObject::GameObject(std::string tag) {
     m_tag = tag;
-    m_id = std::to_string(GameObject::m_totalObjects++);
+    m_id = std::to_string(SceneManager::m_totalObjects++);
 
-    m_aliveObjects++;
+    SceneManager::m_aliveObjects++;
 }
 
 GameObject::~GameObject() {
-    m_aliveObjects--;
+    SceneManager::m_aliveObjects--;
 
     for (auto component : m_components) {
         delete component;
@@ -32,14 +30,6 @@ std::string GameObject::getTag() {
     return m_tag;
 }
 
-int GameObject::getAliveObjects() {
-    return m_aliveObjects;
-}
-
-int GameObject::getTotalObjects() {
-    return m_totalObjects;
-}
-
 SceneNode* GameObject::getSceneNode() {
     return m_sceneNode;
 }
@@ -55,7 +45,8 @@ std::vector<GameObject*> GameObject::getChildren() {
 
     std::vector<GameObject*> children;
     for (auto childSceneNode : m_sceneNode->getChildren()) {
-        children.push_back(childSceneNode->getGameObject());
+        if (childSceneNode->getGameObject() != nullptr)
+            children.push_back(childSceneNode->getGameObject());
     }
     return children;
 }

@@ -12,7 +12,10 @@ EnemyAIScript::EnemyAIScript() {
 void EnemyAIScript::update() {
     auto transform = m_owner->getComponent<Transform>();
     
-    auto player = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Player")[0];
+    auto players = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Player");
+    if (players.empty()) return;
+    
+    auto player = players[0];
 
     int dx = player->getComponent<Transform>()->getPositionX() - player->getComponent<Transform>()->getSizeW() / 2 - transform->getPositionX();
     int dy = player->getComponent<Transform>()->getPositionY() - player->getComponent<Transform>()->getSizeH() - transform->getPositionY();

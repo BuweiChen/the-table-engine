@@ -5,6 +5,9 @@
 #include "scenemanager.h"
 #include "gameobjectfactory.h"
 
+std::atomic<uint64_t> SceneManager::m_totalObjects = 0;
+std::atomic<uint64_t> SceneManager::m_aliveObjects = 0;
+
 #include <iostream>
 
 SceneManager& SceneManager::getInstance() {

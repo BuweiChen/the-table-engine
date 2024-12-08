@@ -20,5 +20,10 @@ void ArrowTestScript::update() {
         x += m_speed;
     }
 
+    if (x < 0 || x > 640) {
+        delete m_owner->getSceneNode();
+        return;
+    }
+
     transform->setPositionInScreen(x, y);
 }

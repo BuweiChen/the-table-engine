@@ -90,7 +90,7 @@ void GameApplication::runLoop()
     while(m_gameIsRunning) {
         Uint32 frameStartTime = SDL_GetTicks();
 
-        advanceFrame();	
+        advanceFrame();
 
         int frameTimeDurationInMs = SDL_GetTicks() - frameStartTime;
         if (frameDelayInMs > frameTimeDurationInMs) {

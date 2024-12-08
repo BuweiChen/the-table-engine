@@ -10,21 +10,20 @@
 #include "SDL2/SDL.h"
 
 class GameObject {
+    friend class SceneNode;
+    
     private:
         std::string m_id; // unique identifier 
         std::string m_tag; // tag identifier e.g. "Enemy", "Projectile"
 
-        static std::atomic<uint64_t> m_totalObjects;
-        static std::atomic<uint64_t> m_aliveObjects;
-
         std::vector<Component*> m_components;
         std::vector<Script*> m_scripts;
-        
+
         SceneNode* m_sceneNode;
+        ~GameObject(); // delete SceneNode to delete the GameObject
 
     public:
         GameObject(std::string tag);
-        ~GameObject();
 
         std::string getId();
         std::string getTag();
@@ -44,8 +43,8 @@ class GameObject {
 
         std::vector<GameObject*> getChildren();
 
-        int getAliveObjects();
-        int getTotalObjects();
+        static int getAliveObjects();
+        static int getTotalObjects();
 
         void input();
         void update();
