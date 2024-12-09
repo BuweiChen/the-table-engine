@@ -3,6 +3,8 @@
 #include "arrow_test_script.h"
 #include "transform.h"
 #include "gameobject.h"
+#include "collide.h"
+#include "scenemanager.h"
 
 ArrowTestScript::ArrowTestScript(int dx, int dy) {
     m_dx = dx / 20;
@@ -24,4 +26,18 @@ void ArrowTestScript::update() {
     }
 
     transform->setPositionInScreen(x, y);
+    
+    // Check collision with enemies
+    auto sceneTree = SceneManager::getInstance().getSceneTree();
+    auto enemies = sceneTree->findGameObjectsByTag("Warrior");
+    std::cout << "Enemies: " << enemies.size() << std::endl;
+    auto collide = m_owner->getComponent<Collide>();
+    for (auto enemy : enemies) {
+        if (collide->isColliding(enemy->getComponent<Collide>()->getRect())) {
+            m_owner->getSceneNode()->markForDeletion();
+            enemy->getSceneNode()->markForDeletion();
+            break;
+        }
+    }
 }
+
