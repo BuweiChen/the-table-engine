@@ -20,6 +20,7 @@ class GameObject {
         std::vector<Script*> m_scripts;
 
         SceneNode* m_sceneNode;
+
         ~GameObject(); // delete SceneNode to delete the GameObject
 
     public:

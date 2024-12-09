@@ -20,6 +20,9 @@ GameObject::~GameObject() {
     for (auto script : m_scripts) {
         delete script;
     }
+
+    m_components.clear();
+    m_scripts.clear();
 }
 
 std::string GameObject::getId() {

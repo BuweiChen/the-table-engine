@@ -5,13 +5,14 @@
 #include "scene.h"
 #include "gameobject.h"
 
+// Scene Node
+
 SceneNode::SceneNode(GameObject* gameObject) {
     m_gameObject = gameObject;
     if (m_gameObject != nullptr) {
         m_gameObject->setSceneNode(this);
     }
     m_parent = nullptr;
-    m_markedForDeletion = false;
 }
 
 SceneNode::~SceneNode() {
@@ -42,7 +43,7 @@ void SceneNode::addChild(GameObject* child) {
     childNode->m_parent = this;
 }
 
-std::vector<SceneNode*> SceneNode::getChildren() {
+const std::vector<SceneNode*> SceneNode::getChildren() {
     return m_children;
 }
 
@@ -53,6 +54,16 @@ SceneNode* SceneNode::getParent() {
 GameObject* SceneNode::getGameObject() {
     return m_gameObject;
 }
+
+bool SceneNode::readyToDestroy() {
+    return m_destroy;
+}
+
+void SceneNode::setDestroy(bool destroy) {
+    m_destroy = destroy;
+}
+
+// Scene Tree
 
 SceneTree::SceneTree() {
     m_root = new SceneNode(nullptr);
@@ -97,12 +108,4 @@ std::vector<GameObject*> SceneTree::findGameObjectsByTag(std::string tag) {
         }
     });
     return taggedGameObjects;
-}
-
-void SceneNode::markForDeletion() {
-    m_markedForDeletion = true;
-}
-
-bool SceneNode::isMarkedForDeletion() {
-    return m_markedForDeletion;
 }

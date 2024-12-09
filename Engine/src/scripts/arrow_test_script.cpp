@@ -21,7 +21,7 @@ void ArrowTestScript::update() {
     y += m_dy;
 
     if (x < 0 || x > 640 || y < 0 || y > 480) {
-        m_owner->getSceneNode()->markForDeletion();
+        m_owner->getSceneNode()->setDestroy(true);
         return;
     }
 
@@ -34,8 +34,8 @@ void ArrowTestScript::update() {
     auto collide = m_owner->getComponent<Collide>();
     for (auto enemy : enemies) {
         if (collide->isColliding(enemy->getComponent<Collide>()->getRect())) {
-            m_owner->getSceneNode()->markForDeletion();
-            enemy->getSceneNode()->markForDeletion();
+            m_owner->getSceneNode()->setDestroy(true);
+            enemy->getSceneNode()->setDestroy(true);
             break;
         }
     }

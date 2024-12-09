@@ -33,5 +33,5 @@ void Component::update() {
 }
 
 void Component::render() {
-    // std::cout << "Rendering component " << m_name << std::endl;
+    
 }

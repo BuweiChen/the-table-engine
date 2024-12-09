@@ -1,10 +1,15 @@
 #include "SDL2/SDL.h"
+
 #include "collide.h"
+#include "transform.h"
+#include "gameobject.h"
 
 Collide::Collide()
 {
     setName("collide");
     mCollide = new SDL_Rect();
+    mOffsetX = 0;
+    mOffsetY = 0;
 }
 
 Collide::Collide(int x, int y, int w, int h)
@@ -55,6 +60,12 @@ int Collide::getSizeH()
     return mCollide->h;
 }
 
+void Collide::setTransformOffset(int x, int y)
+{
+    mOffsetX = x;
+    mOffsetY = y;
+}
+
 void Collide::setPositionInScreen(int x, int y)
 {
     mCollide->x = x;
@@ -81,4 +92,11 @@ bool Collide::isColliding(SDL_Rect* rect)
 bool Collide::isColliding(Collide* collide)
 {
     return SDL_HasIntersection(mCollide, collide->getRect());
+}
+
+void Collide::update()
+{
+    auto transform = m_owner->getComponent<Transform>();
+    if (transform == NULL) return;
+    setPositionInScreen(transform->getPositionX() + mOffsetX, transform->getPositionY() + mOffsetY);
 }

@@ -36,9 +36,6 @@ GameObject* GameObjectFactory::createPlayerTest()
     playerCollide->setSizeInScreen(transform->getSizeW(), transform->getSizeH());
     player->addComponent<Collide>(playerCollide);
 
-    auto collideScript = new CollideScript();
-    player->addScript<CollideScript>(collideScript);
-
     return player;
 }
 
@@ -91,9 +88,6 @@ GameObject* GameObjectFactory::createArrow(int dx, int dy)
     arrowCollide->setSizeInScreen(transform->getSizeW(), transform->getSizeH());
     arrow->addComponent<Collide>(arrowCollide);
 
-    auto collideScript = new CollideScript();
-    arrow->addScript<CollideScript>(collideScript);
-
     return arrow;
 }
 
@@ -117,14 +111,12 @@ GameObject* GameObjectFactory::createEnemyWarrior()
 
     auto enemyCollide = new Collide();
     enemyCollide->setPositionInScreen(transform->getPositionX(), transform->getPositionY());
-    enemyCollide->setSizeInScreen(transform->getSizeW(), transform->getSizeH());
+    enemyCollide->setSizeInScreen(transform->getSizeW() * 0.4, transform->getSizeH() * 0.6);
+    enemyCollide->setTransformOffset(transform->getSizeW() * 0.3, transform->getSizeH() * 0.45);
     enemy->addComponent<Collide>(enemyCollide);
 
     auto collideTest = new CollideTestScript();
     enemy->addScript<CollideTestScript>(collideTest);
-
-    auto collideScript = new CollideScript();
-    enemy->addScript<CollideScript>(collideScript);
 
     return enemy;
 }
