@@ -1,6 +1,7 @@
 #pragma once
 
 #include "SDL2/SDL.h"
+#include "transform.h"
 
 class Texture : public Component {
     private:
@@ -14,6 +15,10 @@ class Texture : public Component {
 
         bool m_flipHorizontal = false;
         bool m_flipVertical = false;
+
+        int m_numFrames;
+        int m_msPerFrame;
+
 
     public:
         Texture();

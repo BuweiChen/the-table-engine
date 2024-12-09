@@ -41,11 +41,21 @@ SDL_Renderer* SceneManager::getRenderer() {
 
 SceneTree* SceneManager::createSceneTest1() {
     SceneTree* sceneTree = new SceneTree();
+
+    int lenTiles = 20;
+    for (int i = -lenTiles; i < lenTiles; i++) {
+        for (int j = -lenTiles; j < lenTiles; j++) {
+            GameObject* tile = GameObjectFactory::createTile1();
+            tile->getComponent<Transform>()->setWorldPosition(i * 32, j * 32);
+            sceneTree->addChild(tile, true); // s   et Isbackground 
+        }
+    }
+
     GameObject* player = GameObjectFactory::createPlayerTest();
     sceneTree->addChild(player);
     GameObject* bow = GameObjectFactory::createBow();
     player->getSceneNode()->addChild(bow);
-    
+
     for (int i = 0; i < 10; i++) {
         GameObject* enemy = GameObjectFactory::createEnemyWarrior();
         enemy->getComponent<Transform>()->setWorldPosition(100 + i * 50, 100);
@@ -55,13 +65,25 @@ SceneTree* SceneManager::createSceneTest1() {
     return sceneTree;
 }
 
+void SceneManager::cleanTree()
+{
+    auto sceneTree = SceneManager::getInstance().m_sceneTree;
+    if (sceneTree == nullptr) return;
+
+    sceneTree->traverseTree([](SceneNode* node) {
+        if (!node->isBackground() && node->readyToDestroy())
+            delete node;
+    });
+}
+
+
 void SceneManager::input()
 {
     auto sceneTree = SceneManager::getInstance().m_sceneTree;
     if (sceneTree == nullptr) return;
 
     sceneTree->traverseTree([](SceneNode* node) {
-        if (node->getGameObject())
+        if (!node->isBackground() && node->getGameObject())
             node->getGameObject()->input();
     });
 }
@@ -72,7 +94,7 @@ void SceneManager::update()
     if (sceneTree == nullptr) return;
 
     sceneTree->traverseTree([](SceneNode* node) {
-        if (node->getGameObject())
+        if (!node->isBackground() && node->getGameObject())
             node->getGameObject()->update();
     });
     
@@ -87,16 +109,5 @@ void SceneManager::render()
     sceneTree->traverseTree([](SceneNode* node) {
         if (node->getGameObject())
             node->getGameObject()->render();
-    });
-}
-
-void SceneManager::cleanTree()
-{
-    auto sceneTree = SceneManager::getInstance().m_sceneTree;
-    if (sceneTree == nullptr) return;
-
-    sceneTree->traverseTree([](SceneNode* node) {
-        if (node->readyToDestroy())
-            delete node;
     });
 }

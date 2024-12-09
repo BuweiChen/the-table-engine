@@ -115,8 +115,8 @@ void GameApplication::advanceFrame() {
 
 void GameApplication::runLoop()
 {
-    int frameRatePerS = 60;
-    int frameDelayInMs = 1000 / frameRatePerS;
+    int targetFPS = 60;
+    int frameDelayInMs = 1000 / targetFPS;
 
     int frameNumber = 0;
     int lastFrameNumber = 0;

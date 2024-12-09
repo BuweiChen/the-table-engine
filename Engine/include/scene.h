@@ -13,22 +13,26 @@ class SceneNode
     public:
         SceneNode(GameObject* gameObject);
 
-        void addChild(GameObject* child);
+        void addChild(GameObject* child, bool isBackground = false);
 
         const std::vector<SceneNode*> getChildren();
         SceneNode* getParent();
         GameObject* getGameObject();
-        void markForDeletion();
-        bool isMarkedForDeletion();
 
         bool readyToDestroy();
         void setDestroy(bool destroy);
+        
+        bool isBackground();    
+        void setIsBackground(bool isBackground);
 
     private:
         SceneNode* m_parent;
         GameObject* m_gameObject;
         std::vector<SceneNode*> m_children;
+
         bool m_destroy = false;
+        bool m_isBackground = false;
+
         ~SceneNode();};
 
 class SceneTree
@@ -37,7 +41,7 @@ class SceneTree
         SceneTree();
         ~SceneTree();
 
-        void addChild(GameObject* child);
+        void addChild(GameObject* child, bool isBackground = false);
 
         void traverseTree(std::function<void(SceneNode*)> callback);
         void traverseTree(SceneNode* node, std::function<void(SceneNode*)> callback);
@@ -47,4 +51,5 @@ class SceneTree
 
     private:
         SceneNode* m_root;
+        std::unordered_map<std::string, GameObject*> m_cachedGameObjects; // cache for faster lookup
 };

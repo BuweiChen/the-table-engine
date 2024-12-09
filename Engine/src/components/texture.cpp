@@ -16,6 +16,9 @@ Texture::Texture() {
     m_cols = 1;
     m_time = 1;
 
+    m_numFrames = m_rows * m_cols;
+    m_msPerFrame = m_time * 1000 / m_numFrames;
+
     m_flipHorizontal = false;
     m_flipVertical = false;
 }
@@ -41,6 +44,9 @@ void Texture::setSizeInSpriteMap(int w, int h)
 {
     m_spriteBox->w = w;
     m_spriteBox->h = h;
+
+    m_spriteClip->w = m_spriteBox->w / m_cols;
+    m_spriteClip->h = m_spriteBox->h / m_rows;
 }
 
 void Texture::setPositionInSpriteMap(int x, int y)
@@ -53,6 +59,11 @@ void Texture::setRowsColsInSpriteMap(int rows, int cols)
 {
     m_rows = rows;
     m_cols = cols;
+    m_numFrames = m_rows * m_cols;
+    m_msPerFrame = m_time * 1000 / m_numFrames;
+    
+    m_spriteClip->w = m_spriteBox->w / m_cols;
+    m_spriteClip->h = m_spriteBox->h / m_rows;
 }
 
 void Texture::setAnimationTime(float time)
@@ -72,18 +83,14 @@ void Texture::setFlipVertical(bool flip)
 
 void Texture::update()
 {
-    if (m_rows == 1 && m_cols == 1) 
+    if (m_numFrames == 1) 
     {
         m_spriteClip = m_spriteBox;
         return;
     }
 
-    int numFrames = m_rows * m_cols;
-    int msPerFrame = m_time * 1000 / numFrames;
-    int frame = (SDL_GetTicks() / msPerFrame) % numFrames;
+    int frame = (SDL_GetTicks() / m_msPerFrame) % m_numFrames;
 
-    m_spriteClip->w = m_spriteBox->w / m_cols;
-    m_spriteClip->h = m_spriteBox->h / m_rows;
     m_spriteClip->x = (frame % m_cols) * m_spriteClip->w + m_spriteBox->x;
     m_spriteClip->y = (frame / m_cols) * m_spriteClip->h + m_spriteBox->y;
 }
@@ -91,6 +98,8 @@ void Texture::update()
 void Texture::render()
 {
     SDL_Rect* rect = m_owner->getComponent<Transform>()->getScreenRect();
+    if (rect->x + rect->w < 0 || rect->x > 640 || rect->y + rect->h < 0 || rect->y > 480) 
+        return;
 
     int hFlip = (m_flipHorizontal ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
     int vFlip = (m_flipVertical ? SDL_FLIP_VERTICAL : SDL_FLIP_NONE);

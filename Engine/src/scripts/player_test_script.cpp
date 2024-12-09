@@ -36,11 +36,17 @@ void PlayerTestScript::update() {
         position.y += m_playerSpeed;
     }
 
-    // clamp positions to screen
-    // if (x < 0) x = 0;
-    // if (y < 0) y = 0;
-    // if (x > 640 - w) x = 640 - w;
-    // if (y > 480 - h) y = 480 - h;
+    // clamp positions to level
+    int levelWidth = 640;
+    int levelHeight = 640;
+    if (position.x < -levelWidth - 20)
+        position.x = -levelWidth - 20;
+    if (position.x > levelWidth - 60)
+        position.x = levelWidth - 60;
+    if (position.y < -levelHeight - 30)
+        position.y = -levelHeight - 30;
+    if (position.y > levelHeight - 90)
+        position.y = levelHeight - 90;
 
     float dx = position.x - transform->getWorldPosition().x;
     float dy = position.y - transform->getWorldPosition().y;

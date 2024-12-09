@@ -78,7 +78,7 @@ void Transform::updateWorldPosition(Vec2 dpos)
     mPosition.y += dpos.y;
 }
 
-void Transform::update()
+void Transform::render()
 {
     auto sceneTree = SceneManager::getInstance().getSceneTree();
     auto player = sceneTree->findGameObjectsByTag("Player")[0];

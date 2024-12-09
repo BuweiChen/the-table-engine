@@ -129,3 +129,19 @@ GameObject* GameObjectFactory::createEnemyWarrior()
 
     return enemy;
 }
+
+GameObject* GameObjectFactory::createTile1()
+{
+    GameObject* tile = new GameObject("Tile");
+
+    SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Environment/DungeonPrison/Assets/Tiles.bmp");
+    auto texture = new Texture(sdl_texture);
+    texture->setSizeInSpriteMap(32, 32);
+    tile->addComponent<Texture>(texture);
+
+    auto transform = new Transform();
+    transform->setWorldSize(32, 32);
+    tile->addComponent<Transform>(transform);
+
+    return tile;
+}

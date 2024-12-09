@@ -16,19 +16,19 @@ ArrowTestScript::ArrowTestScript(float dx, float dy) {
 void ArrowTestScript::update() {
     auto transform = m_owner->getComponent<Transform>();
 
+    // Move the arrow
     Vec2 position = transform->getWorldPosition();
-
     position.x += m_dx;
     position.y += m_dy;
-
     transform->setWorldPosition(position);
 
+    // Destroy the arrow if it goes off screen
     Vec2 screen_position = transform->getScreenPosition();
-
     if (screen_position.x < 0 || screen_position.x > 640 || screen_position.y < 0 || screen_position.y > 480) {
         m_owner->getSceneNode()->setDestroy(true);
+        return;
     }
-    
+
     // Check collision with enemies
     auto sceneTree = SceneManager::getInstance().getSceneTree();
     auto enemies = sceneTree->findGameObjectsByTag("Warrior");
