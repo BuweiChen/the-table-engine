@@ -32,7 +32,6 @@ void Bow_script::update() {
         
         auto arrow = GameObjectFactory::createArrow(dx, dy);
         arrow->getComponent<Transform>()->setWorldPosition(m_owner->getComponent<Transform>()->getWorldPosition());
-
         m_owner->getComponent<Texture>()->setFlipHorizontal(dx < 0);
 
         auto sceneTree = SceneManager::getInstance().getSceneTree();
