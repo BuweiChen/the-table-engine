@@ -129,3 +129,40 @@ GameObject* GameObjectFactory::createEnemyWarrior()
 
     return enemy;
 }
+
+GameObject* GameObjectFactory::createTile1()
+{
+    GameObject* tile = new GameObject("Tile");
+
+    SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Environment/DungeonPrison/Assets/Tiles.bmp");
+    auto texture = new Texture(sdl_texture);
+    texture->setSizeInSpriteMap(32, 32);
+    tile->addComponent<Texture>(texture);
+
+    auto transform = new Transform();
+    transform->setWorldSize(32, 32);
+    tile->addComponent<Transform>(transform);
+
+    return tile;
+}
+
+GameObject* GameObjectFactory::createKey()
+{
+    GameObject* key = new GameObject("Key");
+
+    SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Environment/DungeonPrison/Assets/Props.bmp");
+    auto texture = new Texture(sdl_texture);
+    texture->setPositionInSpriteMap(32, 64);
+    texture->setSizeInSpriteMap(16, 16);
+    key->addComponent<Texture>(texture);
+
+    auto transform = new Transform();
+    transform->setWorldSize(32, 32);
+    key->addComponent<Transform>(transform);
+
+    auto keyCollide = new Collide();
+    keyCollide->setScreenSize(transform->getScreenSize());
+    key->addComponent<Collide>(keyCollide);
+
+    return key;
+}

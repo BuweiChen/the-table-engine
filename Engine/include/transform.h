@@ -2,6 +2,7 @@
 
 #include "component.h"
 #include "vec2.h"
+#include "gameobject.h"
 
 #include "SDL2/SDL.h"
 
@@ -11,7 +12,7 @@ class Transform : public Component {
         Vec2 mPosition; // position in world space
         Vec2 mSize; // size in world space
 
-    public:
+  public:
         Transform();
         Transform(int x, int y);
         ~Transform();
@@ -24,12 +25,12 @@ class Transform : public Component {
 
         void setWorldPosition(float x, float y);
         void setWorldPosition(Vec2 pos);
-        
+
         void updateWorldPosition(float dx, float dy);
         void updateWorldPosition(Vec2 dpos);
 
         void setWorldSize(float w, float h);
         void setWorldSize(Vec2 size);
 
-        void update();
+        void render();
 };

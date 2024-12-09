@@ -13,6 +13,7 @@ class ResourceManager
     private:
         SDL_Renderer* m_renderer; // renderer to render the game objects
         std::unordered_map<std::string, SDL_Texture*> m_imageResourceMap; // cache texture resources
+        std::unordered_map<std::string, TTF_Font*> m_fontMap; // cache font resources
 
         // private constructor
         ResourceManager() {}

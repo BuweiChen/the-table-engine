@@ -29,9 +29,10 @@ void Bow_script::update() {
 
         int dx = input->m_mouseX - m_owner->getComponent<Transform>()->getScreenPosition().x;
         int dy = input->m_mouseY - m_owner->getComponent<Transform>()->getScreenPosition().y;
-
+        
         auto arrow = GameObjectFactory::createArrow(dx, dy);
         arrow->getComponent<Transform>()->setWorldPosition(m_owner->getComponent<Transform>()->getWorldPosition());
+
         m_owner->getComponent<Texture>()->setFlipHorizontal(dx < 0);
 
         auto sceneTree = SceneManager::getInstance().getSceneTree();
