@@ -1,8 +1,11 @@
 #include <vector>
 #include <functional>
+#include <iostream>
 
 #include "scene.h"
 #include "gameobject.h"
+
+// Scene Node
 
 SceneNode::SceneNode(GameObject* gameObject) {
     m_gameObject = gameObject;
@@ -13,32 +16,34 @@ SceneNode::SceneNode(GameObject* gameObject) {
 }
 
 SceneNode::~SceneNode() {
+    // delete all children nodes
     for (auto child : m_children) {
         delete child;
     }
+    // remove this node from parent's children list
+    if (m_parent && !m_parent->m_children.empty()) {
+        for (auto it = m_parent->m_children.begin(); it != m_parent->m_children.end(); ++it) {
+            if (*it == this) {
+                m_parent->m_children.erase(it);
+                break;
+            }
+        }
+    }
+    // delete game object
     m_parent = nullptr;
     m_children.clear();
     delete m_gameObject;
 }
 
 void SceneNode::addChild(GameObject* child) {
+    if (child == nullptr) return;
+
     SceneNode* childNode = new SceneNode(child);
     m_children.push_back(childNode);
     childNode->m_parent = this;
 }
 
-bool SceneNode::removeChild(std::string id) {
-    for (auto it = m_children.begin(); it != m_children.end(); ++it) {
-        if ((*it)->getGameObject()->getId() == id) {
-            m_children.erase(it);
-            delete *it;
-            return true;
-        }
-    }
-    return false;
-}
-
-std::vector<SceneNode*> SceneNode::getChildren() {
+const std::vector<SceneNode*> SceneNode::getChildren() {
     return m_children;
 }
 
@@ -49,6 +54,16 @@ SceneNode* SceneNode::getParent() {
 GameObject* SceneNode::getGameObject() {
     return m_gameObject;
 }
+
+bool SceneNode::readyToDestroy() {
+    return m_destroy;
+}
+
+void SceneNode::setDestroy(bool destroy) {
+    m_destroy = destroy;
+}
+
+// Scene Tree
 
 SceneTree::SceneTree() {
     m_root = new SceneNode(nullptr);
@@ -67,6 +82,8 @@ void SceneTree::traverseTree(std::function<void(SceneNode*)> callback) {
 }
 
 void SceneTree::traverseTree(SceneNode* node, std::function<void(SceneNode*)> callback) {
+    if (node == nullptr) return;
+
     callback(node);
     for (auto child : node->getChildren()) {
         traverseTree(child, callback);
@@ -76,7 +93,7 @@ void SceneTree::traverseTree(SceneNode* node, std::function<void(SceneNode*)> ca
 GameObject* SceneTree::findGameObjectById(std::string id) {
     GameObject* idGameObject = nullptr;
     traverseTree(m_root, [&idGameObject, id](SceneNode* node) {
-        if (node->getGameObject()->getId() == id) {
+        if (node && node->getGameObject() && node->getGameObject()->getId() == id) {
             idGameObject = node->getGameObject();
         }
     });
@@ -86,7 +103,7 @@ GameObject* SceneTree::findGameObjectById(std::string id) {
 std::vector<GameObject*> SceneTree::findGameObjectsByTag(std::string tag) {
     std::vector<GameObject*> taggedGameObjects;
     traverseTree(m_root, [&taggedGameObjects, tag](SceneNode* node) {
-        if (node->getGameObject()->getTag() == tag) {
+        if (node && node->getGameObject() && node->getGameObject()->getTag() == tag) {
             taggedGameObjects.push_back(node->getGameObject());
         }
     });

@@ -6,6 +6,8 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
+#include "sound.h"
+
 class ResourceManager
 {
     private:
@@ -32,4 +34,7 @@ class ResourceManager
         
         // for fonts
         SDL_Texture* loadText(std::string font_path, std::string text, SDL_Color color, int font_size = 20);
+
+        // for sounds
+        Sound* loadSound(std::string path);
 };

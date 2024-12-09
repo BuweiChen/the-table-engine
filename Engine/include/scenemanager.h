@@ -23,9 +23,15 @@ class SceneManager
         // singleton instance
         static SceneManager& getInstance();
 
-        void setRenderer(SDL_Renderer* renderer);
+        static std::atomic<uint64_t> m_totalObjects;
+        static std::atomic<uint64_t> m_aliveObjects;
 
+        void setRenderer(SDL_Renderer* renderer);
         void getNextScene();
+        SDL_Renderer* getRenderer();
+
+        SceneTree* getSceneTree();
+        void cleanTree(); 
 
         // add all custom made scenes here
         SceneTree* createSceneTest1();

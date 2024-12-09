@@ -8,6 +8,7 @@ class Script {
         std::string m_name;
         GameObject* m_owner;
 
+        Script();
         Script(std::string name);
         virtual ~Script();
 
@@ -15,7 +16,7 @@ class Script {
         GameObject* getOwner();
         void setOwner(GameObject* owner);
 
-        void input();
-        void update();
-        void render();
+        virtual void input();
+        virtual void update();
+        virtual void render();
 };

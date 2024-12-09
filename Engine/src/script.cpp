@@ -2,12 +2,9 @@
 
 #include "script.h"
 
-Script::Script(std::string name) {
-    m_name = name;
-}
-
-Script::~Script() {
-}
+Script::Script() : m_name(""), m_owner(NULL) {}
+Script::Script(std::string name) : m_name(name), m_owner(NULL) {}
+Script::~Script() {}
 
 std::string Script::getName() {
     return m_name;

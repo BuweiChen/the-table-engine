@@ -7,22 +7,29 @@ class GameObject;
 
 class SceneNode
 {
+    friend class SceneTree;
+    friend class SceneManager;
+
     public:
         SceneNode(GameObject* gameObject);
-        ~SceneNode();
 
         void addChild(GameObject* child);
-        bool removeChild(std::string id);
 
-        std::vector<SceneNode*> getChildren();
+        const std::vector<SceneNode*> getChildren();
         SceneNode* getParent();
         GameObject* getGameObject();
+        void markForDeletion();
+        bool isMarkedForDeletion();
+
+        bool readyToDestroy();
+        void setDestroy(bool destroy);
 
     private:
         SceneNode* m_parent;
         GameObject* m_gameObject;
         std::vector<SceneNode*> m_children;
-};
+        bool m_destroy = false;
+        ~SceneNode();};
 
 class SceneTree
 {

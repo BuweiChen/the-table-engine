@@ -9,9 +9,13 @@ struct GameApplication {
     SDL_Renderer* m_renderer = NULL;
     bool m_gameIsRunning = true;
 
+    float m_FPS = 0;
+
     // Constructor
     GameApplication(std::string title);
     ~GameApplication();
+
+    void printStats();
 
     void start(); 
     void input();
