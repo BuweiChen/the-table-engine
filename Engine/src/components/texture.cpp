@@ -90,7 +90,7 @@ void Texture::update()
 
 void Texture::render()
 {
-    SDL_Rect* rect = m_owner->getComponent<Transform>()->getRect();
+    SDL_Rect* rect = m_owner->getComponent<Transform>()->getScreenRect();
 
     int hFlip = (m_flipHorizontal ? SDL_FLIP_HORIZONTAL : SDL_FLIP_NONE);
     int vFlip = (m_flipVertical ? SDL_FLIP_VERTICAL : SDL_FLIP_NONE);

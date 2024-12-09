@@ -25,7 +25,6 @@ void Input::update()
     downPressed = state[SDL_SCANCODE_DOWN] || state[SDL_SCANCODE_S];
 
     SDL_GetMouseState(&m_mouseX, &m_mouseY);
-    std::cout << "Mouse X: " << m_mouseX << " Mouse Y: " << m_mouseY << std::endl;
 
     mouseLeftPressed = SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT);
     mouseRightPressed = SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_RIGHT);

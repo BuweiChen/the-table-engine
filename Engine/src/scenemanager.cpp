@@ -48,7 +48,7 @@ SceneTree* SceneManager::createSceneTest1() {
     
     for (int i = 0; i < 10; i++) {
         GameObject* enemy = GameObjectFactory::createEnemyWarrior();
-        enemy->getComponent<Transform>()->setPositionInScreen(100 + i * 50, 100);
+        enemy->getComponent<Transform>()->setWorldPosition(100 + i * 50, 100);
         sceneTree->addChild(enemy);
     }
 

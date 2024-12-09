@@ -1,10 +1,16 @@
 #include "transform.h"
+#include "gameobject.h"
+#include "scenemanager.h"
+
 #include "SDL2/SDL.h"
+
+#include <iostream>
 
 Transform::Transform()
 {
     setName("transform");
     mTransform = new SDL_Rect();
+    mPosition = Vec2(0, 0);
 }
 
 Transform::Transform(int x, int y)
@@ -12,6 +18,7 @@ Transform::Transform(int x, int y)
     Transform();
     mTransform->x = x;
     mTransform->y = y;
+    mPosition = Vec2(x, y);
 }
 
 Transform::~Transform()
@@ -19,45 +26,67 @@ Transform::~Transform()
     delete mTransform;
 }
 
-SDL_Rect* Transform::getRect()
+SDL_Rect* Transform::getScreenRect()
 {
     return mTransform;
 }
 
-int Transform::getPositionX()
+Vec2 Transform::getWorldPosition()
 {
-    return mTransform->x;
+    return mPosition;
 }
 
-int Transform::getPositionY()
+Vec2 Transform::getScreenPosition()
 {
-    return mTransform->y;
+    return Vec2(mTransform->x, mTransform->y);
 }
 
-int Transform::getSizeW()
+Vec2 Transform::getScreenSize()
 {
-    return mTransform->w;
+    return mSize;
 }
 
-int Transform::getSizeH()
+void Transform::setWorldPosition(float x, float y)
 {
-    return mTransform->h;
+    mPosition = Vec2(x, y);
 }
 
-void Transform::setPositionInScreen(int x, int y)
+void Transform::setWorldPosition(Vec2 pos)
 {
-    mTransform->x = x;
-    mTransform->y = y;
+    mPosition = pos;
 }
 
-void Transform::setSizeInScreen(int w, int h)
+void Transform::setWorldSize(float w, float h)
 {
-    mTransform->w = w;
-    mTransform->h = h;
+    mSize = Vec2(w, h);
 }
 
-void Transform::updatePositionInScreen(int dx, int dy)
+void Transform::setWorldSize(Vec2 size)
 {
-    mTransform->x += dx;
-    mTransform->y += dy;
+    mSize = size;
+}
+
+void Transform::updateWorldPosition(float dx, float dy)
+{
+    mPosition.x += dx;
+    mPosition.y += dy;
+}
+
+void Transform::updateWorldPosition(Vec2 dpos)
+{
+    mPosition.x += dpos.x;
+    mPosition.y += dpos.y;
+}
+
+void Transform::update()
+{
+    auto sceneTree = SceneManager::getInstance().getSceneTree();
+    auto player = sceneTree->findGameObjectsByTag("Player")[0];
+    auto playerTransform = player->getComponent<Transform>();
+
+    /* glue the player to the center of the screen */
+    mTransform->x = mPosition.x - playerTransform->getWorldPosition().x + 320;
+    mTransform->y = mPosition.y - playerTransform->getWorldPosition().y + 240;
+    mTransform->w = mSize.x;
+    mTransform->h = mSize.y;
 }

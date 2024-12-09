@@ -18,8 +18,8 @@ void EnemyAIScript::update() {
     if (players.empty()) return;
     auto player = players[0];
 
-    int dx = player->getComponent<Transform>()->getPositionX() - player->getComponent<Transform>()->getSizeW() / 2 - transform->getPositionX();
-    int dy = player->getComponent<Transform>()->getPositionY() - player->getComponent<Transform>()->getSizeH() - transform->getPositionY();
+    float dx = player->getComponent<Transform>()->getWorldPosition().x - transform->getWorldPosition().x;
+    float dy = player->getComponent<Transform>()->getWorldPosition().y - transform->getWorldPosition().y;
 
     texture->setFlipHorizontal(dx < 0);
 
@@ -28,9 +28,8 @@ void EnemyAIScript::update() {
     dy = dy / norm * m_speed;
 
     // add some more randomness to the movement
-    int val = rand() % 50;
-    dx += (val == 0 ? 1 : val == 1 ? -1 : 0);
-    dy += (val == 2 ? 1 : val == 3 ? -1 : 0);
+    dx += (float) rand() / RAND_MAX - 0.5;
+    dy += (float) rand() / RAND_MAX - 0.5;
 
-    transform->updatePositionInScreen(dx, dy);
+    transform->updateWorldPosition(dx, dy);
 }
