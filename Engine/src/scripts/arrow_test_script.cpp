@@ -23,8 +23,14 @@ void ArrowTestScript::update() {
     transform->setWorldPosition(position);
 
     // Destroy the arrow if it goes off screen
-    Vec2 screen_position = transform->getScreenPosition();
-    if (screen_position.x < 0 || screen_position.x > 640 || screen_position.y < 0 || screen_position.y > 480) {
+    // Vec2 screen_position = transform->getScreenPosition();
+    // if (screen_position.x < 0 || screen_position.x > 640 || screen_position.y < 0 || screen_position.y > 480) {
+    //     m_owner->getSceneNode()->setDestroy(true);
+    //     return;
+    // }
+
+    // Destroy the arrow if it goes very far into the world
+    if (position.x < -1200 || position.x > 1200 || position.y < -1200 || position.y > 1200) {
         m_owner->getSceneNode()->setDestroy(true);
         return;
     }

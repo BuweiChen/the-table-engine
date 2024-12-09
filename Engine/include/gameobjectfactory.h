@@ -8,4 +8,5 @@ class GameObjectFactory {
         static GameObject* createArrow(int dx, int dy);
         static GameObject* createEnemyWarrior();
         static GameObject* createTile1();
+        static GameObject* createKey();
 };

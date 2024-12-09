@@ -13,6 +13,7 @@
 #include "sound.h"
 
 #include "SDL2/SDL.h"
+#include <player_test_script.h>
  
 
 // Constructor
@@ -58,12 +59,14 @@ void GameApplication::start() {
 
 void GameApplication::printStats() {
     // render some stats on top left corner
+    std::string font = "../Assets/Fonts/BruceForever.ttf";
+    auto sceneTree = SceneManager::getInstance().getSceneTree();
 
     // number of enemies
     SDL_Color color = {255, 0, 0, 255};
-    std::string numEnemies = std::to_string(SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Warrior").size());
-    SDL_Texture* text = ResourceManager::getInstance().loadText("../Assets/Fonts/BruceForever.ttf", "Enemies: " + numEnemies, color, 12);
-    SDL_Rect rect = {5, 0, 120, 25};
+    std::string numEnemies = std::to_string(sceneTree->findGameObjectsByTag("Warrior").size());
+    SDL_Texture* text = ResourceManager::getInstance().loadText(font, "Enemies Left: " + numEnemies, color, 12);
+    SDL_Rect rect = {5, 0, 160, 25};
     SDL_RenderCopy(m_renderer, text, NULL, &rect);
 
     // FPS rounded to 2 decimal places
@@ -71,10 +74,21 @@ void GameApplication::printStats() {
     std::stringstream fpsStream;
     fpsStream << std::fixed << std::setprecision(2) << m_FPS;
     std::string fps = fpsStream.str();
-
-    text = ResourceManager::getInstance().loadText("../Assets/Fonts/BruceForever.ttf", "FPS: " + fps, color, 12);
+    text = ResourceManager::getInstance().loadText(font, "FPS: " + fps, color, 12);
     rect = {5, 15, 120, 25};
     SDL_RenderCopy(m_renderer, text, NULL, &rect);
+
+    // number of keys collected by player
+    color = {0, 255, 0, 255};
+    auto players = sceneTree->findGameObjectsByTag("Player");
+    if (!players.empty()) 
+    {
+        auto player = players[0];
+        std::string numKeys = std::to_string(player->getScript<PlayerTestScript>()->getKeysCollected());
+        text = ResourceManager::getInstance().loadText(font, "Keys: " + numKeys, color, 12);
+        rect = {5, 30, 80, 25};
+        SDL_RenderCopy(m_renderer, text, NULL, &rect);
+    }
 
     SDL_DestroyTexture(text);
 }

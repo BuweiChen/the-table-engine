@@ -8,7 +8,10 @@ class PlayerTestScript : public Script {
         int m_lastFireTimeInMs = 0; // to meet fire rate condition
 
         float m_playerSpeed = 6;
+        int m_keysCollected = 0;
     public:
         PlayerTestScript();
+        int getKeysCollected();
+
         void update() override;
 };

@@ -44,15 +44,14 @@ void Texture::setSizeInSpriteMap(int w, int h)
 {
     m_spriteBox->w = w;
     m_spriteBox->h = h;
-
-    m_spriteClip->w = m_spriteBox->w / m_cols;
-    m_spriteClip->h = m_spriteBox->h / m_rows;
+    update();
 }
 
 void Texture::setPositionInSpriteMap(int x, int y)
 {
     m_spriteBox->x = x;
     m_spriteBox->y = y;
+    update();
 }
 
 void Texture::setRowsColsInSpriteMap(int rows, int cols)
@@ -61,9 +60,7 @@ void Texture::setRowsColsInSpriteMap(int rows, int cols)
     m_cols = cols;
     m_numFrames = m_rows * m_cols;
     m_msPerFrame = m_time * 1000 / m_numFrames;
-    
-    m_spriteClip->w = m_spriteBox->w / m_cols;
-    m_spriteClip->h = m_spriteBox->h / m_rows;
+    update();
 }
 
 void Texture::setAnimationTime(float time)
@@ -83,9 +80,11 @@ void Texture::setFlipVertical(bool flip)
 
 void Texture::update()
 {
-    if (m_numFrames == 1) 
-    {
-        m_spriteClip = m_spriteBox;
+    if (m_numFrames == 1) {
+        m_spriteClip->x = m_spriteBox->x;
+        m_spriteClip->y = m_spriteBox->y;
+        m_spriteClip->w = m_spriteBox->w;
+        m_spriteClip->h = m_spriteBox->h;
         return;
     }
 
@@ -93,6 +92,8 @@ void Texture::update()
 
     m_spriteClip->x = (frame % m_cols) * m_spriteClip->w + m_spriteBox->x;
     m_spriteClip->y = (frame / m_cols) * m_spriteClip->h + m_spriteBox->y;
+    m_spriteClip->w = m_spriteBox->w / m_cols;
+    m_spriteClip->h = m_spriteBox->h / m_rows;
 }
 
 void Texture::render()

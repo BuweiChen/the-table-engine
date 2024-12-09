@@ -47,8 +47,17 @@ SceneTree* SceneManager::createSceneTest1() {
         for (int j = -lenTiles; j < lenTiles; j++) {
             GameObject* tile = GameObjectFactory::createTile1();
             tile->getComponent<Transform>()->setWorldPosition(i * 32, j * 32);
-            sceneTree->addChild(tile, true); // s   et Isbackground 
+            sceneTree->addChild(tile, true);
         }
+    }
+
+    for (int i = 0; i < 10; i++)
+    {
+        int x = rand() % 1280 - 640;
+        int y = rand() % 1280 - 640;
+        GameObject* key = GameObjectFactory::createKey();
+        key->getComponent<Transform>()->setWorldPosition(x, y);
+        sceneTree->addChild(key);
     }
 
     GameObject* player = GameObjectFactory::createPlayerTest();

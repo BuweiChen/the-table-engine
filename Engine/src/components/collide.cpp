@@ -132,4 +132,10 @@ void Collide::render()
         SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 0, 255, 255, 255);
         SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), mCollide);
     }
+
+    if (m_owner->getTag() == "Key")
+    {
+        SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 255, 255, 0, 255);
+        SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), mCollide);
+    }
 }

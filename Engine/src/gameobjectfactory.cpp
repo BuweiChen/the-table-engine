@@ -145,3 +145,24 @@ GameObject* GameObjectFactory::createTile1()
 
     return tile;
 }
+
+GameObject* GameObjectFactory::createKey()
+{
+    GameObject* key = new GameObject("Key");
+
+    SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Environment/DungeonPrison/Assets/Props.bmp");
+    auto texture = new Texture(sdl_texture);
+    texture->setPositionInSpriteMap(32, 64);
+    texture->setSizeInSpriteMap(16, 16);
+    key->addComponent<Texture>(texture);
+
+    auto transform = new Transform();
+    transform->setWorldSize(32, 32);
+    key->addComponent<Transform>(transform);
+
+    auto keyCollide = new Collide();
+    keyCollide->setScreenSize(transform->getScreenSize());
+    key->addComponent<Collide>(keyCollide);
+
+    return key;
+}
