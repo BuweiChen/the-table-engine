@@ -75,6 +75,11 @@ void SceneManager::update()
         if (node->getGameObject())
             node->getGameObject()->update();
     });
+
+    sceneTree->traverseTree([](SceneNode* node) {
+        if (node->isMarkedForDeletion())
+            delete node;
+    });
 }
 
 void SceneManager::render()

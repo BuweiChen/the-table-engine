@@ -52,19 +52,19 @@ void PlayerTestScript::update() {
     auto bow = m_owner->getChildren()[0];
     bow->getComponent<Transform>()->updatePositionInScreen(dx, dy);
 
-    // fire bow if mouse left is pressed
-    if (input->mouseLeftPressed && ((int) SDL_GetTicks() - m_lastFireTimeInMs) > 1000 / m_fireRatePerSecond) {
-        m_lastFireTimeInMs = SDL_GetTicks();
+    // // fire bow if mouse left is pressed
+    // if (input->mouseLeftPressed && ((int) SDL_GetTicks() - m_lastFireTimeInMs) > 1000 / m_fireRatePerSecond) {
+    //     m_lastFireTimeInMs = SDL_GetTicks();
 
-        std::string shootDir = input->m_mouseX < bow->getComponent<Transform>()->getPositionX() ? "left" : "right";
-        auto arrow = GameObjectFactory::createArrow(shootDir);
-        arrow->getComponent<Transform>()->setPositionInScreen(x + 30, y + 15);
-        arrow->getComponent<Texture>()->setFlipHorizontal(shootDir == "left");
+    //     std::string shootDir = input->m_mouseX < bow->getComponent<Transform>()->getPositionX() ? "left" : "right";
+    //     auto arrow = GameObjectFactory::createArrow(shootDir);
+    //     arrow->getComponent<Transform>()->setPositionInScreen(x + 30, y + 15);
+    //     arrow->getComponent<Texture>()->setFlipHorizontal(shootDir == "left");
 
-        auto bow = m_owner->getChildren()[0];
-        bow->getComponent<Texture>()->setFlipHorizontal(shootDir == "left");
+    //     auto bow = m_owner->getChildren()[0];
+    //     bow->getComponent<Texture>()->setFlipHorizontal(shootDir == "left");
 
-        auto sceneTree = SceneManager::getInstance().getSceneTree();
-        sceneTree->addChild(arrow);
-    }
+    //     auto sceneTree = SceneManager::getInstance().getSceneTree();
+    //     sceneTree->addChild(arrow);
+    // }
 }

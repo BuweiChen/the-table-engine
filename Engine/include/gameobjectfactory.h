@@ -5,6 +5,6 @@ class GameObjectFactory {
     public:
         static GameObject* createPlayerTest();
         static GameObject* createBow();
-        static GameObject* createArrow(std::string direction);
+        static GameObject* createArrow(int dx, int dy);
         static GameObject* createEnemyWarrior();
 };

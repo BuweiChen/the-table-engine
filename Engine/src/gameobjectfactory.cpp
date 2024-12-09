@@ -10,6 +10,7 @@
 #include "enemy_ai_script.h"
 #include "collide_test_script.h"
 #include "collide_script.h"
+#include "bow_script.h"
 
 GameObject* GameObjectFactory::createPlayerTest() 
 {
@@ -58,12 +59,18 @@ GameObject* GameObjectFactory::createBow()
     transform->setSizeInScreen(30, 30);
     bow->addComponent<Transform>(transform);
 
+    auto bowScript = new Bow_script();
+    bow->addScript<Bow_script>(bowScript);
+
+    auto input = new Input();
+    bow->addComponent<Input>(input);
+
     return bow;
 }
 
-GameObject* GameObjectFactory::createArrow(std::string direction) 
+GameObject* GameObjectFactory::createArrow(int dx, int dy) 
 {
-    GameObject* arrow = new GameObject(direction + " arrow");
+    GameObject* arrow = new GameObject("arrow");
 
     SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Weapons/Wood/Wood.bmp");
     auto texture = new Texture(sdl_texture);
@@ -72,11 +79,17 @@ GameObject* GameObjectFactory::createArrow(std::string direction)
     arrow->addComponent<Texture>(texture);
 
     auto transform = new Transform();
+    transform->setPositionInScreen(225, 208);
     transform->setSizeInScreen(15, 15);
     arrow->addComponent<Transform>(transform);
 
-    auto arrowMovement = new ArrowTestScript();
+    auto arrowMovement = new ArrowTestScript(dx, dy);
     arrow->addScript<ArrowTestScript>(arrowMovement);
+
+    auto arrowCollide = new Collide();
+    arrowCollide->setPositionInScreen(transform->getPositionX(), transform->getPositionY());
+    arrowCollide->setSizeInScreen(transform->getSizeW(), transform->getSizeH());
+    arrow->addComponent<Collide>(arrowCollide);
 
     auto collideScript = new CollideScript();
     arrow->addScript<CollideScript>(collideScript);

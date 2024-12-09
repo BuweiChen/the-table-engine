@@ -4,8 +4,9 @@
 #include "transform.h"
 #include "gameobject.h"
 
-ArrowTestScript::ArrowTestScript() {
-    m_speed = 8;
+ArrowTestScript::ArrowTestScript(int dx, int dy) {
+    m_dx = dx / 100;
+    m_dy = dy / 100;
 }
 
 void ArrowTestScript::update() {
@@ -14,14 +15,11 @@ void ArrowTestScript::update() {
     int x = transform->getPositionX();
     int y = transform->getPositionY();
 
-    if (m_owner->getTag() == "left arrow") {
-        x -= m_speed;
-    } else {
-        x += m_speed;
-    }
+    x += m_dx;
+    y += m_dy;
 
-    if (x < 0 || x > 640) {
-        delete m_owner->getSceneNode();
+    if (x < 0 || x > 640 || y < 0 || y > 480) {
+        m_owner->getSceneNode()->markForDeletion();
         return;
     }
 

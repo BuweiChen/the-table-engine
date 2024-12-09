@@ -11,6 +11,7 @@ SceneNode::SceneNode(GameObject* gameObject) {
         m_gameObject->setSceneNode(this);
     }
     m_parent = nullptr;
+    m_markedForDeletion = false;
 }
 
 SceneNode::~SceneNode() {
@@ -96,4 +97,12 @@ std::vector<GameObject*> SceneTree::findGameObjectsByTag(std::string tag) {
         }
     });
     return taggedGameObjects;
+}
+
+void SceneNode::markForDeletion() {
+    m_markedForDeletion = true;
+}
+
+bool SceneNode::isMarkedForDeletion() {
+    return m_markedForDeletion;
 }

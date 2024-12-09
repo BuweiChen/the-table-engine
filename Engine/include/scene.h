@@ -16,11 +16,14 @@ class SceneNode
         std::vector<SceneNode*> getChildren();
         SceneNode* getParent();
         GameObject* getGameObject();
+        void markForDeletion();
+        bool isMarkedForDeletion();
 
     private:
         SceneNode* m_parent;
         GameObject* m_gameObject;
         std::vector<SceneNode*> m_children;
+        bool m_markedForDeletion;
 };
 
 class SceneTree
