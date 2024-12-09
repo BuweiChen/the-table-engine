@@ -5,8 +5,8 @@
 #include "gameobject.h"
 
 ArrowTestScript::ArrowTestScript(int dx, int dy) {
-    m_dx = dx / 100;
-    m_dy = dy / 100;
+    m_dx = dx / 20;
+    m_dy = dy / 20;
 }
 
 void ArrowTestScript::update() {

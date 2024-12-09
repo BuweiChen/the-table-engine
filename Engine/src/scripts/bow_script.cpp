@@ -25,7 +25,9 @@ void Bow_script::input() {
 void Bow_script::update() {
     auto input = m_owner->getComponent<Input>();
     if (m_shoot) {
-        auto arrow = GameObjectFactory::createArrow(input->m_mouseX, input->m_mouseY);
+        int dx = input->m_mouseX - m_owner->getComponent<Transform>()->getPositionX();
+        int dy = input->m_mouseY - m_owner->getComponent<Transform>()->getPositionY();
+        auto arrow = GameObjectFactory::createArrow(dx, dy);
         arrow->getComponent<Transform>()->setPositionInScreen(m_owner->getComponent<Transform>()->getPositionX(), m_owner->getComponent<Transform>()->getPositionY());
         arrow->getComponent<Texture>()->setFlipHorizontal(input->m_mouseX < m_owner->getComponent<Transform>()->getPositionX());
 
