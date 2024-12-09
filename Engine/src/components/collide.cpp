@@ -1,8 +1,11 @@
 #include "SDL2/SDL.h"
 
+#include <iostream>
+
 #include "collide.h"
 #include "transform.h"
 #include "gameobject.h"
+#include "scenemanager.h"
 
 Collide::Collide()
 {
@@ -40,24 +43,14 @@ SDL_Rect* Collide::getRect()
     return mCollide;
 }
 
-int Collide::getPositionX()
+Vec2 Collide::getScreenPosition()
 {
-    return mCollide->x;
+    return Vec2(mCollide->x, mCollide->y);
 }
 
-int Collide::getPositionY()
+Vec2 Collide::getScreenSize()
 {
-    return mCollide->y;
-}
-
-int Collide::getSizeW()
-{
-    return mCollide->w;
-}
-
-int Collide::getSizeH()
-{
-    return mCollide->h;
+    return Vec2(mCollide->w, mCollide->h);
 }
 
 void Collide::setTransformOffset(int x, int y)
@@ -66,22 +59,28 @@ void Collide::setTransformOffset(int x, int y)
     mOffsetY = y;
 }
 
-void Collide::setPositionInScreen(int x, int y)
+void Collide::setScreenPosition(int x, int y)
 {
     mCollide->x = x;
     mCollide->y = y;
 }
 
-void Collide::setSizeInScreen(int w, int h)
+void Collide::setScreenSize(int w, int h)
 {
     mCollide->w = w;
     mCollide->h = h;
 }
 
-void Collide::updatePositionInScreen(int dx, int dy)
+void Collide::setScreenPosition(Vec2 pos)
 {
-    mCollide->x += dx;
-    mCollide->y += dy;
+    mCollide->x = pos.x;
+    mCollide->y = pos.y;
+}
+
+void Collide::setScreenSize(Vec2 size)
+{
+    mCollide->w = size.x;
+    mCollide->h = size.y;
 }
 
 bool Collide::isColliding(SDL_Rect* rect)
@@ -98,5 +97,45 @@ void Collide::update()
 {
     auto transform = m_owner->getComponent<Transform>();
     if (transform == NULL) return;
-    setPositionInScreen(transform->getPositionX() + mOffsetX, transform->getPositionY() + mOffsetY);
+
+    auto sceneTree = SceneManager::getInstance().getSceneTree();
+    auto player = sceneTree->findGameObjectsByTag("Player")[0];
+    auto playerTransform = player->getComponent<Transform>();
+
+    float x = transform->getWorldPosition().x - playerTransform->getWorldPosition().x + 320;
+    float y = transform->getWorldPosition().y - playerTransform->getWorldPosition().y + 240;
+    setScreenPosition(x + mOffsetX, y + mOffsetY);
+
+    if (getScreenSize() == Vec2(0, 0))
+    {
+        setScreenSize(transform->getScreenSize());
+    }
+}
+
+// solely for debugging/visual purposes
+void Collide::render()
+{
+    if (m_owner->getTag() == "Player")
+    {
+        SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 255, 0, 255, 255);
+        SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), mCollide);
+    }
+
+    if (m_owner->getTag() == "Bow")
+    {
+        SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 0, 255, 0, 255);
+        SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), mCollide);
+    }
+
+    if (m_owner->getTag() == "Arrow")
+    {
+        SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 0, 255, 255, 255);
+        SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), mCollide);
+    }
+
+    if (m_owner->getTag() == "Key")
+    {
+        SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 255, 255, 0, 255);
+        SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), mCollide);
+    }
 }

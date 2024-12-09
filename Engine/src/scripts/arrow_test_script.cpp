@@ -6,31 +6,38 @@
 #include "collide.h"
 #include "scenemanager.h"
 
-ArrowTestScript::ArrowTestScript(int dx, int dy) {
-    m_dx = dx / 20;
-    m_dy = dy / 20;
+ArrowTestScript::ArrowTestScript(float dx, float dy) {
+    float norm = sqrt(dx * dx + dy * dy);
+    float speed = 12;
+    m_dx = dx / norm * speed;
+    m_dy = dy / norm * speed;
 }
 
 void ArrowTestScript::update() {
     auto transform = m_owner->getComponent<Transform>();
 
-    int x = transform->getPositionX();
-    int y = transform->getPositionY();
+    // Move the arrow
+    Vec2 position = transform->getWorldPosition();
+    position.x += m_dx;
+    position.y += m_dy;
+    transform->setWorldPosition(position);
 
-    x += m_dx;
-    y += m_dy;
+    // Destroy the arrow if it goes off screen
+    // Vec2 screen_position = transform->getScreenPosition();
+    // if (screen_position.x < 0 || screen_position.x > 640 || screen_position.y < 0 || screen_position.y > 480) {
+    //     m_owner->getSceneNode()->setDestroy(true);
+    //     return;
+    // }
 
-    if (x < 0 || x > 640 || y < 0 || y > 480) {
+    // Destroy the arrow if it goes very far into the world
+    if (position.x < -1200 || position.x > 1200 || position.y < -1200 || position.y > 1200) {
         m_owner->getSceneNode()->setDestroy(true);
         return;
     }
 
-    transform->setPositionInScreen(x, y);
-    
     // Check collision with enemies
     auto sceneTree = SceneManager::getInstance().getSceneTree();
     auto enemies = sceneTree->findGameObjectsByTag("Warrior");
-    std::cout << "Enemies: " << enemies.size() << std::endl;
     auto collide = m_owner->getComponent<Collide>();
     for (auto enemy : enemies) {
         if (collide->isColliding(enemy->getComponent<Collide>()->getRect())) {

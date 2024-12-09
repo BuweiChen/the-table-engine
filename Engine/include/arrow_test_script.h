@@ -2,8 +2,8 @@
 
 class ArrowTestScript : public Script {
     private:
-        int m_dx, m_dy;
+        float m_dx, m_dy;
     public:
-        ArrowTestScript(int dx, int dy);
+        ArrowTestScript(float dx, float dy);
         void update() override;
 };

@@ -14,10 +14,10 @@ UNAME_M := $(shell uname -m)
 ifeq ($(UNAME_S), Linux)
     ifneq ($(findstring WSL,$(shell uname -r)),)
         # WSL
-        LDFLAGS += -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
+        LDFLAGS += -lSDL2 -lSDL2_ttf -lSDL2_mixer
     else
         # Native Linux
-        LDFLAGS += -lSDL2 -lSDL2_ttf
+        LDFLAGS += -lSDL2 -lSDL2_ttf -lSDL2_mixer
     endif
 else ifeq ($(UNAME_S), Darwin)
     ifeq ($(UNAME_M), arm64)
@@ -26,7 +26,7 @@ else ifeq ($(UNAME_S), Darwin)
 		CXXFLAGS += -I../lib -F/Library/Frameworks
     else ifeq ($(UNAME_M), x86_64)
         # macOS x86
-        LDFLAGS += -lSDL2 -lSDL2_image -lSDL2_ttf -lSDL2_mixer
+        LDFLAGS += -lSDL2 -lSDL2_ttf -lSDL2_mixer
     endif
 endif
 

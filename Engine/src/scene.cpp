@@ -13,6 +13,7 @@ SceneNode::SceneNode(GameObject* gameObject) {
         m_gameObject->setSceneNode(this);
     }
     m_parent = nullptr;
+    m_isBackground = false;
 }
 
 SceneNode::~SceneNode() {
@@ -35,10 +36,11 @@ SceneNode::~SceneNode() {
     delete m_gameObject;
 }
 
-void SceneNode::addChild(GameObject* child) {
+void SceneNode::addChild(GameObject* child, bool isBackground) {
     if (child == nullptr) return;
 
     SceneNode* childNode = new SceneNode(child);
+    childNode->setIsBackground(isBackground);
     m_children.push_back(childNode);
     childNode->m_parent = this;
 }
@@ -63,6 +65,14 @@ void SceneNode::setDestroy(bool destroy) {
     m_destroy = destroy;
 }
 
+bool SceneNode::isBackground() {
+    return m_isBackground;
+}
+
+void SceneNode::setIsBackground(bool isBackground) {
+    m_isBackground = isBackground;
+}
+
 // Scene Tree
 
 SceneTree::SceneTree() {
@@ -73,8 +83,8 @@ SceneTree::~SceneTree() {
     delete m_root;
 }
 
-void SceneTree::addChild(GameObject* child) {
-    m_root->addChild(child);
+void SceneTree::addChild(GameObject* child, bool isBackground) {
+    m_root->addChild(child, isBackground);
 }
 
 void SceneTree::traverseTree(std::function<void(SceneNode*)> callback) {
@@ -101,11 +111,20 @@ GameObject* SceneTree::findGameObjectById(std::string id) {
 }
 
 std::vector<GameObject*> SceneTree::findGameObjectsByTag(std::string tag) {
+    if (m_cachedGameObjects.find(tag) != m_cachedGameObjects.end()) {
+        return {m_cachedGameObjects[tag]};
+    }
+
     std::vector<GameObject*> taggedGameObjects;
     traverseTree(m_root, [&taggedGameObjects, tag](SceneNode* node) {
         if (node && node->getGameObject() && node->getGameObject()->getTag() == tag) {
             taggedGameObjects.push_back(node->getGameObject());
         }
     });
+
+    // cache specific game objects
+    if (tag == "Player" || tag == "Bow") {
+        m_cachedGameObjects[tag] = taggedGameObjects[0];
+    }
     return taggedGameObjects;
 }

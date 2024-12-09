@@ -4,6 +4,7 @@
 #include "input.h"
 #include "transform.h"
 #include "texture.h"
+#include "collide.h"
 #include "gameobject.h"
 #include "gameobjectfactory.h"
 #include "scenemanager.h"
@@ -15,56 +16,61 @@ PlayerTestScript::PlayerTestScript() {
     m_lastFireTimeInMs = -10000;
 }
 
+int PlayerTestScript::getKeysCollected() {
+    return m_keysCollected;
+}
+
 void PlayerTestScript::update() {
     auto input = m_owner->getComponent<Input>();
     auto transform = m_owner->getComponent<Transform>();
+    auto texture = m_owner->getComponent<Texture>();
+    auto collide = m_owner->getComponent<Collide>();
 
-    int x = transform->getPositionX();
-    int y = transform->getPositionY();
-    int w = transform->getSizeW();
-    int h = transform->getSizeH();
+    Vec2 position = transform->getWorldPosition();
+    Vec2 size = transform->getScreenSize();
 
     if (input->leftPressed) {
-        x -= m_playerSpeed;
+        position.x -= m_playerSpeed;
     }
     if (input->rightPressed) {
-        x += m_playerSpeed;
+        position.x += m_playerSpeed;
     }
     if (input->upPressed) {
-        y -= m_playerSpeed;
+        position.y -= m_playerSpeed;
     }
     if (input->downPressed) {
-        y += m_playerSpeed;
+        position.y += m_playerSpeed;
     }
 
-    // clamp positions to screen
-    if (x < 0) x = 0;
-    if (y < 0) y = 0;
-    if (x > 640 - w) x = 640 - w;
-    if (y > 480 - h) y = 480 - h;
+    // clamp positions to level
+    int levelWidth = 640;
+    int levelHeight = 640;
+    if (position.x < -levelWidth - 20)
+        position.x = -levelWidth - 20;
+    if (position.x > levelWidth - 60)
+        position.x = levelWidth - 60;
+    if (position.y < -levelHeight - 30)
+        position.y = -levelHeight - 30;
+    if (position.y > levelHeight - 90)
+        position.y = levelHeight - 90;
 
-    int dx = x - transform->getPositionX();
-    int dy = y - transform->getPositionY();
+    float dx = position.x - transform->getWorldPosition().x;
+    float dy = position.y - transform->getWorldPosition().y;
 
-    transform->setPositionInScreen(x, y);
+    texture->setFlipHorizontal(dx < 0);
+    transform->setWorldPosition(position);
 
     // move the player's bow with the player
     auto bow = m_owner->getChildren()[0];
-    bow->getComponent<Transform>()->updatePositionInScreen(dx, dy);
+    bow->getComponent<Transform>()->updateWorldPosition(dx, dy);
 
-    // // fire bow if mouse left is pressed
-    // if (input->mouseLeftPressed && ((int) SDL_GetTicks() - m_lastFireTimeInMs) > 1000 / m_fireRatePerSecond) {
-    //     m_lastFireTimeInMs = SDL_GetTicks();
-
-    //     std::string shootDir = input->m_mouseX < bow->getComponent<Transform>()->getPositionX() ? "left" : "right";
-    //     auto arrow = GameObjectFactory::createArrow(shootDir);
-    //     arrow->getComponent<Transform>()->setPositionInScreen(x + 30, y + 15);
-    //     arrow->getComponent<Texture>()->setFlipHorizontal(shootDir == "left");
-
-    //     auto bow = m_owner->getChildren()[0];
-    //     bow->getComponent<Texture>()->setFlipHorizontal(shootDir == "left");
-
-    //     auto sceneTree = SceneManager::getInstance().getSceneTree();
-    //     sceneTree->addChild(arrow);
-    // }
+    // collect keys
+    auto keys = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Key");
+    for (auto key : keys) {
+        auto keyCollide = key->getComponent<Collide>();
+        if (collide->isColliding(keyCollide)) {
+            key->getSceneNode()->setDestroy(true);
+            m_keysCollected++;
+        }
+    }
 }
