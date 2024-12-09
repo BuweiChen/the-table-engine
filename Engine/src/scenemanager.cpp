@@ -75,6 +75,8 @@ void SceneManager::update()
         if (node->getGameObject())
             node->getGameObject()->update();
     });
+
+    cleanTree();
 }
 
 void SceneManager::render()
@@ -85,5 +87,16 @@ void SceneManager::render()
     sceneTree->traverseTree([](SceneNode* node) {
         if (node->getGameObject())
             node->getGameObject()->render();
+    });
+}
+
+void SceneManager::cleanTree()
+{
+    auto sceneTree = SceneManager::getInstance().m_sceneTree;
+    if (sceneTree == nullptr) return;
+
+    sceneTree->traverseTree([](SceneNode* node) {
+        if (node->readyToDestroy())
+            delete node;
     });
 }

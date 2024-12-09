@@ -2,6 +2,7 @@
 #include "scenemanager.h"
 #include "gameobject.h"
 #include "transform.h"
+#include "texture.h"
 
 // Random speed between 2 and 4 float
 EnemyAIScript::EnemyAIScript() {
@@ -11,14 +12,17 @@ EnemyAIScript::EnemyAIScript() {
 
 void EnemyAIScript::update() {
     auto transform = m_owner->getComponent<Transform>();
+    auto texture = m_owner->getComponent<Texture>();
     
     auto players = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Player");
     if (players.empty()) return;
-    
     auto player = players[0];
 
     int dx = player->getComponent<Transform>()->getPositionX() - player->getComponent<Transform>()->getSizeW() / 2 - transform->getPositionX();
     int dy = player->getComponent<Transform>()->getPositionY() - player->getComponent<Transform>()->getSizeH() - transform->getPositionY();
+
+    texture->setFlipHorizontal(dx < 0);
+
     float norm = sqrt(dx * dx + dy * dy);
     dx = dx / norm * m_speed;
     dy = dy / norm * m_speed;

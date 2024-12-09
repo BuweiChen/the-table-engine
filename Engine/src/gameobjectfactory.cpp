@@ -35,9 +35,6 @@ GameObject* GameObjectFactory::createPlayerTest()
     playerCollide->setSizeInScreen(transform->getSizeW(), transform->getSizeH());
     player->addComponent<Collide>(playerCollide);
 
-    auto collideScript = new CollideScript();
-    player->addScript<CollideScript>(collideScript);
-
     return player;
 }
 
@@ -63,7 +60,7 @@ GameObject* GameObjectFactory::createBow()
 
 GameObject* GameObjectFactory::createArrow(std::string direction) 
 {
-    GameObject* arrow = new GameObject(direction + " arrow");
+    GameObject* arrow = new GameObject("Arrow");
 
     SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Weapons/Wood/Wood.bmp");
     auto texture = new Texture(sdl_texture);
@@ -75,11 +72,13 @@ GameObject* GameObjectFactory::createArrow(std::string direction)
     transform->setSizeInScreen(15, 15);
     arrow->addComponent<Transform>(transform);
 
-    auto arrowMovement = new ArrowTestScript();
+    auto arrowMovement = new ArrowTestScript(direction);
     arrow->addScript<ArrowTestScript>(arrowMovement);
 
-    auto collideScript = new CollideScript();
-    arrow->addScript<CollideScript>(collideScript);
+    auto arrowCollide = new Collide();
+    arrowCollide->setPositionInScreen(transform->getPositionX(), transform->getPositionY());
+    arrowCollide->setSizeInScreen(transform->getSizeW(), transform->getSizeH());
+    arrow->addComponent<Collide>(arrowCollide);
 
     return arrow;
 }
@@ -104,14 +103,12 @@ GameObject* GameObjectFactory::createEnemyWarrior()
 
     auto enemyCollide = new Collide();
     enemyCollide->setPositionInScreen(transform->getPositionX(), transform->getPositionY());
-    enemyCollide->setSizeInScreen(transform->getSizeW(), transform->getSizeH());
+    enemyCollide->setSizeInScreen(transform->getSizeW() * 0.4, transform->getSizeH() * 0.6);
+    enemyCollide->setTransformOffset(transform->getSizeW() * 0.3, transform->getSizeH() * 0.45);
     enemy->addComponent<Collide>(enemyCollide);
 
     auto collideTest = new CollideTestScript();
     enemy->addScript<CollideTestScript>(collideTest);
-
-    auto collideScript = new CollideScript();
-    enemy->addScript<CollideScript>(collideScript);
 
     return enemy;
 }

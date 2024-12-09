@@ -15,23 +15,28 @@ void CollideTestScript::update() {
     
     auto players = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Player");
     if (players.empty()) return;
-    
-    auto player = players[0];
-    
-    auto playerCollide = player->getComponent<Collide>();
+    auto playerCollide = players[0]->getComponent<Collide>();
 
     m_collide = collide->isColliding(playerCollide);
+
+    auto arrows = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Arrow");
+    for (auto arrow : arrows) {
+        auto arrowCollide = arrow->getComponent<Collide>();
+        if (arrowCollide == nullptr) continue;
+        if (collide->isColliding(arrowCollide)) {
+            m_owner->getSceneNode()->setDestroy(true);
+            arrow->getSceneNode()->setDestroy(true);
+        }
+    }
 }
 
 void CollideTestScript::render() {
     auto collide = m_owner->getComponent<Collide>();
+    if (collide == nullptr) return;
 
-    
     if (m_collide) {
-        // std::cout << "Collide with player" << std::endl;
         // draw a red rectangle around the object this script is attached to equal to its hitbox
         SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 255, 0, 0, 255);
-        SDL_Rect rect = {collide->getPositionX(), collide->getPositionY(), collide->getSizeW(), collide->getSizeH()};
-        SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), &rect);
+        SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), collide->getRect());
     }
 }
