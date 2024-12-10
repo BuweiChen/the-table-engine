@@ -82,7 +82,7 @@ Collaboration diagram for SceneNode:</div>
 <div class="center"><img src="classSceneNode__coll__graph.png" border="0" usemap="#aSceneNode_coll__map" alt="Collaboration graph"/></div>
 <map name="aSceneNode_coll__map" id="aSceneNode_coll__map">
 <area shape="rect" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy." alt="" coords="5,5,160,244"/>
-<area shape="rect" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts." alt="" coords="9,307,156,619"/>
+<area shape="rect" href="classGameObject.html" title="Core class representing an entity in the game world." alt="" coords="9,307,156,619"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -101,7 +101,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:af0b93bfa19623dae9112fa02fbf0d29e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the parent of this node.  <a href="classSceneNode.html#af0b93bfa19623dae9112fa02fbf0d29e">More...</a><br /></td></tr>
 <tr class="separator:af0b93bfa19623dae9112fa02fbf0d29e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af932d0dd884c95d0f70fbd943a08f298"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classGameObject.html">GameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSceneNode.html#af932d0dd884c95d0f70fbd943a08f298">getGameObject</a> ()</td></tr>
-<tr class="memdesc:af932d0dd884c95d0f70fbd943a08f298"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a> associated with this node.  <a href="classSceneNode.html#af932d0dd884c95d0f70fbd943a08f298">More...</a><br /></td></tr>
+<tr class="memdesc:af932d0dd884c95d0f70fbd943a08f298"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a> associated with this node.  <a href="classSceneNode.html#af932d0dd884c95d0f70fbd943a08f298">More...</a><br /></td></tr>
 <tr class="separator:af932d0dd884c95d0f70fbd943a08f298"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab8be5f2efb85b606fae0cdef54cf18f6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSceneNode.html#ab8be5f2efb85b606fae0cdef54cf18f6">readyToDestroy</a> ()</td></tr>
 <tr class="memdesc:ab8be5f2efb85b606fae0cdef54cf18f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Checks if this node is marked for destruction.  <a href="classSceneNode.html#ab8be5f2efb85b606fae0cdef54cf18f6">More...</a><br /></td></tr>
@@ -167,7 +167,7 @@ Friends</h2></td></tr>
 <p>Constructor that assigns a game object to this node. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">gameObject</td><td>Pointer to the <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a> associated with this node. </td></tr>
+    <tr><td class="paramname">gameObject</td><td>Pointer to the <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a> associated with this node. </td></tr>
   </table>
   </dd>
 </dl>
@@ -235,7 +235,7 @@ Friends</h2></td></tr>
 <p>Adds a child game object to this node. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">child</td><td>Pointer to the child <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a> to add. </td></tr>
+    <tr><td class="paramname">child</td><td>Pointer to the child <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a> to add. </td></tr>
     <tr><td class="paramname">isBackground</td><td>Flag indicating if the child is part of the background. </td></tr>
   </table>
   </dd>
@@ -282,8 +282,8 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Gets the <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a> associated with this node. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>. </dd></dl>
+<p>Gets the <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a> associated with this node. </p>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a>. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="scene_8cpp_source.html#l00056">56</a> of file <a class="el" href="scene_8cpp_source.html">scene.cpp</a>.</p>
 

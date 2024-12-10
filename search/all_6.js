@@ -10,7 +10,7 @@ var searchData=
   ['gameobjectfactory_2ecpp_44',['gameobjectfactory.cpp',['../gameobjectfactory_8cpp.html',1,'']]],
   ['gameobjectfactory_2eh_45',['gameobjectfactory.h',['../gameobjectfactory_8h.html',1,'']]],
   ['getchildren_46',['getChildren',['../classGameObject.html#a89ac6bf4dfc8df577379f2668f5494fa',1,'GameObject::getChildren()'],['../classSceneNode.html#af0752ba2ec7b1a36556327e11c3ad819',1,'SceneNode::getChildren()']]],
-  ['getcomponent_47',['getComponent',['../classGameObject.html#a1c50376c7f24439359a3962f57dfd513',1,'GameObject']]],
+  ['getcomponent_47',['getComponent',['../classGameObject.html#a7a91297b8801e1c8ce10462c754c573a',1,'GameObject']]],
   ['getgameobject_48',['getGameObject',['../classSceneNode.html#af932d0dd884c95d0f70fbd943a08f298',1,'SceneNode']]],
   ['getid_49',['getId',['../classGameObject.html#ad5976d3f429a2df8f7c8d6f42b72500a',1,'GameObject']]],
   ['getinstance_50',['getInstance',['../classResourceManager.html#a8fd3155e6658c0bdc3b3f6f81443e374',1,'ResourceManager::getInstance()'],['../classSceneManager.html#a05b9c51f731a9da497ad1c3013eeaacc',1,'SceneManager::getInstance()']]],
@@ -26,7 +26,7 @@ var searchData=
   ['getscreenposition_60',['getScreenPosition',['../classCollide.html#ac4687eafc64423028dae0ced49b334c1',1,'Collide::getScreenPosition()'],['../classTransform.html#a3e800f0ac7a46f950a92759ca13428f7',1,'Transform::getScreenPosition()']]],
   ['getscreenrect_61',['getScreenRect',['../classTransform.html#af25bc56b44e7ad05016d6c56bb2a20e7',1,'Transform']]],
   ['getscreensize_62',['getScreenSize',['../classCollide.html#abec7904eb11b60500bbe0b1392955b1e',1,'Collide::getScreenSize()'],['../classTransform.html#a24f480adc273cacd0d30aea44b538b3e',1,'Transform::getScreenSize()']]],
-  ['getscript_63',['getScript',['../classGameObject.html#aa9695b742d47253018d818100dd1a15e',1,'GameObject']]],
+  ['getscript_63',['getScript',['../classGameObject.html#a3b53d3760276086861cf4f22a39f06ce',1,'GameObject']]],
   ['gettag_64',['getTag',['../classGameObject.html#a7201a5dd856f712774e237002713a97c',1,'GameObject']]],
   ['gettexture_65',['getTexture',['../classTexture.html#a77a1ae0043a4b318a60df3b02ef2d3f6',1,'Texture']]],
   ['getworldposition_66',['getWorldPosition',['../classTransform.html#af1d8fb17974503896f0ca2d2694be73d',1,'Transform']]]

@@ -81,7 +81,7 @@ Collaboration diagram for SceneTree:</div>
 <map name="aSceneTree_coll__map" id="aSceneTree_coll__map">
 <area shape="rect" title="Manages a tree structure of SceneNodes, facilitating scene graph operations." alt="" coords="5,380,204,545"/>
 <area shape="rect" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy." alt="" coords="114,5,269,244"/>
-<area shape="rect" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts." alt="" coords="239,307,386,619"/>
+<area shape="rect" href="classGameObject.html" title="Core class representing an entity in the game world." alt="" coords="239,307,386,619"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -94,7 +94,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:aa42ddf3b64562e6b63b4a6e380cc978d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor, cleans up the tree resources.  <a href="classSceneTree.html#aa42ddf3b64562e6b63b4a6e380cc978d">More...</a><br /></td></tr>
 <tr class="separator:aa42ddf3b64562e6b63b4a6e380cc978d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c1d2c5687732fe8e95169a409bfeb69"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSceneTree.html#a8c1d2c5687732fe8e95169a409bfeb69">addChild</a> (<a class="el" href="classGameObject.html">GameObject</a> *child, bool isBackground=false)</td></tr>
-<tr class="memdesc:a8c1d2c5687732fe8e95169a409bfeb69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a child <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a> to the scene tree.  <a href="classSceneTree.html#a8c1d2c5687732fe8e95169a409bfeb69">More...</a><br /></td></tr>
+<tr class="memdesc:a8c1d2c5687732fe8e95169a409bfeb69"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a child <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a> to the scene tree.  <a href="classSceneTree.html#a8c1d2c5687732fe8e95169a409bfeb69">More...</a><br /></td></tr>
 <tr class="separator:a8c1d2c5687732fe8e95169a409bfeb69"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac732bde727c62e1586c962504dac52bd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSceneTree.html#ac732bde727c62e1586c962504dac52bd">traverseTree</a> (std::function&lt; void(<a class="el" href="classSceneNode.html">SceneNode</a> *)&gt; callback)</td></tr>
 <tr class="memdesc:ac732bde727c62e1586c962504dac52bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Traverses the entire tree, executing a callback on each node.  <a href="classSceneTree.html#ac732bde727c62e1586c962504dac52bd">More...</a><br /></td></tr>
@@ -103,7 +103,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a9df2c355296a5fd77e41a3df28e8ffdc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Traverses the tree from a specific node, executing a callback on each node.  <a href="classSceneTree.html#a9df2c355296a5fd77e41a3df28e8ffdc">More...</a><br /></td></tr>
 <tr class="separator:a9df2c355296a5fd77e41a3df28e8ffdc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3991fc987fb0a3475c3eee1fb99e9e02"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classGameObject.html">GameObject</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSceneTree.html#a3991fc987fb0a3475c3eee1fb99e9e02">findGameObjectById</a> (std::string id)</td></tr>
-<tr class="memdesc:a3991fc987fb0a3475c3eee1fb99e9e02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds a <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a> by its ID.  <a href="classSceneTree.html#a3991fc987fb0a3475c3eee1fb99e9e02">More...</a><br /></td></tr>
+<tr class="memdesc:a3991fc987fb0a3475c3eee1fb99e9e02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds a <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a> by its ID.  <a href="classSceneTree.html#a3991fc987fb0a3475c3eee1fb99e9e02">More...</a><br /></td></tr>
 <tr class="separator:a3991fc987fb0a3475c3eee1fb99e9e02"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5dab94cdd041091c0ac1bcc9995ef1b"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classGameObject.html">GameObject</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classSceneTree.html#ae5dab94cdd041091c0ac1bcc9995ef1b">findGameObjectsByTag</a> (std::string tag)</td></tr>
 <tr class="memdesc:ae5dab94cdd041091c0ac1bcc9995ef1b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds GameObjects by a tag.  <a href="classSceneTree.html#ae5dab94cdd041091c0ac1bcc9995ef1b">More...</a><br /></td></tr>
@@ -191,10 +191,10 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Adds a child <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a> to the scene tree. </p>
+<p>Adds a child <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a> to the scene tree. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">child</td><td>Pointer to the <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a> to add. </td></tr>
+    <tr><td class="paramname">child</td><td>Pointer to the <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a> to add. </td></tr>
     <tr><td class="paramname">isBackground</td><td>Flag indicating if the child is part of the background. </td></tr>
   </table>
   </dd>
@@ -220,14 +220,14 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Finds a <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a> by its ID. </p>
+<p>Finds a <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a> by its ID. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">id</td><td>The ID string of the <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a> to find. </td></tr>
+    <tr><td class="paramname">id</td><td>The ID string of the <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a> to find. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a> if found, nullptr otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a> if found, nullptr otherwise. </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="scene_8cpp_source.html#l00103">103</a> of file <a class="el" href="scene_8cpp_source.html">scene.cpp</a>.</p>
 

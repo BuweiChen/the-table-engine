@@ -1,21 +1,21 @@
 <map id="Engine/src/scripts/bow_script.cpp" name="Engine/src/scripts/bow_script.cpp">
-<area shape="rect" id="node1" title=" " alt="" coords="337,5,473,47"/>
-<area shape="rect" id="node2" title=" " alt="" coords="132,95,212,121"/>
-<area shape="rect" id="node3" href="$bow__script_8h.html" title=" " alt="" coords="5,169,109,196"/>
-<area shape="rect" id="node6" href="$gameobject_8h.html" title="Defines the GameObject class for managing game objects within the engine." alt="" coords="401,244,511,271"/>
-<area shape="rect" id="node14" href="$input_8h.html" title="Defines the Input component for handling input operations in the game engine." alt="" coords="337,95,404,121"/>
-<area shape="rect" id="node15" href="$gameobjectfactory_8h.html" title=" " alt="" coords="133,169,288,196"/>
-<area shape="rect" id="node16" href="$transform_8h.html" title="Provides the Transform component for positioning and sizing game objects." alt="" coords="507,169,605,196"/>
-<area shape="rect" id="node18" href="$texture_8h.html" title="Defines the Texture component for managing textures in the Game Engine." alt="" coords="530,95,611,121"/>
-<area shape="rect" id="node19" href="$scenemanager_8h.html" title="Defines the SceneManager class for managing scenes in the game." alt="" coords="625,244,754,271"/>
-<area shape="rect" id="node4" href="$script_8h.html" title="Defines the Script class for attaching behavior to game objects." alt="" coords="185,319,255,345"/>
-<area shape="rect" id="node5" title=" " alt="" coords="361,393,420,420"/>
-<area shape="rect" id="node7" title=" " alt="" coords="512,319,579,345"/>
-<area shape="rect" id="node8" title=" " alt="" coords="473,393,535,420"/>
-<area shape="rect" id="node9" href="$component_8h.html" title="Defines the Component base class for all components in the game engine." alt="" coords="280,319,387,345"/>
-<area shape="rect" id="node10" href="$scene_8h.html" title="Defines the SceneNode and SceneTree classes for managing game objects within scenes." alt="" coords="653,319,725,345"/>
-<area shape="rect" id="node13" title=" " alt="" coords="749,319,845,345"/>
-<area shape="rect" id="node11" title=" " alt="" coords="617,393,703,420"/>
-<area shape="rect" id="node12" title=" " alt="" coords="727,393,851,420"/>
-<area shape="rect" id="node17" href="$vec2_8h.html" title="Definition of Vec2 structure for 2D vector operations." alt="" coords="535,244,601,271"/>
+<area shape="rect" id="node1" title=" " alt="" coords="254,5,390,47"/>
+<area shape="rect" id="node2" title=" " alt="" coords="38,95,118,121"/>
+<area shape="rect" id="node3" href="$bow__script_8h.html" title=" " alt="" coords="206,169,310,196"/>
+<area shape="rect" id="node6" href="$gameobject_8h.html" title=" " alt="" coords="267,244,377,271"/>
+<area shape="rect" id="node14" href="$input_8h.html" title="Defines the Input component for handling input operations in the game engine." alt="" coords="142,95,209,121"/>
+<area shape="rect" id="node15" href="$gameobjectfactory_8h.html" title=" " alt="" coords="27,169,182,196"/>
+<area shape="rect" id="node16" href="$transform_8h.html" title="Provides the Transform component for positioning and sizing game objects." alt="" coords="385,169,483,196"/>
+<area shape="rect" id="node18" href="$texture_8h.html" title="Defines the Texture component for managing textures in the Game Engine." alt="" coords="436,95,517,121"/>
+<area shape="rect" id="node19" href="$scenemanager_8h.html" title="Defines the SceneManager class for managing scenes in the game." alt="" coords="491,244,620,271"/>
+<area shape="rect" id="node4" href="$script_8h.html" title="Defines the Script class for attaching behavior to game objects." alt="" coords="217,319,288,345"/>
+<area shape="rect" id="node5" title=" " alt="" coords="223,393,282,420"/>
+<area shape="rect" id="node7" title=" " alt="" coords="363,319,430,345"/>
+<area shape="rect" id="node8" title=" " alt="" coords="359,393,421,420"/>
+<area shape="rect" id="node9" href="$component_8h.html" title="Defines the Component base class for all components in the game engine." alt="" coords="86,319,193,345"/>
+<area shape="rect" id="node10" href="$scene_8h.html" title="Defines the SceneNode and SceneTree classes for managing game objects within scenes." alt="" coords="505,319,577,345"/>
+<area shape="rect" id="node13" title=" " alt="" coords="607,319,703,345"/>
+<area shape="rect" id="node11" title=" " alt="" coords="471,393,557,420"/>
+<area shape="rect" id="node12" title=" " alt="" coords="581,393,705,420"/>
+<area shape="rect" id="node17" href="$vec2_8h.html" title="Definition of Vec2 structure for 2D vector operations." alt="" coords="401,244,467,271"/>
 </map>

@@ -72,7 +72,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p>Represents an object in the game world, managing components and scripts.  
+<p>Core class representing an entity in the game world.  
  <a href="classGameObject.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="gameobject_8h_source.html">gameobject.h</a>&gt;</code></p>
@@ -81,7 +81,7 @@ Collaboration diagram for GameObject:</div>
 <div class="dyncontent">
 <div class="center"><img src="classGameObject__coll__graph.png" border="0" usemap="#aGameObject_coll__map" alt="Collaboration graph"/></div>
 <map name="aGameObject_coll__map" id="aGameObject_coll__map">
-<area shape="rect" title="Represents an object in the game world, managing components and scripts." alt="" coords="9,5,156,317"/>
+<area shape="rect" title="Core class representing an entity in the game world." alt="" coords="9,5,156,317"/>
 <area shape="rect" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy." alt="" coords="5,380,160,619"/>
 </map>
 </div>
@@ -89,71 +89,71 @@ Collaboration diagram for GameObject:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a9e8341d73586cc74bf07c66228d7becc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#a9e8341d73586cc74bf07c66228d7becc">GameObject</a> (std::string tag)</td></tr>
-<tr class="memdesc:a9e8341d73586cc74bf07c66228d7becc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a> with a specific tag.  <a href="classGameObject.html#a9e8341d73586cc74bf07c66228d7becc">More...</a><br /></td></tr>
+<tr class="memdesc:a9e8341d73586cc74bf07c66228d7becc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a new <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a> with the specified tag.  <a href="classGameObject.html#a9e8341d73586cc74bf07c66228d7becc">More...</a><br /></td></tr>
 <tr class="separator:a9e8341d73586cc74bf07c66228d7becc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad5976d3f429a2df8f7c8d6f42b72500a"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#ad5976d3f429a2df8f7c8d6f42b72500a">getId</a> ()</td></tr>
-<tr class="memdesc:ad5976d3f429a2df8f7c8d6f42b72500a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the unique ID of the <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>.  <a href="classGameObject.html#ad5976d3f429a2df8f7c8d6f42b72500a">More...</a><br /></td></tr>
+<tr class="memdesc:ad5976d3f429a2df8f7c8d6f42b72500a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the unique identifier of the <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a>.  <a href="classGameObject.html#ad5976d3f429a2df8f7c8d6f42b72500a">More...</a><br /></td></tr>
 <tr class="separator:ad5976d3f429a2df8f7c8d6f42b72500a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7201a5dd856f712774e237002713a97c"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#a7201a5dd856f712774e237002713a97c">getTag</a> ()</td></tr>
-<tr class="memdesc:a7201a5dd856f712774e237002713a97c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the tag of the <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>.  <a href="classGameObject.html#a7201a5dd856f712774e237002713a97c">More...</a><br /></td></tr>
+<tr class="memdesc:a7201a5dd856f712774e237002713a97c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the tag identifier of the <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a>.  <a href="classGameObject.html#a7201a5dd856f712774e237002713a97c">More...</a><br /></td></tr>
 <tr class="separator:a7201a5dd856f712774e237002713a97c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c50376c7f24439359a3962f57dfd513"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:a1c50376c7f24439359a3962f57dfd513"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classGameObject.html#a1c50376c7f24439359a3962f57dfd513">getComponent</a> ()</td></tr>
-<tr class="memdesc:a1c50376c7f24439359a3962f57dfd513"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a component of a specific type attached to this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>.  <a href="classGameObject.html#a1c50376c7f24439359a3962f57dfd513">More...</a><br /></td></tr>
-<tr class="separator:a1c50376c7f24439359a3962f57dfd513"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a91297b8801e1c8ce10462c754c573a"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a7a91297b8801e1c8ce10462c754c573a"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classGameObject.html#a7a91297b8801e1c8ce10462c754c573a">getComponent</a> ()</td></tr>
+<tr class="memdesc:a7a91297b8801e1c8ce10462c754c573a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a component of the specified type.  <a href="classGameObject.html#a7a91297b8801e1c8ce10462c754c573a">More...</a><br /></td></tr>
+<tr class="separator:a7a91297b8801e1c8ce10462c754c573a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad15b0608530c8f2292d06f52b32261e0"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:ad15b0608530c8f2292d06f52b32261e0"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classGameObject.html#ad15b0608530c8f2292d06f52b32261e0">addComponent</a> (T *component)</td></tr>
-<tr class="memdesc:ad15b0608530c8f2292d06f52b32261e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a component of a specific type to this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>.  <a href="classGameObject.html#ad15b0608530c8f2292d06f52b32261e0">More...</a><br /></td></tr>
+<tr class="memdesc:ad15b0608530c8f2292d06f52b32261e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a component to the <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a>.  <a href="classGameObject.html#ad15b0608530c8f2292d06f52b32261e0">More...</a><br /></td></tr>
 <tr class="separator:ad15b0608530c8f2292d06f52b32261e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9695b742d47253018d818100dd1a15e"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
-<tr class="memitem:aa9695b742d47253018d818100dd1a15e"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classGameObject.html#aa9695b742d47253018d818100dd1a15e">getScript</a> ()</td></tr>
-<tr class="memdesc:aa9695b742d47253018d818100dd1a15e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves a script of a specific type attached to this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>.  <a href="classGameObject.html#aa9695b742d47253018d818100dd1a15e">More...</a><br /></td></tr>
-<tr class="separator:aa9695b742d47253018d818100dd1a15e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b53d3760276086861cf4f22a39f06ce"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a3b53d3760276086861cf4f22a39f06ce"><td class="memTemplItemLeft" align="right" valign="top">T *&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classGameObject.html#a3b53d3760276086861cf4f22a39f06ce">getScript</a> ()</td></tr>
+<tr class="memdesc:a3b53d3760276086861cf4f22a39f06ce"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets a script of the specified type.  <a href="classGameObject.html#a3b53d3760276086861cf4f22a39f06ce">More...</a><br /></td></tr>
+<tr class="separator:a3b53d3760276086861cf4f22a39f06ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af586a69635a1271ecf3cebf1d3637e1f"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
 <tr class="memitem:af586a69635a1271ecf3cebf1d3637e1f"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classGameObject.html#af586a69635a1271ecf3cebf1d3637e1f">addScript</a> (T *script)</td></tr>
-<tr class="memdesc:af586a69635a1271ecf3cebf1d3637e1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a script of a specific type to this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>.  <a href="classGameObject.html#af586a69635a1271ecf3cebf1d3637e1f">More...</a><br /></td></tr>
+<tr class="memdesc:af586a69635a1271ecf3cebf1d3637e1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds a script to the <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a>.  <a href="classGameObject.html#af586a69635a1271ecf3cebf1d3637e1f">More...</a><br /></td></tr>
 <tr class="separator:af586a69635a1271ecf3cebf1d3637e1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56dd94bb39e6ef76adf4923802753aec"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSceneNode.html">SceneNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#a56dd94bb39e6ef76adf4923802753aec">getSceneNode</a> ()</td></tr>
-<tr class="memdesc:a56dd94bb39e6ef76adf4923802753aec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the <a class="el" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy.">SceneNode</a> associated with this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>.  <a href="classGameObject.html#a56dd94bb39e6ef76adf4923802753aec">More...</a><br /></td></tr>
+<tr class="memdesc:a56dd94bb39e6ef76adf4923802753aec"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the <a class="el" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy.">SceneNode</a> associated with this <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a>.  <a href="classGameObject.html#a56dd94bb39e6ef76adf4923802753aec">More...</a><br /></td></tr>
 <tr class="separator:a56dd94bb39e6ef76adf4923802753aec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad02e819f94f3be88791cb6a397d244b1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#ad02e819f94f3be88791cb6a397d244b1">setSceneNode</a> (<a class="el" href="classSceneNode.html">SceneNode</a> *sceneNode)</td></tr>
-<tr class="memdesc:ad02e819f94f3be88791cb6a397d244b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the <a class="el" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy.">SceneNode</a> associated with this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>.  <a href="classGameObject.html#ad02e819f94f3be88791cb6a397d244b1">More...</a><br /></td></tr>
+<tr class="memdesc:ad02e819f94f3be88791cb6a397d244b1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the <a class="el" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy.">SceneNode</a> for this <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a>.  <a href="classGameObject.html#ad02e819f94f3be88791cb6a397d244b1">More...</a><br /></td></tr>
 <tr class="separator:ad02e819f94f3be88791cb6a397d244b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a89ac6bf4dfc8df577379f2668f5494fa"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classGameObject.html">GameObject</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#a89ac6bf4dfc8df577379f2668f5494fa">getChildren</a> ()</td></tr>
-<tr class="memdesc:a89ac6bf4dfc8df577379f2668f5494fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves all child GameObjects under this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>'s <a class="el" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy.">SceneNode</a>.  <a href="classGameObject.html#a89ac6bf4dfc8df577379f2668f5494fa">More...</a><br /></td></tr>
+<tr class="memdesc:a89ac6bf4dfc8df577379f2668f5494fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets all child GameObjects.  <a href="classGameObject.html#a89ac6bf4dfc8df577379f2668f5494fa">More...</a><br /></td></tr>
 <tr class="separator:a89ac6bf4dfc8df577379f2668f5494fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7d583f422be8977551c6f75b9767f2c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#a7d583f422be8977551c6f75b9767f2c1">input</a> ()</td></tr>
-<tr class="memdesc:a7d583f422be8977551c6f75b9767f2c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles input for this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>.  <a href="classGameObject.html#a7d583f422be8977551c6f75b9767f2c1">More...</a><br /></td></tr>
+<tr class="memdesc:a7d583f422be8977551c6f75b9767f2c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Processes input for this <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a> and its components.  <a href="classGameObject.html#a7d583f422be8977551c6f75b9767f2c1">More...</a><br /></td></tr>
 <tr class="separator:a7d583f422be8977551c6f75b9767f2c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adad7d284b670db722a2fda8e6a7997e3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#adad7d284b670db722a2fda8e6a7997e3">update</a> ()</td></tr>
-<tr class="memdesc:adad7d284b670db722a2fda8e6a7997e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>.  <a href="classGameObject.html#adad7d284b670db722a2fda8e6a7997e3">More...</a><br /></td></tr>
+<tr class="memdesc:adad7d284b670db722a2fda8e6a7997e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates this <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a> and its components.  <a href="classGameObject.html#adad7d284b670db722a2fda8e6a7997e3">More...</a><br /></td></tr>
 <tr class="separator:adad7d284b670db722a2fda8e6a7997e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a371c9d8d79ba2f0a61ab979a51aed38b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#a371c9d8d79ba2f0a61ab979a51aed38b">render</a> ()</td></tr>
-<tr class="memdesc:a371c9d8d79ba2f0a61ab979a51aed38b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>.  <a href="classGameObject.html#a371c9d8d79ba2f0a61ab979a51aed38b">More...</a><br /></td></tr>
+<tr class="memdesc:a371c9d8d79ba2f0a61ab979a51aed38b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders this <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a> and its components.  <a href="classGameObject.html#a371c9d8d79ba2f0a61ab979a51aed38b">More...</a><br /></td></tr>
 <tr class="separator:a371c9d8d79ba2f0a61ab979a51aed38b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:ab82dfdb656f9051c0587e6593b2dda97"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#ab82dfdb656f9051c0587e6593b2dda97">~GameObject</a> ()</td></tr>
-<tr class="memdesc:ab82dfdb656f9051c0587e6593b2dda97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor for cleaning up resources. Deletes the associated <a class="el" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy.">SceneNode</a> to ensure proper cleanup of the <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>.  <a href="classGameObject.html#ab82dfdb656f9051c0587e6593b2dda97">More...</a><br /></td></tr>
+<tr class="memdesc:ab82dfdb656f9051c0587e6593b2dda97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Destructor that cleans up the <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a> and its <a class="el" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy.">SceneNode</a>.  <a href="classGameObject.html#ab82dfdb656f9051c0587e6593b2dda97">More...</a><br /></td></tr>
 <tr class="separator:ab82dfdb656f9051c0587e6593b2dda97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:a31bee32d6133a448517e33704be97047"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#a31bee32d6133a448517e33704be97047">m_id</a></td></tr>
-<tr class="memdesc:a31bee32d6133a448517e33704be97047"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unique identifier for the <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>.  <a href="classGameObject.html#a31bee32d6133a448517e33704be97047">More...</a><br /></td></tr>
+<tr class="memdesc:a31bee32d6133a448517e33704be97047"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unique identifier for the <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a>.  <a href="classGameObject.html#a31bee32d6133a448517e33704be97047">More...</a><br /></td></tr>
 <tr class="separator:a31bee32d6133a448517e33704be97047"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acd3086ccb6c8a2a92c4de64431f0ec0b"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#acd3086ccb6c8a2a92c4de64431f0ec0b">m_tag</a></td></tr>
-<tr class="memdesc:acd3086ccb6c8a2a92c4de64431f0ec0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tag identifier, useful for grouping or identifying objects like "Enemy", "Projectile".  <a href="classGameObject.html#acd3086ccb6c8a2a92c4de64431f0ec0b">More...</a><br /></td></tr>
+<tr class="memdesc:acd3086ccb6c8a2a92c4de64431f0ec0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Category identifier (e.g., "Enemy", "Projectile")  <a href="classGameObject.html#acd3086ccb6c8a2a92c4de64431f0ec0b">More...</a><br /></td></tr>
 <tr class="separator:acd3086ccb6c8a2a92c4de64431f0ec0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2529a3be73ec192cffcc5e11d1b3f626"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classComponent.html">Component</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#a2529a3be73ec192cffcc5e11d1b3f626">m_components</a></td></tr>
-<tr class="memdesc:a2529a3be73ec192cffcc5e11d1b3f626"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores all components attached to this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>.  <a href="classGameObject.html#a2529a3be73ec192cffcc5e11d1b3f626">More...</a><br /></td></tr>
+<tr class="memdesc:a2529a3be73ec192cffcc5e11d1b3f626"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of attached components.  <a href="classGameObject.html#a2529a3be73ec192cffcc5e11d1b3f626">More...</a><br /></td></tr>
 <tr class="separator:a2529a3be73ec192cffcc5e11d1b3f626"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a33dae873a224f75a29f21d13b11e2317"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="classScript.html">Script</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#a33dae873a224f75a29f21d13b11e2317">m_scripts</a></td></tr>
-<tr class="memdesc:a33dae873a224f75a29f21d13b11e2317"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stores all scripts attached to this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>.  <a href="classGameObject.html#a33dae873a224f75a29f21d13b11e2317">More...</a><br /></td></tr>
+<tr class="memdesc:a33dae873a224f75a29f21d13b11e2317"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of attached scripts.  <a href="classGameObject.html#a33dae873a224f75a29f21d13b11e2317">More...</a><br /></td></tr>
 <tr class="separator:a33dae873a224f75a29f21d13b11e2317"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad4ad4d51e309f750c0cf1645e2b36a76"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classSceneNode.html">SceneNode</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classGameObject.html#ad4ad4d51e309f750c0cf1645e2b36a76">m_sceneNode</a></td></tr>
-<tr class="memdesc:ad4ad4d51e309f750c0cf1645e2b36a76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the <a class="el" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy.">SceneNode</a> in the scene graph associated with this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>.  <a href="classGameObject.html#ad4ad4d51e309f750c0cf1645e2b36a76">More...</a><br /></td></tr>
+<tr class="memdesc:ad4ad4d51e309f750c0cf1645e2b36a76"><td class="mdescLeft">&#160;</td><td class="mdescRight">Node in the scene graph hierarchy.  <a href="classGameObject.html#ad4ad4d51e309f750c0cf1645e2b36a76">More...</a><br /></td></tr>
 <tr class="separator:ad4ad4d51e309f750c0cf1645e2b36a76"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
@@ -162,10 +162,10 @@ Friends</h2></td></tr>
 <tr class="separator:abd6b5d02ac46b3aa130b473936e4037f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Represents an object in the game world, managing components and scripts. </p>
-<p>GameObjects are the primary elements within the game scene, capable of holding various components and scripts that define their behavior, appearance, and interactions within the game world. </p>
+<div class="textblock"><p>Core class representing an entity in the game world. </p>
+<p><a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a> serves as the base class for all game entities. It manages components and scripts, handles lifecycle events (input, update, render), and maintains relationships within the scene hierarchy. </p>
 
-<p class="definition">Definition at line <a class="el" href="gameobject_8h_source.html#l00028">28</a> of file <a class="el" href="gameobject_8h_source.html">gameobject.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gameobject_8h_source.html#l00020">20</a> of file <a class="el" href="gameobject_8h_source.html">gameobject.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="ab82dfdb656f9051c0587e6593b2dda97"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ab82dfdb656f9051c0587e6593b2dda97">&#9670;&nbsp;</a></span>~GameObject()</h2>
@@ -190,7 +190,7 @@ Friends</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Destructor for cleaning up resources. Deletes the associated <a class="el" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy.">SceneNode</a> to ensure proper cleanup of the <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>. </p>
+<p>Destructor that cleans up the <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a> and its <a class="el" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy.">SceneNode</a>. </p>
 
 <p class="definition">Definition at line <a class="el" href="gameobject_8cpp_source.html#l00014">14</a> of file <a class="el" href="gameobject_8cpp_source.html">gameobject.cpp</a>.</p>
 
@@ -212,10 +212,10 @@ Friends</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructs a <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a> with a specific tag. </p>
+<p>Constructs a new <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a> with the specified tag. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">tag</td><td>The tag to identify or classify the <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>. </td></tr>
+    <tr><td class="paramname">tag</td><td>Category identifier for the object </td></tr>
   </table>
   </dd>
 </dl>
@@ -243,13 +243,21 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Adds a component of a specific type to this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">component</td><td>Pointer to the component to be added. </td></tr>
+<p>Adds a component to the <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a>. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The type of component to add </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">component</td><td>Pointer to the component instance </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="gameobject_8h_source.html#l00133">133</a> of file <a class="el" href="gameobject_8h_source.html">gameobject.h</a>.</p>
 
 </div>
 </div>
@@ -271,13 +279,21 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Adds a script of a specific type to this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">script</td><td>Pointer to the script to be added. </td></tr>
+<p>Adds a script to the <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a>. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The type of script to add </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">script</td><td>Pointer to the script instance </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">Definition at line <a class="el" href="gameobject_8h_source.html#l00150">150</a> of file <a class="el" href="gameobject_8h_source.html">gameobject.h</a>.</p>
 
 </div>
 </div>
@@ -296,15 +312,15 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Retrieves all child GameObjects under this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>'s <a class="el" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy.">SceneNode</a>. </p>
-<dl class="section return"><dt>Returns</dt><dd>A vector of pointers to the child GameObjects. </dd></dl>
+<p>Gets all child GameObjects. </p>
+<dl class="section return"><dt>Returns</dt><dd>std::vector&lt;GameObject*&gt; List of child GameObjects </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="gameobject_8cpp_source.html#l00044">44</a> of file <a class="el" href="gameobject_8cpp_source.html">gameobject.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a1c50376c7f24439359a3962f57dfd513"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1c50376c7f24439359a3962f57dfd513">&#9670;&nbsp;</a></span>getComponent()</h2>
+<a id="a7a91297b8801e1c8ce10462c754c573a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a91297b8801e1c8ce10462c754c573a">&#9670;&nbsp;</a></span>getComponent()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -312,16 +328,21 @@ template&lt;typename T &gt; </div>
 template&lt;typename T &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T* GameObject::getComponent </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="memname">T * GameObject::getComponent</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Retrieves a component of a specific type attached to this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the component, or nullptr if not found. </dd></dl>
+<p>Gets a component of the specified type. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The type of component to retrieve </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>T* Pointer to the component, or nullptr if not found </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="gameobject_8h_source.html#l00123">123</a> of file <a class="el" href="gameobject_8h_source.html">gameobject.h</a>.</p>
 
 </div>
 </div>
@@ -340,8 +361,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Retrieves the unique ID of the <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>. </p>
-<dl class="section return"><dt>Returns</dt><dd>A string representing the unique identifier. </dd></dl>
+<p>Gets the unique identifier of the <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>std::string The <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a>'s ID </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="gameobject_8cpp_source.html#l00028">28</a> of file <a class="el" href="gameobject_8cpp_source.html">gameobject.cpp</a>.</p>
 
@@ -362,15 +383,15 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Retrieves the <a class="el" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy.">SceneNode</a> associated with this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the <a class="el" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy.">SceneNode</a>. </dd></dl>
+<p>Gets the <a class="el" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy.">SceneNode</a> associated with this <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>SceneNode* Pointer to the <a class="el" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy.">SceneNode</a> </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="gameobject_8cpp_source.html#l00036">36</a> of file <a class="el" href="gameobject_8cpp_source.html">gameobject.cpp</a>.</p>
 
 </div>
 </div>
-<a id="aa9695b742d47253018d818100dd1a15e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9695b742d47253018d818100dd1a15e">&#9670;&nbsp;</a></span>getScript()</h2>
+<a id="a3b53d3760276086861cf4f22a39f06ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b53d3760276086861cf4f22a39f06ce">&#9670;&nbsp;</a></span>getScript()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -378,16 +399,21 @@ template&lt;typename T &gt; </div>
 template&lt;typename T &gt; </div>
       <table class="memname">
         <tr>
-          <td class="memname">T* GameObject::getScript </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td class="memname">T * GameObject::getScript</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Retrieves a script of a specific type attached to this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the script, or nullptr if not found. </dd></dl>
+<p>Gets a script of the specified type. </p>
+<dl class="tparams"><dt>Template Parameters</dt><dd>
+  <table class="tparams">
+    <tr><td class="paramname">T</td><td>The type of script to retrieve </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>T* Pointer to the script, or nullptr if not found </dd></dl>
+
+<p class="definition">Definition at line <a class="el" href="gameobject_8h_source.html#l00140">140</a> of file <a class="el" href="gameobject_8h_source.html">gameobject.h</a>.</p>
 
 </div>
 </div>
@@ -406,8 +432,8 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Retrieves the tag of the <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>. </p>
-<dl class="section return"><dt>Returns</dt><dd>A string representing the tag. </dd></dl>
+<p>Gets the tag identifier of the <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a>. </p>
+<dl class="section return"><dt>Returns</dt><dd>std::string The <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a>'s tag </dd></dl>
 
 <p class="definition">Definition at line <a class="el" href="gameobject_8cpp_source.html#l00032">32</a> of file <a class="el" href="gameobject_8cpp_source.html">gameobject.cpp</a>.</p>
 
@@ -428,7 +454,7 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Handles input for this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>. </p>
+<p>Processes input for this <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a> and its components. </p>
 
 <p class="definition">Definition at line <a class="el" href="gameobject_8cpp_source.html#l00057">57</a> of file <a class="el" href="gameobject_8cpp_source.html">gameobject.cpp</a>.</p>
 
@@ -449,7 +475,7 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Renders this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>. </p>
+<p>Renders this <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a> and its components. </p>
 
 <p class="definition">Definition at line <a class="el" href="gameobject_8cpp_source.html#l00075">75</a> of file <a class="el" href="gameobject_8cpp_source.html">gameobject.cpp</a>.</p>
 
@@ -471,10 +497,10 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the <a class="el" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy.">SceneNode</a> associated with this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>. </p>
+<p>Sets the <a class="el" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy.">SceneNode</a> for this <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a>. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sceneNode</td><td>Pointer to the <a class="el" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy.">SceneNode</a> to be associated. </td></tr>
+    <tr><td class="paramname">sceneNode</td><td>Pointer to the <a class="el" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy.">SceneNode</a> </td></tr>
   </table>
   </dd>
 </dl>
@@ -498,7 +524,7 @@ template&lt;typename T &gt; </div>
       </table>
 </div><div class="memdoc">
 
-<p>Updates this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>. </p>
+<p>Updates this <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a> and its components. </p>
 
 <p class="definition">Definition at line <a class="el" href="gameobject_8cpp_source.html#l00066">66</a> of file <a class="el" href="gameobject_8cpp_source.html">gameobject.cpp</a>.</p>
 
@@ -525,7 +551,7 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">Definition at line <a class="el" href="gameobject_8h_source.html#l00029">29</a> of file <a class="el" href="gameobject_8h_source.html">gameobject.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gameobject_8h_source.html#l00021">21</a> of file <a class="el" href="gameobject_8h_source.html">gameobject.h</a>.</p>
 
 </div>
 </div>
@@ -550,9 +576,9 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Stores all components attached to this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>. </p>
+<p>List of attached components. </p>
 
-<p class="definition">Definition at line <a class="el" href="gameobject_8h_source.html#l00035">35</a> of file <a class="el" href="gameobject_8h_source.html">gameobject.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gameobject_8h_source.html#l00027">27</a> of file <a class="el" href="gameobject_8h_source.html">gameobject.h</a>.</p>
 
 </div>
 </div>
@@ -576,9 +602,9 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Unique identifier for the <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>. </p>
+<p>Unique identifier for the <a class="el" href="classGameObject.html" title="Core class representing an entity in the game world.">GameObject</a>. </p>
 
-<p class="definition">Definition at line <a class="el" href="gameobject_8h_source.html#l00032">32</a> of file <a class="el" href="gameobject_8h_source.html">gameobject.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gameobject_8h_source.html#l00024">24</a> of file <a class="el" href="gameobject_8h_source.html">gameobject.h</a>.</p>
 
 </div>
 </div>
@@ -602,9 +628,9 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Pointer to the <a class="el" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy.">SceneNode</a> in the scene graph associated with this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>. </p>
+<p>Node in the scene graph hierarchy. </p>
 
-<p class="definition">Definition at line <a class="el" href="gameobject_8h_source.html#l00038">38</a> of file <a class="el" href="gameobject_8h_source.html">gameobject.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gameobject_8h_source.html#l00030">30</a> of file <a class="el" href="gameobject_8h_source.html">gameobject.h</a>.</p>
 
 </div>
 </div>
@@ -628,9 +654,9 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Stores all scripts attached to this <a class="el" href="classGameObject.html" title="Represents an object in the game world, managing components and scripts.">GameObject</a>. </p>
+<p>List of attached scripts. </p>
 
-<p class="definition">Definition at line <a class="el" href="gameobject_8h_source.html#l00036">36</a> of file <a class="el" href="gameobject_8h_source.html">gameobject.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gameobject_8h_source.html#l00028">28</a> of file <a class="el" href="gameobject_8h_source.html">gameobject.h</a>.</p>
 
 </div>
 </div>
@@ -654,9 +680,9 @@ template&lt;typename T &gt; </div>
 </table>
 </div><div class="memdoc">
 
-<p>Tag identifier, useful for grouping or identifying objects like "Enemy", "Projectile". </p>
+<p>Category identifier (e.g., "Enemy", "Projectile") </p>
 
-<p class="definition">Definition at line <a class="el" href="gameobject_8h_source.html#l00033">33</a> of file <a class="el" href="gameobject_8h_source.html">gameobject.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="gameobject_8h_source.html#l00025">25</a> of file <a class="el" href="gameobject_8h_source.html">gameobject.h</a>.</p>
 
 </div>
 </div>
