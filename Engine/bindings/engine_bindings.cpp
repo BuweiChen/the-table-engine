@@ -7,7 +7,7 @@
 #include "script.h"
 #include "scene.h"
 #include "gameobject.h"
-#include "sound.h"
+// #include "sound.h"
 #include "collide.h"
 #include "transform.h"
 #include "resourcemanager.h"
@@ -24,8 +24,8 @@
 #include "enemy_ai_script.h"
 #include "player_test_script.h"
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_mixer.h>
+// #include <SDL2/SDL.h>
+// #include <SDL2/SDL_mixer.h>
 
 
 
@@ -126,14 +126,14 @@ PYBIND11_MODULE(engine, m) {
             self.addComponent<Collide>(collide);
         });
 
-    // Bind Sound (sound.h)
-    py::class_<Sound>(m, "Sound")
-        .def(py::init<std::string>())
-        .def("play", &Sound::play)
-        .def("stop", &Sound::stop)
-        .def("pause", &Sound::pause)
-        .def("resume", &Sound::resume)
-        .def("setVolume", &Sound::setVolume);
+    // // Bind Sound (sound.h)
+    // py::class_<Sound>(m, "Sound")
+    //     .def(py::init<std::string>())
+    //     .def("play", &Sound::play)
+    //     .def("stop", &Sound::stop)
+    //     .def("pause", &Sound::pause)
+    //     .def("resume", &Sound::resume)
+    //     .def("setVolume", &Sound::setVolume);
 
     // Bind Collide component (collide.h)
     py::class_<Collide, Component>(m, "Collide")
@@ -192,8 +192,8 @@ PYBIND11_MODULE(engine, m) {
 
     // ResourceManager bindings (without direct SDL type exposure)
     py::class_<ResourceManager>(m, "ResourceManager")
-        .def_static("getInstance", &ResourceManager::getInstance, py::return_value_policy::reference)
-        .def("loadSound", &ResourceManager::loadSound, py::return_value_policy::take_ownership);
+        .def_static("getInstance", &ResourceManager::getInstance, py::return_value_policy::reference);
+        // .def("loadSound", &ResourceManager::loadSound, py::return_value_policy::take_ownership);
 
 
     // Input component bindings

@@ -67,8 +67,8 @@ SDL_Texture* ResourceManager::loadText(std::string font_path, std::string text, 
 }
 
 // for sounds
-Sound* ResourceManager::loadSound(std::string path)
-{
-    Sound* sound = new Sound(path);
-    return sound;
-}
+// Sound* ResourceManager::loadSound(std::string path)
+// {
+//     Sound* sound = new Sound(path);
+//     return sound;
+// }

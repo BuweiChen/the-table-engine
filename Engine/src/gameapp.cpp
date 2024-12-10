@@ -10,7 +10,7 @@
 
 #include "transform.h"
 #include "texture.h"
-#include "sound.h"
+// #include "sound.h"
 
 #include "SDL2/SDL.h"
 #include <player_test_script.h>
@@ -53,8 +53,8 @@ void GameApplication::start() {
     SceneManager::getInstance().setRenderer(m_renderer);
     SceneManager::getInstance().getNextScene();
 
-    Sound* music = ResourceManager::getInstance().loadSound("../Assets/Sounds/music.wav");
-    music->play(-1);
+    // Sound* music = ResourceManager::getInstance().loadSound("../Assets/Sounds/music.wav");
+    // music->play(-1);
 }
 
 void GameApplication::printStats() {
