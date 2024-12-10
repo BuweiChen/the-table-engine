@@ -138,7 +138,7 @@ PYBIND11_MODULE(engine, m) {
     // Bind Collide component (collide.h)
     py::class_<Collide, Component>(m, "Collide")
         .def(py::init<>())
-        .def(py::init<int, int, int, int>())
+        // .def(py::init<int, int, int, int>())
         .def("getScreenPosition", &Collide::getScreenPosition)
         .def("getScreenSize", &Collide::getScreenSize)
         .def("setTransformOffset", &Collide::setTransformOffset)

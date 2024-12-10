@@ -20,8 +20,8 @@ find_package(SDL2 REQUIRED)
 # Include directories
 include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/../include
-    ${SDL2_INCLUDE_DIRS}
-    ${SDL2_MIXER_INCLUDE_DIRS}
+    # ${SDL2_INCLUDE_DIRS}
+    # ${SDL2_MIXER_INCLUDE_DIRS}
 )
 
 # Create the binding module
@@ -30,8 +30,8 @@ pybind11_add_module(engine engine_bindings.cpp)
 # Link against engine library, SDL2, and SDL2_mixer
 target_link_libraries(engine PRIVATE 
     ${CMAKE_CURRENT_SOURCE_DIR}/../lib/libengine.a
-    ${SDL2_LIBRARIES}
-    ${SDL2_MIXER_LIBRARIES}
+    # ${SDL2_LIBRARIES}
+    # ${SDL2_MIXER_LIBRARIES}
     -lSDL2_ttf
 )
 
