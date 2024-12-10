@@ -6,6 +6,7 @@
 #include "transform.h"
 #include "gameobject.h"
 #include "scenemanager.h"
+#include "vec2.h"
 
 Collide::Collide()
 {
@@ -13,24 +14,6 @@ Collide::Collide()
     mCollide = new SDL_Rect();
     mOffsetX = 0;
     mOffsetY = 0;
-}
-
-Collide::Collide(int x, int y, int w, int h)
-{
-    Collide();
-    mCollide->x = x;
-    mCollide->y = y;
-    mCollide->w = w;
-    mCollide->h = h;
-}
-
-Collide::Collide(SDL_Rect* rect)
-{
-    Collide();
-    mCollide->x = rect->x;
-    mCollide->y = rect->y;
-    mCollide->w = rect->w;
-    mCollide->h = rect->h;
 }
 
 Collide::~Collide()
@@ -41,6 +24,52 @@ Collide::~Collide()
 SDL_Rect* Collide::getRect()
 {
     return mCollide;
+}
+
+SDL_Rect* Collide::nextRect(float dx, float dy)
+{   
+    return new SDL_Rect{(int) (mCollide->x + dx), (int) (mCollide->y + dy), mCollide->w, mCollide->h};
+}
+
+void Collide::preventCollision(Collide* anotherCollide, float& dx, float& dy)
+{
+    if (dx == 0 && dy == 0) return;
+
+    auto secondRect = anotherCollide->getRect();
+
+    // if the two colliders are already intersecting, apply a backward force to separate them
+    SDL_Rect* intersectRect = new SDL_Rect();
+    bool intersects = SDL_IntersectRect(mCollide, secondRect, intersectRect);
+    if (intersects)
+    {
+        bool hitFromSide = intersectRect->w < intersectRect->h;
+        if (hitFromSide)
+        {
+            bool sign = intersectRect->x > mCollide->x;
+            dx = (sign ? 1 : -1) * -1;
+            dy = 0;
+            return;
+        }
+        else
+        {
+            bool sign = intersectRect->y > mCollide->y;
+            dx = 0;
+            dy = (sign ? 1 : -1) * -1;
+            return;
+        }
+    }
+    
+    auto nextFrameRect = nextRect(dx, 0);
+    if (SDL_HasIntersection(nextFrameRect, secondRect))
+    {
+        dx = 0;
+    }
+
+    nextFrameRect = nextRect(0, dy);
+    if (SDL_HasIntersection(nextFrameRect, secondRect))
+    {
+        dy = 0;
+    }
 }
 
 Vec2 Collide::getScreenPosition()
@@ -98,14 +127,12 @@ void Collide::update()
     auto transform = m_owner->getComponent<Transform>();
     if (transform == NULL) return;
 
-    auto sceneTree = SceneManager::getInstance().getSceneTree();
-    auto player = sceneTree->findGameObjectsByTag("Player")[0];
-    auto playerTransform = player->getComponent<Transform>();
-
-    float x = transform->getWorldPosition().x - playerTransform->getWorldPosition().x + 320;
-    float y = transform->getWorldPosition().y - playerTransform->getWorldPosition().y + 240;
+    // collider's screen position equals transform's screen position + offset
+    float x = transform->getScreenPosition().x;
+    float y = transform->getScreenPosition().y;
     setScreenPosition(x + mOffsetX, y + mOffsetY);
 
+    // collider's screen size equals transform's screen size unless manually set
     if (getScreenSize() == Vec2(0, 0))
     {
         setScreenSize(transform->getScreenSize());
@@ -115,27 +142,27 @@ void Collide::update()
 // solely for debugging/visual purposes
 void Collide::render()
 {
-    if (m_owner->getTag() == "Player")
-    {
-        SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 255, 0, 255, 255);
-        SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), mCollide);
-    }
+    // if (m_owner->getTag() == "Player")
+    // {
+    //     SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 255, 0, 255, 255);
+    //     SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), mCollide);
+    // }
 
-    if (m_owner->getTag() == "Bow")
-    {
-        SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 0, 255, 0, 255);
-        SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), mCollide);
-    }
+    // if (m_owner->getTag() == "Bow")
+    // {
+    //     SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 0, 255, 0, 255);
+    //     SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), mCollide);
+    // }
 
-    if (m_owner->getTag() == "Arrow")
-    {
-        SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 0, 255, 255, 255);
-        SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), mCollide);
-    }
+    // if (m_owner->getTag() == "Arrow")
+    // {
+    //     SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 0, 255, 255, 255);
+    //     SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), mCollide);
+    // }
 
-    if (m_owner->getTag() == "Key")
-    {
-        SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 255, 255, 0, 255);
-        SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), mCollide);
-    }
+    // if (m_owner->getTag() == "Key")
+    // {
+    //     SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 255, 255, 0, 255);
+    //     SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), mCollide);
+    // }
 }

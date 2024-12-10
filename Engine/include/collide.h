@@ -7,18 +7,22 @@
 
 class Collide: public Component {
     private:
-        SDL_Rect* mCollide;
+        SDL_Rect* mCollide; // relative to the screen
+
         float mOffsetX, mOffsetY; // collider position offset from the transform's position
+        SDL_Rect* nextRect(float dx, float dy); // next frame's collider position
 
     public:
         Collide();
-        Collide(int x, int y, int w, int h);
-        Collide(SDL_Rect* rect);
         ~Collide();
 
         SDL_Rect* getRect();
+
         Vec2 getScreenPosition();
         Vec2 getScreenSize();
+
+        // updates velocities in-place to prevent collision with another collide
+        void preventCollision(Collide* anotherCollide, float& dx, float& dy);
 
         void setTransformOffset(int x, int y);
         
