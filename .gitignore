@@ -6,3 +6,4 @@ Engine/bin/
 *.dylib
 
 build/
+docs/html
