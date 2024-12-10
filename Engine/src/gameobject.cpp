@@ -14,11 +14,11 @@ GameObject::GameObject(std::string tag) {
 GameObject::~GameObject() {
     SceneManager::m_aliveObjects--;
 
-    for (auto component : m_components) {
-        delete component;
-    }
     for (auto script : m_scripts) {
         delete script;
+    }
+    for (auto component : m_components) {
+        delete component;
     }
 
     m_components.clear();
@@ -55,28 +55,28 @@ std::vector<GameObject*> GameObject::getChildren() {
 }
 
 void GameObject::input() {
-    for (auto component : m_components) {
-        component->input();
-    }
     for (auto script : m_scripts) {
         script->input();
+    }
+    for (auto component : m_components) {
+        component->input();
     }
 }
 
 void GameObject::update() {
-    for (auto component : m_components) {
-        component->update();
-    }
     for (auto script : m_scripts) {
         script->update();
+    }
+    for (auto component : m_components) {
+        component->update();
     }
 }
 
 void GameObject::render() {
-    for (auto component : m_components) {
-        component->render();
-    }
     for (auto script : m_scripts) {
         script->render();
+    }
+    for (auto component : m_components) {
+        component->render();
     }
 }

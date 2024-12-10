@@ -6,6 +6,7 @@
 #include "transform.h"
 #include "gameobject.h"
 #include "scenemanager.h"
+#include "vec2.h"
 
 Collide::Collide()
 {
@@ -13,24 +14,6 @@ Collide::Collide()
     mCollide = new SDL_Rect();
     mOffsetX = 0;
     mOffsetY = 0;
-}
-
-Collide::Collide(int x, int y, int w, int h)
-{
-    Collide();
-    mCollide->x = x;
-    mCollide->y = y;
-    mCollide->w = w;
-    mCollide->h = h;
-}
-
-Collide::Collide(SDL_Rect* rect)
-{
-    Collide();
-    mCollide->x = rect->x;
-    mCollide->y = rect->y;
-    mCollide->w = rect->w;
-    mCollide->h = rect->h;
 }
 
 Collide::~Collide()
@@ -41,6 +24,46 @@ Collide::~Collide()
 SDL_Rect* Collide::getRect()
 {
     return mCollide;
+}
+
+SDL_Rect* Collide::nextRect(int dx, int dy)
+{
+    return new SDL_Rect{(int) getScreenPosition().x + dx, (int) getScreenPosition().y + dy, mCollide->w, mCollide->h};
+}
+
+void Collide::preventCollision(Collide* anotherCollide, float& dx, float& dy)
+{
+    SDL_Rect* intersectRect = new SDL_Rect();
+    if (!SDL_HasIntersection(mCollide, anotherCollide->getRect()))
+    {
+        SDL_IntersectRect(mCollide, anotherCollide->getRect(), intersectRect);
+    }
+
+    SDL_Rect* newIntersectRect;
+
+    auto nextFrameRect = nextRect(dx, dy);
+    auto anotherRect = anotherCollide->getRect();
+    if (!SDL_IntersectRect(nextFrameRect, anotherRect, newIntersectRect) || (newIntersectRect->w < intersectRect->w || newIntersectRect->h < intersectRect->h))
+    {
+        return;
+    }
+
+    nextFrameRect = nextRect(dx, 0);
+    if (!SDL_IntersectRect(nextFrameRect, anotherRect, newIntersectRect) || (newIntersectRect->w < intersectRect->w || newIntersectRect->h < intersectRect->h))
+    {
+        dy = 0;
+        return;
+    }
+
+    nextFrameRect = nextRect(0, dy);
+    if (!SDL_IntersectRect(nextFrameRect, anotherRect, newIntersectRect) || (newIntersectRect->w < intersectRect->w || newIntersectRect->h < intersectRect->h))
+    {
+        dx = 0;
+        return;
+    }
+
+    dx = 0;
+    dy = 0;
 }
 
 Vec2 Collide::getScreenPosition()
@@ -98,14 +121,12 @@ void Collide::update()
     auto transform = m_owner->getComponent<Transform>();
     if (transform == NULL) return;
 
-    auto sceneTree = SceneManager::getInstance().getSceneTree();
-    auto player = sceneTree->findGameObjectsByTag("Player")[0];
-    auto playerTransform = player->getComponent<Transform>();
-
-    float x = transform->getWorldPosition().x - playerTransform->getWorldPosition().x + 320;
-    float y = transform->getWorldPosition().y - playerTransform->getWorldPosition().y + 240;
+    // collider's screen position equals transform's screen position + offset
+    float x = transform->getScreenPosition().x;
+    float y = transform->getScreenPosition().y;
     setScreenPosition(x + mOffsetX, y + mOffsetY);
 
+    // collider's screen size equals transform's screen size unless manually set
     if (getScreenSize() == Vec2(0, 0))
     {
         setScreenSize(transform->getScreenSize());

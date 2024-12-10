@@ -58,7 +58,7 @@ void PlayerTestScript::update() {
     float dy = position.y - transform->getWorldPosition().y;
 
     texture->setFlipHorizontal(dx < 0);
-    transform->setWorldPosition(position);
+    transform->updateWorldPosition(dx, dy);
 
     // move the player's bow with the player
     auto bow = m_owner->getChildren()[0];
@@ -73,4 +73,7 @@ void PlayerTestScript::update() {
             m_keysCollected++;
         }
     }
+
+    // prevent 
+    
 }
