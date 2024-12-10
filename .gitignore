@@ -4,6 +4,7 @@ Engine/bin/
 *.so
 *.pyd
 *.dylib
+*.a
 
 build/
 docs/html
