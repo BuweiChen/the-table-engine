@@ -9,9 +9,9 @@ doxygen
 
 echo "Copying HTML files to EngineDocs submodule..."
 
-cp -r ../docs/html/* ../EngineDocs
+cp -r docs/html/* EngineDocs
 
-cd ../EngineDocs
+cd EngineDocs
 
 echo "Adding changes to the git submodule..."
 git add -A
