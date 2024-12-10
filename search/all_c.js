@@ -7,6 +7,7 @@ var searchData=
   ['playertestscript_140',['PlayerTestScript',['../classPlayerTestScript.html',1,'PlayerTestScript'],['../classPlayerTestScript.html#a12371a31e0fe2aebe3b3576bdc763068',1,'PlayerTestScript::PlayerTestScript()']]],
   ['preventcollision_141',['preventCollision',['../classCollide.html#a5d76a6a88c477850fc4e60c6a0ed3c3a',1,'Collide']]],
   ['printstats_142',['printStats',['../structGameApplication.html#abe9fdccf1624531ce65a0befb1099be1',1,'GameApplication']]],
-  ['python_20api_143',['Python API',['../group__python__api.html',1,'']]],
-  ['python_20api_20reference_144',['Python API Reference',['../python_bindings.html',1,'']]]
+  ['python_20api_20guide_143',['Python API Guide',['../python_api_guide.html',1,'']]],
+  ['python_20api_20reference_144',['Python API Reference',['../python_bindings.html',1,'']]],
+  ['python_5fapi_2eh_145',['python_api.h',['../python__api_8h.html',1,'']]]
 ];

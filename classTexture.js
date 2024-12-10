@@ -1,0 +1,26 @@
+var classTexture =
+[
+    [ "Texture", "classTexture.html#a6c275e3f186675ff6ed73ccf970e552f", null ],
+    [ "Texture", "classTexture.html#adaf99f9c545fbd78edd778e26ea6f6d7", null ],
+    [ "getTexture", "classTexture.html#a77a1ae0043a4b318a60df3b02ef2d3f6", null ],
+    [ "render", "classTexture.html#a800d2fde67c26e55834c5b38e4f7d885", null ],
+    [ "setAnimationTime", "classTexture.html#a52fc1a64c5f1b3ecd89d81a22b960d47", null ],
+    [ "setFlipHorizontal", "classTexture.html#a74526fa7e3edf37488d757c14c241e63", null ],
+    [ "setFlipVertical", "classTexture.html#aa037722bfea72022d4c40573187aecc6", null ],
+    [ "setPositionInSpriteMap", "classTexture.html#a4fcdefcb48b6ff9729853c76c0311f3d", null ],
+    [ "setRowsColsInSpriteMap", "classTexture.html#a478bb148067ab2d9d352b1312505eb42", null ],
+    [ "setSizeInSpriteMap", "classTexture.html#afcd30cf59f90ca7f34f78d02dfb49b7b", null ],
+    [ "setTexture", "classTexture.html#a1a2fd1ef4d1fe45e027ca2810a6cd3c2", null ],
+    [ "update", "classTexture.html#a0764b6f1c7a0abf17989c465628d75b0", null ],
+    [ "m_cols", "classTexture.html#afd3d768204c9b6604eafd2fb5dbd7076", null ],
+    [ "m_flipHorizontal", "classTexture.html#a0fd1fe87b8788790f9f8dad8ba68c955", null ],
+    [ "m_flipVertical", "classTexture.html#aca3fcb35558fd739bc9080d3ce8c7680", null ],
+    [ "m_msPerFrame", "classTexture.html#a89c5155a604b68faaa79627033584f6d", null ],
+    [ "m_numFrames", "classTexture.html#a6edbd4cbc436963b9c3816edc18e671d", null ],
+    [ "m_renderer", "classTexture.html#af4995cbc13a6ff6d40f7647f296ce4d8", null ],
+    [ "m_rows", "classTexture.html#a527d4594c82292d9b022f7c766f3545a", null ],
+    [ "m_spriteBox", "classTexture.html#a8449d7674a82c1d4a8ad7b37227986ba", null ],
+    [ "m_spriteClip", "classTexture.html#a26cc54b23edee0f63fe5f5183f160780", null ],
+    [ "m_texture", "classTexture.html#a6150742cc6b033d1bd6484a97a33510c", null ],
+    [ "m_time", "classTexture.html#aae37ce4878cfdc779ff59544ffdd9e13", null ]
+];
