@@ -1,0 +1,31 @@
+{
+    "Structure": {
+        "Wall": {
+            "length": "int",
+            "pos_x": "int",
+            "pos_y": "int"
+        },
+        "Background": {
+            "length": "int",
+            "pos_x": "int",
+            "pos_y": "int"
+        }
+    },
+    "Entity": {
+        "Enemy": {
+            "hp": "int",
+            "damage": "int",
+            "speed": "int",
+            "rows": "int",
+            "cols": "int",
+            "top_left_x": "int",
+            "top_left_y": "int",
+            "size_width": "int",
+            "size_height": "int",
+            "length": "int",
+            "pos_x": "int",
+            "pos_y": "int",
+            "collide": "checkbox_with_all_objects"
+        }
+    }
+}
