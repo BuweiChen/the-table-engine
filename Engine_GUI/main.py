@@ -165,6 +165,8 @@ class AddItemPopup(tk.Toplevel):
             if name != old_name and name in self.parent.structures:
                 messagebox.showerror("Error", "A structure with that name already exists.")
                 return
+            elif name in self.parent.entities:
+                messagebox.showerror("Error", "An entity with that name already exists.")
         elif name in self.parent.structures:
             messagebox.showerror("Error", "A structure with that name already exists.")
             return
