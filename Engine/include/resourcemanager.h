@@ -6,7 +6,7 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_ttf.h>
 
-#include "sound.h"
+// #include "sound.h"
 
 class ResourceManager
 {
@@ -37,5 +37,5 @@ class ResourceManager
         SDL_Texture* loadText(std::string font_path, std::string text, SDL_Color color, int font_size = 20);
 
         // for sounds
-        Sound* loadSound(std::string path);
+        // Sound* loadSound(std::string path);
 };
