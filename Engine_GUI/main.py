@@ -1,5 +1,6 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
+import time
 from PIL import Image, ImageTk
 from backend import export_json
 
@@ -53,6 +54,7 @@ class AddItemPopup(tk.Toplevel):
 
         self.cols_var = tk.IntVar(value=1)
         self.rows_var = tk.IntVar(value=1)
+        self.animation_time = tk.IntVar(value=100)
         self.length_var = tk.IntVar(value=32)
         self.width_var = tk.IntVar(value=32)
         self.top_left_x = tk.IntVar(value=0)
@@ -72,14 +74,21 @@ class AddItemPopup(tk.Toplevel):
         self.file_entry = tk.Entry(file_frame, textvariable=self.file_var)
         self.file_entry.pack(side="left", fill="x", expand=True)
         tk.Button(file_frame, text="Browse", command=self.browse_file).pack(side="left")
+        
+        pos_frame = tk.Frame(self)
+        pos_frame.pack(fill="x", padx=10, pady=10)
 
-        tk.Label(self, text="Columns:").pack(anchor="w", padx=10, pady=5)
-        tk.Entry(self, textvariable=self.cols_var).pack(fill="x", padx=10)
+        tk.Label(pos_frame, text="Columns:").grid(row=0, column=0, sticky="w", padx=10, pady=5)
+        tk.Entry(pos_frame, textvariable=self.cols_var).grid(row=0, column=1, sticky="w", padx=10, pady=5)
         self.cols_var.trace_add("write", lambda *args: self.preview_image(self.file_var.get()))
 
-        tk.Label(self, text="Rows:").pack(anchor="w", padx=10, pady=5)
-        tk.Entry(self, textvariable=self.rows_var).pack(fill="x", padx=10)
+        tk.Label(pos_frame, text="Rows:").grid(row=0, column=2, sticky="e", padx=10, pady=5)
+        tk.Entry(pos_frame, textvariable=self.rows_var).grid(row=0, column=3, sticky="e", padx=10, pady=5)
         self.rows_var.trace_add("write", lambda *args: self.preview_image(self.file_var.get()))
+
+        tk.Label(pos_frame, text="Animation Time Per Frame (ms):").grid(row=1, column=0, sticky="w", padx=10, pady=5)
+        tk.Entry(pos_frame, textvariable=self.animation_time).grid(row=1, column=1, sticky="w", padx=10, pady=5)
+        self.animation_time.trace_add("write", lambda *args: self.preview_image(self.file_var.get()))
 
         screen_frame = tk.Frame(self)
         screen_frame.pack(fill="x", padx=10, pady=10)
@@ -133,6 +142,7 @@ class AddItemPopup(tk.Toplevel):
             self.file_var.set(self.existing_data["file"])
             self.cols_var.set(self.existing_data["columns"])
             self.rows_var.set(self.existing_data["rows"])
+            self.animation_time.set(self.existing_data["animation_time"])
             self.top_left_x.set(self.existing_data["top_left_x"])
             self.top_left_y.set(self.existing_data["top_left_y"])
             self.size_width.set(self.existing_data["size_width"])
@@ -151,6 +161,7 @@ class AddItemPopup(tk.Toplevel):
         file = self.file_var.get()
         cols = self.cols_var.get()
         rows = self.rows_var.get()
+        animation_time = self.animation_time.get()
         size_width = self.size_width.get()
         size_height = self.size_height.get()
         top_left_x = self.top_left_x.get()
@@ -163,12 +174,13 @@ class AddItemPopup(tk.Toplevel):
         if editing:
             old_name = self.existing_data["name"] if self.existing_data else ""
             if name != old_name and name in self.parent.structures:
-                messagebox.showerror("Error", "A structure with that name already exists.")
+                messagebox.showerror("Error", "A gameobject with that name already exists.")
                 return
             elif name in self.parent.entities:
-                messagebox.showerror("Error", "An entity with that name already exists.")
+                messagebox.showerror("Error", "A gameobject with that name already exists.")
+                return
         elif name in self.parent.structures:
-            messagebox.showerror("Error", "A structure with that name already exists.")
+            messagebox.showerror("Error", "A gameobject with that name already exists.")
             return
 
         if not name or not file:
@@ -207,6 +219,7 @@ class AddItemPopup(tk.Toplevel):
             "file": file,
             "columns": cols,
             "rows": rows,
+            "animation_time": animation_time,
             "length": length,
             "width": width,
             "top_left_x": top_left_x,
@@ -327,6 +340,11 @@ class LevelEditorApp(tk.Tk):
 
         self.config(menu=self.menubar)
 
+        # For animating images
+        self.current_time = 0
+        self.current_frame = 0
+        self.last_time = -1000
+
         # Frames
         self.left_frame = tk.Frame(self, width=200, bg="#ddd")
         self.left_frame.pack(side="left", fill="y")
@@ -403,6 +421,9 @@ class LevelEditorApp(tk.Tk):
         self.center_frame.pack(side="left", fill="both", expand=True)
         self.center_frame.pack_propagate(False)
 
+        # Animate images
+        self.animate_images()
+
         # Initially add one level
         self.add_level()
 
@@ -432,6 +453,7 @@ class LevelEditorApp(tk.Tk):
 
     def show_add_popup(self, item_type):
         if self.popup_window and self.popup_window.winfo_exists():
+            self.popup_window.lift()
             return
         self.popup_window = AddItemPopup(
             self, f"Add {item_type.capitalize()}", item_type
@@ -440,7 +462,7 @@ class LevelEditorApp(tk.Tk):
 
     def edit_selected_item(self, item_type):
         if self.popup_window and self.popup_window.winfo_exists():
-            return
+            self.popup_window.destroy()
 
         if item_type == "structure":
             sel = self.structures_listbox.curselection()
@@ -458,6 +480,7 @@ class LevelEditorApp(tk.Tk):
         self.popup_window = AddItemPopup(
             self, f"Edit {item_type.capitalize()}", item_type, existing_data=data
         )
+        self.popup_window.lift()
         self.popup_window.protocol("WM_DELETE_WINDOW", self.on_popup_close)
 
     def delete_selected_structure(self):
@@ -486,10 +509,13 @@ class LevelEditorApp(tk.Tk):
                 if itm_name == name:
                     level_data["canvas"].delete(img_id)
                 else:
-                    new_items.append((itm_name, x, y, img_id))
+                    new_items.append((itm_name, x, y, img_id, 0, 0))
             level_data["items"] = new_items
 
     def start_drag(self, item_type, event):
+        if self.popup_window and self.popup_window.winfo_exists():
+            self.popup_window.destroy()
+
         listbox = (
             self.structures_listbox
             if item_type == "structure"
@@ -509,7 +535,7 @@ class LevelEditorApp(tk.Tk):
         else:
             frames = self.entities[name]["frames"]
 
-        self.drag_data["image"] = frames[0] if frames else None
+        self.drag_data["image"] = frames[self.current_frame] if frames else None
         self.drag_data["image_id"] = None  # Initialize the image ID for temporary image
 
     def on_mouse_drag(self, event):
@@ -526,9 +552,9 @@ class LevelEditorApp(tk.Tk):
             else:
                 obj_data = self.entities[self.drag_data["name"]]
 
-            # Calculate top-right alignment for the image
+            # Calculate top-left alignment for the image
             snapped_x = canvas_x
-            snapped_y = canvas_y  # No vertical offset for top-right alignment
+            snapped_y = canvas_y
 
             # Create or update the temporary image
             if self.drag_data.get("image_id"):
@@ -571,7 +597,7 @@ class LevelEditorApp(tk.Tk):
                         snapped_x, snapped_y, image=self.drag_data["image"], anchor="nw"
                     )
                     level_data["items"].append(
-                        (self.drag_data["name"], snapped_x, snapped_y, img_id)
+                        (self.drag_data["name"], snapped_x, snapped_y, img_id, 0, 0) 
                     )
 
                 # Remove the temporary drag image
@@ -586,6 +612,23 @@ class LevelEditorApp(tk.Tk):
                 "image": None,
                 "image_id": None,
             }
+
+    def animate_images(self):
+        for level_data in self.levels:
+            for name, data in self.structures.items():
+                frames = data["frames"]
+                if frames and len(frames) > 1:
+                    for i in range(len(level_data["items"])):
+                        itm_name, x, y, img_id, frame_index, last_frame_time = level_data["items"][i]
+                        if itm_name == name:
+                            if time.time() - last_frame_time > data["animation_time"] / 1000:
+                                last_frame_time = time.time()
+                                frame_index = (frame_index + 1) % len(frames)
+                            level_data["items"][i] = (itm_name, x, y, img_id, frame_index, last_frame_time)
+                            self.levels[self.current_level_index]["canvas"].itemconfig(
+                                img_id, image=frames[frame_index]
+                            )
+        self.after(50, self.animate_images)
 
     def add_level(self):
         level_frame = tk.Frame(self.center_frame, width=800, height=800, bg="white")
@@ -641,6 +684,9 @@ class LevelEditorApp(tk.Tk):
 
     def export():
         export_json()
+
+    def on_popup_close(self):
+        self.popup_window.destroy()
 
 
 if __name__ == "__main__":
