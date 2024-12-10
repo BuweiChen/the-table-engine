@@ -52,4 +52,8 @@ class SceneTree
     private:
         SceneNode* m_root;
         std::unordered_map<std::string, GameObject*> m_cachedGameObjects; // cache for faster lookup
+
+        /**
+         * optional: add frame specific cache for faster lookup of other objects (not just player)
+         */
 };
