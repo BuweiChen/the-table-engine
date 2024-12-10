@@ -53,7 +53,7 @@ void GameApplication::start() {
     SceneManager::getInstance().setRenderer(m_renderer);
     SceneManager::getInstance().getNextScene();
 
-    Sound* music = ResourceManager::getInstance().loadSound("../Assets/Sounds/music.mp3");
+    Sound* music = ResourceManager::getInstance().loadSound("../Assets/Sounds/music.wav");
     music->play(-1);
 }
 
