@@ -326,10 +326,11 @@ class LevelEditorApp(tk.Tk):
                 self.drag_data["image_id"] = canvas.create_image(
                     x, y, image=self.drag_data["image"], anchor="center"
                 )
-                
+
     def on_mouse_move(self, event):
         # level_data = self.levels[self.current_level_index]
         # print(len(level_data["items"]))
+        pass
 
     def on_mouse_release(self, event):
         if self.drag_data["type"]:
