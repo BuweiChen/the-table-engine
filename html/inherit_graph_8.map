@@ -1,0 +1,9 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classScript.html" title="Base class for scripting custom behaviors in game objects." alt="" coords="5,132,64,159"/>
+<area shape="rect" id="node2" href="$classArrowTestScript.html" title=" " alt="" coords="116,5,239,32"/>
+<area shape="rect" id="node3" href="$classBow__script.html" title=" " alt="" coords="131,56,224,83"/>
+<area shape="rect" id="node4" href="$classCollideScript.html" title=" " alt="" coords="125,107,229,133"/>
+<area shape="rect" id="node5" href="$classCollideTestScript.html" title=" " alt="" coords="112,157,243,184"/>
+<area shape="rect" id="node6" href="$classEnemyAIScript.html" title=" " alt="" coords="119,208,236,235"/>
+<area shape="rect" id="node7" href="$classPlayerTestScript.html" title=" " alt="" coords="114,259,241,285"/>
+</map>

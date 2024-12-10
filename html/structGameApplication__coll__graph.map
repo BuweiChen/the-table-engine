@@ -1,0 +1,3 @@
+<map id="GameApplication" name="GameApplication">
+<area shape="rect" id="node1" title="Manages the main game loop, rendering, and application state." alt="" coords="5,5,176,244"/>
+</map>

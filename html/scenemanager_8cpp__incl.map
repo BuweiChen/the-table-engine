@@ -1,0 +1,21 @@
+<map id="Engine/src/scenemanager.cpp" name="Engine/src/scenemanager.cpp">
+<area shape="rect" id="node1" title=" " alt="" coords="370,5,585,32"/>
+<area shape="rect" id="node2" href="$gameobject_8h.html" title="Defines the GameObject class for managing game objects within the engine." alt="" coords="207,229,318,256"/>
+<area shape="rect" id="node12" href="$transform_8h.html" title="Provides the Transform component for positioning and sizing game objects." alt="" coords="349,155,448,181"/>
+<area shape="rect" id="node14" href="$resourcemanager_8h.html" title="Manages resources such as textures, fonts, and potentially sounds for a game engine." alt="" coords="688,229,835,256"/>
+<area shape="rect" id="node16" href="$texture_8h.html" title="Defines the Texture component for managing textures in the Game Engine." alt="" coords="437,80,518,107"/>
+<area shape="rect" id="node17" href="$scenemanager_8h.html" title="Defines the SceneManager class for managing scenes in the game." alt="" coords="534,229,663,256"/>
+<area shape="rect" id="node18" href="$gameobjectfactory_8h.html" title=" " alt="" coords="120,155,275,181"/>
+<area shape="rect" id="node19" title=" " alt="" coords="644,80,724,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="357,304,424,331"/>
+<area shape="rect" id="node4" title=" " alt="" coords="450,379,513,405"/>
+<area shape="rect" id="node5" title=" " alt="" coords="240,379,299,405"/>
+<area shape="rect" id="node6" href="$component_8h.html" title="Defines the Component base class for all components in the game engine." alt="" coords="29,304,136,331"/>
+<area shape="rect" id="node7" href="$script_8h.html" title="Defines the Script class for attaching behavior to game objects." alt="" coords="161,304,231,331"/>
+<area shape="rect" id="node8" href="$scene_8h.html" title="Defines the SceneNode and SceneTree classes for managing game objects within scenes." alt="" coords="669,304,741,331"/>
+<area shape="rect" id="node11" title=" " alt="" coords="448,304,544,331"/>
+<area shape="rect" id="node9" title=" " alt="" coords="662,379,749,405"/>
+<area shape="rect" id="node10" title=" " alt="" coords="815,379,939,405"/>
+<area shape="rect" id="node13" href="$vec2_8h.html" title="Definition of Vec2 structure for 2D vector operations." alt="" coords="342,229,407,256"/>
+<area shape="rect" id="node15" title=" " alt="" coords="765,304,883,331"/>
+</map>
