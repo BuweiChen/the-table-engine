@@ -3,6 +3,9 @@ CXXFLAGS = -std=c++17 -I../include -I../src -Wall -Wextra -fPIC
 TARGET = ../bin/game
 LIB_TARGET = ../lib/libengine.a
 SRCS = $(wildcard *.cpp components/*.cpp scripts/*.cpp) 
+HEADERS = $(wildcard ../include/*.h)
+COMPONENT_HEADERS = $(wildcard ../include/components/*.h)
+SCRIPT_HEADERS = $(wildcard ../include/scripts/*.h)
 GAME_OBJS = $(SRCS:%.cpp=../bin/obj/%.o)
 LIB_OBJS = $(SRCS:%.cpp=../bin/obj/lib/%.o)
 
@@ -39,10 +42,10 @@ $(LIB_TARGET): $(LIB_OBJS)
 	mkdir -p ../lib
 	ar rcs $@ $^
 
-../bin/obj/%.o: %.cpp | bin
+../bin/obj/%.o: %.cpp $(HEADERS) $(COMPONENT_HEADERS) $(SCRIPT_HEADERS) | bin
 	$(CXX) $(CXXFLAGS) -c $< -o $@
 
-../bin/obj/lib/%.o: %.cpp | bin_lib
+../bin/obj/lib/%.o: %.cpp $(HEADERS) $(COMPONENT_HEADERS) $(SCRIPT_HEADERS) | bin_lib
 	$(CXX) $(CXXFLAGS) -fPIC -c $< -o $@
 
 bin:
