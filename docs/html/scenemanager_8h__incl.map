@@ -1,0 +1,10 @@
+<map id="Engine/include/scenemanager.h" name="Engine/include/scenemanager.h">
+<area shape="rect" id="node1" title="Defines the SceneManager class for managing scenes in the game." alt="" coords="38,5,266,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,155,64,181"/>
+<area shape="rect" id="node3" title=" " alt="" coords="72,80,139,107"/>
+<area shape="rect" id="node4" href="$scene_8h.html" title="Defines the SceneNode and SceneTree classes for managing game objects within scenes." alt="" coords="163,80,235,107"/>
+<area shape="rect" id="node8" title=" " alt="" coords="259,80,355,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="89,155,175,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="199,155,262,181"/>
+<area shape="rect" id="node7" title=" " alt="" coords="286,155,410,181"/>
+</map>
