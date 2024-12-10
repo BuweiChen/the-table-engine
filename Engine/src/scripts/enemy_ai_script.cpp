@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "enemy_ai_script.h"
 #include "scenemanager.h"
 #include "gameobject.h"
@@ -31,17 +33,17 @@ void EnemyAIScript::update() {
     // enemy faces the player
     texture->setFlipHorizontal(dx < 0);
 
-    // prevent the enemy from moving through player
-    auto playerCollide = player->getComponent<Collide>();
-    // collide->preventCollision(playerCollide, dx, dy);
-
     // prevent the enemy from moving through other enemies
     auto enemies = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Warrior");
     for (auto enemy : enemies) {
         if (enemy == m_owner) continue;
         auto enemyCollide = enemy->getComponent<Collide>();
-        // collide->preventCollision(enemyCollide, dx, dy);
+        collide->preventCollision(enemyCollide, dx, dy);
     } 
+
+    // prevent the enemy from moving through player
+    auto playerCollide = player->getComponent<Collide>();
+    collide->preventCollision(playerCollide, dx, dy);
 
     transform->updateWorldPosition(dx, dy);
 }

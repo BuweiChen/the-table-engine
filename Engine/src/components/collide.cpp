@@ -26,44 +26,50 @@ SDL_Rect* Collide::getRect()
     return mCollide;
 }
 
-SDL_Rect* Collide::nextRect(int dx, int dy)
-{
-    return new SDL_Rect{(int) getScreenPosition().x + dx, (int) getScreenPosition().y + dy, mCollide->w, mCollide->h};
+SDL_Rect* Collide::nextRect(float dx, float dy)
+{   
+    return new SDL_Rect{(int) (mCollide->x + dx), (int) (mCollide->y + dy), mCollide->w, mCollide->h};
 }
 
 void Collide::preventCollision(Collide* anotherCollide, float& dx, float& dy)
 {
+    if (dx == 0 && dy == 0) return;
+
+    auto secondRect = anotherCollide->getRect();
+
+    // if the two colliders are already intersecting, apply a backward force to separate them
     SDL_Rect* intersectRect = new SDL_Rect();
-    if (!SDL_HasIntersection(mCollide, anotherCollide->getRect()))
+    bool intersects = SDL_IntersectRect(mCollide, secondRect, intersectRect);
+    if (intersects)
     {
-        SDL_IntersectRect(mCollide, anotherCollide->getRect(), intersectRect);
+        bool hitFromSide = intersectRect->w < intersectRect->h;
+        if (hitFromSide)
+        {
+            bool sign = intersectRect->x > mCollide->x;
+            dx = (sign ? 1 : -1) * -1;
+            dy = 0;
+            return;
+        }
+        else
+        {
+            bool sign = intersectRect->y > mCollide->y;
+            dx = 0;
+            dy = (sign ? 1 : -1) * -1;
+            return;
+        }
     }
-
-    SDL_Rect* newIntersectRect;
-
-    auto nextFrameRect = nextRect(dx, dy);
-    auto anotherRect = anotherCollide->getRect();
-    if (!SDL_IntersectRect(nextFrameRect, anotherRect, newIntersectRect) || (newIntersectRect->w < intersectRect->w || newIntersectRect->h < intersectRect->h))
+    
+    auto nextFrameRect = nextRect(dx, 0);
+    if (SDL_HasIntersection(nextFrameRect, secondRect))
     {
-        return;
-    }
-
-    nextFrameRect = nextRect(dx, 0);
-    if (!SDL_IntersectRect(nextFrameRect, anotherRect, newIntersectRect) || (newIntersectRect->w < intersectRect->w || newIntersectRect->h < intersectRect->h))
-    {
-        dy = 0;
-        return;
+        dx = 0;
     }
 
     nextFrameRect = nextRect(0, dy);
-    if (!SDL_IntersectRect(nextFrameRect, anotherRect, newIntersectRect) || (newIntersectRect->w < intersectRect->w || newIntersectRect->h < intersectRect->h))
+    if (SDL_HasIntersection(nextFrameRect, secondRect))
     {
-        dx = 0;
-        return;
+        dy = 0;
     }
-
-    dx = 0;
-    dy = 0;
 }
 
 Vec2 Collide::getScreenPosition()
@@ -136,27 +142,27 @@ void Collide::update()
 // solely for debugging/visual purposes
 void Collide::render()
 {
-    if (m_owner->getTag() == "Player")
-    {
-        SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 255, 0, 255, 255);
-        SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), mCollide);
-    }
+    // if (m_owner->getTag() == "Player")
+    // {
+    //     SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 255, 0, 255, 255);
+    //     SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), mCollide);
+    // }
 
-    if (m_owner->getTag() == "Bow")
-    {
-        SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 0, 255, 0, 255);
-        SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), mCollide);
-    }
+    // if (m_owner->getTag() == "Bow")
+    // {
+    //     SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 0, 255, 0, 255);
+    //     SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), mCollide);
+    // }
 
-    if (m_owner->getTag() == "Arrow")
-    {
-        SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 0, 255, 255, 255);
-        SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), mCollide);
-    }
+    // if (m_owner->getTag() == "Arrow")
+    // {
+    //     SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 0, 255, 255, 255);
+    //     SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), mCollide);
+    // }
 
-    if (m_owner->getTag() == "Key")
-    {
-        SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 255, 255, 0, 255);
-        SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), mCollide);
-    }
+    // if (m_owner->getTag() == "Key")
+    // {
+    //     SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 255, 255, 0, 255);
+    //     SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), mCollide);
+    // }
 }

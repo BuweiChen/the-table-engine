@@ -58,6 +58,14 @@ void PlayerTestScript::update() {
     float dy = position.y - transform->getWorldPosition().y;
 
     texture->setFlipHorizontal(dx < 0);
+
+    // prevent hitting enemies
+    auto enemies = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Warrior");
+    for (auto enemy : enemies) {
+        auto enemyCollide = enemy->getComponent<Collide>();
+        collide->preventCollision(enemyCollide, dx, dy);
+    }
+
     transform->updateWorldPosition(dx, dy);
 
     // move the player's bow with the player
@@ -74,6 +82,5 @@ void PlayerTestScript::update() {
         }
     }
 
-    // prevent 
     
 }

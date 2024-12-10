@@ -77,7 +77,7 @@ void Transform::updateWorldPosition(Vec2 dpos)
     mPosition.x += dpos.x;
     mPosition.y += dpos.y;
 }
-
+ 
 void Transform::render()
 {
     auto sceneTree = SceneManager::getInstance().getSceneTree();

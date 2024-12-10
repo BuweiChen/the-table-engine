@@ -10,7 +10,7 @@ class Collide: public Component {
         SDL_Rect* mCollide; // relative to the screen
 
         float mOffsetX, mOffsetY; // collider position offset from the transform's position
-        SDL_Rect* nextRect(int dx, int dy); // next frame's collider position
+        SDL_Rect* nextRect(float dx, float dy); // next frame's collider position
 
     public:
         Collide();
