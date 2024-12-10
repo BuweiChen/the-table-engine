@@ -1,3 +1,0 @@
-Player
-- input component (detects arrow keys) updates transform
-
