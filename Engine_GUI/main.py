@@ -3,6 +3,44 @@ from tkinter import filedialog, messagebox, ttk
 from PIL import Image, ImageTk
 from backend import export_json
 
+# Todo: flush out label for gameobject properties (includes type + any non-transform, non-texture properties (health, speed, etc.))
+class AddPropertyPopup(tk.Toplevel):
+    def __init__(self):
+        super().__init__()
+        self.title("Add Property")
+        self.geometry("400x300")
+
+        tk.Label(self, text="Property Name:").pack(anchor="w", padx=10, pady=5)
+        self.name_var = tk.StringVar()
+        self.name_entry = tk.Entry(self, textvariable=self.name_var)
+        self.name_entry.pack(fill="x", padx=10)
+
+        tk.Label(self, text="Property Type:").pack(anchor="w", padx=10, pady=5)
+        self.type_var = tk.StringVar(value="int")
+        self.type_entry = ttk.Combobox(
+            self, textvariable=self.type_var, values=["int", "float", "str"]
+        )
+        self.type_entry.pack(fill="x", padx=10)
+
+        tk.Label(self, text="Default Value:").pack(anchor="w", padx=10, pady=5)
+        self.default_var = tk.StringVar()
+        self.default_entry = tk.Entry(self, textvariable=self.default_var)
+        self.default_entry.pack(fill="x", padx=10)
+
+        btn_frame = tk.Frame(self)
+        btn_frame.pack(fill="x", pady=10)
+        tk.Button(btn_frame, text="OK", command=self.confirm).pack(side="right", padx=10)
+        tk.Button(btn_frame, text="Cancel", command=self.destroy).pack(side="right")
+
+    def confirm(self):
+        name = self.name_var.get()
+        prop_type = self.type_var.get()
+        default = self.default_var.get()
+
+        self.destroy()
+
+    def destroy(self):
+        return super().destroy()
 
 class AddItemPopup(tk.Toplevel):
     def __init__(self, parent, title, item_type, existing_data=None):
@@ -11,7 +49,7 @@ class AddItemPopup(tk.Toplevel):
         self.item_type = item_type  # "structure" or "entity"
         self.existing_data = existing_data
         self.title(title)
-        self.geometry("600x650")
+        self.geometry("700x650")
 
         self.cols_var = tk.IntVar(value=1)
         self.rows_var = tk.IntVar(value=1)
@@ -46,10 +84,10 @@ class AddItemPopup(tk.Toplevel):
         screen_frame = tk.Frame(self)
         screen_frame.pack(fill="x", padx=10, pady=10)
 
-        tk.Label(screen_frame, text="Screen Length (px):").grid(row=0, column=0, sticky="w", padx=10, pady=5)
+        tk.Label(screen_frame, text="Screen width (px):").grid(row=0, column=0, sticky="w", padx=10, pady=5)
         tk.Entry(screen_frame, textvariable=self.length_var).grid(row=0, column=1, sticky="w", padx=10, pady=5)
 
-        tk.Label(screen_frame, text="Screen Width (px):").grid(row=0, column=2, sticky="e", padx=10, pady=5)
+        tk.Label(screen_frame, text="Screen height (px):").grid(row=0, column=2, sticky="e", padx=10, pady=5)
         tk.Entry(screen_frame, textvariable=self.width_var).grid(row=0, column=3, sticky="e", padx=10, pady=5)
 
          # image preview
@@ -71,17 +109,19 @@ class AddItemPopup(tk.Toplevel):
         self.top_left_y.trace_add("write", lambda *args: self.preview_image(self.file_var.get()))
 
         # Size width
-        tk.Label(form_frame, text="Sprite width:").grid(row=1, column=0, sticky="w", padx=5, pady=5)
+        tk.Label(form_frame, text="Sprite width (px):").grid(row=1, column=0, sticky="w", padx=5, pady=5)
         tk.Entry(form_frame, textvariable=self.size_width).grid(row=1, column=1, sticky="w", padx=10, pady=5)
         self.size_width.trace_add("write", lambda *args: self.preview_image(self.file_var.get()))
 
         # Size height
-        tk.Label(form_frame, text="Sprite height:").grid(row=1, column=2, sticky="e", padx=5, pady=5)
+        tk.Label(form_frame, text="Sprite height (px):").grid(row=1, column=2, sticky="e", padx=5, pady=5)
         tk.Entry(form_frame, textvariable=self.size_height).grid(row=1, column=3, sticky="e", padx=10, pady=5)
         self.size_height.trace_add("write", lambda *args: self.preview_image(self.file_var.get()))
 
         btn_frame = tk.Frame(self)
         btn_frame.pack(fill="x", pady=10)
+        tk.Button(btn_frame, text="GameObject Properties", command=self.open_entity_properties).pack(
+            side="left", padx=10)
         tk.Button(btn_frame, text="OK", command=self.confirm).pack(
             side="right", padx=10
         )
@@ -119,14 +159,12 @@ class AddItemPopup(tk.Toplevel):
         width = self.width_var.get()
 
         editing = self.existing_data is not None
-            
+
         if editing:
             old_name = self.existing_data["name"] if self.existing_data else ""
             if name != old_name and name in self.parent.structures:
                 messagebox.showerror("Error", "A structure with that name already exists.")
                 return
-            else:
-                print("No collission detected")
         elif name in self.parent.structures:
             messagebox.showerror("Error", "A structure with that name already exists.")
             return
@@ -137,7 +175,6 @@ class AddItemPopup(tk.Toplevel):
             )
             return
 
-        # oldw, oldh = img.size
         # Load the BMP and slice into frames
         try:
             img = Image.open(file)
@@ -251,6 +288,18 @@ class AddItemPopup(tk.Toplevel):
 
         except Exception as e:
             messagebox.showerror("Error", f"Failed to load image: {e}")
+
+    # Todo: add GameObject Properties - type + specific properties (health, speed, etc.) depending on type
+    def open_entity_properties(self):
+        if self.file_var.get() == "":
+            messagebox.showerror("Error", "Please select a file first.")
+            return
+        
+        self.entity_properties = AddPropertyPopup()
+        self.entity_properties.protocol("WM_DELETE_WINDOW", self.on_popup_close)
+
+    def on_popup_close(self):
+        self.entity_properties.destroy()
 
 class LevelEditorApp(tk.Tk):
     def __init__(self):
