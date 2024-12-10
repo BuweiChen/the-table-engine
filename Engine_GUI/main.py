@@ -317,14 +317,31 @@ class LevelEditorApp(tk.Tk):
     def on_mouse_drag(self, event):
         if self.drag_data["type"]:
             canvas = self.levels[self.current_level_index]["canvas"]
-            x = event.x_root - canvas.winfo_rootx()
-            y = event.y_root - canvas.winfo_rooty()
-            if self.drag_data.get("image_id"):
-                canvas.coords(self.drag_data["image_id"], x, y)
+
+            # Get raw coordinates relative to the canvas
+            canvas_x = event.x_root - canvas.winfo_rootx()
+            canvas_y = event.y_root - canvas.winfo_rooty()
+
+            # Get the object's specified size
+            if self.drag_data["type"] == "structure":
+                obj_data = self.structures[self.drag_data["name"]]
             else:
-                # Create a temporary image centered at the cursor
+                obj_data = self.entities[self.drag_data["name"]]
+            object_width = obj_data[
+                "length"
+            ]  # Use the length specified during creation
+            print(object_width)
+
+            # Calculate top-right alignment for the image
+            snapped_x = canvas_x + object_width
+            snapped_y = canvas_y  # No vertical offset for top-right alignment
+
+            # Create or update the temporary image
+            if self.drag_data.get("image_id"):
+                canvas.coords(self.drag_data["image_id"], snapped_x, snapped_y)
+            else:
                 self.drag_data["image_id"] = canvas.create_image(
-                    x, y, image=self.drag_data["image"], anchor="center"
+                    snapped_x, snapped_y, image=self.drag_data["image"], anchor="ne"
                 )
 
     def on_mouse_move(self, event):
@@ -337,25 +354,41 @@ class LevelEditorApp(tk.Tk):
             if self.current_level_index >= 0:
                 level_data = self.levels[self.current_level_index]
                 canvas = level_data["canvas"]
+
+                # Get raw coordinates relative to the canvas
                 canvas_x = event.x_root - canvas.winfo_rootx()
                 canvas_y = event.y_root - canvas.winfo_rooty()
 
-                if 0 <= canvas_x <= 800 and 0 <= canvas_y <= 800:
-                    # Create the final image at the release position
+                # Get the object's specified size
+                if self.drag_data["type"] == "structure":
+                    obj_data = self.structures[self.drag_data["name"]]
+                else:
+                    obj_data = self.entities[self.drag_data["name"]]
+                object_width = obj_data[
+                    "length"
+                ]  # Use the length specified during creation
+
+                # Snap to the nearest grid point (align top-right corner of image)
+                grid_size = 40
+                snapped_x = round(canvas_x / grid_size) * grid_size
+                snapped_y = round(canvas_y / grid_size) * grid_size
+
+                # Adjust for top-right corner alignment
+                snapped_x += object_width
+
+                # Ensure snapped coordinates are within bounds
+                if 0 <= snapped_x + object_width <= 800 and 0 <= snapped_y <= 800:
+                    # Place the final image at the snapped position
                     img_id = canvas.create_image(
-                        canvas_x,
-                        canvas_y,
-                        image=self.drag_data["image"],
-                        anchor="center",
+                        snapped_x, snapped_y, image=self.drag_data["image"], anchor="ne"
                     )
                     level_data["items"].append(
-                        (self.drag_data["name"], canvas_x, canvas_y, img_id)
+                        (self.drag_data["name"], snapped_x, snapped_y, img_id)
                     )
 
-            # Remove the temporary image
-            canvas = self.levels[self.current_level_index]["canvas"]
-            if self.drag_data.get("image_id"):
-                canvas.delete(self.drag_data["image_id"])
+                # Remove the temporary drag image
+                if self.drag_data.get("image_id"):
+                    canvas.delete(self.drag_data["image_id"])
 
             # Reset drag data
             self.drag_data = {
