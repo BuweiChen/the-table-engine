@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 from PIL import Image, ImageTk
+from .backend import export_json
+
 
 class AddItemPopup(tk.Toplevel):
     def __init__(self, parent, title, item_type, existing_data=None):
@@ -114,6 +116,17 @@ class LevelEditorApp(tk.Tk):
 
         self.current_level_index = -1
 
+        #Menu Bar
+        self.menubar = tk.Menu(self)
+
+        #File
+        self.file = tk.Menu(self.menubar, tearoff=0)
+        self.menubar.add_cascade(label='File', menu=self.file)
+        self.file.add_command(label="Export", command=None)
+
+
+        self.config(menu=self.menubar)
+
         # Frames
         self.left_frame = tk.Frame(self, width=200, bg="#ddd")
         self.left_frame.pack(side="left", fill="y")
@@ -146,7 +159,7 @@ class LevelEditorApp(tk.Tk):
         self.entities_listbox.bind("<Button-1>", lambda e: self.start_drag("entity", e))
         self.structures_listbox.bind("<Button-1>", lambda e: self.start_drag("structure", e))
 
-        # Right Frame for levels
+        # Top Right Frame for levels
         self.right_frame = tk.Frame(self, width=200, bg="#ddd")
         self.right_frame.pack(side="right", fill="y")
         tk.Label(self.right_frame, text="Levels", font=("Arial", 14, "bold"), bg="#ddd").pack(anchor="nw", padx=5, pady=5)
@@ -158,6 +171,7 @@ class LevelEditorApp(tk.Tk):
         self.levels_listbox = tk.Listbox(self.right_frame)
         self.levels_listbox.pack(fill="both", expand=True, padx=5, pady=(0,5))
         self.levels_listbox.bind("<<ListboxSelect>>", lambda e: self.switch_level())
+        
 
         # Main Canvas Frame (for levels)
         self.center_frame = tk.Frame(self, bg="#eee", width=800, height=800)
@@ -195,7 +209,7 @@ class LevelEditorApp(tk.Tk):
         if (self.popup_window and self.popup_window.winfo_exists()):
             return
         self.popup_window = AddItemPopup(self, f"Add {item_type.capitalize()}", item_type)
-        self.popup_window.protocol("WM_DELETE_WINDOW", self.on_popup_close)
+        self.popup_window.protocol("WM_DELETE_WINDOW")
 
     def edit_selected_item(self, item_type):
         if (self.popup_window and self.popup_window.winfo_exists()):
@@ -287,28 +301,34 @@ class LevelEditorApp(tk.Tk):
             self.drag_data = {"type": None, "name": None, "item_index": None, "image": None}
 
     def add_level(self):
-        canvas = tk.Canvas(self.center_frame, bg="white", width=800, height=800)
+        level_frame = tk.Frame(self.center_frame, width=800, height=800, bg="white")
+        level_frame.place(x=0, y=0)
+        canvas = tk.Canvas(level_frame, bg="white", width=800, height=800)
+        canvas.pack(fill="both", expand=True)
+
         # Draw grid
         for x in range(0, 801, 40):
             canvas.create_line(x, 0, x, 800, fill="#ccc")
         for y in range(0, 801, 40):
             canvas.create_line(0, y, 800, y, fill="#ccc")
 
-        # Place the canvas
-        canvas.place(x=0, y=0)
-        level_index = len(self.levels)
-        self.levels.append({"canvas": canvas, "items": []})
-        self.levels_listbox.insert("end", f"Level {level_index+1}")
+        self.levels.append({"frame": level_frame, "canvas": canvas, "items": []})
+        self.levels_listbox.insert("end", f"Level {len(self.levels)}")
 
-        # If this is the first level, select and show it
-        if self.current_level_index == -1:
-            self.levels_listbox.selection_clear(0, "end")
-            self.levels_listbox.selection_set(0)
-            self.switch_level()
-        else:
-            # For subsequent levels, they start below the currently shown level.
-            # We'll lower them until switched to.
-            canvas.lower()
+        new_idx = len(self.levels) - 1
+        self.levels_listbox.selection_set(new_idx)
+        self.switch_level()
+        self.current_level_index = new_idx
+
+    def switch_level(self):
+        sel = self.levels_listbox.curselection()
+        if not sel:
+            return
+        idx = sel[0]
+        new_frame = self.levels[idx]["frame"]
+        new_frame.tkraise()
+        self.current_level_index = idx
+
 
     def delete_selected_level(self):
         sel = self.levels_listbox.curselection()
@@ -333,21 +353,9 @@ class LevelEditorApp(tk.Tk):
             self.levels_listbox.selection_set(new_idx)
             self.switch_level()
 
-    def switch_level(self):
-        sel = self.levels_listbox.curselection()
-        print(sel)
-        if not sel:
-            return
-        idx = sel[0]
-        # Hide old level canvas
-        if self.current_level_index >= 0:
-            old_canvas = self.levels[self.current_level_index]["canvas"]
-            old_canvas.lower(self.center_frame)
+    def export():
+        export_json()
 
-        # Show new level canvas
-        self.current_level_index = idx
-        new_canvas = self.levels[idx]["canvas"]
-        new_canvas.tkraise  # Use tkraise() instead of lift()
 
 
 if __name__ == "__main__":
