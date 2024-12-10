@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 from PIL import Image, ImageTk
-from .backend import export_json
+from backend import export_json
 
 
 class AddItemPopup(tk.Toplevel):
