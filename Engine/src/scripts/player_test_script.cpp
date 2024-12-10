@@ -59,12 +59,12 @@ void PlayerTestScript::update() {
 
     texture->setFlipHorizontal(dx < 0);
 
-    // prevent hitting enemies
-    auto enemies = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Warrior");
-    for (auto enemy : enemies) {
-        auto enemyCollide = enemy->getComponent<Collide>();
-        collide->preventCollision(enemyCollide, dx, dy);
-    }
+    // // prevent hitting enemies
+    // auto enemies = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Warrior");
+    // for (auto enemy : enemies) {
+    //     auto enemyCollide = enemy->getComponent<Collide>();
+    //     collide->preventCollision(enemyCollide, dx, dy);
+    // }
 
     transform->updateWorldPosition(dx, dy);
 
@@ -81,6 +81,4 @@ void PlayerTestScript::update() {
             m_keysCollected++;
         }
     }
-
-    
 }

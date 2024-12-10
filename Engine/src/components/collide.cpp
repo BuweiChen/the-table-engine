@@ -12,6 +12,7 @@ Collide::Collide()
 {
     setName("collide");
     mCollide = new SDL_Rect();
+    
     mOffsetX = 0;
     mOffsetY = 0;
 }
@@ -45,26 +46,28 @@ void Collide::preventCollision(Collide* anotherCollide, float& dx, float& dy)
         bool hitFromSide = intersectRect->w < intersectRect->h;
         if (hitFromSide)
         {
-            bool sign = intersectRect->x > mCollide->x;
-            dx = (sign ? 1 : -1) * -1;
+            bool isRight = intersectRect->x > mCollide->x;
+            dx = (isRight ? 1 : -1) * -1;
             dy = 0;
             return;
         }
         else
         {
-            bool sign = intersectRect->y > mCollide->y;
+            bool isUp = intersectRect->y > mCollide->y;
             dx = 0;
-            dy = (sign ? 1 : -1) * -1;
+            dy = (isUp ? 1 : -1) * -1;
             return;
         }
     }
     
+    // freely move collider in x direction if no collision
     auto nextFrameRect = nextRect(dx, 0);
     if (SDL_HasIntersection(nextFrameRect, secondRect))
     {
         dx = 0;
     }
 
+    // freely move collider in y direction if no collision
     nextFrameRect = nextRect(0, dy);
     if (SDL_HasIntersection(nextFrameRect, secondRect))
     {

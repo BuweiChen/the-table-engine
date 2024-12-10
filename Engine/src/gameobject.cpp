@@ -55,28 +55,28 @@ std::vector<GameObject*> GameObject::getChildren() {
 }
 
 void GameObject::input() {
-    for (auto script : m_scripts) {
-        script->input();
-    }
     for (auto component : m_components) {
         component->input();
+    }
+    for (auto script : m_scripts) {
+        script->input();
     }
 }
 
 void GameObject::update() {
-    for (auto script : m_scripts) {
-        script->update();
-    }
     for (auto component : m_components) {
         component->update();
+    }
+    for (auto script : m_scripts) {
+        script->update();
     }
 }
 
 void GameObject::render() {
-    for (auto script : m_scripts) {
-        script->render();
-    }
     for (auto component : m_components) {
         component->render();
+    }
+    for (auto script : m_scripts) {
+        script->render();
     }
 }
