@@ -7,6 +7,5 @@ var searchData=
   ['playertestscript_140',['PlayerTestScript',['../classPlayerTestScript.html',1,'PlayerTestScript'],['../classPlayerTestScript.html#a12371a31e0fe2aebe3b3576bdc763068',1,'PlayerTestScript::PlayerTestScript()']]],
   ['preventcollision_141',['preventCollision',['../classCollide.html#a5d76a6a88c477850fc4e60c6a0ed3c3a',1,'Collide']]],
   ['printstats_142',['printStats',['../structGameApplication.html#abe9fdccf1624531ce65a0befb1099be1',1,'GameApplication']]],
-  ['pybind11_5fmodule_143',['PYBIND11_MODULE',['../engine__bindings_8cpp.html#a75376bcdc238f7354b86e6216d82bf1d',1,'engine_bindings.cpp']]],
-  ['python_20bindings_20for_20the_20game_20engine_144',['Python Bindings for the Game Engine',['../PythonBindings.html',1,'']]]
+  ['pybind11_5fmodule_143',['PYBIND11_MODULE',['../engine__bindings_8cpp.html#a75376bcdc238f7354b86e6216d82bf1d',1,'engine_bindings.cpp']]]
 ];
