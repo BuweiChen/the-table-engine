@@ -31,10 +31,22 @@ public:
      */
     Animation(SDL_Texture* texture);
 
+    /**
+     * @brief Get the number of rows
+     * @return int 
+     */
     int getRows();
 
+    /**
+     * @brief Get the number of columns
+     * @return int 
+     */
     int getCols();
 
+    /**
+     * @brief Get the total number of frames
+     * @return int 
+     */
     int getNumFrames();
 
     /**

@@ -13,6 +13,7 @@
     <includes id="transform_8h" name="transform.h" local="yes" imported="no">transform.h</includes>
     <includes id="resourcemanager_8h" name="resourcemanager.h" local="yes" imported="no">resourcemanager.h</includes>
     <includes id="texture_8h" name="texture.h" local="yes" imported="no">texture.h</includes>
+    <includes id="animation_8h" name="animation.h" local="yes" imported="no">animation.h</includes>
     <includes id="scenemanager_8h" name="scenemanager.h" local="yes" imported="no">scenemanager.h</includes>
     <includes id="input_8h" name="input.h" local="yes" imported="no">input.h</includes>
     <includes id="gameapp_8h" name="gameapp.h" local="yes" imported="no">gameapp.h</includes>
@@ -2178,6 +2179,8 @@
     <docanchor file="python_bindings.html" title="Component Types">components</docanchor>
     <docanchor file="python_bindings.html" title="Transform">transform_component</docanchor>
     <docanchor file="python_bindings.html" title="Collide">collide_component</docanchor>
+    <docanchor file="python_bindings.html" title="Texture">texture_component</docanchor>
+    <docanchor file="python_bindings.html" title="Animation">animation_component</docanchor>
     <docanchor file="python_bindings.html" title="Factory Methods">factory</docanchor>
     <docanchor file="python_bindings.html" title="GameObjectFactory">gameobject_factory</docanchor>
     <docanchor file="python_bindings.html" title="Script Types">scripts</docanchor>

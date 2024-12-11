@@ -12,6 +12,7 @@
 #include "transform.h"
 #include "resourcemanager.h"
 #include "texture.h"
+#include "animation.h"
 #include "scenemanager.h"
 #include "input.h"
 #include "gameapp.h"
@@ -124,6 +125,52 @@ PYBIND11_MODULE(engine, m) {
      * - `setScreenSize(width: int, height: int)` - Set collision box size
      * - `setScreenPosition(x: int, y: int)` - Set collision box position
      * - `isColliding(other: Collide) -> bool` - Check collision
+     * 
+     * * @subsection texture_component Texture
+     * Base class for rendering textures and sprites.
+     * ```python
+     * texture = engine.Texture()
+     * texture.setSizeInSpriteMap(32, 32)
+     * texture.setPositionInSpriteMap(0, 0)
+     * texture.setFlipHorizontal(False)
+     * ```
+     * 
+     * Methods:
+     * - `Texture()` - Default constructor
+     * - `setSizeInSpriteMap(w: int, h: int)` - Set sprite size
+     * - `setPositionInSpriteMap(x: int, y: int)` - Set sprite position
+     * - `setFlipHorizontal(flip: bool)` - Set horizontal flip
+     * - `setFlipVertical(flip: bool)` - Set vertical flip
+     * - `setAngle(angle: float)` - Set rotation angle
+     * 
+     * @subsection animation_component Animation
+     * Handles sprite sheet animations, inherits from Texture.
+     * ```python
+     * # Create animated sprite
+     * animation = engine.Animation()
+     * animation.setRowsColsInSpriteMap(1, 6)  # 1 row, 6 frames
+     * animation.setAnimationTime(0.5)         # Half second per cycle
+     * animation.play()                        # Start animation
+     * 
+     * # Control animation
+     * animation.pause()                       # Pause at current frame
+     * animation.setFrame(2)                   # Jump to specific frame
+     * print(f"Current frame: {animation.getCurrentFrame()}")
+     * ```
+     * 
+     * Methods:
+     * - `Animation()` - Default constructor
+     * - `getRows() -> int` - Get number of rows
+     * - `getCols() -> int` - Get number of columns
+     * - `getNumFrames() -> int` - Get total frames
+     * - `setAutoPlay(autoplay: bool)` - Set auto-play state
+     * - `setRowsColsInSpriteMap(rows: int, cols: int)` - Set sprite sheet layout
+     * - `setAnimationTime(time: float)` - Set animation cycle time
+     * - `play()` - Start/resume animation
+     * - `pause()` - Pause animation
+     * - `setFrame(frame: int)` - Set specific frame
+     * - `getCurrentFrame() -> int` - Get current frame
+     * - `isPlaying() -> bool` - Check if playing
      * 
      * @section factory Factory Methods
      * 
@@ -286,6 +333,12 @@ PYBIND11_MODULE(engine, m) {
         })
         .def("addCollide", [](GameObject &self, Collide* collide) {
             self.addComponent<Collide>(collide);
+        })
+        .def("getAnimation", [](GameObject &self) {
+            return self.getComponent<Animation>();
+        })
+        .def("addAnimation", [](GameObject &self, Animation* animation) {
+            self.addComponent<Animation>(animation);
         });
 
     // // Bind Sound (sound.h)
@@ -332,12 +385,28 @@ PYBIND11_MODULE(engine, m) {
         .def(py::init<>())
         .def("setSizeInSpriteMap", &Texture::setSizeInSpriteMap)
         .def("setPositionInSpriteMap", &Texture::setPositionInSpriteMap)
-        .def("setRowsColsInSpriteMap", &Texture::setRowsColsInSpriteMap)
-        .def("setAnimationTime", &Texture::setAnimationTime)
         .def("setFlipHorizontal", &Texture::setFlipHorizontal)
         .def("setFlipVertical", &Texture::setFlipVertical)
+        .def("setAngle", &Texture::setAngle)
         .def("update", &Texture::update)
         .def("render", &Texture::render);
+
+    // Add Animation bindings
+    py::class_<Animation, Texture>(m, "Animation")
+        .def(py::init<>())
+        .def("getRows", &Animation::getRows)
+        .def("getCols", &Animation::getCols)
+        .def("getNumFrames", &Animation::getNumFrames)
+        .def("setAutoPlay", &Animation::setAutoPlay)
+        .def("setRowsColsInSpriteMap", &Animation::setRowsColsInSpriteMap)
+        .def("setAnimationTime", &Animation::setAnimationTime)
+        .def("play", &Animation::play)
+        .def("pause", &Animation::pause)
+        .def("setFrame", &Animation::setFrame)
+        .def("getCurrentFrame", &Animation::getCurrentFrame)
+        .def("isPlaying", &Animation::isPlaying)
+        .def("update", &Animation::update);
+
 
     // SceneManager bindings (without direct SDL type exposure)
     py::class_<SceneManager>(m, "SceneManager")
@@ -407,11 +476,6 @@ PYBIND11_MODULE(engine, m) {
         .def(py::init<>())
         .def("input", &Bow_script::input)
         .def("update", &Bow_script::update);
-
-    // // Bind CollideScript (collision_script.h)
-    // py::class_<CollideScript, Script>(m, "CollideScript")
-    //     .def(py::init<>())
-    //     .def("update", &CollideScript::update);
 
     // Bind CollisionScript (collision_script.h)
     py::class_<CollisionScript, Script>(m, "CollisionScript")
