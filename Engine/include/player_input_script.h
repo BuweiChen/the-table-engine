@@ -20,7 +20,6 @@
  */
 class PlayerInputScript : public Script {
 private:
-    int m_fireRatePerSecond = 5; ///< Fire rate of the player in shots per second.
     int m_lastFireTimeInMs = 0; ///< Timestamp of the last fire to regulate shooting frequency.
 
     float m_playerSpeed = 6; ///< Speed at which the player moves.

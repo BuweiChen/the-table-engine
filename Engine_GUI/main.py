@@ -1016,10 +1016,11 @@ class LevelEditorApp(tk.Tk):
     def export(self):
         """Export the project data as a JSON file."""
         # Ask the user for a file name
-        file_name = simpledialog.askstring(
-            "Export Project",
-            "Enter a name for the export file (without extension):",
-        )
+        # file_name = simpledialog.askstring(
+        #     "Export Project",
+        #     "Enter a name for the export file (without extension):",
+        # )
+        file_name = "game"
         if not file_name:
             messagebox.showerror("Export Failed", "File name cannot be empty.")
             return
@@ -1068,7 +1069,7 @@ class LevelEditorApp(tk.Tk):
         try:
             with open(file_path, "w") as f:
                 json.dump(data, f, indent=4)
-            messagebox.showinfo("Export Successful", f"Project exported to {file_path}")
+            # messagebox.showinfo("Export Successful", f"Project exported to {file_path}")
         except Exception as e:
             messagebox.showerror("Export Failed", f"Failed to save project: {e}")
 
@@ -1094,6 +1095,7 @@ class LevelEditorApp(tk.Tk):
             level_data["items"] = new_items
 
     def execute_game(self):
+        self.export()
         self.withdraw()
 
         # Get the directory where main.py is located

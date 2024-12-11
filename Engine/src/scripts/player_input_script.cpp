@@ -28,7 +28,6 @@ void PlayerInputScript::update() {
     auto collide = m_owner->getComponent<Collide>();
 
     Vec2 position = transform->getWorldPosition();
-    Vec2 size = transform->getScreenSize();
 
     if (input->leftPressed) {
         position.x -= m_playerSpeed;

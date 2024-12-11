@@ -23,7 +23,6 @@ private:
     bool m_shoot; ///< Flag to indicate whether the weapon should shoot.
     int m_lastFireTimeInMs; ///< Timestamp of the last shooting action in milliseconds.
     int m_fireRatePerSecond; ///< Allowed number of shots per second to control shooting frequency.
-    bool m_wasSpacePressed; ///< Tracks if the space key was pressed, typically used for shooting.
     bool m_animationPlayed; ///< Ensures that the shooting animation plays correctly.
 
 public:

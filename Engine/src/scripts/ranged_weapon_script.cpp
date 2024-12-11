@@ -56,8 +56,8 @@ void RangedWeaponScript::update() {
 
         auto sceneTree = SceneManager::getInstance().getSceneTree();
         sceneTree->addChild(arrow);
-        static int arrowCount = 0;
-        arrowCount++;
+        // static int arrowCount = 0;
+        // arrowCount++;
 
         m_shoot = false;
     }
