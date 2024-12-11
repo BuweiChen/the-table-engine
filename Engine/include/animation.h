@@ -7,6 +7,17 @@
 
 #include "texture.h"
 
+/**
+ * @class Animation
+ * @brief Component to handle animation of game objects. Derived from Texture.
+ *
+ * Animation extends the Texture class to provide functionalities for sprite animations.
+ * It allows for setting the number of rows and columns in the sprite sheet, the total
+ * animation time, and the current frame of animation. It also provides methods to start,
+ * pause, and resume the animation, as well as to set a specific frame of animation.
+ * The update method is used to advance the animation frame based on the elapsed time.
+ * The render method is inherited from Texture and is used to render the current frame.
+ */
 class Animation : public Texture {
 protected:
     int m_rows = 1;        ///< Number of rows in the sprite sheet
