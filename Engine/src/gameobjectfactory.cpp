@@ -3,6 +3,7 @@
 #include "texture.h"
 #include "transform.h"
 #include "animation.h"
+#include "animationsmanager.h"
 #include "collide.h"
 #include "input.h"
 #include "health.h"
@@ -17,12 +18,27 @@ GameObject* GameObjectFactory::createPlayerTest()
 {
     GameObject* player = new GameObject("Player");
 
-    SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Heroes/Knight/Run/Run-Sheet.bmp");
-    auto texture = new Animation(sdl_texture);
-    texture->setRowsColsInSpriteMap(1, 6);
-    texture->setAnimationTime(0.5);
-    player->addComponent<Texture>(texture);
+    // Create animation manager and load all animations
+    auto animations = new AnimationsManager();
 
+
+    // Idle animation
+    SDL_Texture* idleTexture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Heroes/Knight/Idle/Idle-Sheet.bmp");
+    int idleAnim = animations->createAnimation(idleTexture, 1, 4, 0.5f);
+    
+    // Run animation
+    SDL_Texture* runTexture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Heroes/Knight/Run/Run-Sheet.bmp");
+    int runAnim = animations->createAnimation(runTexture, 1, 6, 0.5f);
+    
+    // Death animation
+    SDL_Texture* deathTexture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Heroes/Knight/Death/Death-Sheet.bmp");
+    int deathAnim = animations->createAnimation(deathTexture, 1, 6, 0.5f);
+
+    // Set initial animation
+    animations->setCurrentAnimation(idleAnim);
+    player->addComponent<Texture>(animations);
+
+    // Rest of the player setup remains the same
     auto transform = new Transform();
     transform->setWorldPosition(200, 200);
     transform->setWorldSize(80, 80);

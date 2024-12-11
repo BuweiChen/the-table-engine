@@ -48,6 +48,10 @@ void Texture::setFlipVertical(bool flip) {
     m_flipVertical = flip;
 }
 
+void Texture::setAngle(float angle) {
+    m_angle = angle;
+}
+
 void Texture::update() {
     // Base texture doesn't need updating
 }
