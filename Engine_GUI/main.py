@@ -875,7 +875,7 @@ class LevelEditorApp(tk.Tk):
                 snapped_y = round(canvas_y / grid_size) * grid_size
 
                 # Ensure snapped coordinates are within bounds
-                if 0 <= snapped_x <= 800 and 0 <= snapped_y <= 800:
+                if 0 <= canvas_x <= 800 and 0 <= canvas_x <= 800:
                     # Place the final image at the snapped position
                     img_id = canvas.create_image(
                         snapped_x, snapped_y, image=self.drag_data["image"], anchor="nw"
@@ -930,6 +930,7 @@ class LevelEditorApp(tk.Tk):
         level_frame = tk.Frame(self.center_frame, width=800, height=800, bg="white")
         level_frame.place(x=0, y=0)
         canvas = tk.Canvas(level_frame, bg="white", width=800, height=800)
+        canvas.bind("<Button-1>", self.delete_gameobject)
         canvas.pack(fill="both", expand=True)
 
         # Draw grid
@@ -1037,6 +1038,26 @@ class LevelEditorApp(tk.Tk):
         except Exception as e:
             messagebox.showerror("Export Failed", f"Failed to save project: {e}")
 
+    def delete_gameobject(self, event):
+        if self.current_level_index < 0:
+            return
+
+        # don't delete the grid
+        if event.x % 32 == 0 or event.y % 32 == 0:
+            return
+        
+        level_data = self.levels[self.current_level_index]
+        canvas = level_data["canvas"]
+        x, y = event.x, event.y
+        items = canvas.find_overlapping(x, y, x, y)
+        for item in items:
+            canvas.delete(item)
+            # Remove the item from the level data
+            new_items = []
+            for itm_name, x, y, img_id, _, _ in level_data["items"]:
+                if img_id != item:
+                    new_items.append((itm_name, x, y, img_id, 0, 0))
+            level_data["items"] = new_items
 
 if __name__ == "__main__":
     app = LevelEditorApp()

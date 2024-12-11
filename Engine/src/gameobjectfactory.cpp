@@ -2,6 +2,7 @@
 
 #include "texture.h"
 #include "transform.h"
+#include "animation.h"
 #include "collide.h"
 #include "input.h"
 #include "resourcemanager.h"
@@ -10,14 +11,14 @@
 #include "enemy_ai_script.h"
 #include "collide_test_script.h"
 #include "collide_script.h"
-#include "bow_script.h"
+#include "ranged_weapon_script.h"
 
 GameObject* GameObjectFactory::createPlayerTest() 
 {
     GameObject* player = new GameObject("Player");
 
     SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Heroes/Knight/Run/Run-Sheet.bmp");
-    auto texture = new Texture(sdl_texture);
+    auto texture = new Animation(sdl_texture);
     texture->setRowsColsInSpriteMap(1, 6);
     texture->setAnimationTime(0.5);
     player->addComponent<Texture>(texture);
@@ -46,12 +47,14 @@ GameObject* GameObjectFactory::createBow()
     GameObject* bow = new GameObject("Bow");
 
     SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Weapons/Wood/Wood.bmp");
-    auto texture = new Texture(sdl_texture);
-    texture->setPositionInSpriteMap(48, 48);
-    texture->setSizeInSpriteMap(48, 32);
-    texture->setRowsColsInSpriteMap(1, 3);
-    texture->setAnimationTime(0.4);
-    bow->addComponent<Texture>(texture);
+    auto animation = new Animation(sdl_texture);
+    animation->setPositionInSpriteMap(48, 48);
+    animation->setSizeInSpriteMap(48, 32);
+    animation->setRowsColsInSpriteMap(1, 3);
+    animation->setAnimationTime(0.4);
+    animation->setAutoPlay(false); 
+    animation->setFrame(0);
+    bow->addComponent<Animation>(animation);
 
     auto transform = new Transform();
     transform->setWorldPosition(240, 248);
@@ -106,7 +109,7 @@ GameObject* GameObjectFactory::createEnemyWarrior()
     GameObject* enemy = new GameObject("Warrior");
 
     SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Enemy/OrcCrew/Warrior/Run/Run-Sheet.bmp");
-    auto texture = new Texture(sdl_texture);
+    auto texture = new Animation(sdl_texture);
     texture->setRowsColsInSpriteMap(1, 6);
     texture->setAnimationTime(0.5);
     enemy->addComponent<Texture>(texture);
