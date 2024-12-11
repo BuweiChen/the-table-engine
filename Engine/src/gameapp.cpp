@@ -105,9 +105,27 @@ void GameApplication::printStats() {
         rect = {5, 45, 80, 25};
         SDL_RenderCopy(m_renderer, text, NULL, &rect);
 
+<<<<<<< Updated upstream
         color = {255, 0, 0, 255};
         SDL_SetRenderDrawColor(m_renderer, color.r, color.g, color.b, color.a);
         int health = player->getComponent<Health>()->getHealth();
+=======
+         // number of keys collected by player
+    color = {0, 255, 0, 255};
+    auto players = sceneTree->findGameObjectsByTag("Player");
+    if (!players.empty())
+    {
+        auto player = players[0];
+        std::string numKeys = std::to_string(player->getScript<PlayerTestScript>()->getKeysCollected());
+        text = ResourceManager::getInstance().loadText(font, "Keys: " + numKeys, color, 12);
+        rect = {5, 30, 80, 25};
+        SDL_RenderCopy(m_renderer, text, NULL, &rect);
+
+        color = {255, 0, 0, 255};
+        SDL_SetRenderDrawColor(m_renderer, color.r, color.g, color.b, color.a);
+        int health = player->getComponent<Health>()->getHealth();
+        std::cout << "Health: " << health << std::endl;
+>>>>>>> Stashed changes
         rect = {640 - 120, 10, (int) (100.0 * health / 1000), 25};
         SDL_RenderFillRect(m_renderer, &rect);
         // draw a border around the health bar

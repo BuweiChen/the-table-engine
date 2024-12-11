@@ -7,51 +7,6 @@ import json
 import os
 import subprocess
 
-
-# Todo: flush out label for gameobject properties (includes type + any non-transform, non-texture properties (health, speed, etc.))
-class AddPropertyPopup(tk.Toplevel):
-    def __init__(self):
-        super().__init__()
-        self.title("Add Property")
-        self.geometry("400x300")
-
-        self.old_name = None
-
-        tk.Label(self, text="Property Name:").pack(anchor="w", padx=10, pady=5)
-        self.name_var = tk.StringVar()
-        self.name_entry = tk.Entry(self, textvariable=self.name_var)
-        self.name_entry.pack(fill="x", padx=10)
-
-        tk.Label(self, text="Property Type:").pack(anchor="w", padx=10, pady=5)
-        self.type_var = tk.StringVar(value="int")
-        self.type_entry = ttk.Combobox(
-            self, textvariable=self.type_var, values=["int", "float", "str"]
-        )
-        self.type_entry.pack(fill="x", padx=10)
-
-        tk.Label(self, text="Default Value:").pack(anchor="w", padx=10, pady=5)
-        self.default_var = tk.StringVar()
-        self.default_entry = tk.Entry(self, textvariable=self.default_var)
-        self.default_entry.pack(fill="x", padx=10)
-
-        btn_frame = tk.Frame(self)
-        btn_frame.pack(fill="x", pady=10)
-        tk.Button(btn_frame, text="OK", command=self.confirm).pack(
-            side="right", padx=10
-        )
-        tk.Button(btn_frame, text="Cancel", command=self.destroy).pack(side="right")
-
-    def confirm(self):
-        name = self.name_var.get()
-        prop_type = self.type_var.get()
-        default = self.default_var.get()
-
-        self.destroy()
-
-    def destroy(self):
-        return super().destroy()
-
-
 class AddItemPopup(tk.Toplevel):
     def __init__(self, parent, title, item_type, existing_data=None):
         super().__init__(parent)
@@ -207,6 +162,7 @@ class AddItemPopup(tk.Toplevel):
             self.size_height.set(self.existing_data["size_height"])
             self.length_var.set(self.existing_data["length"])
             self.width_var.set(self.existing_data["width"])
+            self.dynamic_properties = self.existing_data["properties"]
 
     def browse_file(self):
         file_path = filedialog.askopenfilename(filetypes=[("BMP Files", "*.bmp")])
@@ -226,6 +182,7 @@ class AddItemPopup(tk.Toplevel):
         top_left_y = self.top_left_y.get()
         length = self.length_var.get()
         width = self.width_var.get()
+        property = self.dynamic_properties
 
         editing = self.existing_data is not None
         print(self.item_type)
@@ -248,7 +205,11 @@ class AddItemPopup(tk.Toplevel):
         elif name in self.parent.structures:
             messagebox.showerror("Error", "A gameobject with that name already exists.")
             return
-
+        
+        if property == {}:
+            messagebox.showwarning("Incomplete", "Please select gameobject properties")
+            return
+        
         if not name or not file:
             messagebox.showwarning(
                 "Incomplete", "Please provide a name and a bmp file."
@@ -293,7 +254,7 @@ class AddItemPopup(tk.Toplevel):
             "size_width": size_width,
             "size_height": size_height,
             "frames": frames,
-            "properties": self.dynamic_properties,  # Include dynamic properties
+            "properties": property,  # Include dynamic properties
         }
 
         self.parent.add_item_callback(
@@ -441,6 +402,9 @@ class GameObjectPropertiesPopup(tk.Toplevel):
         # Load config
         self.config_data = self.load_config()
 
+        if self.config_data == {}:
+            self.selected_type.set(self.parent.dynamic_properties["type"])
+
         # Create UI
         self.create_type_dropdown()  # Dropdown to select the type
         self.dynamic_frame = tk.Frame(self)
@@ -526,12 +490,14 @@ class GameObjectPropertiesPopup(tk.Toplevel):
             field_frame.pack(fill="x", padx=10, pady=5)
 
             tk.Label(field_frame, text=prop_name).pack(side="left")
+            var = None
             # check if prop_type is type int
             if type(prop_type) == int:
                 var = tk.IntVar(value=prepopulated_data.get(prop_name, prop_type))
                 tk.Entry(field_frame, textvariable=var).pack(
                     side="right", fill="x", expand=True
                 )
+                
             elif type(prop_type) == float:
                 # align text to the right
                 var = tk.DoubleVar(value=prepopulated_data.get(prop_name, prop_type))
@@ -557,7 +523,10 @@ class GameObjectPropertiesPopup(tk.Toplevel):
                 var = tk.StringVar(value=prepopulated_data.get(prop_name, ""))
                 tk.Entry(field_frame, textvariable=var).pack(
                     side="right", fill="x", expand=True
-                )
+                )   
+
+            if prepopulated_data is not None and not {}:
+                self.parent.dynamic_properties["data"][selected_type] = var
 
             if prop_type != "checkbox_with_all_objects":
                 self.fields[prop_name] = var
