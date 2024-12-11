@@ -49,6 +49,7 @@ void ProjectileScript::update() {
             std::cout << "Arrow hit enemy " << arrowCount << std::endl;
             if (enemy->getComponent<Health>()->getHealth() <= 0)
                 enemy->getSceneNode()->setDestroy(true);
+                std::cout << "Enemy is dead" << std::endl;
             break;
         }
     }
