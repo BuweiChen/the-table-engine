@@ -290,7 +290,7 @@ class AddItemPopup(tk.Toplevel):
             "frames": frames,
             "properties": self.dynamic_properties,  # Include dynamic properties
         }
-        
+
         self.parent.add_item_callback(
             self.item_type, data, self.existing_data is not None
         )
@@ -431,12 +431,15 @@ class GameObjectPropertiesPopup(tk.Toplevel):
         self.object_type = object_type.capitalize()
         self.config_file = config_file
         self.fields = {}
+        self.selected_type = tk.StringVar()  # To store the selected type
 
         # Load config
         self.config_data = self.load_config()
 
         # Create UI
-        self.create_dynamic_fields()
+        self.create_type_dropdown()  # Dropdown to select the type
+        self.dynamic_frame = tk.Frame(self)
+        self.dynamic_frame.pack(fill="x", padx=10, pady=10)
 
         # Add confirm and cancel buttons
         btn_frame = tk.Frame(self)
@@ -460,8 +463,8 @@ class GameObjectPropertiesPopup(tk.Toplevel):
             self.destroy()
             return {}
 
-    def create_dynamic_fields(self):
-        """Dynamically create fields based on the config."""
+    def create_type_dropdown(self):
+        """Create a dropdown to select the object type."""
         if self.object_type not in self.config_data:
             messagebox.showerror(
                 "Error", f"Object type '{self.object_type}' not found in config."
@@ -469,47 +472,68 @@ class GameObjectPropertiesPopup(tk.Toplevel):
             self.destroy()
             return
 
-        obj_properties = self.config_data[self.object_type]
-        for obj_name, properties in obj_properties.items():
-            tk.Label(self, text=obj_name, font=("Arial", 12, "bold")).pack(
-                anchor="w", padx=10, pady=5
+        obj_types = list(self.config_data[self.object_type].keys())
+        if not obj_types:
+            messagebox.showerror(
+                "Error", f"No types found for object type '{self.object_type}'."
             )
-            for prop_name, prop_type in properties.items():
-                field_frame = tk.Frame(self)
-                field_frame.pack(fill="x", padx=10, pady=5)
+            self.destroy()
+            return
 
-                tk.Label(field_frame, text=prop_name).pack(side="left")
+        tk.Label(self, text="Select Type:", font=("Arial", 12)).pack(
+            anchor="w", padx=10, pady=5
+        )
+        dropdown = ttk.Combobox(self, textvariable=self.selected_type, values=obj_types)
+        dropdown.pack(fill="x", padx=10, pady=5)
+        dropdown.bind("<<ComboboxSelected>>", self.update_dynamic_fields)
 
-                if prop_type == "int":
-                    var = tk.IntVar()
-                    tk.Entry(field_frame, textvariable=var).pack(
-                        side="right", fill="x", expand=True
-                    )
-                elif prop_type == "float":
-                    var = tk.DoubleVar()
-                    tk.Entry(field_frame, textvariable=var).pack(
-                        side="right", fill="x", expand=True
-                    )
-                elif prop_type == "str":
-                    var = tk.StringVar()
-                    tk.Entry(field_frame, textvariable=var).pack(
-                        side="right", fill="x", expand=True
-                    )
-                elif prop_type == "checkbox_with_all_objects":
-                    # Dynamically create a checkbox for each object type
-                    self.create_checkboxes_for_objects(field_frame, prop_name)
-                else:
-                    var = tk.StringVar()
-                    tk.Entry(field_frame, textvariable=var).pack(
-                        side="right", fill="x", expand=True
-                    )
+    def update_dynamic_fields(self, event=None):
+        """Update the fields based on the selected type."""
+        # Clear the current fields
+        for widget in self.dynamic_frame.winfo_children():
+            widget.destroy()
+        self.fields = {}
 
-                if prop_type != "checkbox_with_all_objects":
-                    self.fields[prop_name] = var
+        selected_type = self.selected_type.get()
+        if not selected_type or selected_type not in self.config_data[self.object_type]:
+            return
+
+        # Populate fields for the selected type
+        properties = self.config_data[self.object_type][selected_type]
+        for prop_name, prop_type in properties.items():
+            field_frame = tk.Frame(self.dynamic_frame)
+            field_frame.pack(fill="x", padx=10, pady=5)
+
+            tk.Label(field_frame, text=prop_name).pack(side="left")
+
+            if prop_type == "int":
+                var = tk.IntVar()
+                tk.Entry(field_frame, textvariable=var).pack(
+                    side="right", fill="x", expand=True
+                )
+            elif prop_type == "float":
+                var = tk.DoubleVar()
+                tk.Entry(field_frame, textvariable=var).pack(
+                    side="right", fill="x", expand=True
+                )
+            elif prop_type == "str":
+                var = tk.StringVar()
+                tk.Entry(field_frame, textvariable=var).pack(
+                    side="right", fill="x", expand=True
+                )
+            elif prop_type == "checkbox_with_all_objects":
+                self.create_checkboxes_for_objects(field_frame, prop_name)
+            else:
+                var = tk.StringVar()
+                tk.Entry(field_frame, textvariable=var).pack(
+                    side="right", fill="x", expand=True
+                )
+
+            if prop_type != "checkbox_with_all_objects":
+                self.fields[prop_name] = var
 
     def create_checkboxes_for_objects(self, parent_frame, prop_name):
         """Create checkboxes for all object types defined in the config.json."""
-
         # Load all object types from the config.json
         object_types = []
         if "Structure" in self.config_data:
@@ -530,7 +554,8 @@ class GameObjectPropertiesPopup(tk.Toplevel):
 
     def confirm(self):
         """Confirm the selection and store data."""
-        properties = {}
+        selected_type = self.selected_type.get()
+        properties = {"type": selected_type}
 
         for key, value in self.fields.items():
             if isinstance(value, dict):  # Handle nested dictionary for checkboxes
@@ -951,7 +976,9 @@ class LevelEditorApp(tk.Tk):
         def sanitize_object_data(objects):
             sanitized = {}
             for name, props in objects.items():
-                sanitized[name] = {key: value for key, value in props.items() if key != "frames"}
+                sanitized[name] = {
+                    key: value for key, value in props.items() if key != "frames"
+                }
             return sanitized
 
         # Prepare the data for export
@@ -964,16 +991,18 @@ class LevelEditorApp(tk.Tk):
         }
 
         for level in self.levels:
-            level_data = {
-                "objects": []
-            }
+            level_data = {"objects": []}
             for obj_name, x, y, img_id, _, _ in level["items"]:
-                level_data["objects"].append({
-                    "name": obj_name,
-                    "x": x,
-                    "y": y,
-                    "type": "structure" if obj_name in self.structures else "entity"
-                })
+                level_data["objects"].append(
+                    {
+                        "name": obj_name,
+                        "x": x,
+                        "y": y,
+                        "type": "structure"
+                        if obj_name in self.structures
+                        else "entity",
+                    }
+                )
             data["levels"].append(level_data)
 
         # Save the JSON file
@@ -983,7 +1012,6 @@ class LevelEditorApp(tk.Tk):
             messagebox.showinfo("Export Successful", f"Project exported to {file_path}")
         except Exception as e:
             messagebox.showerror("Export Failed", f"Failed to save project: {e}")
-
 
 
 if __name__ == "__main__":
