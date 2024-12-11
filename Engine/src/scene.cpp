@@ -132,7 +132,7 @@ std::vector<GameObject*> SceneTree::findGameObjectsByTag(std::string tag) {
     }
     else
         m_cachedGameObjectsInFrame[tag] = taggedGameObjects;
-        
+
     return taggedGameObjects;
 }
 

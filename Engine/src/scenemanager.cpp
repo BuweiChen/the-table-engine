@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "gameobject.h"
 #include "transform.h"
 #include "resourcemanager.h"
@@ -8,11 +10,14 @@
 std::atomic<uint64_t> SceneManager::m_totalObjects = 0;
 std::atomic<uint64_t> SceneManager::m_aliveObjects = 0;
 
-#include <iostream>
-
 SceneManager& SceneManager::getInstance() {
     static SceneManager instance;
     return instance;
+}
+
+SceneManager::SceneManager() {
+    m_sceneTree = nullptr;
+    m_camera = new Camera();
 }
 
 void SceneManager::setRenderer(SDL_Renderer* renderer) {
@@ -21,6 +26,14 @@ void SceneManager::setRenderer(SDL_Renderer* renderer) {
 
 SceneTree* SceneManager::getSceneTree() {
     return m_sceneTree;
+}
+
+SDL_Renderer* SceneManager::getRenderer() {
+    return m_renderer;
+}
+
+Vec2 SceneManager::getCameraWorldPosition() {
+    return m_camera->getWorldPosition();
 }
 
 void SceneManager::getNextScene() {
@@ -39,10 +52,6 @@ void SceneManager::getNextScene() {
             exit(0);
             break;
     }
-}
-
-SDL_Renderer* SceneManager::getRenderer() {
-    return m_renderer;
 }
 
 SceneTree* SceneManager::createSceneTest1() {
@@ -79,7 +88,6 @@ SceneTree* SceneManager::createSceneTest1() {
 
     return sceneTree;
 }
-
 
 SceneTree* SceneManager::createSceneTest2() {
     SceneTree* sceneTree = new SceneTree();
@@ -151,8 +159,6 @@ SceneTree* SceneManager::createSceneTest3() {
     return sceneTree;
 }
 
-
-
 void SceneManager::cleanTree()
 {
     auto sceneTree = SceneManager::getInstance().m_sceneTree;
@@ -163,7 +169,6 @@ void SceneManager::cleanTree()
             delete node;
     });
 }
-
 
 void SceneManager::input()
 {
@@ -178,6 +183,8 @@ void SceneManager::input()
 
 void SceneManager::update()
 {
+    m_camera->update();
+
     auto sceneTree = SceneManager::getInstance().m_sceneTree;
     if (sceneTree == nullptr) return;
 
@@ -185,7 +192,7 @@ void SceneManager::update()
         if (node->getGameObject())
             node->getGameObject()->update();
     });
-    
+
     cleanTree();
 
     if (sceneTree->gameStatus() == -1)

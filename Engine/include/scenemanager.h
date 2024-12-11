@@ -12,6 +12,7 @@
 #include <atomic>
 
 #include "scene.h"
+#include "camera.h"
 #include <SDL2/SDL.h>
 
 /**
@@ -28,11 +29,12 @@ class SceneManager
         SceneTree* m_sceneTree; ///< Scene tree to manage game objects in the current scene.
 
         int m_currentSceneIndex = 0; ///< Index of the current scene in the game.
+        Camera* m_camera;
 
         /**
          * @brief Private constructor for singleton pattern.
          */
-        SceneManager() {}
+        SceneManager();
 
         /**
          * @brief Deleted copy constructor to prevent copying of singleton.
@@ -81,6 +83,12 @@ class SceneManager
          * @brief Cleans up the scene tree, removing all inactive game objects.
          */
         void cleanTree();
+
+        /**
+         * @brief Retrieves the world position of the camera.
+         * @return Vec2 representing the camera's world position.
+         */
+        Vec2 getCameraWorldPosition();
 
         /**
          * @brief Creates a test scene. This method is an example of how to define specific scenes.
