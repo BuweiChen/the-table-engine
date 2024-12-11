@@ -115,6 +115,9 @@ std::vector<GameObject*> SceneTree::findGameObjectsByTag(std::string tag) {
     if (m_cachedGameObjects.find(tag) != m_cachedGameObjects.end()) {
         return {m_cachedGameObjects[tag]};
     }
+    if (m_cachedGameObjectsInFrame.find(tag) != m_cachedGameObjectsInFrame.end()) {
+        return m_cachedGameObjectsInFrame[tag];
+    }
 
     std::vector<GameObject*> taggedGameObjects;
     traverseTree(m_root, [&taggedGameObjects, tag](SceneNode* node) {
@@ -127,7 +130,18 @@ std::vector<GameObject*> SceneTree::findGameObjectsByTag(std::string tag) {
     if (tag == "Player" || tag == "Bow") {
         m_cachedGameObjects[tag] = taggedGameObjects[0];
     }
+    else
+        m_cachedGameObjectsInFrame[tag] = taggedGameObjects;
+        
     return taggedGameObjects;
+}
+
+std::vector<GameObject*>& SceneTree::findCachedGameObjectsInFrame(std::string tag) {
+    return m_cachedGameObjectsInFrame[tag];
+}
+
+void SceneTree::resetCachedGameObjectsInFrame() {
+    m_cachedGameObjectsInFrame.clear();
 }
 
 int SceneTree::gameStatus() {

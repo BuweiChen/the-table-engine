@@ -203,4 +203,6 @@ void SceneManager::render()
         if (node->getGameObject())
             node->getGameObject()->render();
     });
+
+    sceneTree->resetCachedGameObjectsInFrame();
 }

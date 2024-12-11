@@ -151,6 +151,14 @@ public:
     std::vector<GameObject*> findGameObjectsByTag(std::string tag);
 
     /**
+     * @brief Retrieves the game objects cached by tag.
+     * @param tag The tag string to search for.
+     * @return Pointer to the GameObject if found, nullptr otherwise.
+     */
+    std::vector<GameObject*>& findCachedGameObjectsInFrame(std::string tag);
+    void resetCachedGameObjectsInFrame();
+
+    /**
      * @brief Retrieves the current game status.
      * @return String representing the current game status.
      */
@@ -158,5 +166,6 @@ public:
 
 private:
     SceneNode* m_root;
-    std::unordered_map<std::string, GameObject*> m_cachedGameObjects; // Cache for faster lookup of GameObjects.
+    std::unordered_map<std::string, GameObject*> m_cachedGameObjects; // Cache for faster lookup of GameObjects throughout the scene.
+    std::unordered_map<std::string, std::vector<GameObject*>> m_cachedGameObjectsInFrame; // Cache for faster lookup of GameObjects per frame.
 };
