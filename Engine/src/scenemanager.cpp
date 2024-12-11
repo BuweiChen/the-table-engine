@@ -70,21 +70,36 @@ void SceneManager::loadScenesFromJSON(const std::string& filePath) {
                     int y = object["y"];
 
                     std::cout << "Creating object: " << name << " at (" << x << ", " << y << ")\n";
-
+                    std::cout << definition["properties"].contains("type") << "\n";
+                    if (definition["properties"].contains("type"))
+                        std::cout << definition["properties"]["type"] << "\n";
                     // Create a tile or other object based on its definition
                     if (definition["properties"].contains("type") && definition["properties"]["type"] == "Tile") {
                         std::cout << "Creating tile\n";
                         auto tile = GameObjectFactory::createTileCustom(
                             definition["file"],
-                            x,
-                            y,
-                            definition["size_width"],
-                            definition["size_height"]
+                            Vec2(x, y),
+                            Vec2(definition["length"], definition["width"]),
+                            Vec2(definition["size_width"], definition["size_height"]),
+                            Vec2(definition["top_left_x"], definition["top_left_y"])
                         );
-                        std::cout << "Created tile\n";
-                        sceneTree->addChild(tile, true);
-
+                        std::cout << "Created tile with dimensions: " << definition["size_width"] << " x " << definition["size_height"] << "\n";
                         std::cout << "Added tile: " << name << " at (" << x << ", " << y << ")\n";
+                        sceneTree->addChild(tile, true);
+                    }
+
+                    if (definition["properties"].contains("type") && definition["properties"]["type"] == "Wall") {
+                        std::cout << "Creating wall\n";
+                        auto wall = GameObjectFactory::createTileCustom(
+                            definition["file"],
+                            Vec2(x, y),
+                            Vec2(definition["length"], definition["width"]),
+                            Vec2(definition["size_width"], definition["size_height"]),
+                            Vec2(definition["top_left_x"], definition["top_left_y"])
+                        );
+                        std::cout << "Created wall with dimensions: " << definition["size_width"] << " x " << definition["size_height"] << "\n";
+                        std::cout << "Added wall: " << name << " at (" << x << ", " << y << ")\n";
+                        sceneTree->addChild(wall, true);
                     }
                     // Add additional logic for other object types later...
 

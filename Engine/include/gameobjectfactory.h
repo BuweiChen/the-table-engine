@@ -8,6 +8,7 @@
  */
 
 #include "gameobject.h"
+#include "vec2.h"
 #include <string>
 
 /**
@@ -57,8 +58,7 @@ public:
      * @return GameObject* Pointer to the newly created tile object.
      */
     static GameObject* createTile1();
-
-    static GameObject* createTileCustom(std::string path, int pos_x, int pos_y, int size_x, int size_y);
+    static GameObject* createTileCustom(std::string path, Vec2 pos, Vec2 size, Vec2 sprite_size, Vec2 sprite_pos);
 
     /**
      * @brief Creates a key object.

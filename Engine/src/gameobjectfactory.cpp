@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "gameobjectfactory.h"
 
 #include "texture.h"
@@ -187,18 +189,23 @@ GameObject* GameObjectFactory::createTile1()
     return tile;
 }
 
-GameObject* GameObjectFactory::createTileCustom(std::string path, int pos_x, int pos_y, int size_x, int size_y)
+GameObject* GameObjectFactory::createTileCustom(std::string path, Vec2 pos, Vec2 size, Vec2 sprite_size, Vec2 sprite_pos)
 {
     GameObject* tile = new GameObject("Tile");
 
     SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture(path);
     auto texture = new Texture(sdl_texture);
-    texture->setSizeInSpriteMap(size_x, size_y);
+    std::cout << "Sprite size: " << sprite_size.x << ", " << sprite_size.y << std::endl;
+    std::cout << "Sprite pos: " << sprite_pos.x << ", " << sprite_pos.y << std::endl;
+    std::cout << "Size: " << size.x << ", " << size.y << std::endl;
+    std::cout << "Pos: " << pos.x << ", " << pos.y << std::endl;
+    texture->setSizeInSpriteMap(sprite_size.x, sprite_size.y);
+    texture->setPositionInSpriteMap(sprite_pos.x, sprite_size.y);
     tile->addComponent<Texture>(texture);
 
     auto transform = new Transform();
-    transform->setWorldSize(size_x, size_y);
-    transform->setWorldPosition(pos_x, pos_y);
+    transform->setWorldSize(size.x, size.y);
+    transform->setWorldPosition(pos.x, pos.y);
     tile->addComponent<Transform>(transform);
 
     return tile;
