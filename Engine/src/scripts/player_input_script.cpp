@@ -1,9 +1,16 @@
+<<<<<<< Updated upstream:Engine/src/scripts/player_input_script.cpp
+
 // player_input_script.cpp
 #include "player_input_script.h"
+=======
+#include "player_test_script.h"
+>>>>>>> Stashed changes:Engine/src/scripts/player_test_script.cpp
+
 #include "input.h"
 #include "transform.h"
 #include "texture.h"
 #include "collide.h"
+#include "health.h"
 #include "gameobject.h"
 #include "gameobjectfactory.h"
 #include "scenemanager.h"
@@ -87,12 +94,14 @@ void PlayerInputScript::update() {
 
     texture->setFlipHorizontal(dx < 0);
 
-    // // prevent hitting enemies
-    // auto enemies = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Warrior");
-    // for (auto enemy : enemies) {
-    //     auto enemyCollide = enemy->getComponent<Collide>();
-    //     collide->preventCollision(enemyCollide, dx, dy);
-    // }
+    // decrement health after collision with enemy
+    auto enemies = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Warrior");
+    for (auto enemy : enemies) {
+         auto enemyCollide = enemy->getComponent<Collide>();
+         if (collide->isColliding(enemyCollide)) {
+            health->updateHealth(-100);
+         }
+    }
 
     // prevent hitting walls
     auto walls = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Wall");
