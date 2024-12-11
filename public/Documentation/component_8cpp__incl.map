@@ -1,0 +1,14 @@
+<map id="Engine/src/component.cpp" name="Engine/src/component.cpp">
+<area shape="rect" id="node1" title=" " alt="" coords="43,5,236,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="60,229,118,256"/>
+<area shape="rect" id="node3" title=" " alt="" coords="316,80,396,107"/>
+<area shape="rect" id="node4" href="$component_8h.html" title="Defines the Component base class for all components in the game engine." alt="" coords="21,155,128,181"/>
+<area shape="rect" id="node5" href="$gameobject_8h.html" title=" " alt="" coords="180,80,291,107"/>
+<area shape="rect" id="node6" title=" " alt="" coords="344,155,410,181"/>
+<area shape="rect" id="node7" title=" " alt="" coords="412,229,475,256"/>
+<area shape="rect" id="node8" href="$script_8h.html" title="Defines the Script class for attaching behavior to game objects." alt="" coords="152,155,223,181"/>
+<area shape="rect" id="node9" href="$scene_8h.html" title="Defines the SceneNode and SceneTree classes for managing game objects within scenes." alt="" coords="248,155,320,181"/>
+<area shape="rect" id="node12" title=" " alt="" coords="485,155,581,181"/>
+<area shape="rect" id="node10" title=" " alt="" coords="150,229,236,256"/>
+<area shape="rect" id="node11" title=" " alt="" coords="260,229,384,256"/>
+</map>
