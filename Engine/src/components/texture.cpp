@@ -67,3 +67,7 @@ void Texture::render() {
 
     SDL_RenderCopyEx(m_renderer, m_texture, m_spriteClip, rect, m_angle, NULL, flip);
 }
+
+void Texture::setColorMod(const SDL_Color& color) {
+    SDL_SetTextureColorMod(m_texture, color.r, color.g, color.b);
+}

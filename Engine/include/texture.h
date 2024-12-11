@@ -33,4 +33,7 @@ public:
     virtual void setAngle(float angle);
     virtual void update() override;
     virtual void render() override;
+
+    void setColorMod(const SDL_Color& color);
+
 };

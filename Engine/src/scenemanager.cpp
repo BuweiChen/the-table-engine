@@ -118,6 +118,9 @@ void SceneManager::loadScenesFromJSON(const std::string& filePath) {
 
             m_sceneTrees.push_back(sceneTree);
             std::cout<< "Loaded scene\n";
+
+            GameObject* crosshair = GameObjectFactory::createCrosshair(); // Assuming this method exists in GameObjectFactory
+            sceneTree->addChild(crosshair);
         }
     } else {
         std::cerr << "No levels found in JSON file.\n";
@@ -179,6 +182,9 @@ SceneTree* SceneManager::createSceneTest1() {
         sceneTree->addChild(enemy);
     }
 
+    GameObject* crosshair = GameObjectFactory::createCrosshair(); // Assuming this method exists in GameObjectFactory
+    sceneTree->addChild(crosshair);
+
     return sceneTree;
 }
 
@@ -214,6 +220,9 @@ SceneTree* SceneManager::createSceneTest2() {
         sceneTree->addChild(enemy);
     }
 
+    GameObject* crosshair = GameObjectFactory::createCrosshair(); // Assuming this method exists in GameObjectFactory
+    sceneTree->addChild(crosshair);
+
     return sceneTree;
 }
 
@@ -248,6 +257,9 @@ SceneTree* SceneManager::createSceneTest3() {
         enemy->getComponent<Transform>()->setWorldPosition(100 + i * 50, 100);
         sceneTree->addChild(enemy);
     }
+
+    GameObject* crosshair = GameObjectFactory::createCrosshair(); // Assuming this method exists in GameObjectFactory
+    sceneTree->addChild(crosshair);
 
     return sceneTree;
 }
