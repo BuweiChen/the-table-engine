@@ -8,7 +8,7 @@ command -v pip3 &>/dev/null || { echo "Installing Pip..."; sudo apt-get install 
 pip3 install Pillow tk
 
 # Navigate to the directory containing main.py, adjust the path as necessary
-cd Engine_GUI
+cd ../Engine_GUI
 
 # Run the Python script
 python3 main.py

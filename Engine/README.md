@@ -7,8 +7,9 @@
 **Project Website**: https://kli63.github.io/EngineDocs/
 
 ## Compilation Instructions
-
-*Please edit if there are any special build instructions beyond running `python3 build.py`*
+- `cd Engine`
+- `chmod +x run.sh`
+- `run.sh`
 
 ## Project Hieararchy
 
