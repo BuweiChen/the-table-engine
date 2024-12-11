@@ -9,6 +9,11 @@
 #include "component.h"
 #include "transform.h"
 
+/**
+ * @class Texture
+ * @brief Component for managing textures in the game engine.
+ * 
+ */
 class Texture : public Component {
 protected:
     SDL_Texture* m_texture;    ///< Pointer to the SDL_Texture object
