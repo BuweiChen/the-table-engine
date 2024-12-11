@@ -1,8 +1,8 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 import time
+from tkinter import simpledialog
 from PIL import Image, ImageTk
-from backend import export_json
 import json
 import os
 
@@ -290,9 +290,7 @@ class AddItemPopup(tk.Toplevel):
             "frames": frames,
             "properties": self.dynamic_properties,  # Include dynamic properties
         }
-
-        print(data)
-
+        
         self.parent.add_item_callback(
             self.item_type, data, self.existing_data is not None
         )
@@ -565,7 +563,7 @@ class LevelEditorApp(tk.Tk):
         # File
         self.file = tk.Menu(self.menubar, tearoff=0)
         self.menubar.add_cascade(label="File", menu=self.file)
-        self.file.add_command(label="Export", command=None)
+        self.file.add_command(label="Export", command=self.export)
 
         self.config(menu=self.menubar)
 
@@ -931,11 +929,61 @@ class LevelEditorApp(tk.Tk):
             self.levels_listbox.selection_set(new_idx)
             self.switch_level()
 
-    def export():
-        export_json()
+    def export(self):
+        """Export the project data as a JSON file."""
+        # Ask the user for a file name
+        file_name = simpledialog.askstring(
+            "Export Project",
+            "Enter a name for the export file (without extension):",
+        )
+        if not file_name:
+            messagebox.showerror("Export Failed", "File name cannot be empty.")
+            return
 
-    def on_popup_close(self):
-        self.popup_window.destroy()
+        # Ensure the output directory exists
+        output_dir = os.path.join(os.path.dirname(__file__), "game_json_output")
+        os.makedirs(output_dir, exist_ok=True)
+
+        # Create the file path
+        file_path = os.path.join(output_dir, f"{file_name}.json")
+
+        # Helper function to remove the 'frames' field
+        def sanitize_object_data(objects):
+            sanitized = {}
+            for name, props in objects.items():
+                sanitized[name] = {key: value for key, value in props.items() if key != "frames"}
+            return sanitized
+
+        # Prepare the data for export
+        data = {
+            "object_definitions": {
+                "structures": sanitize_object_data(self.structures),
+                "entities": sanitize_object_data(self.entities),
+            },
+            "levels": [],
+        }
+
+        for level in self.levels:
+            level_data = {
+                "objects": []
+            }
+            for obj_name, x, y, img_id, _, _ in level["items"]:
+                level_data["objects"].append({
+                    "name": obj_name,
+                    "x": x,
+                    "y": y,
+                    "type": "structure" if obj_name in self.structures else "entity"
+                })
+            data["levels"].append(level_data)
+
+        # Save the JSON file
+        try:
+            with open(file_path, "w") as f:
+                json.dump(data, f, indent=4)
+            messagebox.showinfo("Export Successful", f"Project exported to {file_path}")
+        except Exception as e:
+            messagebox.showerror("Export Failed", f"Failed to save project: {e}")
+
 
 
 if __name__ == "__main__":

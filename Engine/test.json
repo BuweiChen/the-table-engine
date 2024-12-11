@@ -1,0 +1,17 @@
+{
+    "object_definitions": {
+        "structures": {
+            "tree": {
+                "name": "tree",
+                "file": "/Users/buweichen/repos/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/Assets/PixelCrawler/Environment/GreenWoods/Assets/Props.bmp",
+                "columns": 1,
+                "rows": 1,
+                "animation_time": 100,
+                "length": 32,
+                "width": 32,
+                "top_left_x": 0,
+                "top_left_y": 0,
+                "size_width": 400,
+                "size_height": 400,
+                "frames": [
+                    
