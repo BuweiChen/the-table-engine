@@ -1,10 +1,5 @@
-<<<<<<< Updated upstream:Engine/src/scripts/player_input_script.cpp
-
 // player_input_script.cpp
 #include "player_input_script.h"
-=======
-#include "player_test_script.h"
->>>>>>> Stashed changes:Engine/src/scripts/player_test_script.cpp
 
 #include "input.h"
 #include "transform.h"
