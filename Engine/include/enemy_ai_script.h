@@ -34,4 +34,12 @@ public:
      * the enemy's actions based on its surroundings and internal state.
      */
     void update() override;
+
+    /**
+     * @brief Renders the enemy AI behavior.
+     * 
+     * This method is called once per frame after the update method, and should
+     * include any rendering logic specific to the enemy AI.
+     */
+    void render() override;
 };

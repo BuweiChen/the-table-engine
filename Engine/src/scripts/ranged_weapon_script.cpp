@@ -1,4 +1,6 @@
+#include <iostream>
 #include <cmath>
+
 #include "ranged_weapon_script.h"
 #include "gameobject.h"
 #include "input.h"
@@ -54,6 +56,8 @@ void RangedWeaponScript::update() {
 
         auto sceneTree = SceneManager::getInstance().getSceneTree();
         sceneTree->addChild(arrow);
+        static int arrowCount = 0;
+        arrowCount++;
 
         m_shoot = false;
     }

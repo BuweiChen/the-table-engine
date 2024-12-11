@@ -228,19 +228,21 @@ class AddItemPopup(tk.Toplevel):
         width = self.width_var.get()
 
         editing = self.existing_data is not None
+        print(self.item_type)
+        item_type = self.parent.structures if self.item_type == "structure" else self.parent.entities
 
         if editing:
             old_name = self.existing_data["name"] if self.existing_data else ""
-            if name != old_name and name in self.parent.structures:
+            if name != old_name and name in item_type:
                 messagebox.showerror(
                     "Error", "A gameobject with that name already exists."
                 )
                 return
-            elif name in self.parent.entities:
-                messagebox.showerror(
-                    "Error", "A gameobject with that name already exists."
-                )
-                return
+        elif name in self.parent.entities:
+            messagebox.showerror(
+                "Error", "A gameobject with that name already exists."
+            )
+            return
         elif name in self.parent.structures:
             messagebox.showerror("Error", "A gameobject with that name already exists.")
             return

@@ -31,7 +31,7 @@ GameObject* GameObjectFactory::createPlayerTest()
     auto input = new Input();
     player->addComponent<Input>(input);
 
-    auto health = new Health();
+    auto health = new Health(1000);
     player->addComponent<Health>(health);
 
     auto playerMovement = new PlayerInputScript();
@@ -121,6 +121,9 @@ GameObject* GameObjectFactory::createEnemyWarrior()
     transform->setWorldSize(80, 80);
     transform->setWorldPosition(50, 50);
     enemy->addComponent<Transform>(transform);
+
+    auto health = new Health(200);
+enemy->addComponent<Health>(health);
 
     auto enemyAI = new EnemyAIScript();
     enemy->addScript<EnemyAIScript>(enemyAI);

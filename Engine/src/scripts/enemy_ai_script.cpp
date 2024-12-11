@@ -4,6 +4,7 @@
 #include "scenemanager.h"
 #include "gameobject.h"
 #include "transform.h"
+#include "health.h"
 #include "collide.h"
 #include "texture.h"
 
@@ -46,4 +47,21 @@ void EnemyAIScript::update() {
     // collide->preventCollision(playerCollide, dx, dy);
 
     transform->updateWorldPosition(dx, dy);
+}
+
+void EnemyAIScript::render() {
+    // place a health bar above the enemy
+    auto transform = m_owner->getComponent<Transform>();
+    Vec2 screenPos = transform->getScreenPosition();
+    Vec2 screenSize = transform->getScreenSize();
+    
+    auto health = m_owner->getComponent<Health>();
+    int health_width = (int) (20.0 * health->getHealth() / 200);
+    SDL_Rect rect = {(int) (screenPos.x + screenSize.x / 2) - 10, (int) (screenPos.y + screenSize.y / 2) - 8, health_width, 6};
+    SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 255, 0, 0, 255);
+    SDL_RenderFillRect(SceneManager::getInstance().getRenderer(), &rect);
+    // draw a border around the health bar
+    rect = {(int) (screenPos.x + screenSize.x / 2) - 10, (int) (screenPos.y + screenSize.y / 2) - 8, 20, 6};
+    SDL_SetRenderDrawColor(SceneManager::getInstance().getRenderer(), 0, 0, 0, 255);
+    SDL_RenderDrawRect(SceneManager::getInstance().getRenderer(), &rect);
 }
