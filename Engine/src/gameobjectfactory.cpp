@@ -9,8 +9,7 @@
 #include "player_input_script.h"
 #include "projectile_script.h"
 #include "enemy_ai_script.h"
-#include "collide_test_script.h"
-#include "collide_script.h"
+#include "collision_script.h"
 #include "ranged_weapon_script.h"
 
 GameObject* GameObjectFactory::createPlayerTest() 
@@ -127,8 +126,8 @@ GameObject* GameObjectFactory::createEnemyWarrior()
     enemyCollide->setTransformOffset(transform->getScreenSize().x * 0.3, transform->getScreenSize().y * 0.45);
     enemy->addComponent<Collide>(enemyCollide);
 
-    auto collideTest = new CollideTestScript();
-    enemy->addScript<CollideTestScript>(collideTest);
+    auto collideTest = new CollisionScript();
+    enemy->addScript<CollisionScript>(collideTest);
 
     return enemy;
 }

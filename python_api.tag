@@ -19,8 +19,7 @@
     <includes id="gameobjectfactory_8h" name="gameobjectfactory.h" local="yes" imported="no">gameobjectfactory.h</includes>
     <includes id="projectile__script_8h" name="projectile_script.h" local="yes" imported="no">projectile_script.h</includes>
     <includes id="ranged__weapon__script_8h" name="ranged_weapon_script.h" local="yes" imported="no">ranged_weapon_script.h</includes>
-    <includes id="collide__script_8h" name="collide_script.h" local="yes" imported="no">collide_script.h</includes>
-    <includes id="collide__test__script_8h" name="collide_test_script.h" local="yes" imported="no">collide_test_script.h</includes>
+    <includes id="collision__script_8h" name="collision_script.h" local="yes" imported="no">collision_script.h</includes>
     <includes id="enemy__ai__script_8h" name="enemy_ai_script.h" local="yes" imported="no">enemy_ai_script.h</includes>
     <includes id="player__input__script_8h" name="player_input_script.h" local="yes" imported="no">player_input_script.h</includes>
   </compound>
@@ -45,19 +44,12 @@
     <class kind="class">Collide</class>
   </compound>
   <compound kind="file">
-    <name>collide_script.h</name>
+    <name>collision_script.h</name>
     <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/include/</path>
-    <filename>collide__script_8h.html</filename>
-    <includes id="script_8h" name="script.h" local="yes" imported="no">script.h</includes>
-    <class kind="class">CollideScript</class>
-  </compound>
-  <compound kind="file">
-    <name>collide_test_script.h</name>
-    <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/include/</path>
-    <filename>collide__test__script_8h.html</filename>
+    <filename>collision__script_8h.html</filename>
     <includes id="script_8h" name="script.h" local="yes" imported="no">script.h</includes>
     <includes id="collide_8h" name="collide.h" local="yes" imported="no">collide.h</includes>
-    <class kind="class">CollideTestScript</class>
+    <class kind="class">CollisionScript</class>
   </compound>
   <compound kind="file">
     <name>component.h</name>
@@ -269,8 +261,7 @@
     <includes id="player__input__script_8h" name="player_input_script.h" local="yes" imported="no">player_input_script.h</includes>
     <includes id="projectile__script_8h" name="projectile_script.h" local="yes" imported="no">projectile_script.h</includes>
     <includes id="enemy__ai__script_8h" name="enemy_ai_script.h" local="yes" imported="no">enemy_ai_script.h</includes>
-    <includes id="collide__test__script_8h" name="collide_test_script.h" local="yes" imported="no">collide_test_script.h</includes>
-    <includes id="collide__script_8h" name="collide_script.h" local="yes" imported="no">collide_script.h</includes>
+    <includes id="collision__script_8h" name="collision_script.h" local="yes" imported="no">collision_script.h</includes>
     <includes id="ranged__weapon__script_8h" name="ranged_weapon_script.h" local="yes" imported="no">ranged_weapon_script.h</includes>
   </compound>
   <compound kind="file">
@@ -304,10 +295,10 @@
     <includes id="script_8h" name="script.h" local="yes" imported="no">script.h</includes>
   </compound>
   <compound kind="file">
-    <name>collide_test_script.cpp</name>
+    <name>collision_script.cpp</name>
     <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/src/scripts/</path>
-    <filename>collide__test__script_8cpp.html</filename>
-    <includes id="collide__test__script_8h" name="collide_test_script.h" local="yes" imported="no">collide_test_script.h</includes>
+    <filename>collision__script_8cpp.html</filename>
+    <includes id="collision__script_8h" name="collision_script.h" local="yes" imported="no">collision_script.h</includes>
     <includes id="scenemanager_8h" name="scenemanager.h" local="yes" imported="no">scenemanager.h</includes>
     <includes id="gameobject_8h" name="gameobject.h" local="yes" imported="no">gameobject.h</includes>
     <includes id="collide_8h" name="collide.h" local="yes" imported="no">collide.h</includes>
@@ -725,54 +716,35 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>CollideScript</name>
-    <filename>classCollideScript.html</filename>
+    <name>CollisionScript</name>
+    <filename>classCollisionScript.html</filename>
     <base>Script</base>
     <member kind="function">
       <type></type>
-      <name>CollideScript</name>
-      <anchorfile>classCollideScript.html</anchorfile>
-      <anchor>a24a00047c1263d556aa3789eede0a34a</anchor>
+      <name>CollisionScript</name>
+      <anchorfile>classCollisionScript.html</anchorfile>
+      <anchor>a33f44ea67b6979ba73399558888383ad</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>update</name>
-      <anchorfile>classCollideScript.html</anchorfile>
-      <anchor>a89b153199cca0f45643684332dbde86f</anchor>
-      <arglist>() override</arglist>
-    </member>
-  </compound>
-  <compound kind="class">
-    <name>CollideTestScript</name>
-    <filename>classCollideTestScript.html</filename>
-    <base>Script</base>
-    <member kind="function">
-      <type></type>
-      <name>CollideTestScript</name>
-      <anchorfile>classCollideTestScript.html</anchorfile>
-      <anchor>adecfc8503e499df29d6894e9e147e2be</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>update</name>
-      <anchorfile>classCollideTestScript.html</anchorfile>
-      <anchor>afea0afa0c6859b59749f1444bc771544</anchor>
+      <anchorfile>classCollisionScript.html</anchorfile>
+      <anchor>a355e76ff76f021d2a97e655fc4b635e0</anchor>
       <arglist>() override</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>render</name>
-      <anchorfile>classCollideTestScript.html</anchorfile>
-      <anchor>a0153fff823256f8fd64f93af6a8316d8</anchor>
+      <anchorfile>classCollisionScript.html</anchorfile>
+      <anchor>a4d296cc9fe63d927f5935b11ff2e6bbe</anchor>
       <arglist>() override</arglist>
     </member>
     <member kind="variable" protection="private">
       <type>bool</type>
       <name>m_collide</name>
-      <anchorfile>classCollideTestScript.html</anchorfile>
-      <anchor>afe5a698051e889770f33e8d1b42bcee0</anchor>
+      <anchorfile>classCollisionScript.html</anchorfile>
+      <anchor>af1cb94f8fb00ed80b62b7917ba1eb958</anchor>
       <arglist></arglist>
     </member>
   </compound>

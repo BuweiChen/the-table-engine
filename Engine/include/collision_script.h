@@ -2,12 +2,12 @@
 #include "collide.h"
 
 
-class CollideTestScript : public Script {
+class CollisionScript : public Script {
 
     private:
         bool m_collide;
     public:
-        CollideTestScript();
+        CollisionScript();
         void update() override;
         void render() override;
 };

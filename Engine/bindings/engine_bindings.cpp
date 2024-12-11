@@ -19,8 +19,7 @@
 
 #include "projectile_script.h"
 #include "ranged_weapon_script.h"
-#include "collide_script.h"
-#include "collide_test_script.h"
+#include "collision_script.h"
 #include "enemy_ai_script.h"
 #include "player_input_script.h"
 
@@ -409,16 +408,16 @@ PYBIND11_MODULE(engine, m) {
         .def("input", &Bow_script::input)
         .def("update", &Bow_script::update);
 
-    // // Bind CollideScript (collide_script.h)
+    // // Bind CollideScript (collision_script.h)
     // py::class_<CollideScript, Script>(m, "CollideScript")
     //     .def(py::init<>())
     //     .def("update", &CollideScript::update);
 
-    // Bind CollideTestScript (collide_test_script.h)
-    py::class_<CollideTestScript, Script>(m, "CollideTestScript")
+    // Bind CollisionScript (collision_script.h)
+    py::class_<CollisionScript, Script>(m, "CollisionScript")
         .def(py::init<>())
-        .def("update", &CollideTestScript::update)
-        .def("render", &CollideTestScript::render);
+        .def("update", &CollisionScript::update)
+        .def("render", &CollisionScript::render);
 
     // Bind EnemyAIScript (enemy_ai_script.h)
     py::class_<EnemyAIScript, Script>(m, "EnemyAIScript")

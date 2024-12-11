@@ -1,16 +1,16 @@
 #include <iostream>
 
-#include "collide_test_script.h"
+#include "collision_script.h"
 #include "scenemanager.h"
 #include "gameobject.h"
 #include "collide.h"
 #include "texture.h"
 
-CollideTestScript::CollideTestScript() {
+CollisionScript::CollisionScript() {
     m_collide = false;
 }
 
-void CollideTestScript::update() {
+void CollisionScript::update() {
     auto collide = m_owner->getComponent<Collide>();
     
     auto players = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Player");
@@ -30,7 +30,7 @@ void CollideTestScript::update() {
     }
 }
 
-void CollideTestScript::render() {
+void CollisionScript::render() {
     auto collide = m_owner->getComponent<Collide>();
     if (collide == nullptr) return;
 
