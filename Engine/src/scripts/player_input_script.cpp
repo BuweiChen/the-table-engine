@@ -88,7 +88,7 @@ void PlayerInputScript::update() {
     for (auto enemy : SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Warrior")) {
         auto enemyCollide = enemy->getComponent<Collide>();
         if (collide->isColliding(enemyCollide)) {
-            health->updateHealth(-1);
+            health->updateHealth(-10);
         }
     }
 }

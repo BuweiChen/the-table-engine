@@ -87,6 +87,8 @@ class SceneManager
          * @return Pointer to the created SceneTree.
          */
         SceneTree* createSceneTest1();
+        SceneTree* createSceneTest2();
+        SceneTree* createSceneTest3();
 
         /**
          * @brief Processes input for the current scene.

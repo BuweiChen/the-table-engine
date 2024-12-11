@@ -150,6 +150,12 @@ public:
      */
     std::vector<GameObject*> findGameObjectsByTag(std::string tag);
 
+    /**
+     * @brief Retrieves the current game status.
+     * @return String representing the current game status.
+     */
+    int gameStatus();
+
 private:
     SceneNode* m_root;
     std::unordered_map<std::string, GameObject*> m_cachedGameObjects; // Cache for faster lookup of GameObjects.

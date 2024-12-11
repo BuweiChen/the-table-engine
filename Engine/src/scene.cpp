@@ -3,6 +3,7 @@
 #include <iostream>
 
 #include "scene.h"
+#include "health.h"
 #include "gameobject.h"
 
 // Scene Node
@@ -127,4 +128,21 @@ std::vector<GameObject*> SceneTree::findGameObjectsByTag(std::string tag) {
         m_cachedGameObjects[tag] = taggedGameObjects[0];
     }
     return taggedGameObjects;
+}
+
+int SceneTree::gameStatus() {
+    // check if player is dead
+    auto players = SceneTree::findGameObjectsByTag("Player");
+    auto health = players[0]->getComponent<Health>();
+    if (health->getHealth() <= 0) {
+        return -1;
+    }
+    // check if all enemies and keys are collected
+    auto enemies = SceneTree::findGameObjectsByTag("Warrior");
+    auto keys = SceneTree::findGameObjectsByTag("Key");
+    if (enemies.empty() && keys.empty()) {
+        return 1;
+    }
+    // game is still running
+    return 0;
 }
