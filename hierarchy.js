@@ -17,8 +17,7 @@ var hierarchy =
     [ "SceneTree", "classSceneTree.html", null ],
     [ "Script", "classScript.html", [
       [ "Bow_script", "classBow__script.html", null ],
-      [ "CollideScript", "classCollideScript.html", null ],
-      [ "CollideTestScript", "classCollideTestScript.html", null ],
+      [ "CollisionScript", "classCollisionScript.html", null ],
       [ "EnemyAIScript", "classEnemyAIScript.html", null ],
       [ "PlayerInputScript", "classPlayerInputScript.html", null ],
       [ "ProjectileScript", "classProjectileScript.html", null ]

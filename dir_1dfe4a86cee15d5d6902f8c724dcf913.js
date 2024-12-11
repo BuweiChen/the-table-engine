@@ -6,11 +6,8 @@ var dir_1dfe4a86cee15d5d6902f8c724dcf913 =
     [ "collide.h", "collide_8h.html", [
       [ "Collide", "classCollide.html", "classCollide" ]
     ] ],
-    [ "collide_script.h", "collide__script_8h.html", [
-      [ "CollideScript", "classCollideScript.html", "classCollideScript" ]
-    ] ],
-    [ "collide_test_script.h", "collide__test__script_8h.html", [
-      [ "CollideTestScript", "classCollideTestScript.html", "classCollideTestScript" ]
+    [ "collision_script.h", "collision__script_8h.html", [
+      [ "CollisionScript", "classCollisionScript.html", "classCollisionScript" ]
     ] ],
     [ "component.h", "component_8h.html", [
       [ "Component", "classComponent.html", "classComponent" ]

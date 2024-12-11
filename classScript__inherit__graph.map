@@ -1,9 +1,8 @@
 <map id="Script" name="Script">
-<area shape="rect" id="node1" title="Base class for scripting custom behaviors in game objects." alt="" coords="463,5,574,215"/>
+<area shape="rect" id="node1" title="Base class for scripting custom behaviors in game objects." alt="" coords="381,5,491,215"/>
 <area shape="rect" id="node2" href="$classBow__script.html" title=" " alt="" coords="5,263,176,428"/>
-<area shape="rect" id="node3" href="$classCollideScript.html" title=" " alt="" coords="201,299,330,391"/>
-<area shape="rect" id="node4" href="$classCollideTestScript.html" title=" " alt="" coords="355,292,509,399"/>
-<area shape="rect" id="node5" href="$classEnemyAIScript.html" title=" " alt="" coords="534,299,677,391"/>
-<area shape="rect" id="node6" href="$classPlayerInputScript.html" title=" " alt="" coords="701,270,872,421"/>
-<area shape="rect" id="node7" href="$classProjectileScript.html" title=" " alt="" coords="897,292,1042,399"/>
+<area shape="rect" id="node3" href="$classCollisionScript.html" title=" " alt="" coords="201,292,341,399"/>
+<area shape="rect" id="node4" href="$classEnemyAIScript.html" title=" " alt="" coords="365,299,507,391"/>
+<area shape="rect" id="node5" href="$classPlayerInputScript.html" title=" " alt="" coords="532,270,703,421"/>
+<area shape="rect" id="node6" href="$classProjectileScript.html" title=" " alt="" coords="727,292,873,399"/>
 </map>
