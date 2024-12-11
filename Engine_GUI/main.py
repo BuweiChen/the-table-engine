@@ -449,6 +449,11 @@ class GameObjectPropertiesPopup(tk.Toplevel):
         )
         tk.Button(btn_frame, text="Cancel", command=self.destroy).pack(side="right")
 
+        # Automatically populate fields if type is already selected
+        if "type" in self.parent.dynamic_properties:
+            self.selected_type.set(self.parent.dynamic_properties["type"])
+            self.update_dynamic_fields()
+
     def load_config(self):
         """Load the configuration file."""
         if not os.path.exists(self.config_file):
@@ -487,11 +492,6 @@ class GameObjectPropertiesPopup(tk.Toplevel):
         dropdown.pack(fill="x", padx=10, pady=5)
         dropdown.bind("<<ComboboxSelected>>", self.update_dynamic_fields)
 
-        # Pre-select the type if already set
-        if "type" in self.parent.dynamic_properties:
-            self.selected_type.set(self.parent.dynamic_properties["type"])
-            self.update_dynamic_fields()
-
     def update_dynamic_fields(self, event=None):
         """Update the fields based on the selected type."""
         # Clear the current fields
@@ -505,7 +505,9 @@ class GameObjectPropertiesPopup(tk.Toplevel):
 
         # Populate fields for the selected type
         properties = self.config_data[self.object_type][selected_type]
-        prepopulated_data = self.parent.dynamic_properties.get(selected_type, {})
+        prepopulated_data = self.parent.dynamic_properties.get("data", {}).get(
+            selected_type, {}
+        )
         for prop_name, prop_type in properties.items():
             field_frame = tk.Frame(self.dynamic_frame)
             field_frame.pack(fill="x", padx=10, pady=5)
@@ -563,16 +565,30 @@ class GameObjectPropertiesPopup(tk.Toplevel):
     def confirm(self):
         """Confirm the selection and store data."""
         selected_type = self.selected_type.get()
-        properties = {"type": selected_type}
 
+        if not selected_type:
+            messagebox.showerror("Error", "Please select a type.")
+            return
+
+        # Initialize or update the dynamic_properties dictionary
+        if "data" not in self.parent.dynamic_properties:
+            self.parent.dynamic_properties["data"] = {}
+
+        # Store the selected type
+        self.parent.dynamic_properties["type"] = selected_type
+
+        # Collect the field values for the selected type
+        properties = {}
         for key, value in self.fields.items():
             if isinstance(value, dict):  # Handle nested dictionary for checkboxes
                 properties[key] = {sub_key: var.get() for sub_key, var in value.items()}
             else:
                 properties[key] = value.get()
 
-        # Pass the properties back to the parent popup
-        self.parent.dynamic_properties = {selected_type: properties}
+        # Save the properties under the selected type
+        self.parent.dynamic_properties["data"][selected_type] = properties
+
+        # Close the popup
         self.destroy()
 
 
@@ -859,7 +875,7 @@ class LevelEditorApp(tk.Tk):
                 snapped_y = round(canvas_y / grid_size) * grid_size
 
                 # Ensure snapped coordinates are within bounds
-                if 0 <= snapped_x <= 800 and 0 <= snapped_y <= 800:
+                if 0 <= canvas_x <= 800 and 0 <= canvas_x <= 800:
                     # Place the final image at the snapped position
                     img_id = canvas.create_image(
                         snapped_x, snapped_y, image=self.drag_data["image"], anchor="nw"
@@ -914,6 +930,7 @@ class LevelEditorApp(tk.Tk):
         level_frame = tk.Frame(self.center_frame, width=800, height=800, bg="white")
         level_frame.place(x=0, y=0)
         canvas = tk.Canvas(level_frame, bg="white", width=800, height=800)
+        canvas.bind("<Button-1>", self.delete_gameobject)
         canvas.pack(fill="both", expand=True)
 
         # Draw grid
@@ -1021,6 +1038,26 @@ class LevelEditorApp(tk.Tk):
         except Exception as e:
             messagebox.showerror("Export Failed", f"Failed to save project: {e}")
 
+    def delete_gameobject(self, event):
+        if self.current_level_index < 0:
+            return
+
+        # don't delete the grid
+        if event.x % 32 == 0 or event.y % 32 == 0:
+            return
+        
+        level_data = self.levels[self.current_level_index]
+        canvas = level_data["canvas"]
+        x, y = event.x, event.y
+        items = canvas.find_overlapping(x, y, x, y)
+        for item in items:
+            canvas.delete(item)
+            # Remove the item from the level data
+            new_items = []
+            for itm_name, x, y, img_id, _, _ in level_data["items"]:
+                if img_id != item:
+                    new_items.append((itm_name, x, y, img_id, 0, 0))
+            level_data["items"] = new_items
 
 if __name__ == "__main__":
     app = LevelEditorApp()
