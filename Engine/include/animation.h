@@ -31,6 +31,12 @@ public:
      */
     Animation(SDL_Texture* texture);
 
+    int getRows();
+
+    int getCols();
+
+    int getNumFrames();
+
     /**
      * @brief Sets whether the animation should start playing automatically.
      * @param autoplay True to start playing immediately, false to start paused

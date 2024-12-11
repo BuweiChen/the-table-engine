@@ -11,7 +11,7 @@
 #include "enemy_ai_script.h"
 #include "collide_test_script.h"
 #include "collide_script.h"
-#include "bow_script.h"
+#include "ranged_weapon_script.h"
 
 GameObject* GameObjectFactory::createPlayerTest() 
 {

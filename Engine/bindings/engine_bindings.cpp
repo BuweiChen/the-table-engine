@@ -18,7 +18,7 @@
 #include "gameobjectfactory.h"
 
 #include "arrow_test_script.h"
-#include "bow_script.h"
+#include "ranged_weapon_script.h"
 #include "collide_script.h"
 #include "collide_test_script.h"
 #include "enemy_ai_script.h"
@@ -403,7 +403,7 @@ PYBIND11_MODULE(engine, m) {
         .def(py::init<float, float>())
         .def("update", &ArrowTestScript::update);
 
-    // Bind Bow_script (bow_script.h)
+    // Bind Bow_script (ranged_weapon_script.h)
     py::class_<Bow_script, Script>(m, "Bow_script")
         .def(py::init<>())
         .def("input", &Bow_script::input)

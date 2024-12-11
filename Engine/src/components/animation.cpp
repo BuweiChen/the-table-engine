@@ -12,6 +12,18 @@ Animation::Animation(SDL_Texture* texture) : Texture(texture) {
     m_isPlaying = true;  // Default to playing for backward compatibility
 }
 
+int Animation::getRows() {
+    return m_rows;
+}
+
+int Animation::getCols() {
+    return m_cols;
+}
+
+int Animation::getNumFrames() {
+    return m_numFrames;
+}
+
 void Animation::setAutoPlay(bool autoplay) {
     m_isPlaying = autoplay;
     if (autoplay) {

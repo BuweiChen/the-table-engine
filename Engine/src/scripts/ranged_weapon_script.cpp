@@ -1,5 +1,5 @@
 #include <cmath>
-#include "bow_script.h"
+#include "ranged_weapon_script.h"
 #include "gameobject.h"
 #include "input.h"
 #include "gameobjectfactory.h"
@@ -21,8 +21,8 @@ void Bow_script::input() {
         if (m_owner->getComponent<Input>()->spacePressed && 
             (int)SDL_GetTicks() - m_lastFireTimeInMs > 1000 / m_fireRatePerSecond) {
             m_shoot = true;
-            animation->setFrame(0);  // Reset to first frame
-            animation->play();       // Start the animation
+            animation->setFrame(0);
+            animation->play(); 
             m_animationPlayed = false;
         }
     }
@@ -38,17 +38,13 @@ void Bow_script::update() {
     int dx = input->m_mouseX - bowX;
     int dy = input->m_mouseY - bowY;
 
-    float angle = std::atan2((float)dy, (float)dx) * (180.0f / (float)M_PI);
-    animation->setAngle(angle);
+    float angle = atan2(dy, dx) * (180.0f / M_PI);
 
-    animation->setFlipHorizontal(dx < 0);
-
-    // If animation has completed one cycle (reached last frame)
-    if (animation->isPlaying() && animation->getCurrentFrame() == 2 && !m_animationPlayed) {
-        animation->pause();
-        animation->setFrame(0);  // Reset to first frame
-        m_animationPlayed = true;
+    if (angle < 0) {
+        angle += 360.0f;
     }
+
+    animation->setAngle(angle);
 
     if (m_shoot) {
         m_lastFireTimeInMs = SDL_GetTicks();
@@ -60,5 +56,11 @@ void Bow_script::update() {
         sceneTree->addChild(arrow);
 
         m_shoot = false;
+    }
+
+    if (animation->isPlaying() && animation->getCurrentFrame() == (animation->getNumFrames() - 1) && !m_animationPlayed) {
+        animation->pause();
+        animation->setFrame(0);
+        m_animationPlayed = true;
     }
 }

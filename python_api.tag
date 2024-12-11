@@ -18,7 +18,7 @@
     <includes id="gameapp_8h" name="gameapp.h" local="yes" imported="no">gameapp.h</includes>
     <includes id="gameobjectfactory_8h" name="gameobjectfactory.h" local="yes" imported="no">gameobjectfactory.h</includes>
     <includes id="arrow__test__script_8h" name="arrow_test_script.h" local="yes" imported="no">arrow_test_script.h</includes>
-    <includes id="bow__script_8h" name="bow_script.h" local="yes" imported="no">bow_script.h</includes>
+    <includes id="bow__script_8h" name="ranged_weapon_script.h" local="yes" imported="no">ranged_weapon_script.h</includes>
     <includes id="collide__script_8h" name="collide_script.h" local="yes" imported="no">collide_script.h</includes>
     <includes id="collide__test__script_8h" name="collide_test_script.h" local="yes" imported="no">collide_test_script.h</includes>
     <includes id="enemy__ai__script_8h" name="enemy_ai_script.h" local="yes" imported="no">enemy_ai_script.h</includes>
@@ -37,7 +37,7 @@
     <class kind="class">ArrowTestScript</class>
   </compound>
   <compound kind="file">
-    <name>bow_script.h</name>
+    <name>ranged_weapon_script.h</name>
     <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/include/</path>
     <filename>bow__script_8h.html</filename>
     <includes id="script_8h" name="script.h" local="yes" imported="no">script.h</includes>
@@ -257,7 +257,7 @@
     <includes id="enemy__ai__script_8h" name="enemy_ai_script.h" local="yes" imported="no">enemy_ai_script.h</includes>
     <includes id="collide__test__script_8h" name="collide_test_script.h" local="yes" imported="no">collide_test_script.h</includes>
     <includes id="collide__script_8h" name="collide_script.h" local="yes" imported="no">collide_script.h</includes>
-    <includes id="bow__script_8h" name="bow_script.h" local="yes" imported="no">bow_script.h</includes>
+    <includes id="bow__script_8h" name="ranged_weapon_script.h" local="yes" imported="no">ranged_weapon_script.h</includes>
   </compound>
   <compound kind="file">
     <name>resourcemanager.cpp</name>
@@ -303,7 +303,7 @@
     <name>bow_script.cpp</name>
     <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/src/scripts/</path>
     <filename>bow__script_8cpp.html</filename>
-    <includes id="bow__script_8h" name="bow_script.h" local="yes" imported="no">bow_script.h</includes>
+    <includes id="bow__script_8h" name="ranged_weapon_script.h" local="yes" imported="no">ranged_weapon_script.h</includes>
     <includes id="gameobject_8h" name="gameobject.h" local="yes" imported="no">gameobject.h</includes>
     <includes id="input_8h" name="input.h" local="yes" imported="no">input.h</includes>
     <includes id="gameobjectfactory_8h" name="gameobjectfactory.h" local="yes" imported="no">gameobjectfactory.h</includes>
