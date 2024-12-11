@@ -30,6 +30,7 @@ SceneTree* SceneManager::getSceneTree() {
 }
 
 void SceneManager::loadDemo() {
+    isDemo = true;
     m_sceneTrees.push_back(createSceneTest1());
     m_sceneTrees.push_back(createSceneTest2());
     m_sceneTrees.push_back(createSceneTest3());
@@ -76,7 +77,8 @@ void SceneManager::loadScenesFromJSON(const std::string& filePath) {
                             Vec2(x, y),
                             Vec2(definition["length"], definition["width"]),
                             Vec2(definition["size_width"], definition["size_height"]),
-                            Vec2(definition["top_left_x"], definition["top_left_y"])
+                            Vec2(definition["top_left_x"], definition["top_left_y"]),
+                            Vec2(definition["rows"], definition["columns"])
                         );
                         std::cout << "Added tile: " << name << '\n' << " at (" << x << ", " << y << ")\n";
                         sceneTree->addChild(tile, true);
@@ -156,10 +158,10 @@ Vec2 SceneManager::getCameraWorldPosition() {
 }
 
 void SceneManager::getNextScene() {
-    int numScenes = static_cast<int>(m_sceneTrees.size());
+    // int numScenes = static_cast<int>(m_sceneTrees.size());
     if (m_currentSceneIndex < static_cast<int>(m_sceneTrees.size()) - 1) {
         m_currentSceneIndex++;
-    } else if (numScenes != 1) {
+    } else {
         std::cout << "Finished all scenes.\n";
         exit(0);
         // std::cerr << "No more scenes to transition to.\n";
@@ -323,9 +325,45 @@ void SceneManager::update()
     cleanTree();
 
     if (sceneTree->gameStatus() == -1)
+    {
+         // render a white screen for 1s
+        SDL_SetRenderDrawColor(m_renderer, 255, 0, 0, 0);
+        SDL_RenderClear(m_renderer);
+        SDL_RenderPresent(m_renderer);
+
+        // std::string font = "../Assets/Fonts/BruceForever.ttf";
+
+        // SDL_Color color = {255, 0, 0, 255};
+        // std::string victory = "You failed at level " + std::to_string(SceneManager::getInstance().getSceneIndex() + 1) + "!";
+        // SDL_Texture* text = ResourceManager::getInstance().loadText(font, victory, color, 40);
+        // SDL_Rect rect = {50, 200, 540, 100};
+        // SDL_RenderCopy(m_renderer, text, NULL, &rect);
+        // SDL_SetRenderDrawColor(m_renderer, 0, 255, 0, 255);
+        // SDL_RenderPresent(m_renderer);
+
+        SDL_Delay(1000);
         exit(0);
+    }
     else if (sceneTree->gameStatus() == 1)
+    {
+        // render a white screen for 1s
+        SDL_SetRenderDrawColor(m_renderer, 0, 255, 0, 255);
+        SDL_RenderClear(m_renderer);
+        SDL_RenderPresent(m_renderer);
+
+        // std::string font = "../Assets/Fonts/BruceForever.ttf";
+
+        // SDL_Color color = {0, 255, 0, 255};
+        // std::string victory = "Level " + std::to_string(SceneManager::getInstance().getSceneIndex() + 1) + " cleared!";
+        // SDL_Texture* text = ResourceManager::getInstance().loadText(font, victory, color, 40);
+        // SDL_Rect rect = {50, 200, 540, 100};
+        // SDL_RenderCopy(m_renderer, text, NULL, &rect);
+        // SDL_SetRenderDrawColor(m_renderer, 0, 255, 0, 255);
+        // SDL_RenderPresent(m_renderer);
+
+        SDL_Delay(1000);
         getNextScene();
+    }
 }
 
 void SceneManager::render()

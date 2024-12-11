@@ -76,17 +76,17 @@ void PlayerInputScript::update() {
         animations->setCurrentAnimation(static_cast<size_t>(m_currentState));
     }
 
-    // clamp positions to level
-    int levelWidth = 640;
-    int levelHeight = 640;
-    if (position.x < -levelWidth - 20)
-        position.x = -levelWidth - 20;
-    if (position.x > levelWidth - 60)
-        position.x = levelWidth - 60;
-    if (position.y < -levelHeight - 30)
-        position.y = -levelHeight - 30;
-    if (position.y > levelHeight - 90)
-        position.y = levelHeight - 90;
+    // // clamp positions to level
+    // int levelWidth = 640;
+    // int levelHeight = 640;
+    // if (position.x < -levelWidth - 20)
+    //     position.x = -levelWidth - 20;
+    // if (position.x > levelWidth - 60)
+    //     position.x = levelWidth - 60;
+    // if (position.y < -levelHeight - 30)
+    //     position.y = -levelHeight - 30;
+    // if (position.y > levelHeight - 90)
+    //     position.y = levelHeight - 90;
 
     texture->setFlipHorizontal(dx < 0);
 
