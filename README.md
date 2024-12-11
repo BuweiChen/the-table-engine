@@ -16,15 +16,15 @@
 
 ## Team
 
-Team Name: *Edit this to something cool here*
+Team Name: *jeffreylinkennyliarnavnarulabuweichen*
 
 *TODO*:
 Update your Team member Names here (Up to 4).
 
-1. *my name is...*
-2. *my name is...*
-3. *my name is...*
-4. *my name is...*
+1. Kenny Li
+2. Jeffrey Lin
+3. Arnav Narula
+4. Buwei Chen
 -->
 
 ## Assignment Milestones
