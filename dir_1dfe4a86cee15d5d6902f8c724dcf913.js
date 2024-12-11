@@ -1,10 +1,10 @@
 var dir_1dfe4a86cee15d5d6902f8c724dcf913 =
 [
+    [ "animation.h", "animation_8h.html", [
+      [ "Animation", "classAnimation.html", "classAnimation" ]
+    ] ],
     [ "arrow_test_script.h", "arrow__test__script_8h.html", [
       [ "ArrowTestScript", "classArrowTestScript.html", "classArrowTestScript" ]
-    ] ],
-    [ "bow_script.h", "bow__script_8h.html", [
-      [ "Bow_script", "classBow__script.html", "classBow__script" ]
     ] ],
     [ "collide.h", "collide_8h.html", [
       [ "Collide", "classCollide.html", "classCollide" ]
@@ -35,6 +35,9 @@ var dir_1dfe4a86cee15d5d6902f8c724dcf913 =
     ] ],
     [ "player_test_script.h", "player__test__script_8h.html", [
       [ "PlayerTestScript", "classPlayerTestScript.html", "classPlayerTestScript" ]
+    ] ],
+    [ "ranged_weapon_script.h", "ranged__weapon__script_8h.html", [
+      [ "Bow_script", "classBow__script.html", "classBow__script" ]
     ] ],
     [ "resourcemanager.h", "resourcemanager_8h.html", [
       [ "ResourceManager", "classResourceManager.html", "classResourceManager" ]

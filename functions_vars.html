@@ -101,6 +101,12 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <li>m_aliveObjects
 : <a class="el" href="classSceneManager.html#adb501d14995a1574e0e84651c6aae29e">SceneManager</a>
 </li>
+<li>m_angle
+: <a class="el" href="classTexture.html#a1d5da666aa421bf0f0b6f2fb980da775">Texture</a>
+</li>
+<li>m_animationPlayed
+: <a class="el" href="classBow__script.html#a37ac71b32249f5a0c757603a621ef1f6">Bow_script</a>
+</li>
 <li>m_cachedGameObjects
 : <a class="el" href="classSceneTree.html#a1fec256f8b1ed44c8abfa0b98e15f5ec">SceneTree</a>
 </li>
@@ -111,10 +117,13 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 : <a class="el" href="classCollideTestScript.html#afe5a698051e889770f33e8d1b42bcee0">CollideTestScript</a>
 </li>
 <li>m_cols
-: <a class="el" href="classTexture.html#afd3d768204c9b6604eafd2fb5dbd7076">Texture</a>
+: <a class="el" href="classAnimation.html#a6a377e115ddd301e63e7bf3d255d4064">Animation</a>
 </li>
 <li>m_components
 : <a class="el" href="classGameObject.html#a2529a3be73ec192cffcc5e11d1b3f626">GameObject</a>
+</li>
+<li>m_currentFrame
+: <a class="el" href="classAnimation.html#a90e92f4ee44a5a18298909d1345399b7">Animation</a>
 </li>
 <li>m_currentSceneIndex
 : <a class="el" href="classSceneManager.html#a758480bc861a13c4639a47910291d8d7">SceneManager</a>
@@ -159,6 +168,9 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <li>m_isBackground
 : <a class="el" href="classSceneNode.html#a02da4dacadb371d090f9e61bbf934fdb">SceneNode</a>
 </li>
+<li>m_isPlaying
+: <a class="el" href="classAnimation.html#a945dacd3adbb01965d9ec1c074e4b715">Animation</a>
+</li>
 <li>m_keysCollected
 : <a class="el" href="classPlayerTestScript.html#ac74e2c5022f1f6b2781af3431e2cc8af">PlayerTestScript</a>
 </li>
@@ -173,14 +185,14 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 : <a class="el" href="classInput.html#a1d206c4542fd7922f68240d87fc5527b">Input</a>
 </li>
 <li>m_msPerFrame
-: <a class="el" href="classTexture.html#a89c5155a604b68faaa79627033584f6d">Texture</a>
+: <a class="el" href="classAnimation.html#a6b5c1eaf181d47c792d0071b321c8d80">Animation</a>
 </li>
 <li>m_name
 : <a class="el" href="classComponent.html#a9368f961fc4b1d0cda2e0a96e4f61432">Component</a>
 , <a class="el" href="classScript.html#a8a64065f7410217069ee6d8af13075c7">Script</a>
 </li>
 <li>m_numFrames
-: <a class="el" href="classTexture.html#a6edbd4cbc436963b9c3816edc18e671d">Texture</a>
+: <a class="el" href="classAnimation.html#ad0a027ddaa19fa7d5f13dc057ddaaca7">Animation</a>
 </li>
 <li>m_owner
 : <a class="el" href="classComponent.html#a4f353aceb523c657566ca5ff085ce7b6">Component</a>
@@ -188,6 +200,9 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 </li>
 <li>m_parent
 : <a class="el" href="classSceneNode.html#a4d147c9644382cc07a329bc1eab0dc80">SceneNode</a>
+</li>
+<li>m_pausedTime
+: <a class="el" href="classAnimation.html#a20e9e095e4584135e743e1dce4c7ff72">Animation</a>
 </li>
 <li>m_playerSpeed
 : <a class="el" href="classPlayerTestScript.html#abbe3f527307c21783f9f992df33f9c60">PlayerTestScript</a>
@@ -202,7 +217,7 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 : <a class="el" href="classSceneTree.html#a5705d195c801f7532acd258768229de1">SceneTree</a>
 </li>
 <li>m_rows
-: <a class="el" href="classTexture.html#a527d4594c82292d9b022f7c766f3545a">Texture</a>
+: <a class="el" href="classAnimation.html#a0f0ca7e2b1a83ff91a8f6b9935fdfd79">Animation</a>
 </li>
 <li>m_sceneNode
 : <a class="el" href="classGameObject.html#ad4ad4d51e309f750c0cf1645e2b36a76">GameObject</a>
@@ -228,6 +243,9 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 <li>m_spriteClip
 : <a class="el" href="classTexture.html#a26cc54b23edee0f63fe5f5183f160780">Texture</a>
 </li>
+<li>m_startTime
+: <a class="el" href="classAnimation.html#ac8e5cbfa0d4d9e57f44b6756f5d5b5da">Animation</a>
+</li>
 <li>m_tag
 : <a class="el" href="classGameObject.html#acd3086ccb6c8a2a92c4de64431f0ec0b">GameObject</a>
 </li>
@@ -235,10 +253,13 @@ $(document).ready(function(){initNavTree('functions_vars.html',''); initResizabl
 : <a class="el" href="classTexture.html#a6150742cc6b033d1bd6484a97a33510c">Texture</a>
 </li>
 <li>m_time
-: <a class="el" href="classTexture.html#aae37ce4878cfdc779ff59544ffdd9e13">Texture</a>
+: <a class="el" href="classAnimation.html#ac4d79de4a778163c7169e9c906097fee">Animation</a>
 </li>
 <li>m_totalObjects
 : <a class="el" href="classSceneManager.html#acc86194872d43bbbcbb8b245d3fbb096">SceneManager</a>
+</li>
+<li>m_wasSpacePressed
+: <a class="el" href="classBow__script.html#a749eefc6d35b0bd689a0047d3327c85c">Bow_script</a>
 </li>
 <li>m_window
 : <a class="el" href="structGameApplication.html#a0a741235dbf40f321e198b84e4522a24">GameApplication</a>

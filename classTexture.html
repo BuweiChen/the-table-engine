@@ -83,15 +83,12 @@ $(document).ready(function(){initNavTree('classTexture.html',''); initResizable(
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="classTexture-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Texture Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-
-<p>Manages texture assets, including sprite maps and animations.  
- <a href="classTexture.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="texture_8h_source.html">texture.h</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -101,7 +98,8 @@ $(document).ready(function(){initNavTree('classTexture.html',''); initResizable(
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classTexture__inherit__graph.png" border="0" usemap="#aTexture_inherit__map" alt="Inheritance graph"/></div>
 <map name="aTexture_inherit__map" id="aTexture_inherit__map">
-<area shape="rect" title="Manages texture assets, including sprite maps and animations." alt="" coords="5,277,213,663"/>
+<area shape="rect" title=" " alt="" coords="11,277,208,589"/>
+<area shape="rect" href="classAnimation.html" title=" " alt="" coords="5,637,213,1023"/>
 <area shape="rect" href="classComponent.html" title="Base class for all game components, providing basic component functionalities." alt="" coords="43,5,176,229"/>
 </map>
 </div>
@@ -112,10 +110,10 @@ $(document).ready(function(){initNavTree('classTexture.html',''); initResizable(
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classTexture__coll__graph.png" border="0" usemap="#aTexture_coll__map" alt="Collaboration graph"/></div>
 <map name="aTexture_coll__map" id="aTexture_coll__map">
-<area shape="rect" title="Manages texture assets, including sprite maps and animations." alt="" coords="5,668,213,1053"/>
-<area shape="rect" href="classComponent.html" title="Base class for all game components, providing basic component functionalities." alt="" coords="43,395,176,604"/>
-<area shape="rect" href="classGameObject.html" title="Core class representing an entity in the game world." alt="" coords="143,5,289,317"/>
-<area shape="rect" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy." alt="" coords="239,380,393,619"/>
+<area shape="rect" title=" " alt="" coords="5,668,203,980"/>
+<area shape="rect" href="classComponent.html" title="Base class for all game components, providing basic component functionalities." alt="" coords="37,395,171,604"/>
+<area shape="rect" href="classGameObject.html" title="Core class representing an entity in the game world." alt="" coords="137,5,284,317"/>
+<area shape="rect" href="classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy." alt="" coords="233,380,388,619"/>
 </map>
 </div>
 <table class="memberdecls">
@@ -125,13 +123,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a6c275e3f186675ff6ed73ccf970e552f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="classTexture.html#a6c275e3f186675ff6ed73ccf970e552f">More...</a><br /></td></tr>
 <tr class="separator:a6c275e3f186675ff6ed73ccf970e552f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adaf99f9c545fbd78edd778e26ea6f6d7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#adaf99f9c545fbd78edd778e26ea6f6d7">Texture</a> (SDL_Texture *texture)</td></tr>
-<tr class="memdesc:adaf99f9c545fbd78edd778e26ea6f6d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classTexture.html" title="Manages texture assets, including sprite maps and animations.">Texture</a> with an associated SDL_Texture.  <a href="classTexture.html#adaf99f9c545fbd78edd778e26ea6f6d7">More...</a><br /></td></tr>
+<tr class="memdesc:adaf99f9c545fbd78edd778e26ea6f6d7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructs a <a class="el" href="classTexture.html">Texture</a> with an associated SDL_Texture.  <a href="classTexture.html#adaf99f9c545fbd78edd778e26ea6f6d7">More...</a><br /></td></tr>
 <tr class="separator:adaf99f9c545fbd78edd778e26ea6f6d7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a77a1ae0043a4b318a60df3b02ef2d3f6"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#a77a1ae0043a4b318a60df3b02ef2d3f6">getTexture</a> ()</td></tr>
-<tr class="memdesc:a77a1ae0043a4b318a60df3b02ef2d3f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Retrieves the current SDL_Texture.  <a href="classTexture.html#a77a1ae0043a4b318a60df3b02ef2d3f6">More...</a><br /></td></tr>
+<tr class="memdesc:a77a1ae0043a4b318a60df3b02ef2d3f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the current texture.  <a href="classTexture.html#a77a1ae0043a4b318a60df3b02ef2d3f6">More...</a><br /></td></tr>
 <tr class="separator:a77a1ae0043a4b318a60df3b02ef2d3f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1a2fd1ef4d1fe45e027ca2810a6cd3c2"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#a1a2fd1ef4d1fe45e027ca2810a6cd3c2">setTexture</a> (SDL_Texture *texture)</td></tr>
-<tr class="memdesc:a1a2fd1ef4d1fe45e027ca2810a6cd3c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the SDL_Texture to be managed.  <a href="classTexture.html#a1a2fd1ef4d1fe45e027ca2810a6cd3c2">More...</a><br /></td></tr>
+<tr class="memdesc:a1a2fd1ef4d1fe45e027ca2810a6cd3c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the texture to be managed.  <a href="classTexture.html#a1a2fd1ef4d1fe45e027ca2810a6cd3c2">More...</a><br /></td></tr>
 <tr class="separator:a1a2fd1ef4d1fe45e027ca2810a6cd3c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afcd30cf59f90ca7f34f78d02dfb49b7b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#afcd30cf59f90ca7f34f78d02dfb49b7b">setSizeInSpriteMap</a> (int w, int h)</td></tr>
 <tr class="memdesc:afcd30cf59f90ca7f34f78d02dfb49b7b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the size of the sprite in the sprite map.  <a href="classTexture.html#afcd30cf59f90ca7f34f78d02dfb49b7b">More...</a><br /></td></tr>
@@ -139,22 +137,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a4fcdefcb48b6ff9729853c76c0311f3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#a4fcdefcb48b6ff9729853c76c0311f3d">setPositionInSpriteMap</a> (int x, int y)</td></tr>
 <tr class="memdesc:a4fcdefcb48b6ff9729853c76c0311f3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the position of the sprite in the sprite map.  <a href="classTexture.html#a4fcdefcb48b6ff9729853c76c0311f3d">More...</a><br /></td></tr>
 <tr class="separator:a4fcdefcb48b6ff9729853c76c0311f3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a478bb148067ab2d9d352b1312505eb42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#a478bb148067ab2d9d352b1312505eb42">setRowsColsInSpriteMap</a> (int rows, int cols)</td></tr>
-<tr class="memdesc:a478bb148067ab2d9d352b1312505eb42"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the number of rows and columns in the sprite map.  <a href="classTexture.html#a478bb148067ab2d9d352b1312505eb42">More...</a><br /></td></tr>
-<tr class="separator:a478bb148067ab2d9d352b1312505eb42"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52fc1a64c5f1b3ecd89d81a22b960d47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#a52fc1a64c5f1b3ecd89d81a22b960d47">setAnimationTime</a> (float time)</td></tr>
-<tr class="memdesc:a52fc1a64c5f1b3ecd89d81a22b960d47"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the total time for the animation cycle.  <a href="classTexture.html#a52fc1a64c5f1b3ecd89d81a22b960d47">More...</a><br /></td></tr>
-<tr class="separator:a52fc1a64c5f1b3ecd89d81a22b960d47"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74526fa7e3edf37488d757c14c241e63"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#a74526fa7e3edf37488d757c14c241e63">setFlipHorizontal</a> (bool flip)</td></tr>
 <tr class="memdesc:a74526fa7e3edf37488d757c14c241e63"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets whether the texture should be flipped horizontally.  <a href="classTexture.html#a74526fa7e3edf37488d757c14c241e63">More...</a><br /></td></tr>
 <tr class="separator:a74526fa7e3edf37488d757c14c241e63"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa037722bfea72022d4c40573187aecc6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#aa037722bfea72022d4c40573187aecc6">setFlipVertical</a> (bool flip)</td></tr>
 <tr class="memdesc:aa037722bfea72022d4c40573187aecc6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets whether the texture should be flipped vertically.  <a href="classTexture.html#aa037722bfea72022d4c40573187aecc6">More...</a><br /></td></tr>
 <tr class="separator:aa037722bfea72022d4c40573187aecc6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0764b6f1c7a0abf17989c465628d75b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#a0764b6f1c7a0abf17989c465628d75b0">update</a> () override</td></tr>
-<tr class="memdesc:a0764b6f1c7a0abf17989c465628d75b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the animation state of the texture.  <a href="classTexture.html#a0764b6f1c7a0abf17989c465628d75b0">More...</a><br /></td></tr>
+<tr class="memitem:a3946472d85f6f5aba196873f11ac25ea"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#a3946472d85f6f5aba196873f11ac25ea">setAngle</a> (float angle)</td></tr>
+<tr class="memdesc:a3946472d85f6f5aba196873f11ac25ea"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the rotation angle for the texture.  <a href="classTexture.html#a3946472d85f6f5aba196873f11ac25ea">More...</a><br /></td></tr>
+<tr class="separator:a3946472d85f6f5aba196873f11ac25ea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0764b6f1c7a0abf17989c465628d75b0"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#a0764b6f1c7a0abf17989c465628d75b0">update</a> () override</td></tr>
+<tr class="memdesc:a0764b6f1c7a0abf17989c465628d75b0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the texture state.  <a href="classTexture.html#a0764b6f1c7a0abf17989c465628d75b0">More...</a><br /></td></tr>
 <tr class="separator:a0764b6f1c7a0abf17989c465628d75b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a800d2fde67c26e55834c5b38e4f7d885"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#a800d2fde67c26e55834c5b38e4f7d885">render</a> () override</td></tr>
+<tr class="memitem:a800d2fde67c26e55834c5b38e4f7d885"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#a800d2fde67c26e55834c5b38e4f7d885">render</a> () override</td></tr>
 <tr class="memdesc:a800d2fde67c26e55834c5b38e4f7d885"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the texture to the screen.  <a href="classTexture.html#a800d2fde67c26e55834c5b38e4f7d885">More...</a><br /></td></tr>
 <tr class="separator:a800d2fde67c26e55834c5b38e4f7d885"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classComponent"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classComponent')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classComponent.html">Component</a></td></tr>
@@ -183,43 +178,29 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ad08a7fc7f08c73cf1c1805b1c148b768 inherit pub_methods_classComponent"><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual method for handling input, intended to be overridden by derived components.  <a href="classComponent.html#ad08a7fc7f08c73cf1c1805b1c148b768">More...</a><br /></td></tr>
 <tr class="separator:ad08a7fc7f08c73cf1c1805b1c148b768 inherit pub_methods_classComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
-Private Attributes</h2></td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected Attributes</h2></td></tr>
 <tr class="memitem:a6150742cc6b033d1bd6484a97a33510c"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#a6150742cc6b033d1bd6484a97a33510c">m_texture</a></td></tr>
 <tr class="memdesc:a6150742cc6b033d1bd6484a97a33510c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the SDL_Texture object.  <a href="classTexture.html#a6150742cc6b033d1bd6484a97a33510c">More...</a><br /></td></tr>
 <tr class="separator:a6150742cc6b033d1bd6484a97a33510c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af4995cbc13a6ff6d40f7647f296ce4d8"><td class="memItemLeft" align="right" valign="top">SDL_Renderer *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#af4995cbc13a6ff6d40f7647f296ce4d8">m_renderer</a></td></tr>
-<tr class="memdesc:af4995cbc13a6ff6d40f7647f296ce4d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the SDL_Renderer object used for rendering the texture.  <a href="classTexture.html#af4995cbc13a6ff6d40f7647f296ce4d8">More...</a><br /></td></tr>
+<tr class="memdesc:af4995cbc13a6ff6d40f7647f296ce4d8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pointer to the SDL_Renderer object.  <a href="classTexture.html#af4995cbc13a6ff6d40f7647f296ce4d8">More...</a><br /></td></tr>
 <tr class="separator:af4995cbc13a6ff6d40f7647f296ce4d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8449d7674a82c1d4a8ad7b37227986ba"><td class="memItemLeft" align="right" valign="top">SDL_Rect *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#a8449d7674a82c1d4a8ad7b37227986ba">m_spriteBox</a></td></tr>
-<tr class="memdesc:a8449d7674a82c1d4a8ad7b37227986ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the section of the sprite map rendered for a specific game object.  <a href="classTexture.html#a8449d7674a82c1d4a8ad7b37227986ba">More...</a><br /></td></tr>
+<tr class="memdesc:a8449d7674a82c1d4a8ad7b37227986ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the full bounding box of the sprite.  <a href="classTexture.html#a8449d7674a82c1d4a8ad7b37227986ba">More...</a><br /></td></tr>
 <tr class="separator:a8449d7674a82c1d4a8ad7b37227986ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a26cc54b23edee0f63fe5f5183f160780"><td class="memItemLeft" align="right" valign="top">SDL_Rect *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#a26cc54b23edee0f63fe5f5183f160780">m_spriteClip</a></td></tr>
-<tr class="memdesc:a26cc54b23edee0f63fe5f5183f160780"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the section of the sprite box rendered per animation frame.  <a href="classTexture.html#a26cc54b23edee0f63fe5f5183f160780">More...</a><br /></td></tr>
+<tr class="memdesc:a26cc54b23edee0f63fe5f5183f160780"><td class="mdescLeft">&#160;</td><td class="mdescRight">Defines the section of the sprite to render.  <a href="classTexture.html#a26cc54b23edee0f63fe5f5183f160780">More...</a><br /></td></tr>
 <tr class="separator:a26cc54b23edee0f63fe5f5183f160780"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a527d4594c82292d9b022f7c766f3545a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#a527d4594c82292d9b022f7c766f3545a">m_rows</a></td></tr>
-<tr class="separator:a527d4594c82292d9b022f7c766f3545a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afd3d768204c9b6604eafd2fb5dbd7076"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#afd3d768204c9b6604eafd2fb5dbd7076">m_cols</a></td></tr>
-<tr class="memdesc:afd3d768204c9b6604eafd2fb5dbd7076"><td class="mdescLeft">&#160;</td><td class="mdescRight">The number of rows and columns in the sprite map.  <a href="classTexture.html#afd3d768204c9b6604eafd2fb5dbd7076">More...</a><br /></td></tr>
-<tr class="separator:afd3d768204c9b6604eafd2fb5dbd7076"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aae37ce4878cfdc779ff59544ffdd9e13"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#aae37ce4878cfdc779ff59544ffdd9e13">m_time</a></td></tr>
-<tr class="memdesc:aae37ce4878cfdc779ff59544ffdd9e13"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total time in seconds to render the entire animation.  <a href="classTexture.html#aae37ce4878cfdc779ff59544ffdd9e13">More...</a><br /></td></tr>
-<tr class="separator:aae37ce4878cfdc779ff59544ffdd9e13"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0fd1fe87b8788790f9f8dad8ba68c955"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#a0fd1fe87b8788790f9f8dad8ba68c955">m_flipHorizontal</a> = false</td></tr>
 <tr class="memdesc:a0fd1fe87b8788790f9f8dad8ba68c955"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag to flip the texture horizontally.  <a href="classTexture.html#a0fd1fe87b8788790f9f8dad8ba68c955">More...</a><br /></td></tr>
 <tr class="separator:a0fd1fe87b8788790f9f8dad8ba68c955"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca3fcb35558fd739bc9080d3ce8c7680"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#aca3fcb35558fd739bc9080d3ce8c7680">m_flipVertical</a> = false</td></tr>
 <tr class="memdesc:aca3fcb35558fd739bc9080d3ce8c7680"><td class="mdescLeft">&#160;</td><td class="mdescRight">Flag to flip the texture vertically.  <a href="classTexture.html#aca3fcb35558fd739bc9080d3ce8c7680">More...</a><br /></td></tr>
 <tr class="separator:aca3fcb35558fd739bc9080d3ce8c7680"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6edbd4cbc436963b9c3816edc18e671d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#a6edbd4cbc436963b9c3816edc18e671d">m_numFrames</a></td></tr>
-<tr class="memdesc:a6edbd4cbc436963b9c3816edc18e671d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Number of frames in the animation.  <a href="classTexture.html#a6edbd4cbc436963b9c3816edc18e671d">More...</a><br /></td></tr>
-<tr class="separator:a6edbd4cbc436963b9c3816edc18e671d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a89c5155a604b68faaa79627033584f6d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#a89c5155a604b68faaa79627033584f6d">m_msPerFrame</a></td></tr>
-<tr class="memdesc:a89c5155a604b68faaa79627033584f6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Milliseconds per frame of animation.  <a href="classTexture.html#a89c5155a604b68faaa79627033584f6d">More...</a><br /></td></tr>
-<tr class="separator:a89c5155a604b68faaa79627033584f6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
+<tr class="memitem:a1d5da666aa421bf0f0b6f2fb980da775"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classTexture.html#a1d5da666aa421bf0f0b6f2fb980da775">m_angle</a> = 0.0f</td></tr>
+<tr class="memdesc:a1d5da666aa421bf0f0b6f2fb980da775"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotation angle in degrees.  <a href="classTexture.html#a1d5da666aa421bf0f0b6f2fb980da775">More...</a><br /></td></tr>
+<tr class="separator:a1d5da666aa421bf0f0b6f2fb980da775"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_classComponent"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_classComponent')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="classComponent.html">Component</a></td></tr>
 <tr class="memitem:a9368f961fc4b1d0cda2e0a96e4f61432 inherit pro_attribs_classComponent"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classComponent.html#a9368f961fc4b1d0cda2e0a96e4f61432">m_name</a></td></tr>
 <tr class="memdesc:a9368f961fc4b1d0cda2e0a96e4f61432 inherit pro_attribs_classComponent"><td class="mdescLeft">&#160;</td><td class="mdescRight">Name of the component, useful for identification or debugging.  <a href="classComponent.html#a9368f961fc4b1d0cda2e0a96e4f61432">More...</a><br /></td></tr>
@@ -229,10 +210,8 @@ Additional Inherited Members</h2></td></tr>
 <tr class="separator:a4f353aceb523c657566ca5ff085ce7b6 inherit pro_attribs_classComponent"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Manages texture assets, including sprite maps and animations. </p>
-<p>The <a class="el" href="classTexture.html" title="Manages texture assets, including sprite maps and animations.">Texture</a> class is responsible for handling and rendering textures associated with game objects. It supports animations by managing sprite sheets and the rendering of specific frames. </p>
-
-<p class="definition">Definition at line <a class="el" href="texture_8h_source.html#l00021">21</a> of file <a class="el" href="texture_8h_source.html">texture.h</a>.</p>
+<div class="textblock">
+<p class="definition">Definition at line <a class="el" href="texture_8h_source.html#l00012">12</a> of file <a class="el" href="texture_8h_source.html">texture.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a6c275e3f186675ff6ed73ccf970e552f"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a6c275e3f186675ff6ed73ccf970e552f">&#9670;&nbsp;</a></span>Texture() <span class="overload">[1/2]</span></h2>
@@ -251,7 +230,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Default constructor. </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00008">8</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00005">5</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
 
 </div>
 </div>
@@ -271,7 +250,7 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Constructs a <a class="el" href="classTexture.html" title="Manages texture assets, including sprite maps and animations.">Texture</a> with an associated SDL_Texture. </p>
+<p>Constructs a <a class="el" href="classTexture.html">Texture</a> with an associated SDL_Texture. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">texture</td><td>Pointer to the SDL_Texture to be managed. </td></tr>
@@ -279,7 +258,7 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00026">26</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00013">13</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
 
 </div>
 </div>
@@ -299,10 +278,9 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Retrieves the current SDL_Texture. </p>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the SDL_Texture being used. </dd></dl>
+<p>Gets the current texture. </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00030">30</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00017">17</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
 
 </div>
 </div>
@@ -333,35 +311,29 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Reimplemented from <a class="el" href="classComponent.html#a5ea29db99c5e83ed64e9d4f883cd0af5">Component</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00099">99</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00055">55</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
 
 </div>
 </div>
-<a id="a52fc1a64c5f1b3ecd89d81a22b960d47"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a52fc1a64c5f1b3ecd89d81a22b960d47">&#9670;&nbsp;</a></span>setAnimationTime()</h2>
+<a id="a3946472d85f6f5aba196873f11ac25ea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3946472d85f6f5aba196873f11ac25ea">&#9670;&nbsp;</a></span>setAngle()</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void Texture::setAnimationTime </td>
+          <td class="memname">void Texture::setAngle </td>
           <td>(</td>
           <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>time</em></td><td>)</td>
+          <td class="paramname"><em>angle</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the total time for the animation cycle. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">time</td><td>Total time in seconds for the animation. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Sets the rotation angle for the texture. </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00066">66</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8h_source.html#l00068">68</a> of file <a class="el" href="texture_8h_source.html">texture.h</a>.</p>
 
 </div>
 </div>
@@ -382,14 +354,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sets whether the texture should be flipped horizontally. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">flip</td><td>True to flip horizontally, false otherwise. </td></tr>
-  </table>
-  </dd>
-</dl>
 
-<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00071">71</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00043">43</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
 
 </div>
 </div>
@@ -410,14 +376,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sets whether the texture should be flipped vertically. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">flip</td><td>True to flip vertically, false otherwise. </td></tr>
-  </table>
-  </dd>
-</dl>
 
-<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00076">76</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00047">47</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
 
 </div>
 </div>
@@ -448,54 +408,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sets the position of the sprite in the sprite map. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">x</td><td>X-coordinate of the sprite in the map. </td></tr>
-    <tr><td class="paramname">y</td><td>Y-coordinate of the sprite in the map. </td></tr>
-  </table>
-  </dd>
-</dl>
 
-<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00050">50</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
-
-</div>
-</div>
-<a id="a478bb148067ab2d9d352b1312505eb42"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a478bb148067ab2d9d352b1312505eb42">&#9670;&nbsp;</a></span>setRowsColsInSpriteMap()</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Texture::setRowsColsInSpriteMap </td>
-          <td>(</td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>rows</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">int&#160;</td>
-          <td class="paramname"><em>cols</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>Sets the number of rows and columns in the sprite map. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">rows</td><td>Number of rows in the sprite map. </td></tr>
-    <tr><td class="paramname">cols</td><td>Number of columns in the sprite map. </td></tr>
-  </table>
-  </dd>
-</dl>
-
-<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00057">57</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00037">37</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
 
 </div>
 </div>
@@ -526,15 +440,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Sets the size of the sprite in the sprite map. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">w</td><td>Width of the sprite in the map. </td></tr>
-    <tr><td class="paramname">h</td><td>Height of the sprite in the map. </td></tr>
-  </table>
-  </dd>
-</dl>
 
-<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00043">43</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00031">31</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
 
 </div>
 </div>
@@ -554,15 +461,9 @@ Additional Inherited Members</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Sets the SDL_Texture to be managed. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">texture</td><td>Pointer to the new SDL_Texture. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>Sets the texture to be managed. </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00035">35</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00021">21</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
 
 </div>
 </div>
@@ -589,17 +490,19 @@ Additional Inherited Members</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Updates the animation state of the texture. </p>
+<p>Updates the texture state. </p>
 
 <p>Reimplemented from <a class="el" href="classComponent.html#a78fe4950ee37b183fe863d2d6dc419e1">Component</a>.</p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00081">81</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
+<p>Reimplemented in <a class="el" href="classAnimation.html#aab92a748afeebf2ea1b7976a43b0ffc1">Animation</a>.</p>
+
+<p class="definition">Definition at line <a class="el" href="texture_8cpp_source.html#l00051">51</a> of file <a class="el" href="texture_8cpp_source.html">texture.cpp</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a id="afd3d768204c9b6604eafd2fb5dbd7076"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afd3d768204c9b6604eafd2fb5dbd7076">&#9670;&nbsp;</a></span>m_cols</h2>
+<a id="a1d5da666aa421bf0f0b6f2fb980da775"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1d5da666aa421bf0f0b6f2fb980da775">&#9670;&nbsp;</a></span>m_angle</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -608,19 +511,19 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int Texture::m_cols</td>
+          <td class="memname">float Texture::m_angle = 0.0f</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>The number of rows and columns in the sprite map. </p>
+<p>Rotation angle in degrees. </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8h_source.html#l00028">28</a> of file <a class="el" href="texture_8h_source.html">texture.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8h_source.html#l00021">21</a> of file <a class="el" href="texture_8h_source.html">texture.h</a>.</p>
 
 </div>
 </div>
@@ -639,14 +542,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Flag to flip the texture horizontally. </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8h_source.html#l00031">31</a> of file <a class="el" href="texture_8h_source.html">texture.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8h_source.html#l00019">19</a> of file <a class="el" href="texture_8h_source.html">texture.h</a>.</p>
 
 </div>
 </div>
@@ -665,66 +568,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Flag to flip the texture vertically. </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8h_source.html#l00032">32</a> of file <a class="el" href="texture_8h_source.html">texture.h</a>.</p>
-
-</div>
-</div>
-<a id="a89c5155a604b68faaa79627033584f6d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a89c5155a604b68faaa79627033584f6d">&#9670;&nbsp;</a></span>m_msPerFrame</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Texture::m_msPerFrame</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Milliseconds per frame of animation. </p>
-
-<p class="definition">Definition at line <a class="el" href="texture_8h_source.html#l00035">35</a> of file <a class="el" href="texture_8h_source.html">texture.h</a>.</p>
-
-</div>
-</div>
-<a id="a6edbd4cbc436963b9c3816edc18e671d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6edbd4cbc436963b9c3816edc18e671d">&#9670;&nbsp;</a></span>m_numFrames</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Texture::m_numFrames</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Number of frames in the animation. </p>
-
-<p class="definition">Definition at line <a class="el" href="texture_8h_source.html#l00034">34</a> of file <a class="el" href="texture_8h_source.html">texture.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8h_source.html#l00020">20</a> of file <a class="el" href="texture_8h_source.html">texture.h</a>.</p>
 
 </div>
 </div>
@@ -743,38 +594,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Pointer to the SDL_Renderer object used for rendering the texture. </p>
+<p>Pointer to the SDL_Renderer object. </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8h_source.html#l00024">24</a> of file <a class="el" href="texture_8h_source.html">texture.h</a>.</p>
-
-</div>
-</div>
-<a id="a527d4594c82292d9b022f7c766f3545a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a527d4594c82292d9b022f7c766f3545a">&#9670;&nbsp;</a></span>m_rows</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">int Texture::m_rows</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p class="definition">Definition at line <a class="el" href="texture_8h_source.html#l00028">28</a> of file <a class="el" href="texture_8h_source.html">texture.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8h_source.html#l00015">15</a> of file <a class="el" href="texture_8h_source.html">texture.h</a>.</p>
 
 </div>
 </div>
@@ -793,14 +620,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Defines the section of the sprite map rendered for a specific game object. </p>
+<p>Defines the full bounding box of the sprite. </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8h_source.html#l00026">26</a> of file <a class="el" href="texture_8h_source.html">texture.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8h_source.html#l00016">16</a> of file <a class="el" href="texture_8h_source.html">texture.h</a>.</p>
 
 </div>
 </div>
@@ -819,14 +646,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Defines the section of the sprite box rendered per animation frame. </p>
+<p>Defines the section of the sprite to render. </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8h_source.html#l00027">27</a> of file <a class="el" href="texture_8h_source.html">texture.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8h_source.html#l00017">17</a> of file <a class="el" href="texture_8h_source.html">texture.h</a>.</p>
 
 </div>
 </div>
@@ -845,40 +672,14 @@ Additional Inherited Members</h2></td></tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 <p>Pointer to the SDL_Texture object. </p>
 
-<p class="definition">Definition at line <a class="el" href="texture_8h_source.html#l00023">23</a> of file <a class="el" href="texture_8h_source.html">texture.h</a>.</p>
-
-</div>
-</div>
-<a id="aae37ce4878cfdc779ff59544ffdd9e13"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aae37ce4878cfdc779ff59544ffdd9e13">&#9670;&nbsp;</a></span>m_time</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">float Texture::m_time</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Total time in seconds to render the entire animation. </p>
-
-<p class="definition">Definition at line <a class="el" href="texture_8h_source.html#l00029">29</a> of file <a class="el" href="texture_8h_source.html">texture.h</a>.</p>
+<p class="definition">Definition at line <a class="el" href="texture_8h_source.html#l00014">14</a> of file <a class="el" href="texture_8h_source.html">texture.h</a>.</p>
 
 </div>
 </div>

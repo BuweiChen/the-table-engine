@@ -3,7 +3,9 @@ var hierarchy =
     [ "Component", "classComponent.html", [
       [ "Collide", "classCollide.html", null ],
       [ "Input", "classInput.html", null ],
-      [ "Texture", "classTexture.html", null ],
+      [ "Texture", "classTexture.html", [
+        [ "Animation", "classAnimation.html", null ]
+      ] ],
       [ "Transform", "classTransform.html", null ]
     ] ],
     [ "GameApplication", "structGameApplication.html", null ],
