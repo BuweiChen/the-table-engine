@@ -518,67 +518,6 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>RangedWeaponScript</name>
-    <filename>classBow__script.html</filename>
-    <base>Script</base>
-    <member kind="function">
-      <type></type>
-      <name>RangedWeaponScript</name>
-      <anchorfile>classBow__script.html</anchorfile>
-      <anchor>a9dd82402055b97c2cccad661555bf695</anchor>
-      <arglist>()</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>input</name>
-      <anchorfile>classBow__script.html</anchorfile>
-      <anchor>a3c6653850f97fd823043a24ea7ad9629</anchor>
-      <arglist>() override</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>update</name>
-      <anchorfile>classBow__script.html</anchorfile>
-      <anchor>a94f619e0594c719335cd786380827ed6</anchor>
-      <arglist>() override</arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>bool</type>
-      <name>m_shoot</name>
-      <anchorfile>classBow__script.html</anchorfile>
-      <anchor>aa915e28e59a5aa3e4c9263907b0f549d</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>int</type>
-      <name>m_lastFireTimeInMs</name>
-      <anchorfile>classBow__script.html</anchorfile>
-      <anchor>a29a8d8a594a442cc0b3129ad12323762</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>int</type>
-      <name>m_fireRatePerSecond</name>
-      <anchorfile>classBow__script.html</anchorfile>
-      <anchor>a9bbed725f288d127d4c5d82356b0f07a</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>bool</type>
-      <name>m_wasSpacePressed</name>
-      <anchorfile>classBow__script.html</anchorfile>
-      <anchor>a749eefc6d35b0bd689a0047d3327c85c</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>bool</type>
-      <name>m_animationPlayed</name>
-      <anchorfile>classBow__script.html</anchorfile>
-      <anchor>a37ac71b32249f5a0c757603a621ef1f6</anchor>
-      <arglist></arglist>
-    </member>
-  </compound>
-  <compound kind="class">
     <name>Collide</name>
     <filename>classCollide.html</filename>
     <base>Component</base>
@@ -1328,6 +1267,67 @@
       <name>m_dy</name>
       <anchorfile>classProjectileScript.html</anchorfile>
       <anchor>a2d32f3e33e81d8fe9c50583f8d3fdee1</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>RangedWeaponScript</name>
+    <filename>classRangedWeaponScript.html</filename>
+    <base>Script</base>
+    <member kind="function">
+      <type></type>
+      <name>RangedWeaponScript</name>
+      <anchorfile>classRangedWeaponScript.html</anchorfile>
+      <anchor>a08805c5227a273690641ef4df5f20efd</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>input</name>
+      <anchorfile>classRangedWeaponScript.html</anchorfile>
+      <anchor>a480e38f4ce102d1480b1ee0c7b4a805d</anchor>
+      <arglist>() override</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>update</name>
+      <anchorfile>classRangedWeaponScript.html</anchorfile>
+      <anchor>ac1435d408619901b6eb8d1e2362564be</anchor>
+      <arglist>() override</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>bool</type>
+      <name>m_shoot</name>
+      <anchorfile>classRangedWeaponScript.html</anchorfile>
+      <anchor>a047d8e7c1cdce5b6566e44f60a1e0563</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>int</type>
+      <name>m_lastFireTimeInMs</name>
+      <anchorfile>classRangedWeaponScript.html</anchorfile>
+      <anchor>a4d57ba1209e539ba91c70dc6f7b0d672</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>int</type>
+      <name>m_fireRatePerSecond</name>
+      <anchorfile>classRangedWeaponScript.html</anchorfile>
+      <anchor>ac2001a046da144a8f78edf2bc26119a9</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>bool</type>
+      <name>m_wasSpacePressed</name>
+      <anchorfile>classRangedWeaponScript.html</anchorfile>
+      <anchor>ac507f627f2d637ba76d8530f71bc06f1</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>bool</type>
+      <name>m_animationPlayed</name>
+      <anchorfile>classRangedWeaponScript.html</anchorfile>
+      <anchor>a58bba089fe1fea109d4652f68a2c82d9</anchor>
       <arglist></arglist>
     </member>
   </compound>
