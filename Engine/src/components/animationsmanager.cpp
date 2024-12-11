@@ -69,6 +69,14 @@ int AnimationsManager::createAnimation(SDL_Texture* texture, int rows, int cols,
     return addAnimation(animation);
 }
 
+bool AnimationsManager::isPlaying() const {
+    return m_isPlaying;
+}
+
+size_t AnimationsManager::getCurrentAnimation() const {
+    return m_currentAnimation;
+}
+
 void AnimationsManager::setCurrentAnimation(size_t index) {
     if (index < m_animations.size()) {
         m_currentAnimation = index;
