@@ -1,9 +1,4 @@
-<<<<<<< Updated upstream:Engine/src/scripts/player_input_script.cpp
-
 #include "player_input_script.h"
-=======
-#include "player_test_script.h"
->>>>>>> Stashed changes:Engine/src/scripts/player_test_script.cpp
 
 #include "input.h"
 #include "transform.h"
@@ -15,7 +10,7 @@
 #include "scenemanager.h"
 #include "health.h"
 
-#include  <iostream>
+#include <iostream>
 #include <string>
 
 PlayerInputScript::PlayerInputScript() {
@@ -106,7 +101,6 @@ void PlayerInputScript::update() {
     }
 
     // health
-    auto health = m_owner->getComponent<Health>();
     for (auto enemy : SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Warrior")) {
         auto enemyCollide = enemy->getComponent<Collide>();
         if (collide->isColliding(enemyCollide)) {
