@@ -2,85 +2,81 @@
 
 /**
  * @file animation.h
- * @brief Defines the Animation component for managing sprite animations.
- *
- * This file provides the definitions necessary to manage sprite sheet animations,
- * extending the basic Texture component with animation capabilities.
+ * @brief Defines the Animation class for handling sprite animations.
  */
 
 #include "texture.h"
 
-/**
- * @class Animation 
- * @brief Manages sprite sheet animations.
- *
- * The Animation class extends Texture to provide sprite sheet animation capabilities,
- * including frame timing and sprite sheet coordinate management.
- */
 class Animation : public Texture {
-    protected:
-        SDL_Rect* m_spriteBox;     ///< Defines the full bounding box of the sprite in the sprite map.
-        SDL_Rect* m_spriteClip;    ///< Defines the section of the sprite box rendered per animation frame.
-        int m_rows, m_cols;        ///< The number of rows and columns in the sprite map.
-        float m_time;              ///< Total time in seconds to render the entire animation.
+protected:
+    int m_rows = 1;        ///< Number of rows in the sprite sheet
+    int m_cols = 1;        ///< Number of columns in the sprite sheet
+    float m_time = 1.0f;   ///< Total animation time in seconds
+    int m_numFrames = 1;   ///< Total number of frames
+    int m_msPerFrame;      ///< Milliseconds per frame
+    
+    bool m_isPlaying = true;   ///< Whether the animation is currently playing
+    int m_currentFrame = 0;    ///< Current frame of animation
+    int m_startTime = 0;       ///< Time when animation started/resumed
+    int m_pausedTime = 0;      ///< Time when animation was paused
 
-        int m_numFrames;    ///< Number of frames in the animation.
-        int m_msPerFrame;   ///< Milliseconds per frame of animation.
+public:
+    /**
+     * @brief Default constructor.
+     */
+    Animation();
 
-    public:
-        /**
-         * @brief Default constructor.
-         */
-        Animation();
+    /**
+     * @brief Constructs an Animation with an associated SDL_Texture.
+     */
+    Animation(SDL_Texture* texture);
 
-        /**
-         * @brief Constructs an Animation with an associated SDL_Texture.
-         * @param texture Pointer to the SDL_Texture to be managed.
-         */
-        Animation(SDL_Texture* texture);
+    /**
+     * @brief Sets whether the animation should start playing automatically.
+     * @param autoplay True to start playing immediately, false to start paused
+     */
+    void setAutoPlay(bool autoplay);
 
-        /**
-         * @brief Destructor.
-         */
-        virtual ~Animation();
+    /**
+     * @brief Sets the number of rows and columns in the sprite map.
+     */
+    void setRowsColsInSpriteMap(int rows, int cols);
 
-        /**
-         * @brief Sets the size of the sprite in the sprite map.
-         * @param w Width of the sprite in the map.
-         * @param h Height of the sprite in the map.
-         */
-        void setSizeInSpriteMap(int w, int h);
+    /**
+     * @brief Sets the total time for the animation cycle.
+     */
+    void setAnimationTime(float time);
 
-        /**
-         * @brief Sets the position of the sprite in the sprite map.
-         * @param x X-coordinate of the sprite in the map.
-         * @param y Y-coordinate of the sprite in the map.
-         */
-        void setPositionInSpriteMap(int x, int y);
+    /**
+     * @brief Starts or resumes the animation.
+     */
+    void play();
 
-        /**
-         * @brief Sets the number of rows and columns in the sprite map.
-         * @param rows Number of rows in the sprite map.
-         * @param cols Number of columns in the sprite map.
-         */
-        void setRowsColsInSpriteMap(int rows, int cols);
+    /**
+     * @brief Pauses the animation at current frame.
+     */
+    void pause();
 
-        /**
-         * @brief Sets the total time for the animation cycle.
-         * @param time Total time in seconds for the animation.
-         */
-        void setAnimationTime(float time);
+    /**
+     * @brief Sets a specific frame of animation.
+     * @param frame The frame number to display (0-based)
+     */
+    void setFrame(int frame);
 
-        int getMsPerFrame() const { return m_msPerFrame; }
-        void setMsPerFrame(int msPerFrame) { m_msPerFrame = msPerFrame; }
+    /**
+     * @brief Gets the current frame number.
+     * @return Current frame number (0-based)
+     */
+    int getCurrentFrame() const { return m_currentFrame; }
 
-        /**
-         * @brief Updates the animation state.
-         */
-        virtual void update() override;
+    /**
+     * @brief Checks if animation is currently playing.
+     * @return True if animation is playing, false if paused
+     */
+    bool isPlaying() const { return m_isPlaying; }
 
-        /**
-         * @brief Renders the current animation frame.
-         */
-        virtual void render() override;
+    /**
+     * @brief Updates the animation state.
+     */
+    void update() override;
 };
