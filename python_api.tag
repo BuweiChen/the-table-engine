@@ -88,6 +88,13 @@
     <class kind="class">GameObjectFactory</class>
   </compound>
   <compound kind="file">
+    <name>health.h</name>
+    <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/include/</path>
+    <filename>health_8h.html</filename>
+    <includes id="component_8h" name="component.h" local="yes" imported="no">component.h</includes>
+    <class kind="class">Health</class>
+  </compound>
+  <compound kind="file">
     <name>input.h</name>
     <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/include/</path>
     <filename>input_8h.html</filename>
@@ -207,6 +214,12 @@
     <includes id="vec2_8h" name="vec2.h" local="yes" imported="no">vec2.h</includes>
   </compound>
   <compound kind="file">
+    <name>health.cpp</name>
+    <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/src/components/</path>
+    <filename>health_8cpp.html</filename>
+    <includes id="health_8h" name="health.h" local="yes" imported="no">health.h</includes>
+  </compound>
+  <compound kind="file">
     <name>input.cpp</name>
     <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/src/components/</path>
     <filename>input_8cpp.html</filename>
@@ -238,6 +251,7 @@
     <includes id="scenemanager_8h" name="scenemanager.h" local="yes" imported="no">scenemanager.h</includes>
     <includes id="transform_8h" name="transform.h" local="yes" imported="no">transform.h</includes>
     <includes id="texture_8h" name="texture.h" local="yes" imported="no">texture.h</includes>
+    <includes id="health_8h" name="health.h" local="yes" imported="no">health.h</includes>
     <includes id="player__input__script_8h" name="player_input_script.h" local="no" imported="no">player_input_script.h</includes>
   </compound>
   <compound kind="file">
@@ -258,6 +272,7 @@
     <includes id="animation_8h" name="animation.h" local="yes" imported="no">animation.h</includes>
     <includes id="collide_8h" name="collide.h" local="yes" imported="no">collide.h</includes>
     <includes id="input_8h" name="input.h" local="yes" imported="no">input.h</includes>
+    <includes id="health_8h" name="health.h" local="yes" imported="no">health.h</includes>
     <includes id="resourcemanager_8h" name="resourcemanager.h" local="yes" imported="no">resourcemanager.h</includes>
     <includes id="player__input__script_8h" name="player_input_script.h" local="yes" imported="no">player_input_script.h</includes>
     <includes id="projectile__script_8h" name="projectile_script.h" local="yes" imported="no">projectile_script.h</includes>
@@ -328,6 +343,7 @@
     <includes id="gameobject_8h" name="gameobject.h" local="yes" imported="no">gameobject.h</includes>
     <includes id="gameobjectfactory_8h" name="gameobjectfactory.h" local="yes" imported="no">gameobjectfactory.h</includes>
     <includes id="scenemanager_8h" name="scenemanager.h" local="yes" imported="no">scenemanager.h</includes>
+    <includes id="health_8h" name="health.h" local="yes" imported="no">health.h</includes>
   </compound>
   <compound kind="file">
     <name>projectile_script.cpp</name>
@@ -1085,6 +1101,46 @@
       <anchorfile>classGameObjectFactory.html</anchorfile>
       <anchor>a89c917a3f024ea58952084c45c7fefba</anchor>
       <arglist>()</arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>Health</name>
+    <filename>classHealth.html</filename>
+    <base>Component</base>
+    <member kind="function">
+      <type></type>
+      <name>Health</name>
+      <anchorfile>classHealth.html</anchorfile>
+      <anchor>acd41f307cc9a942c3335480420c0ace7</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>~Health</name>
+      <anchorfile>classHealth.html</anchorfile>
+      <anchor>a25bdebcca7d22e042509e706e2a3f8ef</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>getHealth</name>
+      <anchorfile>classHealth.html</anchorfile>
+      <anchor>ac9c0efcd660fee0a0585d7b71ab92c80</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>updateHealth</name>
+      <anchorfile>classHealth.html</anchorfile>
+      <anchor>af6d2a5f34cb16d767b82dd973bbb0df3</anchor>
+      <arglist>(int amount)</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>int</type>
+      <name>m_currentHealth</name>
+      <anchorfile>classHealth.html</anchorfile>
+      <anchor>a521186e4ce58de0cffd84d796b61923b</anchor>
+      <arglist></arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -2101,9 +2157,9 @@
     </member>
     <member kind="function">
       <type>void</type>
-      <name>render</name>
+      <name>update</name>
       <anchorfile>classTransform.html</anchorfile>
-      <anchor>a3791e2dfe71f1eb14f163e1352a931f9</anchor>
+      <anchor>a377194ad810fc2e6d05e3008eb8c7655</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="variable" protection="private">

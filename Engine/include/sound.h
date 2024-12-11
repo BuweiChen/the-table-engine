@@ -1,3 +1,12 @@
+/**
+ * @file Sound.h
+ * @brief Structure to handle sound effects in the game using SDL_mixer library.
+ *
+ * This file includes the definition of the Sound structure, which encapsulates
+ * sound playing capabilities using the SDL_mixer library, allowing easy management
+ * of sound effects including loading, playing, pausing, and volume control.
+ */
+
 #pragma once
 
 #include <string>
@@ -5,41 +14,71 @@
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_mixer.h>
 
+/**
+ * @struct Sound
+ * @brief Encapsulates sound management functionality using SDL_mixer.
+ *
+ * Sound structure provides methods to load, play, stop, pause, and resume sound
+ * effects, as well as to adjust their volume. It automatically initializes the
+ * SDL_mixer library on construction and cleans up on destruction.
+ */
 struct Sound {
-    Sound(std::string path) {
-        if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) < 0) {
-            std::cout << "SDL_mixer could not initialize! SDL_mixer Error: " << Mix_GetError() << std::endl;
-        }       
+    Mix_Chunk* m_sound; ///< Pointer to the sound data loaded from a file.
 
-        m_sound = Mix_LoadWAV(path.c_str());
-        if (m_sound == NULL) {
-            std::cout << "Error loading sound: " << path << std::endl;
-        }
-    }
+    /**
+     * @brief Constructor that initializes the SDL_mixer and loads sound from a specified path.
+     * @param path Path to the sound file.
+     *
+     * The constructor initializes the SDL_mixer with default settings and attempts to load
+     * a sound file from the given path. It reports errors if SDL_mixer cannot initialize or
+     * the sound file cannot be loaded.
+     */
+    Sound(std::string path);
 
-    void play(int loops) {
-        Mix_PlayChannel(-1, m_sound, loops);
-    }
+    /**
+     * @brief Plays the loaded sound.
+     * @param loops Number of times the sound should loop; -1 for infinite looping.
+     *
+     * This method plays the sound using SDL_mixer. The sound can loop multiple times or
+     * play indefinitely if specified.
+     */
+    void play(int loops);
 
-    void stop() {
-        Mix_HaltChannel(-1);
-    }
+    /**
+     * @brief Stops all sound on the channel used by this sound.
+     *
+     * Stops the playback of the sound by halting the channel it is playing on.
+     */
+    void stop();
 
-    void pause() {
-        Mix_Pause(-1);
-    }
+    /**
+     * @brief Pauses all sound on the channel used by this sound.
+     *
+     * Pauses the playback of the sound by pausing the channel it is playing on.
+     */
+    void pause();
 
-    void resume() {
-        Mix_Resume(-1);
-    }
+    /**
+     * @brief Resumes all paused sound on the channel used by this sound.
+     *
+     * Resumes the playback of the sound by resuming the paused channel it is playing on.
+     */
+    void resume();
 
-    void setVolume(int volume) {
-        Mix_Volume(-1, volume);
-    }
+    /**
+     * @brief Sets the volume for the channel used by this sound.
+     * @param volume Desired volume level (0 to 128).
+     *
+     * This method adjusts the volume of the sound channel. The volume range is from 0
+     * (mute) to 128 (maximum).
+     */
+    void setVolume(int volume);
 
-    ~Sound() {
-        Mix_FreeChunk(m_sound);
-    }
-
-    Mix_Chunk* m_sound;
+    /**
+     * @brief Destructor that frees the loaded sound.
+     *
+     * The destructor frees the memory allocated for the sound chunk and closes the
+     * SDL_mixer to clean up resources.
+     */
+    ~Sound();
 };

@@ -3,31 +3,46 @@
 
 /**
  * @file health.h
- * @brief Defines the health class, a component for managing health of enemies and players.
+ * @brief Defines the Health class, a component for managing the health of game objects.
  *
- * This component provides functionalities and for managing health of game
- * 
+ * This file declares the Health class, which is used to track and manage the health status
+ * of game entities such as players and enemies. It offers methods to modify and retrieve
+ * the current health state, supporting game mechanics involving damage and healing.
  */
 
 /**
- * @class health
- * @brief Component to handle collisions between game objects.
+ * @class Health
+ * @brief A component for managing health of game objects.
  *
- * Collide uses SDL_Rect structures to define bounding boxes for collision detection and response.
- * It integrates with the game object's position and allows dynamic adjustment of the collision
- * box based on the game object's movements and interactions.
+ * The Health class extends the Component class and provides mechanisms to manage the
+ * health of game objects. It allows setting, adjusting, and querying the health status,
+ * facilitating the implementation of game rules related to life or vitality of characters
+ * and other entities within the game.
  */
-
-class Health: public Component {
+class Health : public Component {
     private:
-        int m_currentHealth;
+        int m_currentHealth; ///< Current health of the game object.
 
     public:
+        /**
+         * @brief Constructor that initializes the health component.
+         */
         Health();
 
+        /**
+         * @brief Destructor for the health component.
+         */
         ~Health();
 
-        int getHealth();
+        /**
+         * @brief Retrieves the current health of the game object.
+         * @return Integer representing the current health.
+         */
+        int getHealth() const;
 
-        void updateHealth(int amount);    
+        /**
+         * @brief Updates the health by a specified amount.
+         * @param amount The amount to add to the current health (can be negative for damage).
+         */
+        void updateHealth(int amount);
 };
