@@ -2,6 +2,7 @@
 
 #include "projectile_script.h"
 #include "transform.h"
+#include "health.h"
 #include "gameobject.h"
 #include "collide.h"
 #include "scenemanager.h"
@@ -40,9 +41,14 @@ void ProjectileScript::update() {
     auto enemies = sceneTree->findGameObjectsByTag("Warrior");
     auto collide = m_owner->getComponent<Collide>();
     for (auto enemy : enemies) {
-        if (collide->isColliding(enemy->getComponent<Collide>()->getRect())) {
+        if (collide->isColliding(enemy->getComponent<Collide>())) {
             m_owner->getSceneNode()->setDestroy(true);
-            enemy->getSceneNode()->setDestroy(true);
+            enemy->getComponent<Health>()->updateHealth(-100);
+            static int arrowCount = 0;
+            arrowCount++;
+            std::cout << "Arrow hit enemy " << arrowCount << std::endl;
+            if (enemy->getComponent<Health>()->getHealth() <= 0)
+                enemy->getSceneNode()->setDestroy(true);
             break;
         }
     }
