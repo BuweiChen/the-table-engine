@@ -1,6 +1,7 @@
 #include <iostream>
 
 #include "camera.h"
+#include "health.h"
 #include "scenemanager.h"
 #include "gameobject.h"
 #include "transform.h"
@@ -14,11 +15,24 @@ Camera::~Camera() {
 }
 
 void Camera::update() {
+    static int health = -1;
     auto player = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Player")[0];
     if (player == nullptr) return;
 
+    int playerHealth = player->getComponent<Health>()->getHealth();
+    bool shakeCamera = false;
+    if (playerHealth != health) {
+        shakeCamera = true;
+        health = playerHealth;
+    }
+
     Vec2 playerPosition = player->getComponent<Transform>()->getWorldPosition();
     m_worldPosition = playerPosition;
+
+    if (shakeCamera) {
+        m_worldPosition.x += rand() % 10 - 5;
+        m_worldPosition.y += rand() % 10 - 5;
+    }
 
     if (m_worldPosition.x < -320)
         m_worldPosition.x = -320;

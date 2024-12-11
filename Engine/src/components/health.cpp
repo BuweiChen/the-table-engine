@@ -6,6 +6,10 @@ Health::Health() : m_currentHealth(1000) {
     setName("Health");
 }
 
+Health::Health(int health) : m_currentHealth(health) {
+    setName("Health");
+}
+
 Health::~Health() {
     return;
 }

@@ -28,6 +28,7 @@ class Health : public Component {
          * @brief Constructor that initializes the health component.
          */
         Health();
+        Health(int health);
 
         /**
          * @brief Destructor for the health component.
