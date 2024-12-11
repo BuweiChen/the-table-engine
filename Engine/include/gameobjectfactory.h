@@ -49,12 +49,16 @@ public:
      */
     static GameObject* createEnemyWarrior();
 
+    static GameObject* createEnemyWarriorCustom(std::string path, int row, int col, float animationTime, int pos_x, int pos_y, int size_x, int size_y);
+
     /**
      * @brief Creates a basic tile object.
      *
      * @return GameObject* Pointer to the newly created tile object.
      */
     static GameObject* createTile1();
+
+    static GameObject* createTileCustom(std::string path, int pos_x, int pos_y, int size_x, int size_y);
 
     /**
      * @brief Creates a key object.
