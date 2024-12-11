@@ -1090,7 +1090,21 @@ class LevelEditorApp(tk.Tk):
         current_dir = os.path.dirname(os.path.abspath(__file__))
 
         # Construct the path to the bin directory
-        bin_dir = os.path.join(current_dir, "..", "Engine", "bin")
+        bin_dir = os.path.join(current_dir, "..", "Engine", "bin") 
+        
+        makefile_dir = os.path.join(current_dir, "..", "Engine", "src")
+
+        # Run make to build/update the game
+        try:
+            subprocess.run(["make"], check=True, cwd=makefile_dir)
+        except subprocess.CalledProcessError as e:
+            messagebox.showerror("Build Failed", f"Make failed with error: {e}")
+            self.deiconify()
+            return
+        except FileNotFoundError:
+            messagebox.showerror("Not Found", "Make tool not found on this system.")
+            self.deiconify()
+            return
 
         # Construct the path to the game executable
         game_path = os.path.join(bin_dir, "game")
