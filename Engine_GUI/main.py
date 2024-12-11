@@ -508,19 +508,28 @@ class GameObjectPropertiesPopup(tk.Toplevel):
         prepopulated_data = self.parent.dynamic_properties.get("data", {}).get(
             selected_type, {}
         )
+
+        # if properties is a list, create a label saying "No properties"
+        if len(properties) == 0:
+            tk.Label(self.dynamic_frame, text="No special properties").pack(
+                fill="x", padx=10, pady=5
+            )
+            return
+
         for prop_name, prop_type in properties.items():
             field_frame = tk.Frame(self.dynamic_frame)
             field_frame.pack(fill="x", padx=10, pady=5)
 
             tk.Label(field_frame, text=prop_name).pack(side="left")
-
-            if prop_type == "int":
-                var = tk.IntVar(value=prepopulated_data.get(prop_name, 0))
+            # check if prop_type is type int
+            if type(prop_type) == int: 
+                var = tk.IntVar(value=prepopulated_data.get(prop_name, prop_type))
                 tk.Entry(field_frame, textvariable=var).pack(
                     side="right", fill="x", expand=True
                 )
-            elif prop_type == "float":
-                var = tk.DoubleVar(value=prepopulated_data.get(prop_name, 0.0))
+            elif type(prop_type) == float:
+                # align text to the right
+                var = tk.DoubleVar(value=prepopulated_data.get(prop_name, prop_type))
                 tk.Entry(field_frame, textvariable=var).pack(
                     side="right", fill="x", expand=True
                 )
@@ -529,9 +538,12 @@ class GameObjectPropertiesPopup(tk.Toplevel):
                 tk.Entry(field_frame, textvariable=var).pack(
                     side="right", fill="x", expand=True
                 )
+            elif type(prop_type) == bool:
+                var = tk.BooleanVar(value=prepopulated_data.get(prop_name, prop_type))
+                tk.Checkbutton(field_frame, variable=var).pack(side="right")
             elif prop_type == "checkbox_with_all_objects":
                 self.create_checkboxes_for_objects(
-                    field_frame, prop_name, prepopulated_data.get(prop_name, {})
+                    field_frame, prop_name, selected_type, prepopulated_data.get(prop_name, {})
                 )
             else:
                 var = tk.StringVar(value=prepopulated_data.get(prop_name, ""))
@@ -542,7 +554,7 @@ class GameObjectPropertiesPopup(tk.Toplevel):
             if prop_type != "checkbox_with_all_objects":
                 self.fields[prop_name] = var
 
-    def create_checkboxes_for_objects(self, parent_frame, prop_name, prepopulated_data):
+    def create_checkboxes_for_objects(self, parent_frame, prop_name, selected_type, prepopulated_data):
         """Create checkboxes for all object types defined in the config.json."""
         # Load all object types from the config.json
         object_types = []
@@ -553,7 +565,11 @@ class GameObjectPropertiesPopup(tk.Toplevel):
 
         # Create a checkbox for each object type
         for obj_name in object_types:
-            checkbox_var = tk.BooleanVar(value=prepopulated_data.get(obj_name, False))
+            print(selected_type, obj_name)
+            if obj_name == "Player" and selected_type == "Player":
+                continue
+            default_bool = obj_name == "Wall" or selected_type == "Wall"
+            checkbox_var = tk.BooleanVar(value=prepopulated_data.get(obj_name, default_bool))
             checkbox = tk.Checkbutton(
                 parent_frame, text=obj_name, variable=checkbox_var
             )
