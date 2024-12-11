@@ -5,6 +5,7 @@
 #include "texture.h"
 #include "transform.h"
 #include "animation.h"
+#include "animationsmanager.h"
 #include "collide.h"
 #include "input.h"
 #include "health.h"
@@ -14,20 +15,35 @@
 #include "enemy_ai_script.h"
 #include "collision_script.h"
 #include "ranged_weapon_script.h"
+#include "crosshair_script.h"
 
 GameObject* GameObjectFactory::createPlayerTest() 
 {
     GameObject* player = new GameObject("Player");
 
-    SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Heroes/Knight/Run/Run-Sheet.bmp");
-    auto texture = new Animation(sdl_texture);
-    texture->setRowsColsInSpriteMap(1, 6);
-    texture->setAnimationTime(0.5);
-    player->addComponent<Texture>(texture);
+    // Create animation manager and load all animations
+    auto animations = new AnimationsManager();
 
+    // Idle animation
+    SDL_Texture* idleTexture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Heroes/Knight/Idle/Idle-Sheet.bmp");
+    int idleAnim = animations->createAnimation(idleTexture, 1, 4, 0.5f);
+    
+    // Run animation
+    SDL_Texture* runTexture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Heroes/Knight/Run/Run-Sheet.bmp");
+    int runAnim = animations->createAnimation(runTexture, 1, 6, 0.5f);
+    
+    // Death animation
+    SDL_Texture* deathTexture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Heroes/Knight/Death/Death-Sheet.bmp");
+    int deathAnim = animations->createAnimation(deathTexture, 1, 6, 0.5f);
+
+    // Set initial animation
+    animations->setCurrentAnimation(idleAnim);
+    player->addComponent<Texture>(animations);
+
+    // Rest of the player setup remains the same
     auto transform = new Transform();
     transform->setWorldPosition(200, 200);
-    transform->setWorldSize(80, 80);
+    transform->setWorldSize(40, 40);
     player->addComponent<Transform>(transform);
 
     auto input = new Input();
@@ -120,7 +136,7 @@ GameObject* GameObjectFactory::createEnemyWarrior()
     enemy->addComponent<Texture>(texture);
 
     auto transform = new Transform();
-    transform->setWorldSize(80, 80);
+    transform->setWorldSize(40, 40);
     transform->setWorldPosition(50, 50);
     enemy->addComponent<Transform>(transform);
 
@@ -274,3 +290,25 @@ GameObject* GameObjectFactory::createKey()
 
     return key;
 }
+
+GameObject* GameObjectFactory::createCrosshair() {
+    GameObject* crosshair = new GameObject("Crosshair");
+
+    SDL_Texture* texture = ResourceManager::getInstance().loadTexture("../Assets/Misc/crosshair.bmp");
+    auto textureComponent = new Texture(texture);
+    crosshair->addComponent<Texture>(textureComponent);
+
+    auto transform = new Transform();
+    transform->setWorldSize(16, 16); 
+    crosshair->addComponent<Transform>(transform);
+
+    auto input = new Input();
+    crosshair->addComponent<Input>(input);
+
+    auto script = new CrosshairScript();
+    crosshair->addScript<CrosshairScript>(script);
+
+    return crosshair;
+}
+
+

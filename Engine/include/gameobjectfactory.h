@@ -70,4 +70,11 @@ public:
      * @return GameObject* Pointer to the newly created key object.
      */
     static GameObject* createKey();
+
+    /**
+     * @brief Creates a crosshair object.
+     *
+     * @return GameObject* Pointer to the newly created crosshair object.
+     */
+    static GameObject* createCrosshair();
 };

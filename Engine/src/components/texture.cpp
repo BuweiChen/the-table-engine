@@ -48,6 +48,10 @@ void Texture::setFlipVertical(bool flip) {
     m_flipVertical = flip;
 }
 
+void Texture::setAngle(float angle) {
+    m_angle = angle;
+}
+
 void Texture::update() {
     // Base texture doesn't need updating
 }
@@ -62,4 +66,8 @@ void Texture::render() {
     SDL_RendererFlip flip = (SDL_RendererFlip)(hFlip | vFlip);
 
     SDL_RenderCopyEx(m_renderer, m_texture, m_spriteClip, rect, m_angle, NULL, flip);
+}
+
+void Texture::setColorMod(const SDL_Color& color) {
+    SDL_SetTextureColorMod(m_texture, color.r, color.g, color.b);
 }

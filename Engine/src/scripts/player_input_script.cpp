@@ -1,3 +1,4 @@
+// player_input_script.cpp
 #include "player_input_script.h"
 
 #include "input.h"
@@ -9,7 +10,9 @@
 #include "gameobjectfactory.h"
 #include "scenemanager.h"
 #include "health.h"
+#include "animationsmanager.h"
 
+#include <iostream>
 #include <iostream>
 #include <string>
 
@@ -27,20 +30,50 @@ void PlayerInputScript::update() {
     auto texture = m_owner->getComponent<Texture>();
     auto collide = m_owner->getComponent<Collide>();
     auto health = m_owner->getComponent<Health>();
+    auto animations = dynamic_cast<AnimationsManager*>(texture);
 
     Vec2 position = transform->getWorldPosition();
 
+    // Handle movement
+    float dx = 0, dy = 0;
+    bool isMoving = false;
+
     if (input->leftPressed) {
-        position.x -= m_playerSpeed;
+        dx -= m_playerSpeed;
+        isMoving = true;
     }
     if (input->rightPressed) {
-        position.x += m_playerSpeed;
+        dx += m_playerSpeed;
+        isMoving = true;
     }
     if (input->upPressed) {
-        position.y -= m_playerSpeed;
+        dy -= m_playerSpeed;
+        isMoving = true;
     }
     if (input->downPressed) {
-        position.y += m_playerSpeed;
+        dy += m_playerSpeed;
+        isMoving = true;
+    }
+
+    position.x += dx;
+    position.y += dy;
+
+    // Update animation state based on movement and health
+    AnimationState newState = m_currentState;
+    if (health->getHealth() <= 0) {
+        newState = DEATH;
+    }
+    else if (isMoving) {
+        newState = RUN;
+    }
+    else {
+        newState = IDLE;
+    }
+
+    // Change animation if state changed
+    if (newState != m_currentState && animations) {
+        m_currentState = newState;
+        animations->setCurrentAnimation(static_cast<size_t>(m_currentState));
     }
 
     // clamp positions to level
@@ -55,9 +88,6 @@ void PlayerInputScript::update() {
     if (position.y > levelHeight - 90)
         position.y = levelHeight - 90;
 
-    float dx = position.x - transform->getWorldPosition().x;
-    float dy = position.y - transform->getWorldPosition().y;
-
     texture->setFlipHorizontal(dx < 0);
 
     // prevent hitting walls
@@ -68,7 +98,6 @@ void PlayerInputScript::update() {
     }
 
     // prevent hitting tables
-
     auto tables = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Table");
     for (auto table : tables) {
         auto tableCollide = table->getComponent<Collide>();
@@ -78,8 +107,11 @@ void PlayerInputScript::update() {
     transform->updateWorldPosition(dx, dy);
 
     // move the player's bow with the player
-    auto bow = m_owner->getChildren()[0];
-    bow->getComponent<Transform>()->updateWorldPosition(dx, dy);
+    if (!m_owner->getChildren().empty()) {
+        auto bow = m_owner->getChildren()[0];
+        Vec2 bowOffset(16, 8);  // Adjust these values to position the bow correctly
+        bow->getComponent<Transform>()->setWorldPosition(position.x + bowOffset.x, position.y + bowOffset.y);
+    }
 
     // collect keys
     auto keys = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Key");
