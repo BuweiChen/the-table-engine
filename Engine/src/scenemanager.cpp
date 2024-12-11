@@ -97,8 +97,8 @@ void SceneManager::loadScenesFromJSON(const std::string& filePath) {
                             definition["animation_time"],
                             x,
                             y,
-                            definition["size_width"],
-                            definition["size_height"]
+                            definition["width"],
+                            definition["length"]
                         );
                         std::cout << "Created enemy\n";
                         sceneTree->addChild(enemy, true);
