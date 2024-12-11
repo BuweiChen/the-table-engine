@@ -1,29 +1,27 @@
 {
-    "Structure": {
-        "Wall": {
-            "collide": "checkbox_with_all_objects"
-        },
-        "Background/Tiles": {
-            
-        }
+  "Structure": {
+    "Wall": {
+      "collide": "checkbox_with_all_objects"
     },
-    "Entity": {
-        "Enemy": {
-            "Health": 100,
-            "Damage": 20,
-            "Speed": 3,
-            "Collide": "checkbox_with_all_objects"
-        },
-        "Player": {
-            "Health": 100,
-            "Speed": 20,
-            "Collide": "checkbox_with_all_objects"
-        },
-        "Weapon": {
-            "Player Equipped": false,
-            "Damage": 3,
-            "Fire Rate": 5,
-            "Collide": "checkbox_with_all_objects"
-        }
+    "Tile": {}
+  },
+  "Entity": {
+    "Enemy": {
+      "Health": 100,
+      "Damage": 20,
+      "Speed": 3,
+      "Collide": "checkbox_with_all_objects"
+    },
+    "Player": {
+      "Health": 100,
+      "Speed": 20,
+      "Collide": "checkbox_with_all_objects"
+    },
+    "Weapon": {
+      "Player Equipped": false,
+      "Damage": 3,
+      "Fire Rate": 5,
+      "Collide": "checkbox_with_all_objects"
     }
+  }
 }

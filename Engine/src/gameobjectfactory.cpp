@@ -139,7 +139,39 @@ GameObject* GameObjectFactory::createEnemyWarrior()
     enemy->addComponent<Transform>(transform);
 
     auto health = new Health(200);
-enemy->addComponent<Health>(health);
+    enemy->addComponent<Health>(health);
+
+    auto enemyAI = new EnemyAIScript();
+    enemy->addScript<EnemyAIScript>(enemyAI);
+
+    auto enemyCollide = new Collide();
+    enemyCollide->setScreenSize(transform->getScreenSize().x * 0.4, transform->getScreenSize().y * 0.6);
+    enemyCollide->setTransformOffset(transform->getScreenSize().x * 0.3, transform->getScreenSize().y * 0.45);
+    enemy->addComponent<Collide>(enemyCollide);
+
+    auto collideTest = new CollisionScript();
+    enemy->addScript<CollisionScript>(collideTest);
+
+    return enemy;
+}
+
+GameObject* GameObjectFactory::createEnemyWarriorCustom(std::string path, int row, int col, float animationTime, int pos_x, int pos_y, int size_x, int size_y)
+{
+    GameObject* enemy = new GameObject("Warrior");
+
+    SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture(path);
+    auto texture = new Animation(sdl_texture);
+    texture->setRowsColsInSpriteMap(row, col);
+    texture->setAnimationTime(animationTime);
+    enemy->addComponent<Texture>(texture);
+
+    auto transform = new Transform();
+    transform->setWorldSize(size_x, size_y);
+    transform->setWorldPosition(pos_x, pos_y);
+    enemy->addComponent<Transform>(transform);
+
+    auto health = new Health(200);
+    enemy->addComponent<Health>(health);
 
     auto enemyAI = new EnemyAIScript();
     enemy->addScript<EnemyAIScript>(enemyAI);
@@ -166,6 +198,23 @@ GameObject* GameObjectFactory::createTile1()
 
     auto transform = new Transform();
     transform->setWorldSize(32, 32);
+    tile->addComponent<Transform>(transform);
+
+    return tile;
+}
+
+GameObject* GameObjectFactory::createTileCustom(std::string path, int pos_x, int pos_y, int size_x, int size_y)
+{
+    GameObject* tile = new GameObject("Tile");
+
+    SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture(path);
+    auto texture = new Texture(sdl_texture);
+    texture->setSizeInSpriteMap(size_x, size_y);
+    tile->addComponent<Texture>(texture);
+
+    auto transform = new Transform();
+    transform->setWorldSize(size_x, size_y);
+    transform->setWorldPosition(pos_x, pos_y);
     tile->addComponent<Transform>(transform);
 
     return tile;

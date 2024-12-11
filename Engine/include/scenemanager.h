@@ -14,6 +14,7 @@
 #include "scene.h"
 #include "camera.h"
 #include <SDL2/SDL.h>
+#include <nlohmann/json.hpp>
 
 /**
  * @class SceneManager
@@ -26,9 +27,9 @@ class SceneManager
 {
     private:
         SDL_Renderer* m_renderer; ///< Renderer used to render the game objects.
-        SceneTree* m_sceneTree; ///< Scene tree to manage game objects in the current scene.
+        std::vector<SceneTree*> m_sceneTrees; ///< Array of scene trees.
 
-        int m_currentSceneIndex = 0; ///< Index of the current scene in the game.
+        int m_currentSceneIndex = -1; ///< Index of the current scene in the game.
         Camera* m_camera;
 
         /**
@@ -62,10 +63,20 @@ class SceneManager
          */
         void setRenderer(SDL_Renderer* renderer);
 
+        void loadDemo();
+
+        void loadScenesFromJSON(const std::string& filePath);
+
         /**
          * @brief Advances to the next scene based on the current scene index.
          */
         void getNextScene();
+
+        /**
+         * @brief Retrieves the index of the current scene.
+         * @return Index of the current scene.
+         */
+        int getSceneIndex();
 
         /**
          * @brief Retrieves the current SDL_Renderer used by the SceneManager.

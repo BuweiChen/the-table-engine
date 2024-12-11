@@ -30,7 +30,6 @@ void PlayerInputScript::update() {
     auto animations = dynamic_cast<AnimationsManager*>(texture);
 
     Vec2 position = transform->getWorldPosition();
-    Vec2 size = transform->getScreenSize();
 
     // Handle movement
     float dx = 0, dy = 0;

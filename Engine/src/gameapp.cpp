@@ -44,7 +44,7 @@ GameApplication::~GameApplication() {
     SDL_DestroyWindow(m_window);
 }
 
-void GameApplication::start() {
+void GameApplication::start(bool demo=false) {
     if (TTF_Init() < 0) {
         std::cout << "TTF_Init Error: " << TTF_GetError() << std::endl;
     }
@@ -52,6 +52,11 @@ void GameApplication::start() {
     ResourceManager::getInstance().setRenderer(m_renderer);
 
     SceneManager::getInstance().setRenderer(m_renderer);
+    if (demo) {
+        SceneManager::getInstance().loadDemo();
+    } else {
+        SceneManager::getInstance().loadScenesFromJSON("../../Engine_GUI/game_json_output/game.json");
+    }
     SceneManager::getInstance().getNextScene();
 
     // Sound* music = ResourceManager::getInstance().loadSound("../Assets/Sounds/music.wav");
@@ -65,11 +70,18 @@ void GameApplication::printStats() {
     std::string font = "../Assets/Fonts/BruceForever.ttf";
     auto sceneTree = SceneManager::getInstance().getSceneTree();
 
+    // print level
+    SDL_Color color = {255, 255, 255, 255};
+    std::string level = "Level: " + std::to_string(SceneManager::getInstance().getSceneIndex() + 1);
+    SDL_Texture* text = ResourceManager::getInstance().loadText(font, level, color, 12);
+    SDL_Rect rect = {5, 0, 80, 25};
+    SDL_RenderCopy(m_renderer, text, NULL, &rect);
+
     // number of enemies
-    SDL_Color color = {255, 0, 0, 255};
+    color = {255, 0, 0, 255};
     std::string numEnemies = std::to_string(sceneTree->findGameObjectsByTag("Warrior").size());
-    SDL_Texture* text = ResourceManager::getInstance().loadText(font, "Enemies Left: " + numEnemies, color, 12);
-    SDL_Rect rect = {5, 0, 160, 25};
+    text = ResourceManager::getInstance().loadText(font, "Enemies Left: " + numEnemies, color, 12);
+    rect = {5, 15, 160, 25};
     SDL_RenderCopy(m_renderer, text, NULL, &rect);
 
     // FPS rounded to 2 decimal places
@@ -78,7 +90,7 @@ void GameApplication::printStats() {
     fpsStream << std::fixed << std::setprecision(2) << m_FPS;
     std::string fps = fpsStream.str();
     text = ResourceManager::getInstance().loadText(font, "FPS: " + fps, color, 12);
-    rect = {5, 15, 120, 25};
+    rect = {5, 30, 120, 25};
     SDL_RenderCopy(m_renderer, text, NULL, &rect);
 
     // number of keys collected by player
@@ -90,7 +102,7 @@ void GameApplication::printStats() {
 
         std::string numKeys = std::to_string(player->getScript<PlayerInputScript>()->getKeysCollected());
         text = ResourceManager::getInstance().loadText(font, "Keys: " + numKeys, color, 12);
-        rect = {5, 30, 80, 25};
+        rect = {5, 45, 80, 25};
         SDL_RenderCopy(m_renderer, text, NULL, &rect);
 
         color = {255, 0, 0, 255};

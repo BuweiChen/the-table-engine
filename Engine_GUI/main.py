@@ -228,19 +228,23 @@ class AddItemPopup(tk.Toplevel):
         width = self.width_var.get()
 
         editing = self.existing_data is not None
+        print(self.item_type)
+        item_type = (
+            self.parent.structures
+            if self.item_type == "structure"
+            else self.parent.entities
+        )
 
         if editing:
             old_name = self.existing_data["name"] if self.existing_data else ""
-            if name != old_name and name in self.parent.structures:
+            if name != old_name and name in item_type:
                 messagebox.showerror(
                     "Error", "A gameobject with that name already exists."
                 )
                 return
-            elif name in self.parent.entities:
-                messagebox.showerror(
-                    "Error", "A gameobject with that name already exists."
-                )
-                return
+        elif name in self.parent.entities:
+            messagebox.showerror("Error", "A gameobject with that name already exists.")
+            return
         elif name in self.parent.structures:
             messagebox.showerror("Error", "A gameobject with that name already exists.")
             return
@@ -523,7 +527,7 @@ class GameObjectPropertiesPopup(tk.Toplevel):
 
             tk.Label(field_frame, text=prop_name).pack(side="left")
             # check if prop_type is type int
-            if type(prop_type) == int: 
+            if type(prop_type) == int:
                 var = tk.IntVar(value=prepopulated_data.get(prop_name, prop_type))
                 tk.Entry(field_frame, textvariable=var).pack(
                     side="right", fill="x", expand=True
@@ -544,7 +548,10 @@ class GameObjectPropertiesPopup(tk.Toplevel):
                 tk.Checkbutton(field_frame, variable=var).pack(side="right")
             elif prop_type == "checkbox_with_all_objects":
                 self.create_checkboxes_for_objects(
-                    field_frame, prop_name, selected_type, prepopulated_data.get(prop_name, {})
+                    field_frame,
+                    prop_name,
+                    selected_type,
+                    prepopulated_data.get(prop_name, {}),
                 )
             else:
                 var = tk.StringVar(value=prepopulated_data.get(prop_name, ""))
@@ -555,7 +562,9 @@ class GameObjectPropertiesPopup(tk.Toplevel):
             if prop_type != "checkbox_with_all_objects":
                 self.fields[prop_name] = var
 
-    def create_checkboxes_for_objects(self, parent_frame, prop_name, selected_type, prepopulated_data):
+    def create_checkboxes_for_objects(
+        self, parent_frame, prop_name, selected_type, prepopulated_data
+    ):
         """Create checkboxes for all object types defined in the config.json."""
         # Load all object types from the config.json
         object_types = []
@@ -570,7 +579,9 @@ class GameObjectPropertiesPopup(tk.Toplevel):
             if obj_name == "Player" and selected_type == "Player":
                 continue
             default_bool = obj_name == "Wall" or selected_type == "Wall"
-            checkbox_var = tk.BooleanVar(value=prepopulated_data.get(obj_name, default_bool))
+            checkbox_var = tk.BooleanVar(
+                value=prepopulated_data.get(obj_name, default_bool)
+            )
             checkbox = tk.Checkbutton(
                 parent_frame, text=obj_name, variable=checkbox_var
             )
@@ -631,12 +642,11 @@ class LevelEditorApp(tk.Tk):
         self.menubar.add_cascade(label="File", menu=self.file)
         self.file.add_command(label="Export", command=self.export)
 
-        
-
         # Start Game
         self.start_game = tk.Menu(self.menubar, tearoff=0)
         self.menubar.add_cascade(label="Run", menu=self.start_game)
         self.start_game.add_command(label="Run Game", command=self.execute_game)
+        self.start_game.add_command(label="Run Demo", command=self.execute_demo)
 
         self.config(menu=self.menubar)
 
@@ -1006,10 +1016,11 @@ class LevelEditorApp(tk.Tk):
     def export(self):
         """Export the project data as a JSON file."""
         # Ask the user for a file name
-        file_name = simpledialog.askstring(
-            "Export Project",
-            "Enter a name for the export file (without extension):",
-        )
+        # file_name = simpledialog.askstring(
+        #     "Export Project",
+        #     "Enter a name for the export file (without extension):",
+        # )
+        file_name = "game"
         if not file_name:
             messagebox.showerror("Export Failed", "File name cannot be empty.")
             return
@@ -1058,7 +1069,7 @@ class LevelEditorApp(tk.Tk):
         try:
             with open(file_path, "w") as f:
                 json.dump(data, f, indent=4)
-            messagebox.showinfo("Export Successful", f"Project exported to {file_path}")
+            # messagebox.showinfo("Export Successful", f"Project exported to {file_path}")
         except Exception as e:
             messagebox.showerror("Export Failed", f"Failed to save project: {e}")
 
@@ -1069,7 +1080,7 @@ class LevelEditorApp(tk.Tk):
         # don't delete the grid
         if event.x % 32 == 0 or event.y % 32 == 0:
             return
-        
+
         level_data = self.levels[self.current_level_index]
         canvas = level_data["canvas"]
         x, y = event.x, event.y
@@ -1084,14 +1095,15 @@ class LevelEditorApp(tk.Tk):
             level_data["items"] = new_items
 
     def execute_game(self):
+        self.export()
         self.withdraw()
 
         # Get the directory where main.py is located
         current_dir = os.path.dirname(os.path.abspath(__file__))
 
         # Construct the path to the bin directory
-        bin_dir = os.path.join(current_dir, "..", "Engine", "bin") 
-        
+        bin_dir = os.path.join(current_dir, "..", "Engine", "bin")
+
         makefile_dir = os.path.join(current_dir, "..", "Engine", "src")
 
         # Run make to build/update the game
@@ -1115,7 +1127,9 @@ class LevelEditorApp(tk.Tk):
 
         # Check if the game file exists and is executable
         if not os.path.exists(game_path):
-            messagebox.showerror("Not Found", f"The game executable was not found at: {game_path}")
+            messagebox.showerror(
+                "Not Found", f"The game executable was not found at: {game_path}"
+            )
             self.deiconify()
             return
 
@@ -1130,6 +1144,54 @@ class LevelEditorApp(tk.Tk):
             # Show the GUI again once the executable finishes or if there's an error
             self.deiconify()
 
+    def execute_demo(self):
+        self.withdraw()
+
+        # Get the directory where main.py is located
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+
+        # Construct the path to the bin directory
+        bin_dir = os.path.join(current_dir, "..", "Engine", "bin")
+
+        makefile_dir = os.path.join(current_dir, "..", "Engine", "src")
+
+        # Run make to build/update the game
+        try:
+            subprocess.run(["make"], check=True, cwd=makefile_dir)
+        except subprocess.CalledProcessError as e:
+            messagebox.showerror("Build Failed", f"Make failed with error: {e}")
+            self.deiconify()
+            return
+        except FileNotFoundError:
+            messagebox.showerror("Not Found", "Make tool not found on this system.")
+            self.deiconify()
+            return
+
+        # Construct the path to the game executable
+        game_path = os.path.join(bin_dir, "game")
+
+        # On Windows, you might need "game.exe" if the binary has that extension
+        # If so:
+        # game_path = os.path.join(bin_dir, "game.exe")
+
+        # Check if the game file exists and is executable
+        if not os.path.exists(game_path):
+            messagebox.showerror(
+                "Not Found", f"The game executable was not found at: {game_path}"
+            )
+            self.deiconify()
+            return
+
+        try:
+            # Run the game, using bin_dir as the working directory
+            subprocess.run(["./game", "demo"], check=True, cwd=bin_dir)
+        except subprocess.CalledProcessError as e:
+            messagebox.showerror("Execution Failed", f"Failed to run the game: {e}")
+        except FileNotFoundError:
+            messagebox.showerror("Not Found", "The game executable was not found.")
+        finally:
+            # Show the GUI again once the executable finishes or if there's an error
+            self.deiconify()
 
 
 if __name__ == "__main__":

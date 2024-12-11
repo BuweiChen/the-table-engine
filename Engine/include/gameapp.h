@@ -46,7 +46,7 @@ struct GameApplication {
     /**
      * @brief Starts the game application, initializing all necessary resources.
      */
-    void start(); 
+    void start(bool demo); 
 
     /**
      * @brief Processes input from the user.
