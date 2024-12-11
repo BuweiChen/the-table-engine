@@ -133,9 +133,10 @@ Vec2 SceneManager::getCameraWorldPosition() {
 }
 
 void SceneManager::getNextScene() {
+    int numScenes = static_cast<int>(m_sceneTrees.size());
     if (m_currentSceneIndex < static_cast<int>(m_sceneTrees.size()) - 1) {
         m_currentSceneIndex++;
-    } else {
+    } else if (numScenes != 1) {
         std::cout << "Finished all scenes.\n";
         exit(0);
         // std::cerr << "No more scenes to transition to.\n";
