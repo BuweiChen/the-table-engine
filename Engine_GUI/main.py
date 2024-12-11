@@ -11,6 +11,8 @@ class AddPropertyPopup(tk.Toplevel):
         self.title("Add Property")
         self.geometry("400x300")
 
+        self.old_name = None
+
         tk.Label(self, text="Property Name:").pack(anchor="w", padx=10, pady=5)
         self.name_var = tk.StringVar()
         self.name_entry = tk.Entry(self, textvariable=self.name_var)
@@ -88,7 +90,6 @@ class AddItemPopup(tk.Toplevel):
 
         tk.Label(pos_frame, text="Animation Time Per Frame (ms):").grid(row=1, column=0, sticky="w", padx=10, pady=5)
         tk.Entry(pos_frame, textvariable=self.animation_time).grid(row=1, column=1, sticky="w", padx=10, pady=5)
-        self.animation_time.trace_add("write", lambda *args: self.preview_image(self.file_var.get()))
 
         screen_frame = tk.Frame(self)
         screen_frame.pack(fill="x", padx=10, pady=10)
@@ -345,6 +346,9 @@ class LevelEditorApp(tk.Tk):
         self.current_frame = 0
         self.last_time = -1000
 
+        # for saving selected name
+        self.last_sel = None
+
         # Frames
         self.left_frame = tk.Frame(self, width=200, bg="#ddd")
         self.left_frame.pack(side="left", fill="y")
@@ -431,7 +435,7 @@ class LevelEditorApp(tk.Tk):
         """Called when popup confirms adding/editing an item."""
         if item_type == "structure":
             if editing:
-                sel = self.structures_listbox.curselection()
+                sel = self.last_sel
                 if sel:
                     old_name = self.structures_listbox.get(sel[0])
                     del self.structures[old_name]
@@ -442,14 +446,14 @@ class LevelEditorApp(tk.Tk):
 
         else:  # entity
             if editing:
-                sel = self.entities_listbox.curselection()
+                sel = self.last_sel
                 if sel:
                     old_name = self.entities_listbox.get(sel[0])
                     del self.entities[old_name]
                     self.entities_listbox.delete(sel[0])
-            name = data["name"]
-            self.entities[name] = data
-            self.entities_listbox.insert("end", name)
+                name = data["name"]
+                self.entities[name] = data
+                self.entities_listbox.insert("end", name)
 
     def show_add_popup(self, item_type):
         if self.popup_window and self.popup_window.winfo_exists():
@@ -458,6 +462,7 @@ class LevelEditorApp(tk.Tk):
         self.popup_window = AddItemPopup(
             self, f"Add {item_type.capitalize()}", item_type
         )
+        self.popup_name = None
         self.popup_window.protocol("WM_DELETE_WINDOW")
 
     def edit_selected_item(self, item_type):
@@ -468,12 +473,14 @@ class LevelEditorApp(tk.Tk):
             sel = self.structures_listbox.curselection()
             if not sel:
                 return
+            self.last_sel = sel
             name = self.structures_listbox.get(sel[0])
             data = self.structures[name]
         else:
             sel = self.entities_listbox.curselection()
             if not sel:
                 return
+            self.last_sel = sel
             name = self.entities_listbox.get(sel[0])
             data = self.entities[name]
 
