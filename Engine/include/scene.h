@@ -83,15 +83,17 @@ public:
     void setIsBackground(bool isBackground);
 
 private:
-    SceneNode* m_parent;
-    GameObject* m_gameObject;
-    std::vector<SceneNode*> m_children;
+    SceneNode* m_parent; ///< Pointer to the parent node in the scene graph.
+    GameObject* m_gameObject; ///< Pointer to the GameObject this node represents.
+    std::vector<SceneNode*> m_children; ///< List of child nodes.
 
-    bool m_destroy = false;
-    bool m_isBackground = false;
+    bool m_destroy = false; ///< Flag to indicate whether this node is scheduled for destruction.
+    bool m_isBackground = false; ///< Flag to indicate whether this node is part of the background.
 
     /**
      * @brief Destructor, ensures proper cleanup of node resources.
+     * This destructor is private to ensure that SceneNode objects are managed correctly
+     * through smart pointers or specific management functions in the SceneTree class.
      */
     ~SceneNode();
 };
@@ -153,19 +155,24 @@ public:
     /**
      * @brief Retrieves the game objects cached by tag.
      * @param tag The tag string to search for.
-     * @return Pointer to the GameObject if found, nullptr otherwise.
+     * @return Vector of GameObjects with the specified tag.
      */
     std::vector<GameObject*>& findCachedGameObjectsInFrame(std::string tag);
+
+    /**
+     * @brief Resets the cached game objects for a new frame, clearing the current frame's cache.
+     */
     void resetCachedGameObjectsInFrame();
 
     /**
      * @brief Retrieves the current game status.
-     * @return String representing the current game status.
+     * @return Integer representing the current game status.
      */
     int gameStatus();
 
 private:
-    SceneNode* m_root;
-    std::unordered_map<std::string, GameObject*> m_cachedGameObjects; // Cache for faster lookup of GameObjects throughout the scene.
-    std::unordered_map<std::string, std::vector<GameObject*>> m_cachedGameObjectsInFrame; // Cache for faster lookup of GameObjects per frame.
+    SceneNode* m_root; ///< Root node of the scene tree.
+
+    std::unordered_map<std::string, GameObject*> m_cachedGameObjects; ///< Cache for faster lookup of GameObjects by ID.
+    std::unordered_map<std::string, std::vector<GameObject*>> m_cachedGameObjectsInFrame; ///< Cache for faster lookup of GameObjects by tag within a frame.
 };

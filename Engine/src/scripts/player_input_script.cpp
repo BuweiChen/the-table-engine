@@ -104,8 +104,6 @@ void PlayerInputScript::update() {
         collide->preventCollision(tableCollide, dx, dy);
     }
 
-    transform->updateWorldPosition(dx, dy);
-
     // move the player's bow with the player
     if (!m_owner->getChildren().empty()) {
         auto bow = m_owner->getChildren()[0];
@@ -130,4 +128,6 @@ void PlayerInputScript::update() {
             health->updateHealth(-10);
         }
     }
+
+    transform->updateWorldPosition(dx, dy);
 }

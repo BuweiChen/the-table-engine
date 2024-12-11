@@ -30,11 +30,11 @@ GameObject* GameObjectFactory::createPlayerTest()
     
     // Run animation
     SDL_Texture* runTexture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Heroes/Knight/Run/Run-Sheet.bmp");
-    int runAnim = animations->createAnimation(runTexture, 1, 6, 0.5f);
+    animations->createAnimation(runTexture, 1, 6, 0.5f);
     
     // Death animation
     SDL_Texture* deathTexture = ResourceManager::getInstance().loadTexture("../Assets/PixelCrawler/Heroes/Knight/Death/Death-Sheet.bmp");
-    int deathAnim = animations->createAnimation(deathTexture, 1, 6, 0.5f);
+    animations->createAnimation(deathTexture, 1, 6, 0.5f);
 
     // Set initial animation
     animations->setCurrentAnimation(idleAnim);
