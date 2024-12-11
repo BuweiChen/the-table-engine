@@ -108,7 +108,6 @@ void GameApplication::printStats() {
         color = {255, 0, 0, 255};
         SDL_SetRenderDrawColor(m_renderer, color.r, color.g, color.b, color.a);
         int health = player->getComponent<Health>()->getHealth();
-        
         rect = {640 - 120, 10, (int) (100.0 * health / 1000), 25};
         SDL_RenderFillRect(m_renderer, &rect);
         // draw a border around the health bar
