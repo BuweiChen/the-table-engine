@@ -2,3 +2,6 @@
 	path = extern/pybind11
 	url = ../../pybind/pybind11
 	branch = stable
+[submodule "EngineDocs"]
+	path = EngineDocs
+	url = ttps://github.com/kli63/EngineDocs.git
