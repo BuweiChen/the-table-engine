@@ -61,6 +61,8 @@ class SceneManager
          */
         void setRenderer(SDL_Renderer* renderer);
 
+        void loadDemo();
+
         void loadScenesFromJSON(const std::string& filePath);
 
         /**

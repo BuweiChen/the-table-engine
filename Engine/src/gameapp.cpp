@@ -53,6 +53,7 @@ void GameApplication::start() {
 
     SceneManager::getInstance().setRenderer(m_renderer);
     SceneManager::getInstance().loadScenesFromJSON("../../Engine_GUI/game_json_output/game.json");
+    // SceneManager::getInstance().loadDemo();
     SceneManager::getInstance().getNextScene();
 
     // Sound* music = ResourceManager::getInstance().loadSound("../Assets/Sounds/music.wav");

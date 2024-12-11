@@ -25,6 +25,12 @@ SceneTree* SceneManager::getSceneTree() {
     return m_sceneTrees[m_currentSceneIndex];
 }
 
+void SceneManager::loadDemo() {
+    m_sceneTrees.push_back(createSceneTest1());
+    m_sceneTrees.push_back(createSceneTest2());
+    m_sceneTrees.push_back(createSceneTest3());
+}
+
 void SceneManager::loadScenesFromJSON(const std::string& filePath) {
     std::ifstream file(filePath);
     if (!file) {
