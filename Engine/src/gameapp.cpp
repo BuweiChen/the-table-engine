@@ -10,6 +10,7 @@
 
 #include "transform.h"
 #include "texture.h"
+#include "health.h"
 // #include "sound.h"
 
 #include "SDL2/SDL.h"
@@ -81,13 +82,27 @@ void GameApplication::printStats() {
     // number of keys collected by player
     color = {0, 255, 0, 255};
     auto players = sceneTree->findGameObjectsByTag("Player");
-    if (!players.empty()) 
+    if (!players.empty())
     {
         auto player = players[0];
+
         std::string numKeys = std::to_string(player->getScript<PlayerInputScript>()->getKeysCollected());
         text = ResourceManager::getInstance().loadText(font, "Keys: " + numKeys, color, 12);
         rect = {5, 30, 80, 25};
         SDL_RenderCopy(m_renderer, text, NULL, &rect);
+
+        color = {255, 0, 0, 255};
+        SDL_SetRenderDrawColor(m_renderer, color.r, color.g, color.b, color.a);
+        int health = player->getComponent<Health>()->getHealth();
+        std::cout << "Health: " << health << std::endl;
+        rect = {640 - 120, 10, (int) (100.0 * health / 1000), 25};
+        SDL_RenderFillRect(m_renderer, &rect);
+        // draw a border around the health bar
+        rect = {640 - 120, 10, 100, 25};
+        // color = purple
+        color = {255, 0, 255, 255};
+        SDL_SetRenderDrawColor(m_renderer, color.r, color.g, color.b, color.a);
+        SDL_RenderDrawRect(m_renderer, &rect);
     }
 
     SDL_DestroyTexture(text);

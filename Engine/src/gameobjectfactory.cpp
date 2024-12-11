@@ -5,6 +5,7 @@
 #include "animation.h"
 #include "collide.h"
 #include "input.h"
+#include "health.h"
 #include "resourcemanager.h"
 #include "player_input_script.h"
 #include "projectile_script.h"
@@ -29,6 +30,9 @@ GameObject* GameObjectFactory::createPlayerTest()
 
     auto input = new Input();
     player->addComponent<Input>(input);
+
+    auto health = new Health();
+    player->addComponent<Health>(health);
 
     auto playerMovement = new PlayerInputScript();
     player->addScript<PlayerInputScript>(playerMovement);

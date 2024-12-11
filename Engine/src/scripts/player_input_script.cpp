@@ -8,6 +8,7 @@
 #include "gameobject.h"
 #include "gameobjectfactory.h"
 #include "scenemanager.h"
+#include "health.h"
 
 #include  <iostream>
 #include <string>
@@ -79,6 +80,15 @@ void PlayerInputScript::update() {
         if (collide->isColliding(keyCollide)) {
             key->getSceneNode()->setDestroy(true);
             m_keysCollected++;
+        }
+    }
+
+    // health
+    auto health = m_owner->getComponent<Health>();
+    for (auto enemy : SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Warrior")) {
+        auto enemyCollide = enemy->getComponent<Collide>();
+        if (collide->isColliding(enemyCollide)) {
+            health->updateHealth(-1);
         }
     }
 }

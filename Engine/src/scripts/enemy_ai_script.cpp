@@ -42,8 +42,8 @@ void EnemyAIScript::update() {
     } 
 
     // prevent the enemy from moving through player
-    auto playerCollide = player->getComponent<Collide>();
-    collide->preventCollision(playerCollide, dx, dy);
+    // auto playerCollide = player->getComponent<Collide>();
+    // collide->preventCollision(playerCollide, dx, dy);
 
     transform->updateWorldPosition(dx, dy);
 }

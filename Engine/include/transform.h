@@ -110,5 +110,5 @@ class Transform : public Component {
         /**
          * @brief Render function for the Transform component, handling visual updates.
          */
-        void render();
+        void update();
 };

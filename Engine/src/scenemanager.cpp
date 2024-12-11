@@ -103,7 +103,7 @@ void SceneManager::update()
     if (sceneTree == nullptr) return;
 
     sceneTree->traverseTree([](SceneNode* node) {
-        if (!node->isBackground() && node->getGameObject())
+        if (node->getGameObject())
             node->getGameObject()->update();
     });
     
