@@ -1,39 +1,9 @@
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <tagfile doxygen_version="1.9.1">
   <compound kind="file">
-    <name>engine_bindings.cpp</name>
-    <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/bindings/</path>
-    <filename>engine__bindings_8cpp.html</filename>
-    <includes id="vec2_8h" name="vec2.h" local="yes" imported="no">vec2.h</includes>
-    <includes id="component_8h" name="component.h" local="yes" imported="no">component.h</includes>
-    <includes id="script_8h" name="script.h" local="yes" imported="no">script.h</includes>
-    <includes id="scene_8h" name="scene.h" local="yes" imported="no">scene.h</includes>
-    <includes id="gameobject_8h" name="gameobject.h" local="yes" imported="no">gameobject.h</includes>
-    <includes id="collide_8h" name="collide.h" local="yes" imported="no">collide.h</includes>
-    <includes id="transform_8h" name="transform.h" local="yes" imported="no">transform.h</includes>
-    <includes id="resourcemanager_8h" name="resourcemanager.h" local="yes" imported="no">resourcemanager.h</includes>
-    <includes id="texture_8h" name="texture.h" local="yes" imported="no">texture.h</includes>
-    <includes id="animation_8h" name="animation.h" local="yes" imported="no">animation.h</includes>
-    <includes id="scenemanager_8h" name="scenemanager.h" local="yes" imported="no">scenemanager.h</includes>
-    <includes id="input_8h" name="input.h" local="yes" imported="no">input.h</includes>
-    <includes id="gameapp_8h" name="gameapp.h" local="yes" imported="no">gameapp.h</includes>
-    <includes id="gameobjectfactory_8h" name="gameobjectfactory.h" local="yes" imported="no">gameobjectfactory.h</includes>
-    <includes id="projectile__script_8h" name="projectile_script.h" local="yes" imported="no">projectile_script.h</includes>
-    <includes id="ranged__weapon__script_8h" name="ranged_weapon_script.h" local="yes" imported="no">ranged_weapon_script.h</includes>
-    <includes id="collision__script_8h" name="collision_script.h" local="yes" imported="no">collision_script.h</includes>
-    <includes id="enemy__ai__script_8h" name="enemy_ai_script.h" local="yes" imported="no">enemy_ai_script.h</includes>
-    <includes id="player__input__script_8h" name="player_input_script.h" local="yes" imported="no">player_input_script.h</includes>
-    <includes id="animationsmanager_8h" name="animationsmanager.h" local="yes" imported="no">animationsmanager.h</includes>
-    <includes id="camera_8h" name="camera.h" local="yes" imported="no">camera.h</includes>
-    <includes id="crosshair__script_8h" name="crosshair_script.h" local="yes" imported="no">crosshair_script.h</includes>
-    <includes id="health_8h" name="health.h" local="yes" imported="no">health.h</includes>
-    <member kind="function">
-      <type></type>
-      <name>PYBIND11_MODULE</name>
-      <anchorfile>engine__bindings_8cpp.html</anchorfile>
-      <anchor>a75376bcdc238f7354b86e6216d82bf1d</anchor>
-      <arglist>(engine, m)</arglist>
-    </member>
+    <name>mainpage.h</name>
+    <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/docs/</path>
+    <filename>mainpage_8h.html</filename>
   </compound>
   <compound kind="file">
     <name>python_api.h</name>
@@ -41,17 +11,9 @@
     <filename>python__api_8h.html</filename>
   </compound>
   <compound kind="file">
-    <name>run.py</name>
+    <name>python_guide.h</name>
     <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/bindings/</path>
-    <filename>run_8py.html</filename>
-    <namespace>run</namespace>
-    <member kind="function">
-      <type>def</type>
-      <name>main</name>
-      <anchorfile>namespacerun.html</anchorfile>
-      <anchor>a9c5af1e168e33914b2ff3996f6a22987</anchor>
-      <arglist>()</arglist>
-    </member>
+    <filename>python__guide_8h.html</filename>
   </compound>
   <compound kind="file">
     <name>animation.h</name>
@@ -2697,38 +2659,86 @@
       <arglist></arglist>
     </member>
   </compound>
-  <compound kind="namespace">
-    <name>run</name>
-    <filename>namespacerun.html</filename>
-    <member kind="function">
-      <type>def</type>
-      <name>main</name>
-      <anchorfile>namespacerun.html</anchorfile>
-      <anchor>a9c5af1e168e33914b2ff3996f6a22987</anchor>
-      <arglist>()</arglist>
-    </member>
+  <compound kind="page">
+    <name>Game</name>
+    <title>Engine Python Bindings</title>
+    <filename>Game.html</filename>
+    <docanchor file="Game.html" title="Introduction">intro_sec</docanchor>
+    <docanchor file="Game.html" title="Setup and Installation">setup_sec</docanchor>
+    <docanchor file="Game.html" title="Prerequisites">prereq_subsec</docanchor>
+    <docanchor file="Game.html" title="Ubuntu/Debian Installation">install_ubuntu</docanchor>
+    <docanchor file="Game.html" title="macOS Installation">install_mac</docanchor>
+    <docanchor file="Game.html" title="Architecture">arch_sec</docanchor>
+    <docanchor file="Game.html" title="Layer Structure">arch_layers</docanchor>
+    <docanchor file="Game.html" title="Usage Examples">usage_sec</docanchor>
+    <docanchor file="Game.html" title="Basic Game Setup">basic_example</docanchor>
+    <docanchor file="Game.html" title="Custom Component Example">custom_component</docanchor>
+    <docanchor file="Game.html" title="Scene Management">scene_example</docanchor>
+    <docanchor file="Game.html" title="Performance Considerations">perform_sec</docanchor>
+    <docanchor file="Game.html" title="Object Lifetime">perf_obj</docanchor>
+    <docanchor file="Game.html" title="Data Transfer">perf_data</docanchor>
+    <docanchor file="Game.html" title="Threading">perf_thread</docanchor>
+    <docanchor file="Game.html" title="Extension Guide">extend_sec</docanchor>
+    <docanchor file="Game.html" title="Adding Components">extend_comp</docanchor>
+    <docanchor file="Game.html" title="Custom Resources">extend_resource</docanchor>
+    <docanchor file="Game.html" title="Best Practices">best_sec</docanchor>
+    <docanchor file="Game.html" title="Code Organization">best_code</docanchor>
+    <docanchor file="Game.html" title="Error Handling">best_error</docanchor>
+    <docanchor file="Game.html" title="Documentation">best_doc</docanchor>
+    <docanchor file="Game.html" title="Future Development">future_sec</docanchor>
+    <docanchor file="Game.html" title="Planned Features">future_features</docanchor>
+    <docanchor file="Game.html" title="Optimization Plans">future_opt</docanchor>
+    <docanchor file="Game.html" title="Contributing">contrib_sec</docanchor>
+    <docanchor file="Game.html" title="Contribution Guidelines">contrib_guide</docanchor>
+    <docanchor file="Game.html" title="References">ref_sec</docanchor>
+    <docanchor file="Game.html" title="Documentation">ref_docs</docanchor>
+    <docanchor file="Game.html" title="Design Patterns">ref_design</docanchor>
   </compound>
   <compound kind="page">
-    <name>python_bindings</name>
-    <title>Python API Reference</title>
-    <filename>python_bindings.html</filename>
-    <docanchor file="python_bindings.html" title="Overview">overview</docanchor>
-    <docanchor file="python_bindings.html" title="Core Classes">core_classes</docanchor>
-    <docanchor file="python_bindings.html" title="Vec2">vec2_class</docanchor>
-    <docanchor file="python_bindings.html" title="GameObject">gameobject_class</docanchor>
-    <docanchor file="python_bindings.html" title="Component">component_class</docanchor>
-    <docanchor file="python_bindings.html" title="Component Types">components</docanchor>
-    <docanchor file="python_bindings.html" title="Transform">transform_component</docanchor>
-    <docanchor file="python_bindings.html" title="Collide">collide_component</docanchor>
-    <docanchor file="python_bindings.html" title="Texture">texture_component</docanchor>
-    <docanchor file="python_bindings.html" title="Animation">animation_component</docanchor>
-    <docanchor file="python_bindings.html" title="Factory Methods">factory</docanchor>
-    <docanchor file="python_bindings.html" title="GameObjectFactory">gameobject_factory</docanchor>
-    <docanchor file="python_bindings.html" title="Script Types">scripts</docanchor>
-    <docanchor file="python_bindings.html" title="PlayerInputScript">player_input_script</docanchor>
-    <docanchor file="python_bindings.html" title="Managers">managers</docanchor>
-    <docanchor file="python_bindings.html" title="SceneManager">scene_manager</docanchor>
-    <docanchor file="python_bindings.html" title="Game Application">application</docanchor>
-    <docanchor file="python_bindings.html" title="GameApplication">game_app</docanchor>
+    <name>Python</name>
+    <title>Bindings API</title>
+    <filename>Python.html</filename>
+    <docanchor file="index.html" title="Overview">overview</docanchor>
+    <docanchor file="Python.html" title="Core Classes">core</docanchor>
+    <docanchor file="Python.html" title="Vec2">vec2</docanchor>
+    <docanchor file="Python.html" title="Component">component</docanchor>
+    <docanchor file="Python.html" title="Game Objects">objects</docanchor>
+    <docanchor file="Python.html" title="GameObject">gameobject</docanchor>
+    <docanchor file="Python.html" title="Component Types">components</docanchor>
+    <docanchor file="Python.html" title="Transform">transform</docanchor>
+    <docanchor file="Python.html" title="Collide">collide</docanchor>
+    <docanchor file="Python.html" title="Health">health</docanchor>
+    <docanchor file="Python.html" title="Graphics Components">graphics</docanchor>
+    <docanchor file="Python.html" title="Texture">texture</docanchor>
+    <docanchor file="Python.html" title="Animation">animation</docanchor>
+    <docanchor file="Python.html" title="AnimationsManager">animations_manager</docanchor>
+    <docanchor file="Python.html" title="Input Handling">input</docanchor>
+    <docanchor file="Python.html" title="Script Components">scripts</docanchor>
+    <docanchor file="Python.html" title="Script">script</docanchor>
+    <docanchor file="Python.html" title="PlayerInputScript">player_script</docanchor>
+    <docanchor file="Python.html" title="ProjectileScript  &lt;br&gt;">projectile_script</docanchor>
+    <docanchor file="Python.html" title="RangedWeaponScript">weapon_script</docanchor>
+    <docanchor file="Python.html" title="CollisionScript">collision_script</docanchor>
+    <docanchor file="Python.html" title="EnemyAIScript">enemy_script</docanchor>
+    <docanchor file="Python.html" title="Scene Management">scene</docanchor>
+    <docanchor file="Python.html" title="SceneNode">scene_node</docanchor>
+    <docanchor file="Python.html" title="SceneTree">scene_tree</docanchor>
+    <docanchor file="Python.html" title="Camera">camera</docanchor>
+    <docanchor file="Python.html" title="Manager Classes">managers</docanchor>
+    <docanchor file="Python.html" title="SceneManager">scene_manager</docanchor>
+    <docanchor file="Python.html" title="ResourceManager">resource_manager</docanchor>
+    <docanchor file="Python.html" title="Game Application">app</docanchor>
+    <docanchor file="Python.html" title="GameApplication">game_app</docanchor>
+    <docanchor file="Python.html" title="Factory Classes">factories</docanchor>
+    <docanchor file="Python.html" title="GameObjectFactory">object_factory</docanchor>
+    <docanchor file="Python.html" title="Usage Examples">examples</docanchor>
+    <docanchor file="Python.html" title="Basic Game Setup">example_basic</docanchor>
+    <docanchor file="Python.html" title="Scene Creation">example_scene</docanchor>
+  </compound>
+  <compound kind="page">
+    <name>index</name>
+    <title>CPSC 411 Game Engine</title>
+    <filename>index.html</filename>
+    <docanchor file="index.html" title="Documentation Sections">navigation</docanchor>
   </compound>
 </tagfile>

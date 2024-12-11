@@ -208,7 +208,6 @@ PYBIND11_MODULE(engine, m) {
         .def_static("getInstance", &ResourceManager::getInstance, py::return_value_policy::reference);
         // .def("loadSound", &ResourceManager::loadSound, py::return_value_policy::take_ownership);
 
-
     py::class_<Input, Component>(m, "Input")
         .def(py::init<>())
         .def_readwrite("spacePressed", &Input::spacePressed)
