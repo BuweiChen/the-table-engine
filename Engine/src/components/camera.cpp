@@ -16,6 +16,7 @@ Camera::~Camera() {
 
 void Camera::update() {
     static int health = -1;
+    // auto sceneTree = SceneManager::getInstance().getSceneTree();
     auto player = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Player")[0];
     if (player == nullptr) return;
 
@@ -34,6 +35,8 @@ void Camera::update() {
         m_worldPosition.y += rand() % 10 - 5;
     }
 
+    if (SceneManager::getInstance().isDemo)
+    {
     if (m_worldPosition.x < -320)
         m_worldPosition.x = -320;
     if (m_worldPosition.x > 320)
@@ -42,6 +45,18 @@ void Camera::update() {
         m_worldPosition.y = -400;
     if (m_worldPosition.y > 400)
         m_worldPosition.y = 400;
+    }
+    else
+    {
+        if (m_worldPosition.x < 320)
+            m_worldPosition.x = 320;
+        if (m_worldPosition.x > 480)
+            m_worldPosition.x = 480;
+        if (m_worldPosition.y < 272)
+            m_worldPosition.y = 272;
+        if (m_worldPosition.y > 560)
+            m_worldPosition.y = 560;
+    }
 }
 
 Vec2 Camera::getWorldPosition() {

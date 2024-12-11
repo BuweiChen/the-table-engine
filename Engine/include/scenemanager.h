@@ -57,6 +57,8 @@ class SceneManager
         static std::atomic<uint64_t> m_totalObjects; ///< Total number of game objects created.
         static std::atomic<uint64_t> m_aliveObjects; ///< Current number of active game objects.
 
+        bool isDemo = false;
+
         /**
          * @brief Sets the renderer used for drawing game objects.
          * @param renderer Pointer to SDL_Renderer.

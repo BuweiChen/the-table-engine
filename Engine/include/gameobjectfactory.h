@@ -82,7 +82,7 @@ public:
      * @param sprite_pos Position of the tile on the sprite sheet.
      * @return GameObject* Pointer to the newly created customized tile.
      */
-    static GameObject* createTileCustom(std::string path, Vec2 pos, Vec2 size, Vec2 sprite_size, Vec2 sprite_pos);
+    static GameObject* createTileCustom(std::string path, Vec2 pos, Vec2 size, Vec2 sprite_size, Vec2 sprite_pos, Vec2 rc);
 
     /**
      * @brief Creates a customized wall object with specific texture.

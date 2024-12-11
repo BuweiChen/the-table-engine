@@ -206,12 +206,13 @@ GameObject* GameObjectFactory::createTile1()
     return tile;
 }
 
-GameObject* GameObjectFactory::createTileCustom(std::string path, Vec2 pos, Vec2 size, Vec2 sprite_size, Vec2 sprite_pos)
+GameObject* GameObjectFactory::createTileCustom(std::string path, Vec2 pos, Vec2 size, Vec2 sprite_size, Vec2 sprite_pos, Vec2 rc)
 {
     GameObject* tile = new GameObject("Tile");
 
     SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture(path);
-    auto texture = new Texture(sdl_texture);
+    auto texture = new Animation(sdl_texture);
+    texture->setRowsColsInSpriteMap(rc.x, rc.y);
     texture->setSizeInSpriteMap(sprite_size.x, sprite_size.y);
     texture->setPositionInSpriteMap(sprite_pos.x, sprite_pos.y);
     tile->addComponent<Texture>(texture);
@@ -230,6 +231,7 @@ GameObject* GameObjectFactory::createWallCustom(std::string path, Vec2 pos, Vec2
 
     SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture(path);
     auto texture = new Texture(sdl_texture);
+    // texture->setRowsColsInSpriteMap(rowcols.x, rowcols.y);
     texture->setSizeInSpriteMap(sprite_size.x, sprite_size.y);
     texture->setPositionInSpriteMap(sprite_pos.x, sprite_pos.y);
     wall->addComponent<Texture>(texture);
