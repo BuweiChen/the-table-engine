@@ -1380,8 +1380,8 @@
       <type>static GameObject *</type>
       <name>createTileCustom</name>
       <anchorfile>classGameObjectFactory.html</anchorfile>
-      <anchor>a5d949c5e8a456330a5eab488dc6d9f09</anchor>
-      <arglist>(std::string path, Vec2 pos, Vec2 size, Vec2 sprite_size, Vec2 sprite_pos)</arglist>
+      <anchor>a9e16bea3dd6a4bf906fe952878665f4e</anchor>
+      <arglist>(std::string path, Vec2 pos, Vec2 size, Vec2 sprite_size, Vec2 sprite_pos, Vec2 rc)</arglist>
     </member>
     <member kind="function" static="yes">
       <type>static GameObject *</type>
@@ -1934,6 +1934,13 @@
       <anchorfile>classSceneManager.html</anchorfile>
       <anchor>a05b9c51f731a9da497ad1c3013eeaacc</anchor>
       <arglist>()</arglist>
+    </member>
+    <member kind="variable">
+      <type>bool</type>
+      <name>isDemo</name>
+      <anchorfile>classSceneManager.html</anchorfile>
+      <anchor>a7ce7f1f540240907d7b34b59fad65f57</anchor>
+      <arglist></arglist>
     </member>
     <member kind="variable" static="yes">
       <type>static std::atomic&lt; uint64_t &gt;</type>
@@ -2737,7 +2744,7 @@
   </compound>
   <compound kind="page">
     <name>index</name>
-    <title>CPSC 411 Game Engine</title>
+    <title>The Table Engine</title>
     <filename>index.html</filename>
     <docanchor file="index.html" title="Documentation Sections">navigation</docanchor>
   </compound>

@@ -57,8 +57,15 @@ This ensures that pybind11 and any other external dependencies are properly fetc
 ### Building the Engine and Python Bindings
 There are scripts provided (compile.sh and compile_and_run.sh) that will help configure and build the project with Python bindings.
 
-Linux and macOS
+## Linux and macOS
 Ensure Python is in your PATH: Make sure python3 is available. The scripts will automatically detect your Python installation via which python3.
+
+Before compiling the bindings, first ensure that you've compiled `libengine.a`:
+
+```bash
+cd Engine/src
+make all
+```
 
 Run the compile script:
 
