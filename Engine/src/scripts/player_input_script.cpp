@@ -97,8 +97,8 @@ void PlayerInputScript::update() {
         position.x = levelWidth + 124;
     if (isDemo && position.y < -levelHeight)
         position.y = -levelHeight;
-    else if (!isDemo && position.y < -levelHeight + 612)
-        position.y = -levelHeight + 612;
+    else if (!isDemo && position.y < -levelHeight + 640)
+        position.y = -levelHeight + 640;
     if (isDemo && position.y > levelHeight - 48)
         position.y = levelHeight - 48;
     else if (!isDemo && position.y > levelHeight + 116)
