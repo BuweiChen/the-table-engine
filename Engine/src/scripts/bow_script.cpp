@@ -1,5 +1,4 @@
-#include <iostream>
-
+#include <cmath>
 #include "bow_script.h"
 #include "gameobject.h"
 #include "input.h"
@@ -24,18 +23,28 @@ void Bow_script::input() {
 
 void Bow_script::update() {
     auto input = m_owner->getComponent<Input>();
-    if (m_shoot && (int) SDL_GetTicks() - m_lastFireTimeInMs > 1000 / m_fireRatePerSecond) {
+    auto transform = m_owner->getComponent<Transform>();
+    auto texture = m_owner->getComponent<Texture>();
+
+    int bowX = transform->getScreenPosition().x;
+    int bowY = transform->getScreenPosition().y;
+    int dx = input->m_mouseX - bowX;
+    int dy = input->m_mouseY - bowY;
+
+    float angle = std::atan2((float)dy, (float)dx) * (180.0f / (float)M_PI);
+    texture->setAngle(angle);
+
+    texture->setFlipHorizontal(dx < 0);
+
+    if (m_shoot && (int)SDL_GetTicks() - m_lastFireTimeInMs > 1000 / m_fireRatePerSecond) {
         m_lastFireTimeInMs = SDL_GetTicks();
 
-        int dx = input->m_mouseX - m_owner->getComponent<Transform>()->getScreenPosition().x;
-        int dy = input->m_mouseY - m_owner->getComponent<Transform>()->getScreenPosition().y;
-        
         auto arrow = GameObjectFactory::createArrow(dx, dy);
-        arrow->getComponent<Transform>()->setWorldPosition(m_owner->getComponent<Transform>()->getWorldPosition());
-        m_owner->getComponent<Texture>()->setFlipHorizontal(dx < 0);
+        arrow->getComponent<Transform>()->setWorldPosition(transform->getWorldPosition());
 
         auto sceneTree = SceneManager::getInstance().getSceneTree();
         sceneTree->addChild(arrow);
+
         m_shoot = false;
     }
 }

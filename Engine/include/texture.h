@@ -19,20 +19,22 @@
  * It supports animations by managing sprite sheets and the rendering of specific frames.
  */
 class Texture : public Component {
-    private:
-        SDL_Texture* m_texture; ///< Pointer to the SDL_Texture object.
-        SDL_Renderer* m_renderer; ///< Pointer to the SDL_Renderer object used for rendering the texture.
+    protected:
+        SDL_Texture* m_texture;    ///< Pointer to the SDL_Texture object.
+        SDL_Renderer* m_renderer;  ///< Pointer to the SDL_Renderer object used for rendering the texture.
 
-        SDL_Rect* m_spriteBox; ///< Defines the section of the sprite map rendered for a specific game object.
-        SDL_Rect* m_spriteClip; ///< Defines the section of the sprite box rendered per animation frame.
-        int m_rows, m_cols; ///< The number of rows and columns in the sprite map.
-        float m_time; ///< Total time in seconds to render the entire animation.
+        SDL_Rect* m_spriteBox;     ///< Defines the full bounding box of the sprite in the sprite map.
+        SDL_Rect* m_spriteClip;    ///< Defines the section of the sprite box rendered per animation frame.
+        int m_rows, m_cols;        ///< The number of rows and columns in the sprite map.
+        float m_time;              ///< Total time in seconds to render the entire animation.
 
         bool m_flipHorizontal = false; ///< Flag to flip the texture horizontally.
-        bool m_flipVertical = false; ///< Flag to flip the texture vertically.
+        bool m_flipVertical = false;   ///< Flag to flip the texture vertically.
 
-        int m_numFrames; ///< Number of frames in the animation.
-        int m_msPerFrame; ///< Milliseconds per frame of animation.
+        int m_numFrames;    ///< Number of frames in the animation.
+        int m_msPerFrame;   ///< Milliseconds per frame of animation.
+
+        float m_angle = 0.0f; ///< The angle in degrees to rotate the texture when rendering.
 
     public:
         /**
@@ -96,6 +98,15 @@ class Texture : public Component {
          * @param flip True to flip vertically, false otherwise.
          */
         void setFlipVertical(bool flip);
+
+        /**
+         * @brief Sets the rotation angle for the texture (in degrees).
+         * @param angle Angle in degrees by which the texture should be rotated.
+         */
+        void setAngle(float angle) { m_angle = angle; }
+
+        int getMsPerFrame() const { return m_msPerFrame; }
+        void setMsPerFrame(int msPerFrame) { m_msPerFrame = msPerFrame; }
 
         /**
          * @brief Updates the animation state of the texture.
