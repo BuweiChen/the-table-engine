@@ -1,19 +1,19 @@
 #include <iostream>
 
-#include "arrow_test_script.h"
+#include "projectile_script.h"
 #include "transform.h"
 #include "gameobject.h"
 #include "collide.h"
 #include "scenemanager.h"
 
-ArrowTestScript::ArrowTestScript(float dx, float dy) {
+ProjectileScript::ProjectileScript(float dx, float dy) {
     float norm = sqrt(dx * dx + dy * dy);
     float speed = 12;
     m_dx = dx / norm * speed;
     m_dy = dy / norm * speed;
 }
 
-void ArrowTestScript::update() {
+void ProjectileScript::update() {
     auto transform = m_owner->getComponent<Transform>();
 
     // Move the arrow

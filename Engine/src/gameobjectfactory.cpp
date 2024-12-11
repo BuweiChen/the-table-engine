@@ -6,8 +6,8 @@
 #include "collide.h"
 #include "input.h"
 #include "resourcemanager.h"
-#include "player_test_script.h"
-#include "arrow_test_script.h"
+#include "player_input_script.h"
+#include "projectile_script.h"
 #include "enemy_ai_script.h"
 #include "collide_test_script.h"
 #include "collide_script.h"
@@ -31,8 +31,8 @@ GameObject* GameObjectFactory::createPlayerTest()
     auto input = new Input();
     player->addComponent<Input>(input);
 
-    auto playerMovement = new PlayerTestScript();
-    player->addScript<PlayerTestScript>(playerMovement);
+    auto playerMovement = new PlayerInputScript();
+    player->addScript<PlayerInputScript>(playerMovement);
 
     auto playerCollide = new Collide();
     playerCollide->setScreenSize(transform->getScreenSize().x * 0.4, transform->getScreenSize().y * 0.6);
@@ -93,8 +93,8 @@ GameObject* GameObjectFactory::createArrow(int dx, int dy)
     transform->setWorldSize(15, 15);
     arrow->addComponent<Transform>(transform);
 
-    auto arrowMovement = new ArrowTestScript(dx, dy);
-    arrow->addScript<ArrowTestScript>(arrowMovement);
+    auto arrowMovement = new ProjectileScript(dx, dy);
+    arrow->addScript<ProjectileScript>(arrowMovement);
 
     auto arrowCollide = new Collide();
     arrowCollide->setScreenPosition(transform->getScreenPosition());

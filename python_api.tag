@@ -17,12 +17,12 @@
     <includes id="input_8h" name="input.h" local="yes" imported="no">input.h</includes>
     <includes id="gameapp_8h" name="gameapp.h" local="yes" imported="no">gameapp.h</includes>
     <includes id="gameobjectfactory_8h" name="gameobjectfactory.h" local="yes" imported="no">gameobjectfactory.h</includes>
-    <includes id="arrow__test__script_8h" name="arrow_test_script.h" local="yes" imported="no">arrow_test_script.h</includes>
-    <includes id="bow__script_8h" name="ranged_weapon_script.h" local="yes" imported="no">ranged_weapon_script.h</includes>
+    <includes id="projectile__script_8h" name="projectile_script.h" local="yes" imported="no">projectile_script.h</includes>
+    <includes id="ranged__weapon__script_8h" name="ranged_weapon_script.h" local="yes" imported="no">ranged_weapon_script.h</includes>
     <includes id="collide__script_8h" name="collide_script.h" local="yes" imported="no">collide_script.h</includes>
     <includes id="collide__test__script_8h" name="collide_test_script.h" local="yes" imported="no">collide_test_script.h</includes>
     <includes id="enemy__ai__script_8h" name="enemy_ai_script.h" local="yes" imported="no">enemy_ai_script.h</includes>
-    <includes id="player__test__script_8h" name="player_test_script.h" local="yes" imported="no">player_test_script.h</includes>
+    <includes id="player__input__script_8h" name="player_input_script.h" local="yes" imported="no">player_input_script.h</includes>
   </compound>
   <compound kind="file">
     <name>python_api.h</name>
@@ -30,18 +30,11 @@
     <filename>python__api_8h.html</filename>
   </compound>
   <compound kind="file">
-    <name>arrow_test_script.h</name>
+    <name>animation.h</name>
     <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/include/</path>
-    <filename>arrow__test__script_8h.html</filename>
-    <includes id="script_8h" name="script.h" local="yes" imported="no">script.h</includes>
-    <class kind="class">ArrowTestScript</class>
-  </compound>
-  <compound kind="file">
-    <name>ranged_weapon_script.h</name>
-    <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/include/</path>
-    <filename>bow__script_8h.html</filename>
-    <includes id="script_8h" name="script.h" local="yes" imported="no">script.h</includes>
-    <class kind="class">Bow_script</class>
+    <filename>animation_8h.html</filename>
+    <includes id="texture_8h" name="texture.h" local="yes" imported="no">texture.h</includes>
+    <class kind="class">Animation</class>
   </compound>
   <compound kind="file">
     <name>collide.h</name>
@@ -109,11 +102,25 @@
     <class kind="class">Input</class>
   </compound>
   <compound kind="file">
-    <name>player_test_script.h</name>
+    <name>player_input_script.h</name>
     <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/include/</path>
-    <filename>player__test__script_8h.html</filename>
+    <filename>player__input__script_8h.html</filename>
     <includes id="script_8h" name="script.h" local="yes" imported="no">script.h</includes>
-    <class kind="class">PlayerTestScript</class>
+    <class kind="class">PlayerInputScript</class>
+  </compound>
+  <compound kind="file">
+    <name>projectile_script.h</name>
+    <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/include/</path>
+    <filename>projectile__script_8h.html</filename>
+    <includes id="script_8h" name="script.h" local="yes" imported="no">script.h</includes>
+    <class kind="class">ProjectileScript</class>
+  </compound>
+  <compound kind="file">
+    <name>ranged_weapon_script.h</name>
+    <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/include/</path>
+    <filename>ranged__weapon__script_8h.html</filename>
+    <includes id="script_8h" name="script.h" local="yes" imported="no">script.h</includes>
+    <class kind="class">Bow_script</class>
   </compound>
   <compound kind="file">
     <name>resourcemanager.h</name>
@@ -151,6 +158,7 @@
     <name>texture.h</name>
     <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/include/</path>
     <filename>texture_8h.html</filename>
+    <includes id="component_8h" name="component.h" local="yes" imported="no">component.h</includes>
     <includes id="transform_8h" name="transform.h" local="yes" imported="no">transform.h</includes>
     <class kind="class">Texture</class>
   </compound>
@@ -190,6 +198,12 @@
     <includes id="gameobject_8h" name="gameobject.h" local="yes" imported="no">gameobject.h</includes>
   </compound>
   <compound kind="file">
+    <name>animation.cpp</name>
+    <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/src/components/</path>
+    <filename>animation_8cpp.html</filename>
+    <includes id="animation_8h" name="animation.h" local="yes" imported="no">animation.h</includes>
+  </compound>
+  <compound kind="file">
     <name>collide.cpp</name>
     <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/src/components/</path>
     <filename>collide_8cpp.html</filename>
@@ -209,9 +223,8 @@
     <name>texture.cpp</name>
     <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/src/components/</path>
     <filename>texture_8cpp.html</filename>
-    <includes id="gameobject_8h" name="gameobject.h" local="yes" imported="no">gameobject.h</includes>
-    <includes id="transform_8h" name="transform.h" local="yes" imported="no">transform.h</includes>
     <includes id="texture_8h" name="texture.h" local="yes" imported="no">texture.h</includes>
+    <includes id="gameobject_8h" name="gameobject.h" local="yes" imported="no">gameobject.h</includes>
     <includes id="resourcemanager_8h" name="resourcemanager.h" local="yes" imported="no">resourcemanager.h</includes>
   </compound>
   <compound kind="file">
@@ -232,7 +245,7 @@
     <includes id="scenemanager_8h" name="scenemanager.h" local="yes" imported="no">scenemanager.h</includes>
     <includes id="transform_8h" name="transform.h" local="yes" imported="no">transform.h</includes>
     <includes id="texture_8h" name="texture.h" local="yes" imported="no">texture.h</includes>
-    <includes id="player__test__script_8h" name="player_test_script.h" local="no" imported="no">player_test_script.h</includes>
+    <includes id="player__input__script_8h" name="player_input_script.h" local="no" imported="no">player_input_script.h</includes>
   </compound>
   <compound kind="file">
     <name>gameobject.cpp</name>
@@ -249,15 +262,16 @@
     <includes id="gameobjectfactory_8h" name="gameobjectfactory.h" local="yes" imported="no">gameobjectfactory.h</includes>
     <includes id="texture_8h" name="texture.h" local="yes" imported="no">texture.h</includes>
     <includes id="transform_8h" name="transform.h" local="yes" imported="no">transform.h</includes>
+    <includes id="animation_8h" name="animation.h" local="yes" imported="no">animation.h</includes>
     <includes id="collide_8h" name="collide.h" local="yes" imported="no">collide.h</includes>
     <includes id="input_8h" name="input.h" local="yes" imported="no">input.h</includes>
     <includes id="resourcemanager_8h" name="resourcemanager.h" local="yes" imported="no">resourcemanager.h</includes>
-    <includes id="player__test__script_8h" name="player_test_script.h" local="yes" imported="no">player_test_script.h</includes>
-    <includes id="arrow__test__script_8h" name="arrow_test_script.h" local="yes" imported="no">arrow_test_script.h</includes>
+    <includes id="player__input__script_8h" name="player_input_script.h" local="yes" imported="no">player_input_script.h</includes>
+    <includes id="projectile__script_8h" name="projectile_script.h" local="yes" imported="no">projectile_script.h</includes>
     <includes id="enemy__ai__script_8h" name="enemy_ai_script.h" local="yes" imported="no">enemy_ai_script.h</includes>
     <includes id="collide__test__script_8h" name="collide_test_script.h" local="yes" imported="no">collide_test_script.h</includes>
     <includes id="collide__script_8h" name="collide_script.h" local="yes" imported="no">collide_script.h</includes>
-    <includes id="bow__script_8h" name="ranged_weapon_script.h" local="yes" imported="no">ranged_weapon_script.h</includes>
+    <includes id="ranged__weapon__script_8h" name="ranged_weapon_script.h" local="yes" imported="no">ranged_weapon_script.h</includes>
   </compound>
   <compound kind="file">
     <name>resourcemanager.cpp</name>
@@ -290,28 +304,6 @@
     <includes id="script_8h" name="script.h" local="yes" imported="no">script.h</includes>
   </compound>
   <compound kind="file">
-    <name>arrow_test_script.cpp</name>
-    <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/src/scripts/</path>
-    <filename>arrow__test__script_8cpp.html</filename>
-    <includes id="arrow__test__script_8h" name="arrow_test_script.h" local="yes" imported="no">arrow_test_script.h</includes>
-    <includes id="transform_8h" name="transform.h" local="yes" imported="no">transform.h</includes>
-    <includes id="gameobject_8h" name="gameobject.h" local="yes" imported="no">gameobject.h</includes>
-    <includes id="collide_8h" name="collide.h" local="yes" imported="no">collide.h</includes>
-    <includes id="scenemanager_8h" name="scenemanager.h" local="yes" imported="no">scenemanager.h</includes>
-  </compound>
-  <compound kind="file">
-    <name>bow_script.cpp</name>
-    <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/src/scripts/</path>
-    <filename>bow__script_8cpp.html</filename>
-    <includes id="bow__script_8h" name="ranged_weapon_script.h" local="yes" imported="no">ranged_weapon_script.h</includes>
-    <includes id="gameobject_8h" name="gameobject.h" local="yes" imported="no">gameobject.h</includes>
-    <includes id="input_8h" name="input.h" local="yes" imported="no">input.h</includes>
-    <includes id="gameobjectfactory_8h" name="gameobjectfactory.h" local="yes" imported="no">gameobjectfactory.h</includes>
-    <includes id="transform_8h" name="transform.h" local="yes" imported="no">transform.h</includes>
-    <includes id="texture_8h" name="texture.h" local="yes" imported="no">texture.h</includes>
-    <includes id="scenemanager_8h" name="scenemanager.h" local="yes" imported="no">scenemanager.h</includes>
-  </compound>
-  <compound kind="file">
     <name>collide_test_script.cpp</name>
     <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/src/scripts/</path>
     <filename>collide__test__script_8cpp.html</filename>
@@ -333,10 +325,10 @@
     <includes id="texture_8h" name="texture.h" local="yes" imported="no">texture.h</includes>
   </compound>
   <compound kind="file">
-    <name>player_test_script.cpp</name>
+    <name>player_input_script.cpp</name>
     <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/src/scripts/</path>
-    <filename>player__test__script_8cpp.html</filename>
-    <includes id="player__test__script_8h" name="player_test_script.h" local="yes" imported="no">player_test_script.h</includes>
+    <filename>player__input__script_8cpp.html</filename>
+    <includes id="player__input__script_8h" name="player_input_script.h" local="yes" imported="no">player_input_script.h</includes>
     <includes id="input_8h" name="input.h" local="yes" imported="no">input.h</includes>
     <includes id="transform_8h" name="transform.h" local="yes" imported="no">transform.h</includes>
     <includes id="texture_8h" name="texture.h" local="yes" imported="no">texture.h</includes>
@@ -345,36 +337,191 @@
     <includes id="gameobjectfactory_8h" name="gameobjectfactory.h" local="yes" imported="no">gameobjectfactory.h</includes>
     <includes id="scenemanager_8h" name="scenemanager.h" local="yes" imported="no">scenemanager.h</includes>
   </compound>
+  <compound kind="file">
+    <name>projectile_script.cpp</name>
+    <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/src/scripts/</path>
+    <filename>projectile__script_8cpp.html</filename>
+    <includes id="projectile__script_8h" name="projectile_script.h" local="yes" imported="no">projectile_script.h</includes>
+    <includes id="transform_8h" name="transform.h" local="yes" imported="no">transform.h</includes>
+    <includes id="gameobject_8h" name="gameobject.h" local="yes" imported="no">gameobject.h</includes>
+    <includes id="collide_8h" name="collide.h" local="yes" imported="no">collide.h</includes>
+    <includes id="scenemanager_8h" name="scenemanager.h" local="yes" imported="no">scenemanager.h</includes>
+  </compound>
+  <compound kind="file">
+    <name>ranged_weapon_script.cpp</name>
+    <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/src/scripts/</path>
+    <filename>ranged__weapon__script_8cpp.html</filename>
+    <includes id="ranged__weapon__script_8h" name="ranged_weapon_script.h" local="yes" imported="no">ranged_weapon_script.h</includes>
+    <includes id="gameobject_8h" name="gameobject.h" local="yes" imported="no">gameobject.h</includes>
+    <includes id="input_8h" name="input.h" local="yes" imported="no">input.h</includes>
+    <includes id="gameobjectfactory_8h" name="gameobjectfactory.h" local="yes" imported="no">gameobjectfactory.h</includes>
+    <includes id="transform_8h" name="transform.h" local="yes" imported="no">transform.h</includes>
+    <includes id="animation_8h" name="animation.h" local="yes" imported="no">animation.h</includes>
+    <includes id="scenemanager_8h" name="scenemanager.h" local="yes" imported="no">scenemanager.h</includes>
+  </compound>
   <compound kind="class">
-    <name>ArrowTestScript</name>
-    <filename>classArrowTestScript.html</filename>
-    <base>Script</base>
+    <name>Animation</name>
+    <filename>classAnimation.html</filename>
+    <base>Texture</base>
     <member kind="function">
       <type></type>
-      <name>ArrowTestScript</name>
-      <anchorfile>classArrowTestScript.html</anchorfile>
-      <anchor>a3a28cf0ac265592bde6a042aa9b4ff2a</anchor>
-      <arglist>(float dx, float dy)</arglist>
+      <name>Animation</name>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>a83f0a16cef7117f187ad596de38dd9d6</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type></type>
+      <name>Animation</name>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>a0a58e6699f8f22a621ebbc3627cbfb07</anchor>
+      <arglist>(SDL_Texture *texture)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>getRows</name>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>a737329bc31b0eb9d658506a6b939b059</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>getCols</name>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>a1871de9b194e28637fb0bf819c0d9568</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>getNumFrames</name>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>a0d6949c49d8d57cd43837cd69b9d2467</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setAutoPlay</name>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>a52c9371d707edf589fbae882b0f49d9a</anchor>
+      <arglist>(bool autoplay)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setRowsColsInSpriteMap</name>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>a10895b21870c66f90e4cd99fe451cf79</anchor>
+      <arglist>(int rows, int cols)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setAnimationTime</name>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>ad819f938bdccbd1a05366ac5bd9c3f0f</anchor>
+      <arglist>(float time)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>play</name>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>aaa628f424f1cdaf2a74f8d10298ef8af</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>pause</name>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>a186523818cdd578dccafa1e98e80732c</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>setFrame</name>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>a05ff58697cb5ac0790c688d2199879cd</anchor>
+      <arglist>(int frame)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
+      <name>getCurrentFrame</name>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>a77bf362daa5b23db4f83106299d94d01</anchor>
+      <arglist>() const</arglist>
+    </member>
+    <member kind="function">
+      <type>bool</type>
+      <name>isPlaying</name>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>aaae3356caf1bda3d0b5457e02f1475d1</anchor>
+      <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>update</name>
-      <anchorfile>classArrowTestScript.html</anchorfile>
-      <anchor>a6d3a58327da83f8d2dab87984c27960b</anchor>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>aab92a748afeebf2ea1b7976a43b0ffc1</anchor>
       <arglist>() override</arglist>
     </member>
-    <member kind="variable" protection="private">
-      <type>float</type>
-      <name>m_dx</name>
-      <anchorfile>classArrowTestScript.html</anchorfile>
-      <anchor>ae722defc94fe33055c31a07debb3e140</anchor>
+    <member kind="variable" protection="protected">
+      <type>int</type>
+      <name>m_rows</name>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>a0f0ca7e2b1a83ff91a8f6b9935fdfd79</anchor>
       <arglist></arglist>
     </member>
-    <member kind="variable" protection="private">
+    <member kind="variable" protection="protected">
+      <type>int</type>
+      <name>m_cols</name>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>a6a377e115ddd301e63e7bf3d255d4064</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
       <type>float</type>
-      <name>m_dy</name>
-      <anchorfile>classArrowTestScript.html</anchorfile>
-      <anchor>aa0da606d21a9325c09ddbc63a1881db8</anchor>
+      <name>m_time</name>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>ac4d79de4a778163c7169e9c906097fee</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>int</type>
+      <name>m_numFrames</name>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>ad0a027ddaa19fa7d5f13dc057ddaaca7</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>int</type>
+      <name>m_msPerFrame</name>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>a6b5c1eaf181d47c792d0071b321c8d80</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>bool</type>
+      <name>m_isPlaying</name>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>a945dacd3adbb01965d9ec1c074e4b715</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>int</type>
+      <name>m_currentFrame</name>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>a90e92f4ee44a5a18298909d1345399b7</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>int</type>
+      <name>m_startTime</name>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>ac8e5cbfa0d4d9e57f44b6756f5d5b5da</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="protected">
+      <type>int</type>
+      <name>m_pausedTime</name>
+      <anchorfile>classAnimation.html</anchorfile>
+      <anchor>a20e9e095e4584135e743e1dce4c7ff72</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -422,6 +569,20 @@
       <name>m_fireRatePerSecond</name>
       <anchorfile>classBow__script.html</anchorfile>
       <anchor>a9bbed725f288d127d4c5d82356b0f07a</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>bool</type>
+      <name>m_wasSpacePressed</name>
+      <anchorfile>classBow__script.html</anchorfile>
+      <anchor>a749eefc6d35b0bd689a0047d3327c85c</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>bool</type>
+      <name>m_animationPlayed</name>
+      <anchorfile>classBow__script.html</anchorfile>
+      <anchor>a37ac71b32249f5a0c757603a621ef1f6</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -1111,56 +1272,89 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>PlayerTestScript</name>
-    <filename>classPlayerTestScript.html</filename>
+    <name>PlayerInputScript</name>
+    <filename>classPlayerInputScript.html</filename>
     <base>Script</base>
     <member kind="function">
       <type></type>
-      <name>PlayerTestScript</name>
-      <anchorfile>classPlayerTestScript.html</anchorfile>
-      <anchor>a12371a31e0fe2aebe3b3576bdc763068</anchor>
+      <name>PlayerInputScript</name>
+      <anchorfile>classPlayerInputScript.html</anchorfile>
+      <anchor>a834ffdfb6f6620b4161c24d210898e89</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>getKeysCollected</name>
-      <anchorfile>classPlayerTestScript.html</anchorfile>
-      <anchor>ac74829dd02c6c0513ced6ad8e7d55020</anchor>
+      <anchorfile>classPlayerInputScript.html</anchorfile>
+      <anchor>a1d5e6aaae3e9bfe08caca5ff9389a4c4</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
       <type>void</type>
       <name>update</name>
-      <anchorfile>classPlayerTestScript.html</anchorfile>
-      <anchor>ad67b610bea8274f7659bc3eca9a5f85b</anchor>
+      <anchorfile>classPlayerInputScript.html</anchorfile>
+      <anchor>a600329687d05ff865b1c7f777663f378</anchor>
       <arglist>() override</arglist>
     </member>
     <member kind="variable" protection="private">
       <type>int</type>
       <name>m_fireRatePerSecond</name>
-      <anchorfile>classPlayerTestScript.html</anchorfile>
-      <anchor>a8b5f2e83c804e95f54c842e4b14902db</anchor>
+      <anchorfile>classPlayerInputScript.html</anchorfile>
+      <anchor>ae64849a3390c39542346bc779ab3c951</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
       <type>int</type>
       <name>m_lastFireTimeInMs</name>
-      <anchorfile>classPlayerTestScript.html</anchorfile>
-      <anchor>a049ccc640a36735bc78b3c31da05f766</anchor>
+      <anchorfile>classPlayerInputScript.html</anchorfile>
+      <anchor>a8bb65f53a14559a045c732b8c7b580d7</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
       <type>float</type>
       <name>m_playerSpeed</name>
-      <anchorfile>classPlayerTestScript.html</anchorfile>
-      <anchor>abbe3f527307c21783f9f992df33f9c60</anchor>
+      <anchorfile>classPlayerInputScript.html</anchorfile>
+      <anchor>a9dbd2f6604ae3d05a6a4c76c6ac4ca4a</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable" protection="private">
       <type>int</type>
       <name>m_keysCollected</name>
-      <anchorfile>classPlayerTestScript.html</anchorfile>
-      <anchor>ac74e2c5022f1f6b2781af3431e2cc8af</anchor>
+      <anchorfile>classPlayerInputScript.html</anchorfile>
+      <anchor>ac01946efd45240ff46227b280c6a8e9c</anchor>
+      <arglist></arglist>
+    </member>
+  </compound>
+  <compound kind="class">
+    <name>ProjectileScript</name>
+    <filename>classProjectileScript.html</filename>
+    <base>Script</base>
+    <member kind="function">
+      <type></type>
+      <name>ProjectileScript</name>
+      <anchorfile>classProjectileScript.html</anchorfile>
+      <anchor>a8cdf784ecb3f628418413f87be9d5e9e</anchor>
+      <arglist>(float dx, float dy)</arglist>
+    </member>
+    <member kind="function">
+      <type>void</type>
+      <name>update</name>
+      <anchorfile>classProjectileScript.html</anchorfile>
+      <anchor>a935d4734b9f8d6eaaea8c9bebd5ad4e1</anchor>
+      <arglist>() override</arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>float</type>
+      <name>m_dx</name>
+      <anchorfile>classProjectileScript.html</anchorfile>
+      <anchor>a27b3581515a82e9b45049475d8da06a7</anchor>
+      <arglist></arglist>
+    </member>
+    <member kind="variable" protection="private">
+      <type>float</type>
+      <name>m_dy</name>
+      <anchorfile>classProjectileScript.html</anchorfile>
+      <anchor>a2d32f3e33e81d8fe9c50583f8d3fdee1</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -1754,20 +1948,6 @@
     </member>
     <member kind="function">
       <type>void</type>
-      <name>setRowsColsInSpriteMap</name>
-      <anchorfile>classTexture.html</anchorfile>
-      <anchor>a478bb148067ab2d9d352b1312505eb42</anchor>
-      <arglist>(int rows, int cols)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>setAnimationTime</name>
-      <anchorfile>classTexture.html</anchorfile>
-      <anchor>a52fc1a64c5f1b3ecd89d81a22b960d47</anchor>
-      <arglist>(float time)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
       <name>setFlipHorizontal</name>
       <anchorfile>classTexture.html</anchorfile>
       <anchor>a74526fa7e3edf37488d757c14c241e63</anchor>
@@ -1782,93 +1962,72 @@
     </member>
     <member kind="function">
       <type>void</type>
+      <name>setAngle</name>
+      <anchorfile>classTexture.html</anchorfile>
+      <anchor>a3946472d85f6f5aba196873f11ac25ea</anchor>
+      <arglist>(float angle)</arglist>
+    </member>
+    <member kind="function" virtualness="virtual">
+      <type>virtual void</type>
       <name>update</name>
       <anchorfile>classTexture.html</anchorfile>
       <anchor>a0764b6f1c7a0abf17989c465628d75b0</anchor>
       <arglist>() override</arglist>
     </member>
-    <member kind="function">
-      <type>void</type>
+    <member kind="function" virtualness="virtual">
+      <type>virtual void</type>
       <name>render</name>
       <anchorfile>classTexture.html</anchorfile>
       <anchor>a800d2fde67c26e55834c5b38e4f7d885</anchor>
       <arglist>() override</arglist>
     </member>
-    <member kind="variable" protection="private">
+    <member kind="variable" protection="protected">
       <type>SDL_Texture *</type>
       <name>m_texture</name>
       <anchorfile>classTexture.html</anchorfile>
       <anchor>a6150742cc6b033d1bd6484a97a33510c</anchor>
       <arglist></arglist>
     </member>
-    <member kind="variable" protection="private">
+    <member kind="variable" protection="protected">
       <type>SDL_Renderer *</type>
       <name>m_renderer</name>
       <anchorfile>classTexture.html</anchorfile>
       <anchor>af4995cbc13a6ff6d40f7647f296ce4d8</anchor>
       <arglist></arglist>
     </member>
-    <member kind="variable" protection="private">
+    <member kind="variable" protection="protected">
       <type>SDL_Rect *</type>
       <name>m_spriteBox</name>
       <anchorfile>classTexture.html</anchorfile>
       <anchor>a8449d7674a82c1d4a8ad7b37227986ba</anchor>
       <arglist></arglist>
     </member>
-    <member kind="variable" protection="private">
+    <member kind="variable" protection="protected">
       <type>SDL_Rect *</type>
       <name>m_spriteClip</name>
       <anchorfile>classTexture.html</anchorfile>
       <anchor>a26cc54b23edee0f63fe5f5183f160780</anchor>
       <arglist></arglist>
     </member>
-    <member kind="variable" protection="private">
-      <type>int</type>
-      <name>m_rows</name>
-      <anchorfile>classTexture.html</anchorfile>
-      <anchor>a527d4594c82292d9b022f7c766f3545a</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>int</type>
-      <name>m_cols</name>
-      <anchorfile>classTexture.html</anchorfile>
-      <anchor>afd3d768204c9b6604eafd2fb5dbd7076</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>float</type>
-      <name>m_time</name>
-      <anchorfile>classTexture.html</anchorfile>
-      <anchor>aae37ce4878cfdc779ff59544ffdd9e13</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
+    <member kind="variable" protection="protected">
       <type>bool</type>
       <name>m_flipHorizontal</name>
       <anchorfile>classTexture.html</anchorfile>
       <anchor>a0fd1fe87b8788790f9f8dad8ba68c955</anchor>
       <arglist></arglist>
     </member>
-    <member kind="variable" protection="private">
+    <member kind="variable" protection="protected">
       <type>bool</type>
       <name>m_flipVertical</name>
       <anchorfile>classTexture.html</anchorfile>
       <anchor>aca3fcb35558fd739bc9080d3ce8c7680</anchor>
       <arglist></arglist>
     </member>
-    <member kind="variable" protection="private">
-      <type>int</type>
-      <name>m_numFrames</name>
+    <member kind="variable" protection="protected">
+      <type>float</type>
+      <name>m_angle</name>
       <anchorfile>classTexture.html</anchorfile>
-      <anchor>a6edbd4cbc436963b9c3816edc18e671d</anchor>
-      <arglist></arglist>
-    </member>
-    <member kind="variable" protection="private">
-      <type>int</type>
-      <name>m_msPerFrame</name>
-      <anchorfile>classTexture.html</anchorfile>
-      <anchor>a89c5155a604b68faaa79627033584f6d</anchor>
+      <anchor>a1d5da666aa421bf0f0b6f2fb980da775</anchor>
       <arglist></arglist>
     </member>
   </compound>
@@ -2050,7 +2209,7 @@
     <docanchor file="python_bindings.html" title="Factory Methods">factory</docanchor>
     <docanchor file="python_bindings.html" title="GameObjectFactory">gameobject_factory</docanchor>
     <docanchor file="python_bindings.html" title="Script Types">scripts</docanchor>
-    <docanchor file="python_bindings.html" title="PlayerTestScript">player_script</docanchor>
+    <docanchor file="python_bindings.html" title="PlayerInputScript">player_input_script</docanchor>
     <docanchor file="python_bindings.html" title="Managers">managers</docanchor>
     <docanchor file="python_bindings.html" title="SceneManager">scene_manager</docanchor>
     <docanchor file="python_bindings.html" title="Game Application">application</docanchor>

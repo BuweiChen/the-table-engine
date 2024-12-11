@@ -1,5 +1,5 @@
 
-#include "player_test_script.h"
+#include "player_input_script.h"
 
 #include "input.h"
 #include "transform.h"
@@ -12,15 +12,15 @@
 #include  <iostream>
 #include <string>
 
-PlayerTestScript::PlayerTestScript() {
+PlayerInputScript::PlayerInputScript() {
     m_lastFireTimeInMs = -10000;
 }
 
-int PlayerTestScript::getKeysCollected() {
+int PlayerInputScript::getKeysCollected() {
     return m_keysCollected;
 }
 
-void PlayerTestScript::update() {
+void PlayerInputScript::update() {
     auto input = m_owner->getComponent<Input>();
     auto transform = m_owner->getComponent<Transform>();
     auto texture = m_owner->getComponent<Texture>();

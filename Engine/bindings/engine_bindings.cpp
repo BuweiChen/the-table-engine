@@ -17,12 +17,12 @@
 #include "gameapp.h"
 #include "gameobjectfactory.h"
 
-#include "arrow_test_script.h"
+#include "projectile_script.h"
 #include "ranged_weapon_script.h"
 #include "collide_script.h"
 #include "collide_test_script.h"
 #include "enemy_ai_script.h"
-#include "player_test_script.h"
+#include "player_input_script.h"
 
 namespace py = pybind11;
 
@@ -147,16 +147,16 @@ PYBIND11_MODULE(engine, m) {
      * 
      * @section scripts Script Types
      * 
-     * @subsection player_script PlayerTestScript
+     * @subsection player_input_script PlayerInputScript
      * Handles player behavior.
      * ```python
      * player = engine.GameObject("player")
-     * script = engine.PlayerTestScript()
+     * script = engine.PlayerInputScript()
      * player.addScript(script)
      * ```
      * 
      * Methods:
-     * - `PlayerTestScript()` - Create script
+     * - `PlayerInputScript()` - Create script
      * - `getKeysCollected() -> int` - Get collected keys
      * - `update()` - Update player
      * 
@@ -398,10 +398,10 @@ PYBIND11_MODULE(engine, m) {
 
 
 
-    // Bind ArrowTestScript (arrow_test_script.h)
-    py::class_<ArrowTestScript, Script>(m, "ArrowTestScript")
+    // Bind ProjectileScript (projectile_script.h)
+    py::class_<ProjectileScript, Script>(m, "ProjectileScript")
         .def(py::init<float, float>())
-        .def("update", &ArrowTestScript::update);
+        .def("update", &ProjectileScript::update);
 
     // Bind Bow_script (ranged_weapon_script.h)
     py::class_<Bow_script, Script>(m, "Bow_script")
@@ -425,9 +425,9 @@ PYBIND11_MODULE(engine, m) {
         .def(py::init<>())
         .def("update", &EnemyAIScript::update);
 
-    // Bind PlayerTestScript (player_test_script.h)
-    py::class_<PlayerTestScript, Script>(m, "PlayerTestScript")
+    // Bind PlayerInputScript (player_input_script.h)
+    py::class_<PlayerInputScript, Script>(m, "PlayerInputScript")
         .def(py::init<>())
-        .def("getKeysCollected", &PlayerTestScript::getKeysCollected)
-        .def("update", &PlayerTestScript::update);
+        .def("getKeysCollected", &PlayerInputScript::getKeysCollected)
+        .def("update", &PlayerInputScript::update);
 }

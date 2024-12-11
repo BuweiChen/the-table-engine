@@ -3,13 +3,13 @@
 Animation::Animation() : Texture() {
     setName("animation");
     m_startTime = SDL_GetTicks();
-    m_isPlaying = true;  // Default to playing for backward compatibility
+    m_isPlaying = true;
 }
 
 Animation::Animation(SDL_Texture* texture) : Texture(texture) {
     setName("animation");
     m_startTime = SDL_GetTicks();
-    m_isPlaying = true;  // Default to playing for backward compatibility
+    m_isPlaying = true;
 }
 
 int Animation::getRows() {
@@ -47,7 +47,7 @@ void Animation::setAnimationTime(float time) {
 void Animation::play() {
     if (!m_isPlaying) {
         m_isPlaying = true;
-        m_startTime = SDL_GetTicks();  // Start fresh when playing
+        m_startTime = SDL_GetTicks();
     }
 }
 

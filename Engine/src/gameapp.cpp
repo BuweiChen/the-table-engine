@@ -13,7 +13,7 @@
 // #include "sound.h"
 
 #include "SDL2/SDL.h"
-#include <player_test_script.h>
+#include <player_input_script.h>
  
 
 // Constructor
@@ -84,7 +84,7 @@ void GameApplication::printStats() {
     if (!players.empty()) 
     {
         auto player = players[0];
-        std::string numKeys = std::to_string(player->getScript<PlayerTestScript>()->getKeysCollected());
+        std::string numKeys = std::to_string(player->getScript<PlayerInputScript>()->getKeysCollected());
         text = ResourceManager::getInstance().loadText(font, "Keys: " + numKeys, color, 12);
         rect = {5, 30, 80, 25};
         SDL_RenderCopy(m_renderer, text, NULL, &rect);
