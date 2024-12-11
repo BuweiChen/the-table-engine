@@ -44,9 +44,9 @@ void ProjectileScript::update() {
         if (collide->isColliding(enemy->getComponent<Collide>())) {
             m_owner->getSceneNode()->setDestroy(true);
             enemy->getComponent<Health>()->updateHealth(-100);
-            static int arrowCount = 0;
-            arrowCount++;
-            std::cout << "Arrow hit enemy " << arrowCount << std::endl;
+            // static int arrowCount = 0;
+            // arrowCount++;
+            // std::cout << "Arrow hit enemy " << arrowCount << std::endl;
             if (enemy->getComponent<Health>()->getHealth() <= 0)
                 enemy->getSceneNode()->setDestroy(true);
             break;
