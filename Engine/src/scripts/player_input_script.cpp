@@ -90,15 +90,6 @@ void PlayerInputScript::update() {
 
     texture->setFlipHorizontal(dx < 0);
 
-    // decrement health after collision with enemy
-    auto enemies = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Warrior");
-    for (auto enemy : enemies) {
-         auto enemyCollide = enemy->getComponent<Collide>();
-         if (collide->isColliding(enemyCollide)) {
-            health->updateHealth(-100);
-         }
-    }
-
     // prevent hitting walls
     auto walls = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Wall");
     for (auto wall : walls) {

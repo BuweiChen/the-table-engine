@@ -9,8 +9,8 @@ void CrosshairScript::update() {
     auto cameraPosition = SceneManager::getInstance().getCameraWorldPosition();
 
     if (input && transform) {
-        int worldMouseX = input->m_mouseX + cameraPosition.x - 320;
-        int worldMouseY = input->m_mouseY + cameraPosition.y - 240;
+        int worldMouseX = input->m_mouseX + cameraPosition.x - 320 - 8;
+        int worldMouseY = input->m_mouseY + cameraPosition.y - 240 - 8;
         transform->setWorldPosition(worldMouseX, worldMouseY);
     }
 }
