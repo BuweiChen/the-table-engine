@@ -8,19 +8,16 @@
     "Enemy": {
       "Health": 100,
       "Damage": 20,
-      "Speed": 3,
-      "Collide": "checkbox_with_all_objects"
+      "Speed": 3
     },
     "Player": {
       "Health": 100,
-      "Speed": 20,
-      "Collide": "checkbox_with_all_objects"
+      "Speed": 20
     },
     "Weapon": {
       "Player Equipped": false,
       "Damage": 3,
-      "Fire Rate": 5,
-      "Collide": "checkbox_with_all_objects"
+      "Fire Rate": 5
     }
   }
 }
