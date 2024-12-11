@@ -40,6 +40,13 @@ void ProjectileScript::update() {
     auto sceneTree = SceneManager::getInstance().getSceneTree();
     auto enemies = sceneTree->findGameObjectsByTag("Warrior");
     auto collide = m_owner->getComponent<Collide>();
+    auto walls = sceneTree->findGameObjectsByTag("Wall");
+    for (auto wall: walls) {
+        if (collide->isColliding(wall->getComponent<Collide>())) {
+            m_owner->getSceneNode()->setDestroy(true);
+            break;
+        }
+    }
     for (auto enemy : enemies) {
         if (collide->isColliding(enemy->getComponent<Collide>())) {
             m_owner->getSceneNode()->setDestroy(true);

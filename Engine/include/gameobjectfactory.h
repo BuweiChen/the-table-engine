@@ -60,6 +60,10 @@ public:
     static GameObject* createTile1();
     static GameObject* createTileCustom(std::string path, Vec2 pos, Vec2 size, Vec2 sprite_size, Vec2 sprite_pos);
 
+
+    static GameObject* createWallCustom(std::string path, Vec2 pos, Vec2 size, Vec2 sprite_size, Vec2 sprite_pos);
+
+    static GameObject* createTableCustom(std::string path, Vec2 pos, Vec2 size, Vec2 sprite_size, Vec2 sprite_pos);
     /**
      * @brief Creates a key object.
      *

@@ -74,6 +74,21 @@ void PlayerInputScript::update() {
          }
     }
 
+    // prevent hitting walls
+    auto walls = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Wall");
+    for (auto wall : walls) {
+        auto wallCollide = wall->getComponent<Collide>();
+        collide->preventCollision(wallCollide, dx, dy);
+    }
+
+    // prevent hitting tables
+
+    auto tables = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Table");
+    for (auto table : tables) {
+        auto tableCollide = table->getComponent<Collide>();
+        collide->preventCollision(tableCollide, dx, dy);
+    }
+
     transform->updateWorldPosition(dx, dy);
 
     // move the player's bow with the player

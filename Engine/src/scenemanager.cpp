@@ -82,9 +82,9 @@ void SceneManager::loadScenesFromJSON(const std::string& filePath) {
                         sceneTree->addChild(tile, true);
                     }
 
-                    if (definition["properties"].contains("type") && definition["properties"]["type"] == "Wall") {
+                    else if (definition["properties"].contains("type") && definition["properties"]["type"] == "Wall") {
                         std::cout << "Creating wall\n";
-                        auto wall = GameObjectFactory::createTileCustom(
+                        auto wall = GameObjectFactory::createWallCustom(
                             definition["file"],
                             Vec2(x, y),
                             Vec2(definition["length"], definition["width"]),
@@ -93,6 +93,18 @@ void SceneManager::loadScenesFromJSON(const std::string& filePath) {
                         );
                         std::cout << "Added wall: " << name << " at (" << x << ", " << y << ")\n";
                         sceneTree->addChild(wall, true);
+                    }
+                    else if (definition["properties"].contains("type") && definition["properties"]["type"] == "Table") {
+                        std::cout << "Creating table\n";
+                        auto table = GameObjectFactory::createTableCustom(
+                            definition["file"],
+                            Vec2(x, y),
+                            Vec2(definition["length"], definition["width"]),
+                            Vec2(definition["size_width"], definition["size_height"]),
+                            Vec2(definition["top_left_x"], definition["top_left_y"])
+                        );
+                        std::cout << "Added table: " << name << " at (" << x << ", " << y << ")\n";
+                        sceneTree->addChild(table, true);
                     }
                     // Add additional logic for other object types later...
 

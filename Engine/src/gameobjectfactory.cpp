@@ -207,6 +207,52 @@ GameObject* GameObjectFactory::createTileCustom(std::string path, Vec2 pos, Vec2
     return tile;
 }
 
+GameObject* GameObjectFactory::createWallCustom(std::string path, Vec2 pos, Vec2 size, Vec2 sprite_size, Vec2 sprite_pos)
+{
+    GameObject* wall = new GameObject("Wall");
+
+    SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture(path);
+    auto texture = new Texture(sdl_texture);
+    texture->setSizeInSpriteMap(sprite_size.x, sprite_size.y);
+    texture->setPositionInSpriteMap(sprite_pos.x, sprite_pos.y);
+    wall->addComponent<Texture>(texture);
+
+    auto transform = new Transform();
+    transform->setWorldSize(size.x, size.y);
+    transform->setWorldPosition(pos.x, pos.y);
+    wall->addComponent<Transform>(transform);
+
+    auto wallCollide = new Collide();
+    wallCollide->setScreenSize(transform->getScreenSize());
+    wall->addComponent<Collide>(wallCollide);
+
+    return wall;
+}
+
+GameObject* GameObjectFactory::createTableCustom(std::string path, Vec2 pos, Vec2 size, Vec2 sprite_size, Vec2 sprite_pos)
+{
+    // same as a wall expect projectiles can fly over it
+    GameObject* table = new GameObject("Table");
+
+    SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture(path);
+    auto texture = new Texture(sdl_texture);
+    texture->setSizeInSpriteMap(sprite_size.x, sprite_size.y);
+    texture->setPositionInSpriteMap(sprite_pos.x, sprite_pos.y);
+    table->addComponent<Texture>(texture);
+
+    auto transform = new Transform();
+    transform->setWorldSize(size.x, size.y);
+    transform->setWorldPosition(pos.x, pos.y);
+    table->addComponent<Transform>(transform);
+
+    auto tableCollide = new Collide();
+    tableCollide->setScreenSize(transform->getScreenSize());
+    table->addComponent<Collide>(tableCollide);
+
+    return table;
+
+}
+
 GameObject* GameObjectFactory::createKey()
 {
     GameObject* key = new GameObject("Key");
