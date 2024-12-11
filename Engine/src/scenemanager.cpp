@@ -65,26 +65,46 @@ void SceneManager::loadScenesFromJSON(const std::string& filePath) {
                 std::string name = object["name"];
                 if (objectDefinitions.find(name) != objectDefinitions.end()) {
                     const auto& definition = objectDefinitions[name];
-                    std::cout << definition.size() << "\n";
                     int x = object["x"];
                     int y = object["y"];
-
-                    std::cout << "Creating object: " << name << " at (" << x << ", " << y << ")\n";
 
                     // Create a tile or other object based on its definition
                     if (definition["properties"].contains("type") && definition["properties"]["type"] == "Tile") {
                         std::cout << "Creating tile\n";
                         auto tile = GameObjectFactory::createTileCustom(
                             definition["file"],
-                            x,
-                            y,
-                            definition["size_width"],
-                            definition["size_height"]
+                            Vec2(x, y),
+                            Vec2(definition["length"], definition["width"]),
+                            Vec2(definition["size_width"], definition["size_height"]),
+                            Vec2(definition["top_left_x"], definition["top_left_y"])
                         );
-                        std::cout << "Created tile\n";
+                        std::cout << "Added tile: " << name << '\n' << " at (" << x << ", " << y << ")\n";
                         sceneTree->addChild(tile, true);
+                    }
 
-                        std::cout << "Added tile: " << name << " at (" << x << ", " << y << ")\n";
+                    else if (definition["properties"].contains("type") && definition["properties"]["type"] == "Wall") {
+                        std::cout << "Creating wall\n";
+                        auto wall = GameObjectFactory::createWallCustom(
+                            definition["file"],
+                            Vec2(x, y),
+                            Vec2(definition["length"], definition["width"]),
+                            Vec2(definition["size_width"], definition["size_height"]),
+                            Vec2(definition["top_left_x"], definition["top_left_y"])
+                        );
+                        std::cout << "Added wall: " << name << " at (" << x << ", " << y << ")\n";
+                        sceneTree->addChild(wall, true);
+                    }
+                    else if (definition["properties"].contains("type") && definition["properties"]["type"] == "Table") {
+                        std::cout << "Creating table\n";
+                        auto table = GameObjectFactory::createTableCustom(
+                            definition["file"],
+                            Vec2(x, y),
+                            Vec2(definition["length"], definition["width"]),
+                            Vec2(definition["size_width"], definition["size_height"]),
+                            Vec2(definition["top_left_x"], definition["top_left_y"])
+                        );
+                        std::cout << "Added table: " << name << " at (" << x << ", " << y << ")\n";
+                        sceneTree->addChild(table, true);
                     }
                     // Add additional logic for other object types later...
 
@@ -270,8 +290,14 @@ void SceneManager::cleanTree()
     if (sceneTree == nullptr) return;
 
     sceneTree->traverseTree([](SceneNode* node) {
-        if (!node->isBackground() && node->readyToDestroy())
+        if (node->getGameObject() != nullptr) {
+            std::cout << node->getGameObject()->getTag() << "\n";
+        }
+        std::cout << node->isBackground() << " " << node->readyToDestroy() << "\n";
+        if (node->readyToDestroy()) {
+            std::cout << "Destroying node\n";
             delete node;
+        }
     });
 }
 

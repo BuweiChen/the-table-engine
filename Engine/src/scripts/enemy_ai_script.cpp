@@ -42,6 +42,20 @@ void EnemyAIScript::update() {
         collide->preventCollision(enemyCollide, dx, dy);
     } 
 
+    // prevent hitting walls
+    auto walls = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Wall");
+    for (auto wall : walls) {
+        auto wallCollide = wall->getComponent<Collide>();
+        collide->preventCollision(wallCollide, dx, dy);
+    }
+
+    // prevent hitting tables
+    auto tables = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Table");
+    for (auto table : tables) {
+        auto tableCollide = table->getComponent<Collide>();
+        collide->preventCollision(tableCollide, dx, dy);
+    }
+
     // prevent the enemy from moving through player
     // auto playerCollide = player->getComponent<Collide>();
     // collide->preventCollision(playerCollide, dx, dy);
