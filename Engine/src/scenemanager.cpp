@@ -257,8 +257,14 @@ void SceneManager::cleanTree()
     if (sceneTree == nullptr) return;
 
     sceneTree->traverseTree([](SceneNode* node) {
-        if (!node->isBackground() && node->readyToDestroy())
+        if (node->getGameObject() != nullptr) {
+            std::cout << node->getGameObject()->getTag() << "\n";
+        }
+        std::cout << node->isBackground() << " " << node->readyToDestroy() << "\n";
+        if (node->readyToDestroy()) {
+            std::cout << "Destroying node\n";
             delete node;
+        }
     });
 }
 
