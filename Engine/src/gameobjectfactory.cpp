@@ -195,12 +195,8 @@ GameObject* GameObjectFactory::createTileCustom(std::string path, Vec2 pos, Vec2
 
     SDL_Texture* sdl_texture = ResourceManager::getInstance().loadTexture(path);
     auto texture = new Texture(sdl_texture);
-    std::cout << "Sprite size: " << sprite_size.x << ", " << sprite_size.y << std::endl;
-    std::cout << "Sprite pos: " << sprite_pos.x << ", " << sprite_pos.y << std::endl;
-    std::cout << "Size: " << size.x << ", " << size.y << std::endl;
-    std::cout << "Pos: " << pos.x << ", " << pos.y << std::endl;
     texture->setSizeInSpriteMap(sprite_size.x, sprite_size.y);
-    texture->setPositionInSpriteMap(sprite_pos.x, sprite_size.y);
+    texture->setPositionInSpriteMap(sprite_pos.x, sprite_pos.y);
     tile->addComponent<Texture>(texture);
 
     auto transform = new Transform();
