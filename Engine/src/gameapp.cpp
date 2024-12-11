@@ -44,7 +44,7 @@ GameApplication::~GameApplication() {
     SDL_DestroyWindow(m_window);
 }
 
-void GameApplication::start() {
+void GameApplication::start(bool demo=false) {
     if (TTF_Init() < 0) {
         std::cout << "TTF_Init Error: " << TTF_GetError() << std::endl;
     }
@@ -52,8 +52,11 @@ void GameApplication::start() {
     ResourceManager::getInstance().setRenderer(m_renderer);
 
     SceneManager::getInstance().setRenderer(m_renderer);
-    SceneManager::getInstance().loadScenesFromJSON("../../Engine_GUI/game_json_output/game.json");
-    // SceneManager::getInstance().loadDemo();
+    if (demo) {
+        SceneManager::getInstance().loadDemo();
+    } else {
+        SceneManager::getInstance().loadScenesFromJSON("../../Engine_GUI/game_json_output/game.json");
+    }
     SceneManager::getInstance().getNextScene();
 
     // Sound* music = ResourceManager::getInstance().loadSound("../Assets/Sounds/music.wav");

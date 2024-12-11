@@ -123,7 +123,7 @@ GameObject* GameObjectFactory::createEnemyWarrior()
     enemy->addComponent<Transform>(transform);
 
     auto health = new Health(200);
-enemy->addComponent<Health>(health);
+    enemy->addComponent<Health>(health);
 
     auto enemyAI = new EnemyAIScript();
     enemy->addScript<EnemyAIScript>(enemyAI);
@@ -153,6 +153,9 @@ GameObject* GameObjectFactory::createEnemyWarriorCustom(std::string path, int ro
     transform->setWorldSize(size_x, size_y);
     transform->setWorldPosition(pos_x, pos_y);
     enemy->addComponent<Transform>(transform);
+
+    auto health = new Health(200);
+    enemy->addComponent<Health>(health);
 
     auto enemyAI = new EnemyAIScript();
     enemy->addScript<EnemyAIScript>(enemyAI);
