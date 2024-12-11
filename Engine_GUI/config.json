@@ -1,31 +1,29 @@
 {
     "Structure": {
         "Wall": {
-            "length": "int",
-            "pos_x": "int",
-            "pos_y": "int"
+            "collide": "checkbox_with_all_objects"
         },
-        "Background": {
-            "length": "int",
-            "pos_x": "int",
-            "pos_y": "int"
+        "Background/Tiles": {
+            
         }
     },
     "Entity": {
         "Enemy": {
-            "hp": "int",
-            "damage": "int",
-            "speed": "int",
-            "rows": "int",
-            "cols": "int",
-            "top_left_x": "int",
-            "top_left_y": "int",
-            "size_width": "int",
-            "size_height": "int",
-            "length": "int",
-            "pos_x": "int",
-            "pos_y": "int",
-            "collide": "checkbox_with_all_objects"
+            "Health": 100,
+            "Damage": 20,
+            "Speed": 3,
+            "Collide": "checkbox_with_all_objects"
+        },
+        "Player": {
+            "Health": 100,
+            "Speed": 20,
+            "Collide": "checkbox_with_all_objects"
+        },
+        "Weapon": {
+            "Player Equipped": false,
+            "Damage": 3,
+            "Fire Rate": 5,
+            "Collide": "checkbox_with_all_objects"
         }
     }
 }
