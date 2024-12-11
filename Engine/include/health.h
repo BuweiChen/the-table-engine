@@ -38,11 +38,11 @@ class Health : public Component {
          * @brief Retrieves the current health of the game object.
          * @return Integer representing the current health.
          */
-        int getHealth() const;
+        int getHealth();
 
         /**
          * @brief Updates the health by a specified amount.
-         * @param amount The amount to add to the current health (can be negative for damage).
+         * @param amount The amount to add to the current hepalth (can be negative for damage).
          */
         void updateHealth(int amount);
 };
