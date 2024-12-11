@@ -12,7 +12,7 @@
 RangedWeaponScript::RangedWeaponScript() {
     m_shoot = false;
     m_lastFireTimeInMs = -10000;
-    m_fireRatePerSecond = 2;
+    m_fireRatePerSecond = 5;
     m_animationPlayed = false;
 }
 

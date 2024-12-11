@@ -29,7 +29,7 @@ class SceneManager
         SDL_Renderer* m_renderer; ///< Renderer used to render the game objects.
         std::vector<SceneTree*> m_sceneTrees; ///< Array of scene trees.
 
-        int m_currentSceneIndex = 0; ///< Index of the current scene in the game.
+        int m_currentSceneIndex = -1; ///< Index of the current scene in the game.
         Camera* m_camera;
 
         /**
@@ -71,6 +71,12 @@ class SceneManager
          * @brief Advances to the next scene based on the current scene index.
          */
         void getNextScene();
+
+        /**
+         * @brief Retrieves the index of the current scene.
+         * @return Index of the current scene.
+         */
+        int getSceneIndex();
 
         /**
          * @brief Retrieves the current SDL_Renderer used by the SceneManager.

@@ -136,8 +136,14 @@ void SceneManager::getNextScene() {
     if (m_currentSceneIndex < static_cast<int>(m_sceneTrees.size()) - 1) {
         m_currentSceneIndex++;
     } else {
-        std::cerr << "No more scenes to transition to.\n";
+        std::cout << "Finished all scenes.\n";
+        exit(0);
+        // std::cerr << "No more scenes to transition to.\n";
     }
+}
+
+int SceneManager::getSceneIndex() {
+    return m_currentSceneIndex;
 }
 
 SceneTree* SceneManager::createSceneTest1() {
