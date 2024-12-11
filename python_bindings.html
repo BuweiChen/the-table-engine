@@ -94,6 +94,8 @@ $(document).ready(function(){initNavTree('python_bindings.html',''); initResizab
 </li>
 <li class="level1"><a href="#components">Component Types</a><ul><li class="level2"><a href="#transform_component">Transform</a></li>
 <li class="level2"><a href="#collide_component">Collide</a></li>
+<li class="level2"><a href="#texture_component">Texture</a></li>
+<li class="level2"><a href="#animation_component">Animation</a></li>
 </ul>
 </li>
 <li class="level1"><a href="#factory">Factory Methods</a><ul><li class="level2"><a href="#gameobject_factory">GameObjectFactory</a></li>
@@ -189,6 +191,47 @@ Collide</h2>
 <li><code>setScreenSize(width: int, height: int)</code> - Set collision box size</li>
 <li><code>setScreenPosition(x: int, y: int)</code> - Set collision box position</li>
 <li><code>isColliding(other: Collide) -&gt; bool</code> - Check collision</li>
+<li></li>
+</ul>
+<h2><a class="anchor" id="texture_component"></a>
+Texture</h2>
+<p>Base class for rendering textures and sprites. </p><div class="fragment"><div class="line">texture = engine.Texture()</div>
+<div class="line">texture.setSizeInSpriteMap(32, 32)</div>
+<div class="line">texture.setPositionInSpriteMap(0, 0)</div>
+<div class="line">texture.setFlipHorizontal(False)</div>
+</div><!-- fragment --><p>Methods:</p><ul>
+<li><code><a class="el" href="classTexture.html">Texture()</a></code> - Default constructor</li>
+<li><code>setSizeInSpriteMap(w: int, h: int)</code> - Set sprite size</li>
+<li><code>setPositionInSpriteMap(x: int, y: int)</code> - Set sprite position</li>
+<li><code>setFlipHorizontal(flip: bool)</code> - Set horizontal flip</li>
+<li><code>setFlipVertical(flip: bool)</code> - Set vertical flip</li>
+<li><code>setAngle(angle: float)</code> - Set rotation angle</li>
+</ul>
+<h2><a class="anchor" id="animation_component"></a>
+Animation</h2>
+<p>Handles sprite sheet animations, inherits from <a class="el" href="classTexture.html">Texture</a>. </p><div class="fragment"><div class="line"># Create animated sprite</div>
+<div class="line">animation = engine.Animation()</div>
+<div class="line">animation.setRowsColsInSpriteMap(1, 6)  # 1 row, 6 frames</div>
+<div class="line">animation.setAnimationTime(0.5)         # Half second per cycle</div>
+<div class="line">animation.play()                        # Start animation</div>
+<div class="line"> </div>
+<div class="line"># Control animation</div>
+<div class="line">animation.pause()                       # Pause at current frame</div>
+<div class="line">animation.setFrame(2)                   # Jump to specific frame</div>
+<div class="line">print(f&quot;Current frame: {animation.getCurrentFrame()}&quot;)</div>
+</div><!-- fragment --><p>Methods:</p><ul>
+<li><code><a class="el" href="classAnimation.html">Animation()</a></code> - Default constructor</li>
+<li><code>getRows() -&gt; int</code> - Get number of rows</li>
+<li><code>getCols() -&gt; int</code> - Get number of columns</li>
+<li><code>getNumFrames() -&gt; int</code> - Get total frames</li>
+<li><code>setAutoPlay(autoplay: bool)</code> - Set auto-play state</li>
+<li><code>setRowsColsInSpriteMap(rows: int, cols: int)</code> - Set sprite sheet layout</li>
+<li><code>setAnimationTime(time: float)</code> - Set animation cycle time</li>
+<li><code>play()</code> - Start/resume animation</li>
+<li><code>pause()</code> - Pause animation</li>
+<li><code>setFrame(frame: int)</code> - Set specific frame</li>
+<li><code>getCurrentFrame() -&gt; int</code> - Get current frame</li>
+<li><code>isPlaying() -&gt; bool</code> - Check if playing</li>
 </ul>
 <h1><a class="anchor" id="factory"></a>
 Factory Methods</h1>

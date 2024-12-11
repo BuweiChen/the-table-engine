@@ -34,7 +34,9 @@ var NAVTREE =
       ] ],
       [ "Component Types", "python_bindings.html#components", [
         [ "Transform", "python_bindings.html#transform_component", null ],
-        [ "Collide", "python_bindings.html#collide_component", null ]
+        [ "Collide", "python_bindings.html#collide_component", null ],
+        [ "Texture", "python_bindings.html#texture_component", null ],
+        [ "Animation", "python_bindings.html#animation_component", null ]
       ] ],
       [ "Factory Methods", "python_bindings.html#factory", [
         [ "GameObjectFactory", "python_bindings.html#gameobject_factory", null ]
