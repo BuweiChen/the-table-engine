@@ -52,8 +52,8 @@ void Camera::update() {
             m_worldPosition.x = 320;
         if (m_worldPosition.x > 480)
             m_worldPosition.x = 480;
-        if (m_worldPosition.y < 272)
-            m_worldPosition.y = 272;
+        if (m_worldPosition.y < 224)
+            m_worldPosition.y = 224;
         if (m_worldPosition.y > 560)
             m_worldPosition.y = 560;
     }

@@ -32,31 +32,21 @@ void PlayerInputScript::update() {
     auto health = m_owner->getComponent<Health>();
     auto animations = dynamic_cast<AnimationsManager*>(texture);
 
-    Vec2 position = transform->getWorldPosition();
-
     // Handle movement
-    float dx = 0, dy = 0;
     bool isMoving = false;
 
     if (input->leftPressed) {
-        dx -= m_playerSpeed;
         isMoving = true;
     }
     if (input->rightPressed) {
-        dx += m_playerSpeed;
         isMoving = true;
     }
     if (input->upPressed) {
-        dy -= m_playerSpeed;
         isMoving = true;
     }
     if (input->downPressed) {
-        dy += m_playerSpeed;
         isMoving = true;
     }
-
-    position.x += dx;
-    position.y += dy;
 
     // Update animation state based on movement and health
     AnimationState newState = m_currentState;
@@ -76,18 +66,56 @@ void PlayerInputScript::update() {
         animations->setCurrentAnimation(static_cast<size_t>(m_currentState));
     }
 
-    // // clamp positions to level
-    // int levelWidth = 640;
-    // int levelHeight = 640;
-    // if (position.x < -levelWidth - 20)
-    //     position.x = -levelWidth - 20;
-    // if (position.x > levelWidth - 60)
-    //     position.x = levelWidth - 60;
-    // if (position.y < -levelHeight - 30)
-    //     position.y = -levelHeight - 30;
-    // if (position.y > levelHeight - 90)
-    //     position.y = levelHeight - 90;
+    
+    Vec2 position = transform->getWorldPosition();
 
+    if (input->leftPressed) {
+        position.x -= m_playerSpeed;
+    }
+    if (input->rightPressed) {
+        position.x += m_playerSpeed;
+    }
+    if (input->upPressed) {
+        position.y -= m_playerSpeed;
+    }
+    if (input->downPressed) {
+        position.y += m_playerSpeed;
+    }
+
+    // clamp positions to level
+    int levelWidth = 640;
+    int levelHeight = 640;
+    bool isDemo = SceneManager::getInstance().isDemo;
+
+    if (isDemo && position.x < -levelWidth)
+        position.x = -levelWidth;
+    else if (!isDemo && position.x < -levelWidth + 632)
+        position.x = -levelWidth + 632;
+    if (isDemo && position.x > levelWidth - 48)
+        position.x = levelWidth - 48;
+    else if (!isDemo && position.x > levelWidth + 124)
+        position.x = levelWidth + 124;
+    if (isDemo && position.y < -levelHeight)
+        position.y = -levelHeight;
+    else if (!isDemo && position.y < -levelHeight + 612)
+        position.y = -levelHeight + 612;
+    if (isDemo && position.y > levelHeight - 48)
+        position.y = levelHeight - 48;
+    else if (!isDemo && position.y > levelHeight + 116)
+        position.y = levelHeight + 116;
+
+    float dx = position.x - transform->getWorldPosition().x;
+    float dy = position.y - transform->getWorldPosition().y;
+
+    transform->updateWorldPosition(dx, dy);
+
+        // move the player's bow with the player
+    if (!m_owner->getChildren().empty()) {
+        auto bow = m_owner->getChildren()[0];
+        Vec2 bowOffset(16, 8);  // Adjust these values to position the bow correctly
+        bow->getComponent<Transform>()->setWorldPosition(position.x + bowOffset.x, position.y + bowOffset.y);
+    }
+    
     texture->setFlipHorizontal(dx < 0);
 
     // prevent hitting walls
@@ -102,13 +130,6 @@ void PlayerInputScript::update() {
     for (auto table : tables) {
         auto tableCollide = table->getComponent<Collide>();
         collide->preventCollision(tableCollide, dx, dy);
-    }
-
-    // move the player's bow with the player
-    if (!m_owner->getChildren().empty()) {
-        auto bow = m_owner->getChildren()[0];
-        Vec2 bowOffset(16, 8);  // Adjust these values to position the bow correctly
-        bow->getComponent<Transform>()->setWorldPosition(position.x + bowOffset.x, position.y + bowOffset.y);
     }
 
     // collect keys
@@ -129,5 +150,4 @@ void PlayerInputScript::update() {
         }
     }
 
-    transform->updateWorldPosition(dx, dy);
 }
