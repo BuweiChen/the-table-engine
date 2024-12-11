@@ -5,6 +5,7 @@ from tkinter import simpledialog
 from PIL import Image, ImageTk
 import json
 import os
+import subprocess
 
 
 # Todo: flush out label for gameobject properties (includes type + any non-transform, non-texture properties (health, speed, etc.))
@@ -630,6 +631,13 @@ class LevelEditorApp(tk.Tk):
         self.menubar.add_cascade(label="File", menu=self.file)
         self.file.add_command(label="Export", command=self.export)
 
+        
+
+        # Start Game
+        self.start_game = tk.Menu(self.menubar, tearoff=0)
+        self.menubar.add_cascade(label="Run", menu=self.start_game)
+        self.start_game.add_command(label="Run Game", command=self.execute_game)
+
         self.config(menu=self.menubar)
 
         # For animating images
@@ -1074,6 +1082,41 @@ class LevelEditorApp(tk.Tk):
                 if img_id != item:
                     new_items.append((itm_name, x, y, img_id, 0, 0))
             level_data["items"] = new_items
+
+    def execute_game(self):
+        self.withdraw()
+
+        # Get the directory where main.py is located
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+
+        # Construct the path to the bin directory
+        bin_dir = os.path.join(current_dir, "..", "Engine", "bin")
+
+        # Construct the path to the game executable
+        game_path = os.path.join(bin_dir, "game")
+
+        # On Windows, you might need "game.exe" if the binary has that extension
+        # If so:
+        # game_path = os.path.join(bin_dir, "game.exe")
+
+        # Check if the game file exists and is executable
+        if not os.path.exists(game_path):
+            messagebox.showerror("Not Found", f"The game executable was not found at: {game_path}")
+            self.deiconify()
+            return
+
+        try:
+            # Run the game, using bin_dir as the working directory
+            subprocess.run(["./game"], check=True, cwd=bin_dir)
+        except subprocess.CalledProcessError as e:
+            messagebox.showerror("Execution Failed", f"Failed to run the game: {e}")
+        except FileNotFoundError:
+            messagebox.showerror("Not Found", "The game executable was not found.")
+        finally:
+            # Show the GUI again once the executable finishes or if there's an error
+            self.deiconify()
+
+
 
 if __name__ == "__main__":
     app = LevelEditorApp()
