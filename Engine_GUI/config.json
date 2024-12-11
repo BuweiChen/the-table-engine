@@ -1,9 +1,8 @@
 {
   "Structure": {
-    "Wall": {
-      "collide": "checkbox_with_all_objects"
-    },
-    "Tile": {}
+    "Wall": {},
+    "Tile": {},
+    "Table": {}
   },
   "Entity": {
     "Enemy": {
