@@ -52,6 +52,7 @@ class AddPropertyPopup(tk.Toplevel):
 class AddItemPopup(tk.Toplevel):
     def __init__(self, parent, title, item_type, existing_data=None):
         super().__init__(parent)
+        self.dynamic_properties = {}
         self.parent = parent
         self.item_type = item_type  # "structure" or "entity"
         self.existing_data = existing_data
@@ -288,7 +289,10 @@ class AddItemPopup(tk.Toplevel):
             "size_width": size_width,
             "size_height": size_height,
             "frames": frames,
+            "properties": self.dynamic_properties,  # Include dynamic properties
         }
+
+        print(data)
 
         self.parent.add_item_callback(
             self.item_type, data, self.existing_data is not None
@@ -425,7 +429,7 @@ class GameObjectPropertiesPopup(tk.Toplevel):
     ):
         super().__init__(parent)
         self.title("GameObject Properties")
-        self.geometry("400x600")
+        self.geometry("400x700")
         self.parent = parent
         self.object_type = object_type.capitalize()
         self.config_file = config_file
@@ -530,9 +534,11 @@ class GameObjectPropertiesPopup(tk.Toplevel):
         """Confirm the selection and store data."""
         properties = {key: var.get() for key, var in self.fields.items()}
         checkboxes = {key: var.get() for key, var in self.checkbox_fields.items()}
-        print("Selected Properties:", properties)
-        print("Checkbox States:", checkboxes)
-        # Replace with actual data handling
+
+        combined_properties = {**properties, **checkboxes}
+
+        # Send combined properties back to the parent popup
+        self.parent.dynamic_properties = combined_properties
         self.destroy()
 
 
@@ -668,7 +674,9 @@ class LevelEditorApp(tk.Tk):
                     del self.entities[old_name]
                     self.entities_listbox.delete(sel[0])
             name = data["name"]
-            self.entities[name] = data
+            # Include dynamic properties
+            dynamic_properties = data.get("properties", {})
+            self.entities[name] = {**data, **dynamic_properties}
             self.entities_listbox.insert("end", name)
 
     def show_add_popup(self, item_type):
@@ -729,7 +737,7 @@ class LevelEditorApp(tk.Tk):
                 if itm_name == name:
                     level_data["canvas"].delete(img_id)
                 else:
-                    new_items.append((itm_name, x, y, img_id, 0, 0))
+                    new_items.append((itm_name, x, y, img_id))
             level_data["items"] = new_items
 
     def start_drag(self, item_type, event):
