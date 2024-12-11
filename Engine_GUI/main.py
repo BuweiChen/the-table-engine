@@ -107,9 +107,12 @@ class AddItemPopup(tk.Toplevel):
             "write", lambda *args: self.preview_image(self.file_var.get())
         )
 
-
-        tk.Label(pos_frame, text="Animation Time Per Frame (ms):").grid(row=1, column=0, sticky="w", padx=10, pady=5)
-        tk.Entry(pos_frame, textvariable=self.animation_time).grid(row=1, column=1, sticky="w", padx=10, pady=5)
+        tk.Label(pos_frame, text="Animation Time Per Frame (ms):").grid(
+            row=1, column=0, sticky="w", padx=10, pady=5
+        )
+        tk.Entry(pos_frame, textvariable=self.animation_time).grid(
+            row=1, column=1, sticky="w", padx=10, pady=5
+        )
 
         screen_frame = tk.Frame(self)
         screen_frame.pack(fill="x", padx=10, pady=10)
@@ -430,7 +433,6 @@ class GameObjectPropertiesPopup(tk.Toplevel):
         self.object_type = object_type.capitalize()
         self.config_file = config_file
         self.fields = {}
-        self.checkbox_fields = {}
 
         # Load config
         self.config_data = self.load_config()
@@ -497,7 +499,7 @@ class GameObjectPropertiesPopup(tk.Toplevel):
                     )
                 elif prop_type == "checkbox_with_all_objects":
                     # Dynamically create a checkbox for each object type
-                    self.create_checkboxes_for_objects(field_frame)
+                    self.create_checkboxes_for_objects(field_frame, prop_name)
                 else:
                     var = tk.StringVar()
                     tk.Entry(field_frame, textvariable=var).pack(
@@ -507,7 +509,7 @@ class GameObjectPropertiesPopup(tk.Toplevel):
                 if prop_type != "checkbox_with_all_objects":
                     self.fields[prop_name] = var
 
-    def create_checkboxes_for_objects(self, parent_frame):
+    def create_checkboxes_for_objects(self, parent_frame, prop_name):
         """Create checkboxes for all object types defined in the config.json."""
 
         # Load all object types from the config.json
@@ -524,17 +526,22 @@ class GameObjectPropertiesPopup(tk.Toplevel):
                 parent_frame, text=obj_name, variable=checkbox_var
             )
             checkbox.pack(anchor="w", padx=20)
-            self.checkbox_fields[obj_name] = checkbox_var
+            if prop_name not in self.fields:
+                self.fields[prop_name] = {}
+            self.fields[prop_name][obj_name] = checkbox_var
 
     def confirm(self):
         """Confirm the selection and store data."""
-        properties = {key: var.get() for key, var in self.fields.items()}
-        checkboxes = {key: var.get() for key, var in self.checkbox_fields.items()}
+        properties = {}
 
-        combined_properties = {**properties, **checkboxes}
+        for key, value in self.fields.items():
+            if isinstance(value, dict):  # Handle nested dictionary for checkboxes
+                properties[key] = {sub_key: var.get() for sub_key, var in value.items()}
+            else:
+                properties[key] = value.get()
 
-        # Send combined properties back to the parent popup
-        self.parent.dynamic_properties = combined_properties
+        # Pass the properties back to the parent popup
+        self.parent.dynamic_properties = properties
         self.destroy()
 
 
