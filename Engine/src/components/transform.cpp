@@ -80,13 +80,11 @@ void Transform::updateWorldPosition(Vec2 dpos)
  
 void Transform::update()
 {
-    auto sceneTree = SceneManager::getInstance().getSceneTree();
-    auto player = sceneTree->findGameObjectsByTag("Player")[0];
-    auto playerTransform = player->getComponent<Transform>();
+    Vec2 cameraPosition = SceneManager::getInstance().getCameraWorldPosition();
 
     /* calculate screen position relative to the player (camera follows player) */
-    mTransform->x = mPosition.x - playerTransform->getWorldPosition().x + 320;
-    mTransform->y = mPosition.y - playerTransform->getWorldPosition().y + 240;
+    mTransform->x = mPosition.x - cameraPosition.x + 320;
+    mTransform->y = mPosition.y - cameraPosition.y + 240;
     mTransform->w = mSize.x;
     mTransform->h = mSize.y;
 }

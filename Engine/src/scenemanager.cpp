@@ -1,3 +1,5 @@
+#include <iostream>
+
 #include "gameobject.h"
 #include "transform.h"
 #include "resourcemanager.h"
@@ -10,11 +12,13 @@
 std::atomic<uint64_t> SceneManager::m_totalObjects = 0;
 std::atomic<uint64_t> SceneManager::m_aliveObjects = 0;
 
-#include <iostream>
-
 SceneManager& SceneManager::getInstance() {
     static SceneManager instance;
     return instance;
+}
+
+SceneManager::SceneManager() {
+    m_camera = new Camera();
 }
 
 void SceneManager::setRenderer(SDL_Renderer* renderer) {
@@ -120,16 +124,20 @@ void SceneManager::loadScenesFromJSON(const std::string& filePath) {
     }
 }
 
+SDL_Renderer* SceneManager::getRenderer() {
+    return m_renderer;
+}
+
+Vec2 SceneManager::getCameraWorldPosition() {
+    return m_camera->getWorldPosition();
+}
+
 void SceneManager::getNextScene() {
     if (m_currentSceneIndex < static_cast<int>(m_sceneTrees.size()) - 1) {
         m_currentSceneIndex++;
     } else {
         std::cerr << "No more scenes to transition to.\n";
     }
-}
-
-SDL_Renderer* SceneManager::getRenderer() {
-    return m_renderer;
 }
 
 SceneTree* SceneManager::createSceneTest1() {
@@ -166,7 +174,6 @@ SceneTree* SceneManager::createSceneTest1() {
 
     return sceneTree;
 }
-
 
 SceneTree* SceneManager::createSceneTest2() {
     SceneTree* sceneTree = new SceneTree();
@@ -238,9 +245,6 @@ SceneTree* SceneManager::createSceneTest3() {
     return sceneTree;
 }
 
-
-
-
 void SceneManager::cleanTree()
 {
     auto sceneTree = SceneManager::getInstance().getSceneTree();
@@ -251,7 +255,6 @@ void SceneManager::cleanTree()
             delete node;
     });
 }
-
 
 void SceneManager::input()
 {
@@ -266,6 +269,7 @@ void SceneManager::input()
 
 void SceneManager::update()
 {
+    m_camera->update();
     auto sceneTree = SceneManager::getInstance().getSceneTree();
     if (sceneTree == nullptr) return;
 
@@ -273,7 +277,7 @@ void SceneManager::update()
         if (node->getGameObject())
             node->getGameObject()->update();
     });
-    
+
     cleanTree();
 
     if (sceneTree->gameStatus() == -1)

@@ -58,6 +58,8 @@ void GameApplication::start() {
 
     // Sound* music = ResourceManager::getInstance().loadSound("../Assets/Sounds/music.wav");
     // music->play(-1);
+
+    
 }
 
 void GameApplication::printStats() {
