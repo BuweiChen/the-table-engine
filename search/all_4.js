@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['enemy_5fai_5fscript_2ecpp_27',['enemy_ai_script.cpp',['../enemy__ai__script_8cpp.html',1,'']]],
-  ['enemy_5fai_5fscript_2eh_28',['enemy_ai_script.h',['../enemy__ai__script_8h.html',1,'']]],
-  ['enemyaiscript_29',['EnemyAIScript',['../classEnemyAIScript.html',1,'EnemyAIScript'],['../classEnemyAIScript.html#aca60c81fcf22c446a2540e761308e7b3',1,'EnemyAIScript::EnemyAIScript()']]],
-  ['engine_5fbindings_2ecpp_30',['engine_bindings.cpp',['../engine__bindings_8cpp.html',1,'']]]
+  ['findgameobjectbyid_30',['findGameObjectById',['../classSceneTree.html#a3991fc987fb0a3475c3eee1fb99e9e02',1,'SceneTree']]],
+  ['findgameobjectsbytag_31',['findGameObjectsByTag',['../classSceneTree.html#ae5dab94cdd041091c0ac1bcc9995ef1b',1,'SceneTree']]]
 ];

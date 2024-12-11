@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['playerinputscript_238',['PlayerInputScript',['../classPlayerInputScript.html',1,'']]],
-  ['projectilescript_239',['ProjectileScript',['../classProjectileScript.html',1,'']]]
+  ['rangedweaponscript_239',['RangedWeaponScript',['../classRangedWeaponScript.html',1,'']]],
+  ['resourcemanager_240',['ResourceManager',['../classResourceManager.html',1,'']]]
 ];

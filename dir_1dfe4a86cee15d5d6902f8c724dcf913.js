@@ -34,7 +34,7 @@ var dir_1dfe4a86cee15d5d6902f8c724dcf913 =
       [ "ProjectileScript", "classProjectileScript.html", "classProjectileScript" ]
     ] ],
     [ "ranged_weapon_script.h", "ranged__weapon__script_8h.html", [
-      [ "Bow_script", "classBow__script.html", "classBow__script" ]
+      [ "RangedWeaponScript", "classRangedWeaponScript.html", "classRangedWeaponScript" ]
     ] ],
     [ "resourcemanager.h", "resourcemanager_8h.html", [
       [ "ResourceManager", "classResourceManager.html", "classResourceManager" ]

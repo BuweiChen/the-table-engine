@@ -16,11 +16,11 @@ var hierarchy =
     [ "SceneNode", "classSceneNode.html", null ],
     [ "SceneTree", "classSceneTree.html", null ],
     [ "Script", "classScript.html", [
-      [ "Bow_script", "classBow__script.html", null ],
       [ "CollisionScript", "classCollisionScript.html", null ],
       [ "EnemyAIScript", "classEnemyAIScript.html", null ],
       [ "PlayerInputScript", "classPlayerInputScript.html", null ],
-      [ "ProjectileScript", "classProjectileScript.html", null ]
+      [ "ProjectileScript", "classProjectileScript.html", null ],
+      [ "RangedWeaponScript", "classRangedWeaponScript.html", null ]
     ] ],
     [ "Sound", "structSound.html", null ],
     [ "Vec2", "structVec2.html", null ]

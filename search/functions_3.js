@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['enemyaiscript_307',['EnemyAIScript',['../classEnemyAIScript.html#aca60c81fcf22c446a2540e761308e7b3',1,'EnemyAIScript']]]
+  ['findgameobjectbyid_307',['findGameObjectById',['../classSceneTree.html#a3991fc987fb0a3475c3eee1fb99e9e02',1,'SceneTree']]],
+  ['findgameobjectsbytag_308',['findGameObjectsByTag',['../classSceneTree.html#ae5dab94cdd041091c0ac1bcc9995ef1b',1,'SceneTree']]]
 ];
