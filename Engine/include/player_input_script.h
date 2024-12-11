@@ -31,10 +31,10 @@ public:
         RUN = 1,    ///< Player is moving
         DEATH = 2   ///< Player has died
     };
+    
 private:
-    int m_lastFireTimeInMs = 0; ///< Timestamp of the last fire to regulate shooting frequency.
-    int m_fireRatePerSecond = 5;    ///< Fire rate of the player in shots per second.
     int m_lastFireTimeInMs = 0;      ///< Timestamp of the last fire to regulate shooting frequency.
+
     float m_playerSpeed = 6;         ///< Speed at which the player moves.
     int m_keysCollected = 0;         ///< Number of keys the player has collected.
     AnimationState m_currentState = IDLE;  ///< Current animation state of the player.
