@@ -1,0 +1,12 @@
+<map id="Engine/include/gameobject.h" name="Engine/include/gameobject.h">
+<area shape="rect" id="node1" title=" " alt="" coords="151,5,361,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,80,72,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="137,155,199,181"/>
+<area shape="rect" id="node4" href="$component_8h.html" title="Defines the Component base class for all components in the game engine." alt="" coords="147,80,253,107"/>
+<area shape="rect" id="node6" href="$script_8h.html" title="Defines the Script class for attaching behavior to game objects." alt="" coords="278,80,349,107"/>
+<area shape="rect" id="node7" href="$scene_8h.html" title="Defines the SceneNode and SceneTree classes for managing game objects within scenes." alt="" coords="373,80,445,107"/>
+<area shape="rect" id="node10" title=" " alt="" coords="469,80,565,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="283,155,341,181"/>
+<area shape="rect" id="node8" title=" " alt="" coords="366,155,453,181"/>
+<area shape="rect" id="node9" title=" " alt="" coords="477,155,601,181"/>
+</map>

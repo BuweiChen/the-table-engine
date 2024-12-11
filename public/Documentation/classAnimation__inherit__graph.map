@@ -1,0 +1,5 @@
+<map id="Animation" name="Animation">
+<area shape="rect" id="node1" title=" " alt="" coords="5,637,213,1023"/>
+<area shape="rect" id="node2" href="$classTexture.html" title=" " alt="" coords="11,277,208,589"/>
+<area shape="rect" id="node3" href="$classComponent.html" title="Base class for all game components, providing basic component functionalities." alt="" coords="43,5,176,229"/>
+</map>

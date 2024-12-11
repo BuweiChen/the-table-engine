@@ -1,0 +1,8 @@
+<map id="Engine/include/input.h" name="Engine/include/input.h">
+<area shape="rect" id="node1" title="Defines the Input component for handling input operations in the game engine." alt="" coords="474,5,641,32"/>
+<area shape="rect" id="node2" href="$input_8cpp.html" title=" " alt="" coords="5,80,179,121"/>
+<area shape="rect" id="node3" href="$gameobjectfactory_8cpp.html" title=" " alt="" coords="203,87,445,114"/>
+<area shape="rect" id="node4" href="$player__input__script_8cpp.html" title=" " alt="" coords="469,80,646,121"/>
+<area shape="rect" id="node5" href="$ranged__weapon__script_8cpp.html" title=" " alt="" coords="670,80,869,121"/>
+<area shape="rect" id="node6" href="$engine__bindings_8cpp.html" title=" " alt="" coords="893,80,1067,121"/>
+</map>

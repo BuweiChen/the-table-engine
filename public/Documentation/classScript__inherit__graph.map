@@ -1,0 +1,8 @@
+<map id="Script" name="Script">
+<area shape="rect" id="node1" title="Base class for scripting custom behaviors in game objects." alt="" coords="367,5,477,215"/>
+<area shape="rect" id="node2" href="$classCollisionScript.html" title=" " alt="" coords="5,292,145,399"/>
+<area shape="rect" id="node3" href="$classEnemyAIScript.html" title=" " alt="" coords="169,299,312,391"/>
+<area shape="rect" id="node4" href="$classPlayerInputScript.html" title=" " alt="" coords="337,270,507,421"/>
+<area shape="rect" id="node5" href="$classProjectileScript.html" title=" " alt="" coords="532,292,677,399"/>
+<area shape="rect" id="node6" href="$classRangedWeaponScript.html" title=" " alt="" coords="701,263,887,428"/>
+</map>

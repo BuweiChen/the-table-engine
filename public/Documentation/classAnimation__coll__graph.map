@@ -1,0 +1,7 @@
+<map id="Animation" name="Animation">
+<area shape="rect" id="node1" title=" " alt="" coords="5,1029,213,1415"/>
+<area shape="rect" id="node2" href="$classTexture.html" title=" " alt="" coords="11,668,208,980"/>
+<area shape="rect" id="node3" href="$classComponent.html" title="Base class for all game components, providing basic component functionalities." alt="" coords="43,395,176,604"/>
+<area shape="rect" id="node4" href="$classGameObject.html" title="Core class representing an entity in the game world." alt="" coords="143,5,289,317"/>
+<area shape="rect" id="node5" href="$classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy." alt="" coords="239,380,393,619"/>
+</map>
