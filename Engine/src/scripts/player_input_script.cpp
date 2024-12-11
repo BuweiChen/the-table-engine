@@ -107,7 +107,6 @@ void PlayerInputScript::update() {
     }
 
     // prevent hitting tables
-
     auto tables = SceneManager::getInstance().getSceneTree()->findGameObjectsByTag("Table");
     for (auto table : tables) {
         auto tableCollide = table->getComponent<Collide>();
