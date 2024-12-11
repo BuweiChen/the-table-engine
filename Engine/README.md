@@ -4,7 +4,7 @@
 
 ## Game/Engine Publicity
 
-**Project Website**: *please edit the project website with a link here* (See part 3)
+**Project Website**: https://kli63.github.io/EngineDocs/
 
 ## Compilation Instructions
 
