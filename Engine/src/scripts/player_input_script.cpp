@@ -92,7 +92,8 @@ void PlayerInputScript::update() {
     // move the player's bow with the player
     if (!m_owner->getChildren().empty()) {
         auto bow = m_owner->getChildren()[0];
-        bow->getComponent<Transform>()->updateWorldPosition(dx, dy);
+        Vec2 bowOffset(40, 48);  // Adjust these values to position the bow correctly
+        bow->getComponent<Transform>()->setWorldPosition(position.x + bowOffset.x, position.y + bowOffset.y);
     }
 
     // collect keys
