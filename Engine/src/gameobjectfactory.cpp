@@ -60,8 +60,8 @@ GameObject* GameObjectFactory::createBow()
     transform->setWorldSize(25, 25);
     bow->addComponent<Transform>(transform);
 
-    auto bowScript = new Bow_script();
-    bow->addScript<Bow_script>(bowScript);
+    auto bowScript = new RangedWeaponScript();
+    bow->addScript<RangedWeaponScript>(bowScript);
 
     auto input = new Input();
     bow->addComponent<Input>(input);

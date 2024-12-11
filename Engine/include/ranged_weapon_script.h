@@ -1,6 +1,6 @@
 #include "script.h"
 
-class Bow_script : public Script {
+class RangedWeaponScript : public Script {
     private:
         bool m_shoot;
         int m_lastFireTimeInMs;
@@ -9,7 +9,7 @@ class Bow_script : public Script {
         bool m_animationPlayed;
 
     public:
-        Bow_script();
+        RangedWeaponScript();
         void input() override;
         void update() override;
 };

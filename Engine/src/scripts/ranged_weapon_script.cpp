@@ -7,14 +7,14 @@
 #include "animation.h"
 #include "scenemanager.h"
 
-Bow_script::Bow_script() {
+RangedWeaponScript::RangedWeaponScript() {
     m_shoot = false;
     m_lastFireTimeInMs = -10000;
     m_fireRatePerSecond = 2;
     m_animationPlayed = false;
 }
 
-void Bow_script::input() {
+void RangedWeaponScript::input() {
     if (m_owner->getTag() == "Bow") {
         auto animation = m_owner->getComponent<Animation>();
         
@@ -28,7 +28,7 @@ void Bow_script::input() {
     }
 }
 
-void Bow_script::update() {
+void RangedWeaponScript::update() {
     auto input = m_owner->getComponent<Input>();
     auto transform = m_owner->getComponent<Transform>();
     auto animation = m_owner->getComponent<Animation>();

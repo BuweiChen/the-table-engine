@@ -471,11 +471,11 @@ PYBIND11_MODULE(engine, m) {
         .def(py::init<float, float>())
         .def("update", &ProjectileScript::update);
 
-    // Bind Bow_script (ranged_weapon_script.h)
-    py::class_<Bow_script, Script>(m, "Bow_script")
+    // Bind RangedWeaponScript (ranged_weapon_script.h)
+    py::class_<RangedWeaponScript, Script>(m, "RangedWeaponScript")
         .def(py::init<>())
-        .def("input", &Bow_script::input)
-        .def("update", &Bow_script::update);
+        .def("input", &RangedWeaponScript::input)
+        .def("update", &RangedWeaponScript::update);
 
     // Bind CollisionScript (collision_script.h)
     py::class_<CollisionScript, Script>(m, "CollisionScript")

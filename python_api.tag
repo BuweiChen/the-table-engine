@@ -113,7 +113,7 @@
     <path>/home/kli63/dev/CPSC411/finalproject-jeffreylinkennyliarnavnarulabuweichen/Engine/include/</path>
     <filename>ranged__weapon__script_8h.html</filename>
     <includes id="script_8h" name="script.h" local="yes" imported="no">script.h</includes>
-    <class kind="class">Bow_script</class>
+    <class kind="class">RangedWeaponScript</class>
   </compound>
   <compound kind="file">
     <name>resourcemanager.h</name>
@@ -518,12 +518,12 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>Bow_script</name>
+    <name>RangedWeaponScript</name>
     <filename>classBow__script.html</filename>
     <base>Script</base>
     <member kind="function">
       <type></type>
-      <name>Bow_script</name>
+      <name>RangedWeaponScript</name>
       <anchorfile>classBow__script.html</anchorfile>
       <anchor>a9dd82402055b97c2cccad661555bf695</anchor>
       <arglist>()</arglist>
