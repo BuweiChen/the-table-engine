@@ -8,13 +8,11 @@ _your additional notes, or things TA's and instructors should know_
 
 ## Compilation Instructions
 
-1. Download the project zip file from the link above.
-2. Extract the contents of the zip file.
-3. Open a terminal window at the project root directory.
-4. `cd Engine`
-5. `chmod +x run.sh`
-6. `./run.sh`
-7. From the GUI, you can load the demo, or create your own game.
+1. Open a terminal window at the project root directory.
+2. `cd Engine`
+3. `chmod +x run.sh`
+4. `./run.sh`
+5. From the GUI, you can load the demo, or create your own game.
 
 ## Project Hieararchy
 
