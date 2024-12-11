@@ -2,13 +2,12 @@
 
 # The Final Project!
 
-- For this assignment you are going to be building a 'Game Maker' as your final project! 
+- For this assignment you are going to be building a 'Game Maker' as your final project!
 - You will use your engine to make a game with at least '3' scenes.
 
 ## Logistics
 
-- You will put all of your code and deliverables in the [Engine](./Engine) directory.
-	- You can have a separate 'game' directory if you otherwise choose.
+- You will put all of your code and deliverables in the [Engine](./Engine) directory. - You can have a separate 'game' directory if you otherwise choose.
 <!-- NOTE:  This semester you will be completing the project yourself.
 - You will be working on this assignment as a team on your choice (or a combination) of the Mac, Linux, or Windows Operating Sytstem.
 - Make sure everyone has a way to work on this codebase, with a common set of tools.
@@ -16,25 +15,24 @@
 
 ## Team
 
-Team Name: *jeffreylinkennyliarnavnarulabuweichen*
+Team Name: _The Table Engine_
 
-*TODO*:
+_TODO_:
 Update your Team member Names here (Up to 4).
 
 1. Kenny Li
 2. Jeffrey Lin
 3. Arnav Narula
 4. Buwei Chen
--->
+   -->
 
 ## Assignment Milestones
 
-1. [Part 1 README](./part1_README.md) 
- 	* Read the project description
-2. [Part 2 README](./part2_README.md) 
- 	* More specific requierments of the project and who is going to be responsible for each part
-3. [Part 3 README](./part3_README.md) 
- 	* Portfolio instructions 	
+1. [Part 1 README](./part1_README.md)
+   - Read the project description
+2. [Part 2 README](./part2_README.md)
+   - More specific requierments of the project and who is going to be responsible for each part
+3. [Part 3 README](./part3_README.md) \* Portfolio instructions
 <!--4. Team member Evaluation: https://forms.gle/qiD6guzN5W5LxAcV9
  	* **This must be filled out before the project is due.**
 -->
@@ -43,12 +41,12 @@ Update your Team member Names here (Up to 4).
 
 You will be using SDL to build this project and the same libraries that we have been using during the semester.
 
-* General SDL programming tutorials: 
-  * http://lazyfoo.net/tutorials/SDL/
-  * [Mike's SDL Playlist](https://www.youtube.com/playlist?list=PLvv0ScY6vfd-p1gSnbQhY7vMe2rng0IL0)
+- General SDL programming tutorials:
+  - http://lazyfoo.net/tutorials/SDL/
+  - [Mike's SDL Playlist](https://www.youtube.com/playlist?list=PLvv0ScY6vfd-p1gSnbQhY7vMe2rng0IL0)
 
 # Part 1 and 2 Rubric
-   
+
 <table>
   <tbody>
     <tr>
@@ -113,7 +111,7 @@ You will be using SDL to build this project and the same libraries that we have 
     <tr>
       <td>5% (Team member evaluation)</td>
       <td align="left">Did you fill it out? How did your teammates rate you?</td>
-    </tr> 
+    </tr>
   </tbody>
 </table>
 
