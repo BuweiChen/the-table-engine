@@ -1104,10 +1104,6 @@
     </member>
   </compound>
   <compound kind="class">
-    <name>health</name>
-    <filename>classhealth.html</filename>
-  </compound>
-  <compound kind="class">
     <name>Health</name>
     <filename>classHealth.html</filename>
     <base>Component</base>
@@ -1129,8 +1125,8 @@
       <type>int</type>
       <name>getHealth</name>
       <anchorfile>classHealth.html</anchorfile>
-      <anchor>adc5f045b9f6937c592e196821d7a6878</anchor>
-      <arglist>()</arglist>
+      <anchor>ac9c0efcd660fee0a0585d7b71ab92c80</anchor>
+      <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>void</type>
