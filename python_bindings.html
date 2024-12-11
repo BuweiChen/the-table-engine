@@ -99,7 +99,7 @@ $(document).ready(function(){initNavTree('python_bindings.html',''); initResizab
 <li class="level1"><a href="#factory">Factory Methods</a><ul><li class="level2"><a href="#gameobject_factory">GameObjectFactory</a></li>
 </ul>
 </li>
-<li class="level1"><a href="#scripts">Script Types</a><ul><li class="level2"><a href="#player_script">PlayerTestScript</a></li>
+<li class="level1"><a href="#scripts">Script Types</a><ul><li class="level2"><a href="#player_input_script">PlayerInputScript</a></li>
 </ul>
 </li>
 <li class="level1"><a href="#managers">Managers</a><ul><li class="level2"><a href="#scene_manager">SceneManager</a></li>
@@ -208,13 +208,13 @@ GameObjectFactory</h2>
 </ul>
 <h1><a class="anchor" id="scripts"></a>
 Script Types</h1>
-<h2><a class="anchor" id="player_script"></a>
-PlayerTestScript</h2>
+<h2><a class="anchor" id="player_input_script"></a>
+PlayerInputScript</h2>
 <p>Handles player behavior. </p><div class="fragment"><div class="line">player = engine.GameObject(&quot;player&quot;)</div>
-<div class="line">script = engine.PlayerTestScript()</div>
+<div class="line">script = engine.PlayerInputScript()</div>
 <div class="line">player.addScript(script)</div>
 </div><!-- fragment --><p>Methods:</p><ul>
-<li><code><a class="el" href="classPlayerTestScript.html">PlayerTestScript()</a></code> - Create script</li>
+<li><code><a class="el" href="classPlayerInputScript.html">PlayerInputScript()</a></code> - Create script</li>
 <li><code>getKeysCollected() -&gt; int</code> - Get collected keys</li>
 <li><code>update()</code> - Update player</li>
 </ul>

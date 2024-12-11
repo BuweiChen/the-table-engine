@@ -40,7 +40,7 @@ var NAVTREE =
         [ "GameObjectFactory", "python_bindings.html#gameobject_factory", null ]
       ] ],
       [ "Script Types", "python_bindings.html#scripts", [
-        [ "PlayerTestScript", "python_bindings.html#player_script", null ]
+        [ "PlayerInputScript", "python_bindings.html#player_input_script", null ]
       ] ],
       [ "Managers", "python_bindings.html#managers", [
         [ "SceneManager", "python_bindings.html#scene_manager", null ]
@@ -78,7 +78,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "animation_8cpp.html",
-"classTransform.html#aed5f02f38f3489a81f42afdbc53da004"
+"collide_8cpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

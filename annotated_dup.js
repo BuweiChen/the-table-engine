@@ -1,7 +1,6 @@
 var annotated_dup =
 [
     [ "Animation", "classAnimation.html", "classAnimation" ],
-    [ "ArrowTestScript", "classArrowTestScript.html", "classArrowTestScript" ],
     [ "Bow_script", "classBow__script.html", "classBow__script" ],
     [ "Collide", "classCollide.html", "classCollide" ],
     [ "CollideScript", "classCollideScript.html", "classCollideScript" ],
@@ -12,7 +11,8 @@ var annotated_dup =
     [ "GameObject", "classGameObject.html", "classGameObject" ],
     [ "GameObjectFactory", "classGameObjectFactory.html", "classGameObjectFactory" ],
     [ "Input", "classInput.html", "classInput" ],
-    [ "PlayerTestScript", "classPlayerTestScript.html", "classPlayerTestScript" ],
+    [ "PlayerInputScript", "classPlayerInputScript.html", "classPlayerInputScript" ],
+    [ "ProjectileScript", "classProjectileScript.html", "classProjectileScript" ],
     [ "ResourceManager", "classResourceManager.html", "classResourceManager" ],
     [ "SceneManager", "classSceneManager.html", "classSceneManager" ],
     [ "SceneNode", "classSceneNode.html", "classSceneNode" ],

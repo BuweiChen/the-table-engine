@@ -7,8 +7,5 @@ var searchData=
   ['animation_4',['Animation',['../classAnimation.html',1,'Animation'],['../classAnimation.html#a83f0a16cef7117f187ad596de38dd9d6',1,'Animation::Animation()'],['../classAnimation.html#a0a58e6699f8f22a621ebbc3627cbfb07',1,'Animation::Animation(SDL_Texture *texture)']]],
   ['animation_2ecpp_5',['animation.cpp',['../animation_8cpp.html',1,'']]],
   ['animation_2eh_6',['animation.h',['../animation_8h.html',1,'']]],
-  ['app_2ecpp_7',['app.cpp',['../app_8cpp.html',1,'']]],
-  ['arrow_5ftest_5fscript_2ecpp_8',['arrow_test_script.cpp',['../arrow__test__script_8cpp.html',1,'']]],
-  ['arrow_5ftest_5fscript_2eh_9',['arrow_test_script.h',['../arrow__test__script_8h.html',1,'']]],
-  ['arrowtestscript_10',['ArrowTestScript',['../classArrowTestScript.html',1,'ArrowTestScript'],['../classArrowTestScript.html#a3a28cf0ac265592bde6a042aa9b4ff2a',1,'ArrowTestScript::ArrowTestScript()']]]
+  ['app_2ecpp_7',['app.cpp',['../app_8cpp.html',1,'']]]
 ];

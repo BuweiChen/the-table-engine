@@ -11,7 +11,7 @@
 <area shape="rect" id="node18" href="$scenemanager_8h.html" title="Defines the SceneManager class for managing scenes in the game." alt="" coords="845,229,974,256"/>
 <area shape="rect" id="node19" href="$transform_8h.html" title="Provides the Transform component for positioning and sizing game objects." alt="" coords="660,155,759,181"/>
 <area shape="rect" id="node21" href="$texture_8h.html" title="Defines the Texture component for managing textures in the Game Engine." alt="" coords="565,80,646,107"/>
-<area shape="rect" id="node22" href="$player__test__script_8h.html" title=" " alt="" coords="1038,155,1189,181"/>
+<area shape="rect" id="node22" href="$player__input__script_8h.html" title=" " alt="" coords="1035,155,1194,181"/>
 <area shape="rect" id="node9" title=" " alt="" coords="948,304,1015,331"/>
 <area shape="rect" id="node10" title=" " alt="" coords="987,379,1050,405"/>
 <area shape="rect" id="node11" href="$component_8h.html" title="Defines the Component base class for all components in the game engine." alt="" coords="664,304,771,331"/>
