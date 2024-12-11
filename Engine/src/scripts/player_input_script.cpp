@@ -13,6 +13,7 @@
 #include "animationsmanager.h"
 
 #include <iostream>
+#include <iostream>
 #include <string>
 
 PlayerInputScript::PlayerInputScript() {
