@@ -108,7 +108,7 @@ class AddItemPopup(tk.Toplevel):
             "write", lambda *args: self.preview_image(self.file_var.get())
         )
 
-        tk.Label(pos_frame, text="Animation Time Per Frame (ms):").grid(
+        tk.Label(pos_frame, text="Time to complete animation (s):").grid(
             row=1, column=0, sticky="w", padx=10, pady=5
         )
         tk.Entry(pos_frame, textvariable=self.animation_time).grid(

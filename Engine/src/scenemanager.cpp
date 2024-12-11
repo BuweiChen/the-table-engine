@@ -275,15 +275,12 @@ SceneTree* SceneManager::createSceneTest3() {
 void SceneManager::cleanTree()
 {
     auto sceneTree = SceneManager::getInstance().getSceneTree();
-    if (sceneTree == nullptr) return;
+    if (sceneTree == nullptr) return; 
 
     sceneTree->traverseTree([](SceneNode* node) {
         if (node->getGameObject() != nullptr) {
-            std::cout << node->getGameObject()->getTag() << "\n";
         }
-        std::cout << node->isBackground() << " " << node->readyToDestroy() << "\n";
         if (node->readyToDestroy()) {
-            std::cout << "Destroying node\n";
             delete node;
         }
     });
