@@ -149,6 +149,7 @@ GameObject* GameObjectFactory::createEnemyWarriorCustom(std::string path, int ro
     auto texture = new Animation(sdl_texture);
     texture->setRowsColsInSpriteMap(row, col);
     texture->setAnimationTime(animationTime);
+    std::cout << animationTime << "\n";
     enemy->addComponent<Texture>(texture);
 
     auto transform = new Transform();
