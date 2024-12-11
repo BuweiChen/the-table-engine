@@ -1,8 +1,11 @@
 import tkinter as tk
 from tkinter import filedialog, messagebox, ttk
 import time
+from tkinter import simpledialog
 from PIL import Image, ImageTk
-from backend import export_json
+import json
+import os
+
 
 # Todo: flush out label for gameobject properties (includes type + any non-transform, non-texture properties (health, speed, etc.))
 class AddPropertyPopup(tk.Toplevel):
@@ -10,6 +13,8 @@ class AddPropertyPopup(tk.Toplevel):
         super().__init__()
         self.title("Add Property")
         self.geometry("400x300")
+
+        self.old_name = None
 
         tk.Label(self, text="Property Name:").pack(anchor="w", padx=10, pady=5)
         self.name_var = tk.StringVar()
@@ -30,7 +35,9 @@ class AddPropertyPopup(tk.Toplevel):
 
         btn_frame = tk.Frame(self)
         btn_frame.pack(fill="x", pady=10)
-        tk.Button(btn_frame, text="OK", command=self.confirm).pack(side="right", padx=10)
+        tk.Button(btn_frame, text="OK", command=self.confirm).pack(
+            side="right", padx=10
+        )
         tk.Button(btn_frame, text="Cancel", command=self.destroy).pack(side="right")
 
     def confirm(self):
@@ -43,9 +50,11 @@ class AddPropertyPopup(tk.Toplevel):
     def destroy(self):
         return super().destroy()
 
+
 class AddItemPopup(tk.Toplevel):
     def __init__(self, parent, title, item_type, existing_data=None):
         super().__init__(parent)
+        self.dynamic_properties = {}
         self.parent = parent
         self.item_type = item_type  # "structure" or "entity"
         self.existing_data = existing_data
@@ -74,32 +83,55 @@ class AddItemPopup(tk.Toplevel):
         self.file_entry = tk.Entry(file_frame, textvariable=self.file_var)
         self.file_entry.pack(side="left", fill="x", expand=True)
         tk.Button(file_frame, text="Browse", command=self.browse_file).pack(side="left")
-        
+
         pos_frame = tk.Frame(self)
         pos_frame.pack(fill="x", padx=10, pady=10)
 
-        tk.Label(pos_frame, text="Columns:").grid(row=0, column=0, sticky="w", padx=10, pady=5)
-        tk.Entry(pos_frame, textvariable=self.cols_var).grid(row=0, column=1, sticky="w", padx=10, pady=5)
-        self.cols_var.trace_add("write", lambda *args: self.preview_image(self.file_var.get()))
+        tk.Label(pos_frame, text="Columns:").grid(
+            row=0, column=0, sticky="w", padx=10, pady=5
+        )
+        tk.Entry(pos_frame, textvariable=self.cols_var).grid(
+            row=0, column=1, sticky="w", padx=10, pady=5
+        )
+        self.cols_var.trace_add(
+            "write", lambda *args: self.preview_image(self.file_var.get())
+        )
 
-        tk.Label(pos_frame, text="Rows:").grid(row=0, column=2, sticky="e", padx=10, pady=5)
-        tk.Entry(pos_frame, textvariable=self.rows_var).grid(row=0, column=3, sticky="e", padx=10, pady=5)
-        self.rows_var.trace_add("write", lambda *args: self.preview_image(self.file_var.get()))
+        tk.Label(pos_frame, text="Rows:").grid(
+            row=0, column=2, sticky="e", padx=10, pady=5
+        )
+        tk.Entry(pos_frame, textvariable=self.rows_var).grid(
+            row=0, column=3, sticky="e", padx=10, pady=5
+        )
+        self.rows_var.trace_add(
+            "write", lambda *args: self.preview_image(self.file_var.get())
+        )
 
-        tk.Label(pos_frame, text="Animation Time Per Frame (ms):").grid(row=1, column=0, sticky="w", padx=10, pady=5)
-        tk.Entry(pos_frame, textvariable=self.animation_time).grid(row=1, column=1, sticky="w", padx=10, pady=5)
-        self.animation_time.trace_add("write", lambda *args: self.preview_image(self.file_var.get()))
+        tk.Label(pos_frame, text="Animation Time Per Frame (ms):").grid(
+            row=1, column=0, sticky="w", padx=10, pady=5
+        )
+        tk.Entry(pos_frame, textvariable=self.animation_time).grid(
+            row=1, column=1, sticky="w", padx=10, pady=5
+        )
 
         screen_frame = tk.Frame(self)
         screen_frame.pack(fill="x", padx=10, pady=10)
 
-        tk.Label(screen_frame, text="Screen width (px):").grid(row=0, column=0, sticky="w", padx=10, pady=5)
-        tk.Entry(screen_frame, textvariable=self.length_var).grid(row=0, column=1, sticky="w", padx=10, pady=5)
+        tk.Label(screen_frame, text="Screen width (px):").grid(
+            row=0, column=0, sticky="w", padx=10, pady=5
+        )
+        tk.Entry(screen_frame, textvariable=self.length_var).grid(
+            row=0, column=1, sticky="w", padx=10, pady=5
+        )
 
-        tk.Label(screen_frame, text="Screen height (px):").grid(row=0, column=2, sticky="e", padx=10, pady=5)
-        tk.Entry(screen_frame, textvariable=self.width_var).grid(row=0, column=3, sticky="e", padx=10, pady=5)
+        tk.Label(screen_frame, text="Screen height (px):").grid(
+            row=0, column=2, sticky="e", padx=10, pady=5
+        )
+        tk.Entry(screen_frame, textvariable=self.width_var).grid(
+            row=0, column=3, sticky="e", padx=10, pady=5
+        )
 
-         # image preview
+        # image preview
         self.preview_canvas = tk.Canvas(self, width=200, height=200)
         self.preview_canvas.pack(fill="both", padx=20)
 
@@ -108,29 +140,54 @@ class AddItemPopup(tk.Toplevel):
         form_frame.pack(fill="x", padx=10, pady=10)
 
         # TopLeft X
-        tk.Label(form_frame, text="Sprite X:").grid(row=0, column=0, sticky="w", padx=5, pady=5)
-        tk.Entry(form_frame, textvariable=self.top_left_x).grid(row=0, column=1, sticky="w", padx=10, pady=5)
-        self.top_left_x.trace_add("write", lambda *args: self.preview_image(self.file_var.get()))
+        tk.Label(form_frame, text="Sprite X:").grid(
+            row=0, column=0, sticky="w", padx=5, pady=5
+        )
+        tk.Entry(form_frame, textvariable=self.top_left_x).grid(
+            row=0, column=1, sticky="w", padx=10, pady=5
+        )
+        self.top_left_x.trace_add(
+            "write", lambda *args: self.preview_image(self.file_var.get())
+        )
 
         # TopLeft Y
-        tk.Label(form_frame, text="Sprite Y:").grid(row=0, column=2, sticky="e", padx=5, pady=5)
-        tk.Entry(form_frame, textvariable=self.top_left_y).grid(row=0, column=3, sticky="e", padx=10, pady=5)
-        self.top_left_y.trace_add("write", lambda *args: self.preview_image(self.file_var.get()))
+        tk.Label(form_frame, text="Sprite Y:").grid(
+            row=0, column=2, sticky="e", padx=5, pady=5
+        )
+        tk.Entry(form_frame, textvariable=self.top_left_y).grid(
+            row=0, column=3, sticky="e", padx=10, pady=5
+        )
+        self.top_left_y.trace_add(
+            "write", lambda *args: self.preview_image(self.file_var.get())
+        )
 
         # Size width
-        tk.Label(form_frame, text="Sprite width (px):").grid(row=1, column=0, sticky="w", padx=5, pady=5)
-        tk.Entry(form_frame, textvariable=self.size_width).grid(row=1, column=1, sticky="w", padx=10, pady=5)
-        self.size_width.trace_add("write", lambda *args: self.preview_image(self.file_var.get()))
+        tk.Label(form_frame, text="Sprite width (px):").grid(
+            row=1, column=0, sticky="w", padx=5, pady=5
+        )
+        tk.Entry(form_frame, textvariable=self.size_width).grid(
+            row=1, column=1, sticky="w", padx=10, pady=5
+        )
+        self.size_width.trace_add(
+            "write", lambda *args: self.preview_image(self.file_var.get())
+        )
 
         # Size height
-        tk.Label(form_frame, text="Sprite height (px):").grid(row=1, column=2, sticky="e", padx=5, pady=5)
-        tk.Entry(form_frame, textvariable=self.size_height).grid(row=1, column=3, sticky="e", padx=10, pady=5)
-        self.size_height.trace_add("write", lambda *args: self.preview_image(self.file_var.get()))
+        tk.Label(form_frame, text="Sprite height (px):").grid(
+            row=1, column=2, sticky="e", padx=5, pady=5
+        )
+        tk.Entry(form_frame, textvariable=self.size_height).grid(
+            row=1, column=3, sticky="e", padx=10, pady=5
+        )
+        self.size_height.trace_add(
+            "write", lambda *args: self.preview_image(self.file_var.get())
+        )
 
         btn_frame = tk.Frame(self)
         btn_frame.pack(fill="x", pady=10)
-        tk.Button(btn_frame, text="GameObject Properties", command=self.open_entity_properties).pack(
-            side="left", padx=10)
+        tk.Button(
+            btn_frame, text="GameObject Properties", command=self.open_entity_properties
+        ).pack(side="left", padx=10)
         tk.Button(btn_frame, text="OK", command=self.confirm).pack(
             side="right", padx=10
         )
@@ -174,10 +231,14 @@ class AddItemPopup(tk.Toplevel):
         if editing:
             old_name = self.existing_data["name"] if self.existing_data else ""
             if name != old_name and name in self.parent.structures:
-                messagebox.showerror("Error", "A gameobject with that name already exists.")
+                messagebox.showerror(
+                    "Error", "A gameobject with that name already exists."
+                )
                 return
             elif name in self.parent.entities:
-                messagebox.showerror("Error", "A gameobject with that name already exists.")
+                messagebox.showerror(
+                    "Error", "A gameobject with that name already exists."
+                )
                 return
         elif name in self.parent.structures:
             messagebox.showerror("Error", "A gameobject with that name already exists.")
@@ -227,8 +288,9 @@ class AddItemPopup(tk.Toplevel):
             "size_width": size_width,
             "size_height": size_height,
             "frames": frames,
+            "properties": self.dynamic_properties,  # Include dynamic properties
         }
-
+        
         self.parent.add_item_callback(
             self.item_type, data, self.existing_data is not None
         )
@@ -258,13 +320,13 @@ class AddItemPopup(tk.Toplevel):
                 self.size_height.set(0)
         except:
             return
-        
+
         try:
             img = Image.open(file_path)
             if size_width == 0:
-                self.size_width.set(img.width)  
+                self.size_width.set(img.width)
             if size_height == 0:
-                self.size_height.set(img.height)                
+                self.size_height.set(img.height)
             w, h = img.size
             if w > h:
                 self.scale = 200 / w
@@ -276,7 +338,7 @@ class AddItemPopup(tk.Toplevel):
             top_left_x = self.top_left_x.get() * self.scale
             top_left_y = self.top_left_y.get() * self.scale
 
-            img = img.resize((int(w*self.scale), int(h*self.scale)), Image.LANCZOS)
+            img = img.resize((int(w * self.scale), int(h * self.scale)), Image.LANCZOS)
             img_tk = ImageTk.PhotoImage(img)
             self.preview_canvas.delete("all")
 
@@ -285,36 +347,201 @@ class AddItemPopup(tk.Toplevel):
             self.preview_canvas.image = img_tk
 
             w, h = img.size
-            self.preview_canvas.create_line(top_left_x, top_left_y, top_left_x, top_left_y + size_height, fill="blue", width=3)
-            self.preview_canvas.create_line(top_left_x + size_width, top_left_y, top_left_x + size_width, top_left_y + size_height, fill="blue", width=3)
+            self.preview_canvas.create_line(
+                top_left_x,
+                top_left_y,
+                top_left_x,
+                top_left_y + size_height,
+                fill="blue",
+                width=3,
+            )
+            self.preview_canvas.create_line(
+                top_left_x + size_width,
+                top_left_y,
+                top_left_x + size_width,
+                top_left_y + size_height,
+                fill="blue",
+                width=3,
+            )
 
-            self.preview_canvas.create_line(top_left_x, top_left_y, top_left_x + size_width, top_left_y, fill="blue", width=3)
-            self.preview_canvas.create_line(top_left_x, top_left_y + size_height, top_left_x + size_width, top_left_y + size_height, fill="blue", width=3)
+            self.preview_canvas.create_line(
+                top_left_x,
+                top_left_y,
+                top_left_x + size_width,
+                top_left_y,
+                fill="blue",
+                width=3,
+            )
+            self.preview_canvas.create_line(
+                top_left_x,
+                top_left_y + size_height,
+                top_left_x + size_width,
+                top_left_y + size_height,
+                fill="blue",
+                width=3,
+            )
 
             # Draw vertical lines
             for col in range(1, cols):
                 dx = (size_width * col) // cols
-                self.preview_canvas.create_line(top_left_x + dx, top_left_y, top_left_x + dx, top_left_y + size_height, fill="red", width=1)
+                self.preview_canvas.create_line(
+                    top_left_x + dx,
+                    top_left_y,
+                    top_left_x + dx,
+                    top_left_y + size_height,
+                    fill="red",
+                    width=1,
+                )
 
             # Draw horizontal lines
             for row in range(1, rows):
-                dy = (size_height * row // rows)
-                self.preview_canvas.create_line(top_left_x, top_left_y + dy, top_left_x + size_width, top_left_y + dy, fill="red", width=1)
+                dy = size_height * row // rows
+                self.preview_canvas.create_line(
+                    top_left_x,
+                    top_left_y + dy,
+                    top_left_x + size_width,
+                    top_left_y + dy,
+                    fill="red",
+                    width=1,
+                )
 
         except Exception as e:
             messagebox.showerror("Error", f"Failed to load image: {e}")
 
     # Todo: add GameObject Properties - type + specific properties (health, speed, etc.) depending on type
     def open_entity_properties(self):
-        if self.file_var.get() == "":
-            messagebox.showerror("Error", "Please select a file first.")
-            return
-        
-        self.entity_properties = AddPropertyPopup()
+        self.entity_properties = GameObjectPropertiesPopup(self, self.item_type)
         self.entity_properties.protocol("WM_DELETE_WINDOW", self.on_popup_close)
 
     def on_popup_close(self):
         self.entity_properties.destroy()
+
+
+class GameObjectPropertiesPopup(tk.Toplevel):
+    def __init__(
+        self,
+        parent,
+        object_type,
+        config_file=os.path.join(os.path.dirname(__file__), "config.json"),
+    ):
+        super().__init__(parent)
+        self.title("GameObject Properties")
+        self.geometry("400x700")
+        self.parent = parent
+        self.object_type = object_type.capitalize()
+        self.config_file = config_file
+        self.fields = {}
+
+        # Load config
+        self.config_data = self.load_config()
+
+        # Create UI
+        self.create_dynamic_fields()
+
+        # Add confirm and cancel buttons
+        btn_frame = tk.Frame(self)
+        btn_frame.pack(fill="x", pady=10)
+        tk.Button(btn_frame, text="OK", command=self.confirm).pack(
+            side="right", padx=10
+        )
+        tk.Button(btn_frame, text="Cancel", command=self.destroy).pack(side="right")
+
+    def load_config(self):
+        """Load the configuration file."""
+        if not os.path.exists(self.config_file):
+            messagebox.showerror("Error", f"Config file {self.config_file} not found.")
+            self.destroy()
+            return {}
+        try:
+            with open(self.config_file, "r") as file:
+                return json.load(file)
+        except json.JSONDecodeError as e:
+            messagebox.showerror("Error", f"Failed to parse config file: {e}")
+            self.destroy()
+            return {}
+
+    def create_dynamic_fields(self):
+        """Dynamically create fields based on the config."""
+        if self.object_type not in self.config_data:
+            messagebox.showerror(
+                "Error", f"Object type '{self.object_type}' not found in config."
+            )
+            self.destroy()
+            return
+
+        obj_properties = self.config_data[self.object_type]
+        for obj_name, properties in obj_properties.items():
+            tk.Label(self, text=obj_name, font=("Arial", 12, "bold")).pack(
+                anchor="w", padx=10, pady=5
+            )
+            for prop_name, prop_type in properties.items():
+                field_frame = tk.Frame(self)
+                field_frame.pack(fill="x", padx=10, pady=5)
+
+                tk.Label(field_frame, text=prop_name).pack(side="left")
+
+                if prop_type == "int":
+                    var = tk.IntVar()
+                    tk.Entry(field_frame, textvariable=var).pack(
+                        side="right", fill="x", expand=True
+                    )
+                elif prop_type == "float":
+                    var = tk.DoubleVar()
+                    tk.Entry(field_frame, textvariable=var).pack(
+                        side="right", fill="x", expand=True
+                    )
+                elif prop_type == "str":
+                    var = tk.StringVar()
+                    tk.Entry(field_frame, textvariable=var).pack(
+                        side="right", fill="x", expand=True
+                    )
+                elif prop_type == "checkbox_with_all_objects":
+                    # Dynamically create a checkbox for each object type
+                    self.create_checkboxes_for_objects(field_frame, prop_name)
+                else:
+                    var = tk.StringVar()
+                    tk.Entry(field_frame, textvariable=var).pack(
+                        side="right", fill="x", expand=True
+                    )
+
+                if prop_type != "checkbox_with_all_objects":
+                    self.fields[prop_name] = var
+
+    def create_checkboxes_for_objects(self, parent_frame, prop_name):
+        """Create checkboxes for all object types defined in the config.json."""
+
+        # Load all object types from the config.json
+        object_types = []
+        if "Structure" in self.config_data:
+            object_types.extend(self.config_data["Structure"].keys())
+        if "Entity" in self.config_data:
+            object_types.extend(self.config_data["Entity"].keys())
+
+        # Create a checkbox for each object type
+        for obj_name in object_types:
+            checkbox_var = tk.BooleanVar()
+            checkbox = tk.Checkbutton(
+                parent_frame, text=obj_name, variable=checkbox_var
+            )
+            checkbox.pack(anchor="w", padx=20)
+            if prop_name not in self.fields:
+                self.fields[prop_name] = {}
+            self.fields[prop_name][obj_name] = checkbox_var
+
+    def confirm(self):
+        """Confirm the selection and store data."""
+        properties = {}
+
+        for key, value in self.fields.items():
+            if isinstance(value, dict):  # Handle nested dictionary for checkboxes
+                properties[key] = {sub_key: var.get() for sub_key, var in value.items()}
+            else:
+                properties[key] = value.get()
+
+        # Pass the properties back to the parent popup
+        self.parent.dynamic_properties = properties
+        self.destroy()
+
 
 class LevelEditorApp(tk.Tk):
     def __init__(self):
@@ -336,7 +563,7 @@ class LevelEditorApp(tk.Tk):
         # File
         self.file = tk.Menu(self.menubar, tearoff=0)
         self.menubar.add_cascade(label="File", menu=self.file)
-        self.file.add_command(label="Export", command=None)
+        self.file.add_command(label="Export", command=self.export)
 
         self.config(menu=self.menubar)
 
@@ -344,6 +571,9 @@ class LevelEditorApp(tk.Tk):
         self.current_time = 0
         self.current_frame = 0
         self.last_time = -1000
+
+        # for saving selected name
+        self.last_sel = None
 
         # Frames
         self.left_frame = tk.Frame(self, width=200, bg="#ddd")
@@ -431,7 +661,7 @@ class LevelEditorApp(tk.Tk):
         """Called when popup confirms adding/editing an item."""
         if item_type == "structure":
             if editing:
-                sel = self.structures_listbox.curselection()
+                sel = self.last_sel
                 if sel:
                     old_name = self.structures_listbox.get(sel[0])
                     del self.structures[old_name]
@@ -442,13 +672,15 @@ class LevelEditorApp(tk.Tk):
 
         else:  # entity
             if editing:
-                sel = self.entities_listbox.curselection()
+                sel = self.last_sel
                 if sel:
                     old_name = self.entities_listbox.get(sel[0])
                     del self.entities[old_name]
                     self.entities_listbox.delete(sel[0])
             name = data["name"]
-            self.entities[name] = data
+            # Include dynamic properties
+            dynamic_properties = data.get("properties", {})
+            self.entities[name] = {**data, **dynamic_properties}
             self.entities_listbox.insert("end", name)
 
     def show_add_popup(self, item_type):
@@ -458,6 +690,7 @@ class LevelEditorApp(tk.Tk):
         self.popup_window = AddItemPopup(
             self, f"Add {item_type.capitalize()}", item_type
         )
+        self.popup_name = None
         self.popup_window.protocol("WM_DELETE_WINDOW")
 
     def edit_selected_item(self, item_type):
@@ -468,12 +701,14 @@ class LevelEditorApp(tk.Tk):
             sel = self.structures_listbox.curselection()
             if not sel:
                 return
+            self.last_sel = sel
             name = self.structures_listbox.get(sel[0])
             data = self.structures[name]
         else:
             sel = self.entities_listbox.curselection()
             if not sel:
                 return
+            self.last_sel = sel
             name = self.entities_listbox.get(sel[0])
             data = self.entities[name]
 
@@ -509,7 +744,7 @@ class LevelEditorApp(tk.Tk):
                 if itm_name == name:
                     level_data["canvas"].delete(img_id)
                 else:
-                    new_items.append((itm_name, x, y, img_id, 0, 0))
+                    new_items.append((itm_name, x, y, img_id))
             level_data["items"] = new_items
 
     def start_drag(self, item_type, event):
@@ -597,7 +832,7 @@ class LevelEditorApp(tk.Tk):
                         snapped_x, snapped_y, image=self.drag_data["image"], anchor="nw"
                     )
                     level_data["items"].append(
-                        (self.drag_data["name"], snapped_x, snapped_y, img_id, 0, 0) 
+                        (self.drag_data["name"], snapped_x, snapped_y, img_id, 0, 0)
                     )
 
                 # Remove the temporary drag image
@@ -619,12 +854,24 @@ class LevelEditorApp(tk.Tk):
                 frames = data["frames"]
                 if frames and len(frames) > 1:
                     for i in range(len(level_data["items"])):
-                        itm_name, x, y, img_id, frame_index, last_frame_time = level_data["items"][i]
+                        itm_name, x, y, img_id, frame_index, last_frame_time = (
+                            level_data["items"][i]
+                        )
                         if itm_name == name:
-                            if time.time() - last_frame_time > data["animation_time"] / 1000:
+                            if (
+                                time.time() - last_frame_time
+                                > data["animation_time"] / 1000
+                            ):
                                 last_frame_time = time.time()
                                 frame_index = (frame_index + 1) % len(frames)
-                            level_data["items"][i] = (itm_name, x, y, img_id, frame_index, last_frame_time)
+                            level_data["items"][i] = (
+                                itm_name,
+                                x,
+                                y,
+                                img_id,
+                                frame_index,
+                                last_frame_time,
+                            )
                             self.levels[self.current_level_index]["canvas"].itemconfig(
                                 img_id, image=frames[frame_index]
                             )
@@ -682,11 +929,61 @@ class LevelEditorApp(tk.Tk):
             self.levels_listbox.selection_set(new_idx)
             self.switch_level()
 
-    def export():
-        export_json()
+    def export(self):
+        """Export the project data as a JSON file."""
+        # Ask the user for a file name
+        file_name = simpledialog.askstring(
+            "Export Project",
+            "Enter a name for the export file (without extension):",
+        )
+        if not file_name:
+            messagebox.showerror("Export Failed", "File name cannot be empty.")
+            return
 
-    def on_popup_close(self):
-        self.popup_window.destroy()
+        # Ensure the output directory exists
+        output_dir = os.path.join(os.path.dirname(__file__), "game_json_output")
+        os.makedirs(output_dir, exist_ok=True)
+
+        # Create the file path
+        file_path = os.path.join(output_dir, f"{file_name}.json")
+
+        # Helper function to remove the 'frames' field
+        def sanitize_object_data(objects):
+            sanitized = {}
+            for name, props in objects.items():
+                sanitized[name] = {key: value for key, value in props.items() if key != "frames"}
+            return sanitized
+
+        # Prepare the data for export
+        data = {
+            "object_definitions": {
+                "structures": sanitize_object_data(self.structures),
+                "entities": sanitize_object_data(self.entities),
+            },
+            "levels": [],
+        }
+
+        for level in self.levels:
+            level_data = {
+                "objects": []
+            }
+            for obj_name, x, y, img_id, _, _ in level["items"]:
+                level_data["objects"].append({
+                    "name": obj_name,
+                    "x": x,
+                    "y": y,
+                    "type": "structure" if obj_name in self.structures else "entity"
+                })
+            data["levels"].append(level_data)
+
+        # Save the JSON file
+        try:
+            with open(file_path, "w") as f:
+                json.dump(data, f, indent=4)
+            messagebox.showinfo("Export Successful", f"Project exported to {file_path}")
+        except Exception as e:
+            messagebox.showerror("Export Failed", f"Failed to save project: {e}")
+
 
 
 if __name__ == "__main__":
