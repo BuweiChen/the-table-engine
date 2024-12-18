@@ -1,0 +1,14 @@
+<map id="Engine/include/scenemanager.h" name="Engine/include/scenemanager.h">
+<area shape="rect" id="node1" title="Defines the SceneManager class for managing scenes in the game." alt="" coords="151,5,379,32"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,229,64,256"/>
+<area shape="rect" id="node3" title=" " alt="" coords="88,80,155,107"/>
+<area shape="rect" id="node4" href="$scene_8h.html" title="Defines the SceneNode and SceneTree classes for managing game objects within scenes." alt="" coords="179,80,251,107"/>
+<area shape="rect" id="node8" href="$camera_8h.html" title=" " alt="" coords="275,80,357,107"/>
+<area shape="rect" id="node11" title=" " alt="" coords="381,80,477,107"/>
+<area shape="rect" id="node12" title=" " alt="" coords="501,80,648,107"/>
+<area shape="rect" id="node5" title=" " alt="" coords="73,155,159,181"/>
+<area shape="rect" id="node6" title=" " alt="" coords="183,155,246,181"/>
+<area shape="rect" id="node7" title=" " alt="" coords="270,155,394,181"/>
+<area shape="rect" id="node9" href="$component_8h.html" title="Defines the Component base class for all components in the game engine." alt="" coords="419,155,525,181"/>
+<area shape="rect" id="node10" href="$vec2_8h.html" title="Definition of Vec2 structure for 2D vector operations." alt="" coords="550,155,615,181"/>
+</map>

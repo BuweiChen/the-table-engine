@@ -1,0 +1,6 @@
+<map id="PlayerTestScript" name="PlayerTestScript">
+<area shape="rect" id="node1" title=" " alt="" coords="5,668,176,819"/>
+<area shape="rect" id="node2" href="$classScript.html" title="Base class for scripting custom behaviors in game objects." alt="" coords="35,402,146,597"/>
+<area shape="rect" id="node3" href="$classGameObject.html" title="Core class representing an entity in the game world." alt="" coords="124,5,271,317"/>
+<area shape="rect" id="node4" href="$classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy." alt="" coords="215,380,369,619"/>
+</map>

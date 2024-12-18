@@ -1,0 +1,4 @@
+<map id="SceneNode" name="SceneNode">
+<area shape="rect" id="node1" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy." alt="" coords="5,5,160,244"/>
+<area shape="rect" id="node2" href="$classGameObject.html" title="Core class representing an entity in the game world." alt="" coords="9,307,156,619"/>
+</map>

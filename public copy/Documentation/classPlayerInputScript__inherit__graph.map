@@ -1,0 +1,4 @@
+<map id="PlayerInputScript" name="PlayerInputScript">
+<area shape="rect" id="node1" title="Handles player interactions, movements, and animation states based on game input." alt="" coords="5,263,168,413"/>
+<area shape="rect" id="node2" href="$classScript.html" title="Base class for scripting custom behaviors in game objects." alt="" coords="31,5,142,215"/>
+</map>

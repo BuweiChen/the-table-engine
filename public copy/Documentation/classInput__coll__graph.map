@@ -1,0 +1,6 @@
+<map id="Input" name="Input">
+<area shape="rect" id="node1" title="Component for handling and storing the state of input devices." alt="" coords="5,668,181,907"/>
+<area shape="rect" id="node2" href="$classComponent.html" title="Base class for all game components, providing basic component functionalities." alt="" coords="27,395,160,604"/>
+<area shape="rect" id="node3" href="$classGameObject.html" title="Core class representing an entity in the game world." alt="" coords="127,5,273,317"/>
+<area shape="rect" id="node4" href="$classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy." alt="" coords="223,380,377,619"/>
+</map>

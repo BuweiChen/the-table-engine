@@ -1,0 +1,4 @@
+<map id="CrosshairScript" name="CrosshairScript">
+<area shape="rect" id="node1" title="Script for managing the crosshair in the game." alt="" coords="5,263,125,340"/>
+<area shape="rect" id="node2" href="$classScript.html" title="Base class for scripting custom behaviors in game objects." alt="" coords="10,5,121,215"/>
+</map>

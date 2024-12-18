@@ -1,0 +1,5 @@
+<map id="Component" name="Component">
+<area shape="rect" id="node1" title="Base class for all game components, providing basic component functionalities." alt="" coords="5,395,139,604"/>
+<area shape="rect" id="node2" href="$classGameObject.html" title="Core class representing an entity in the game world." alt="" coords="105,5,252,317"/>
+<area shape="rect" id="node3" href="$classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy." alt="" coords="201,380,356,619"/>
+</map>

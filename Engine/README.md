@@ -1,7 +1,3 @@
-## Add any additional notes here
-
-_your additional notes, or things TA's and instructors should know_
-
 ## Game/Engine Publicity
 
 **Project Website**: https://kli63.github.io/EngineDocs/

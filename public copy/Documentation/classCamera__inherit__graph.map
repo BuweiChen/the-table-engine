@@ -1,0 +1,4 @@
+<map id="Camera" name="Camera">
+<area shape="rect" id="node1" title="Manages the camera&#39;s view in a game, handling its position in the world space." alt="" coords="5,277,163,413"/>
+<area shape="rect" id="node2" href="$classComponent.html" title="Base class for all game components, providing basic component functionalities." alt="" coords="17,5,151,229"/>
+</map>

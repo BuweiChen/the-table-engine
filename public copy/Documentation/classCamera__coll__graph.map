@@ -1,0 +1,7 @@
+<map id="Camera" name="Camera">
+<area shape="rect" id="node1" title="Manages the camera&#39;s view in a game, handling its position in the world space." alt="" coords="207,681,364,817"/>
+<area shape="rect" id="node2" href="$classComponent.html" title="Base class for all game components, providing basic component functionalities." alt="" coords="5,395,139,604"/>
+<area shape="rect" id="node3" href="$classGameObject.html" title="Core class representing an entity in the game world." alt="" coords="105,5,252,317"/>
+<area shape="rect" id="node4" href="$classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy." alt="" coords="163,380,317,619"/>
+<area shape="rect" id="node5" href="$structVec2.html" title="A structure to represent 2D vectors." alt="" coords="438,439,562,560"/>
+</map>

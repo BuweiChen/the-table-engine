@@ -1,0 +1,6 @@
+<map id="Texture" name="Texture">
+<area shape="rect" id="node1" title="Component for handling textures in the game engine." alt="" coords="131,277,328,604"/>
+<area shape="rect" id="node3" href="$classAnimation.html" title="Component to handle animation of game objects. Derived from Texture." alt="" coords="5,652,213,1037"/>
+<area shape="rect" id="node4" href="$classAnimationsManager.html" title="Manages a collection of animations for a game entity, with functionality to play, pause,..." alt="" coords="238,718,463,971"/>
+<area shape="rect" id="node2" href="$classComponent.html" title="Base class for all game components, providing basic component functionalities." alt="" coords="163,5,296,229"/>
+</map>

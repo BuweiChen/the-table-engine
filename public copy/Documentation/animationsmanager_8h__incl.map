@@ -1,0 +1,17 @@
+<map id="Engine/include/animationsmanager.h" name="Engine/include/animationsmanager.h">
+<area shape="rect" id="node1" title=" " alt="" coords="227,5,490,32"/>
+<area shape="rect" id="node2" href="$texture_8h.html" title="Defines the Texture component for managing textures within the Game Engine, encapsulating SDL texture..." alt="" coords="318,155,399,181"/>
+<area shape="rect" id="node5" title=" " alt="" coords="104,453,163,480"/>
+<area shape="rect" id="node10" title=" " alt="" coords="482,453,545,480"/>
+<area shape="rect" id="node15" href="$animation_8h.html" title="Defines the Animation class for handling sprite animations." alt="" coords="265,80,365,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="507,379,603,405"/>
+<area shape="rect" id="node4" href="$component_8h.html" title="Defines the Component base class for all components in the game engine." alt="" coords="43,379,149,405"/>
+<area shape="rect" id="node6" href="$transform_8h.html" title="Provides the Transform component for positioning and sizing game objects." alt="" coords="309,229,408,256"/>
+<area shape="rect" id="node7" href="$vec2_8h.html" title="Definition of Vec2 structure for 2D vector operations." alt="" coords="382,304,447,331"/>
+<area shape="rect" id="node8" href="$gameobject_8h.html" title=" " alt="" coords="247,304,358,331"/>
+<area shape="rect" id="node9" title=" " alt="" coords="173,379,240,405"/>
+<area shape="rect" id="node11" href="$script_8h.html" title="Defines the Script class for attaching behavior to game objects." alt="" coords="265,379,335,405"/>
+<area shape="rect" id="node12" href="$scene_8h.html" title="Defines the SceneNode and SceneTree classes for managing game objects within scenes." alt="" coords="360,379,432,405"/>
+<area shape="rect" id="node13" title=" " alt="" coords="223,453,310,480"/>
+<area shape="rect" id="node14" title=" " alt="" coords="334,453,458,480"/>
+</map>

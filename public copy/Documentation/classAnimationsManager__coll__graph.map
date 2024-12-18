@@ -1,0 +1,7 @@
+<map id="AnimationsManager" name="AnimationsManager">
+<area shape="rect" id="node1" title="Manages a collection of animations for a game entity, with functionality to play, pause,..." alt="" coords="5,1044,231,1297"/>
+<area shape="rect" id="node2" href="$classTexture.html" title="Component for handling textures in the game engine." alt="" coords="19,668,217,995"/>
+<area shape="rect" id="node3" href="$classComponent.html" title="Base class for all game components, providing basic component functionalities." alt="" coords="51,395,185,604"/>
+<area shape="rect" id="node4" href="$classGameObject.html" title="Core class representing an entity in the game world." alt="" coords="151,5,298,317"/>
+<area shape="rect" id="node5" href="$classSceneNode.html" title="Represents a node in the scene graph, encapsulating a game object and its hierarchy." alt="" coords="247,380,402,619"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="Engine/include/health.h" name="Engine/include/health.h">
+<area shape="rect" id="node1" title="Defines the Health class, a component for managing the health of game objects." alt="" coords="5,5,180,32"/>
+<area shape="rect" id="node2" href="$component_8h.html" title="Defines the Component base class for all components in the game engine." alt="" coords="39,80,146,107"/>
+<area shape="rect" id="node3" title=" " alt="" coords="63,155,122,181"/>
+</map>

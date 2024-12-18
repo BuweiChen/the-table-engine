@@ -1,0 +1,11 @@
+<map id="Component" name="Component">
+<area shape="rect" id="node1" title="Base class for all game components, providing basic component functionalities." alt="" coords="476,5,609,229"/>
+<area shape="rect" id="node2" href="$classCamera.html" title="Manages the camera&#39;s view in a game, handling its position in the world space." alt="" coords="5,373,163,509"/>
+<area shape="rect" id="node3" href="$classCollide.html" title="Component to handle collisions between game objects." alt="" coords="187,277,357,604"/>
+<area shape="rect" id="node4" href="$classHealth.html" title="A component for managing health of game objects." alt="" coords="382,373,522,509"/>
+<area shape="rect" id="node5" href="$classInput.html" title="Component for handling and storing the state of input devices." alt="" coords="547,321,723,560"/>
+<area shape="rect" id="node6" href="$classTexture.html" title="Component for handling textures in the game engine." alt="" coords="747,277,944,604"/>
+<area shape="rect" id="node9" href="$classTransform.html" title="Component for handling the transformation of game objects." alt="" coords="968,292,1149,589"/>
+<area shape="rect" id="node7" href="$classAnimation.html" title="Component to handle animation of game objects. Derived from Texture." alt="" coords="620,652,828,1037"/>
+<area shape="rect" id="node8" href="$classAnimationsManager.html" title="Manages a collection of animations for a game entity, with functionality to play, pause,..." alt="" coords="853,718,1078,971"/>
+</map>

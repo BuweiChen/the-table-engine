@@ -1,0 +1,11 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="node1" href="$classComponent.html" title="Base class for all game components, providing basic component functionalities." alt="" coords="5,132,103,159"/>
+<area shape="rect" id="node2" href="$classCamera.html" title="Manages the camera&#39;s view in a game, handling its position in the world space." alt="" coords="157,5,231,32"/>
+<area shape="rect" id="node3" href="$classCollide.html" title="Component to handle collisions between game objects." alt="" coords="161,56,227,83"/>
+<area shape="rect" id="node4" href="$classHealth.html" title="A component for managing health of game objects." alt="" coords="161,107,227,133"/>
+<area shape="rect" id="node5" href="$classInput.html" title="Component for handling and storing the state of input devices." alt="" coords="167,157,221,184"/>
+<area shape="rect" id="node6" href="$classTexture.html" title="Component for handling textures in the game engine." alt="" coords="159,208,229,235"/>
+<area shape="rect" id="node9" href="$classTransform.html" title="Component for handling the transformation of game objects." alt="" coords="151,259,237,285"/>
+<area shape="rect" id="node7" href="$classAnimation.html" title="Component to handle animation of game objects. Derived from Texture." alt="" coords="317,183,407,209"/>
+<area shape="rect" id="node8" href="$classAnimationsManager.html" title="Manages a collection of animations for a game entity, with functionality to play, pause,..." alt="" coords="285,233,439,260"/>
+</map>
