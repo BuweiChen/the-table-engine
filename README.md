@@ -24,11 +24,10 @@ Welcome to [The Table Engine](https://kli63.github.io/EngineDocs/), a custom-bui
 
 To get started with The Table Engine:
 
-1. **Download**: [TheTableEngine.zip](https://kli63.github.io/EngineDocs/TheTableEngine.zip)
-2. **Extract**: Unzip the downloaded file.
-3. **Navigate**: Open a terminal and navigate to the project's root directory.
-4. **Compile**:
+1. **Download**: Clone the repo
+2. **Navigate**: Open a terminal and navigate to the project's root directory.
+3. **Compile**:
    - Change directory: `cd Engine`
    - Make the script executable: `chmod +x run.sh`
    - Run the script: `./run.sh`
-5. **Launch**: Use the GUI to load the demo or start creating your own game.
+4. **Launch**: Use the GUI to load the demo or start creating your own game.
