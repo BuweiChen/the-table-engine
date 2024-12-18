@@ -1,600 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Table Engine</title>
-    <link rel="icon" href="assets/favicon.ico" type="image/x-icon" />
-  </head>
-  <body
-    style="
-      cursor: url('assets/table_medium.png'), auto;
-      background-image: url('assets/background2.jpg');
-      background-size: cover; /* Makes the image cover the entire background */
-      background-position: center; /* Centers the image */
-      background-attachment: fixed; /* Makes the background stay fixed when scrolling */
-      background-repeat: no-repeat; /* Prevents the image from repeating */
-    "
-  >
-    <header
-      style="
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 10px;
-        background-image: url('assets/background.jpg');
-        background-size: cover; /* Makes the image cover the entire background */
-        background-position: center; /* Centers the image */
-        background-attachment: fixed; /* Makes the background stay fixed when scrolling */
-        background-repeat: no-repeat; /* Prevents the background from repeating */
-      "
-    >
-      <img
-        src="assets/table.png"
-        alt="Table Illustration"
-        style="width: 100px; height: auto"
-      />
-      <img
-        src="assets/table.png"
-        alt="Table Illustration"
-        style="width: 100px; height: auto"
-      />
+# The Table Engine
 
-      <img
-        src="assets/table.png"
-        alt="Table Illustration"
-        style="width: 100px; height: auto"
-      />
-      <h1 style="margin: 0; font-size: 3em">The Table Engine</h1>
-      <img
-        src="assets/table.png"
-        alt="Table Illustration"
-        style="width: 100px; height: auto"
-      />
-      <img
-        src="assets/table.png"
-        alt="Table Illustration"
-        style="width: 100px; height: auto"
-      />
-      <img
-        src="assets/table.png"
-        alt="Table Illustration"
-        style="width: 100px; height: auto"
-      />
-    </header>
+Welcome to The Table Engine, a custom-built game engine designed to streamline the creation of 2D games. This project was developed collaboratively by Arnav Narula, Kenny Li, Jeffrey Lin, and Buwei Chen.
 
-    <section id="demos">
-      <h2
-        style="
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          font-size: 2em;
-        "
-      >
-        <img
-          src="assets/table5.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table5.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table5.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        Demo
-        <img
-          src="assets/table5.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table5.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table5.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-      </h2>
-      <div
-        class="video-container"
-        style="display: flex; justify-content: center"
-      >
-        <!-- Embed video 1 -->
-        <iframe
-          width="560"
-          height="315"
-          src="https://www.youtube.com/embed/vfPsKcU1iAk?si=SjjdO3KMxQLz2uSv"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin"
-          allowfullscreen
-        ></iframe>
-      </div>
-    </section>
+## Features
 
-    <section id="introduction">
-      <h2
-        style="
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          font-size: 2em;
-        "
-      >
-        <img
-          src="assets/table1.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table1.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table1.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        Introduction
-        <img
-          src="assets/table1.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table1.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table1.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-      </h2>
-      <div
-        style="
-          text-align: center;
-          font-size: 1.2em;
-          margin: 20px auto;
-          line-height: 1.6;
-          background-color: rgba(255, 255, 255, 0.8);
-          padding: 20px 10%;
-          border-radius: 15px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          max-width: 800px;
-        "
-      >
-        <p>
-          Dive into The Table Engine! Craft unique structures and entities,
-          import and animate bitmap files, and tweak animation settings with
-          real-time previews. Utilize bitmap segments for dynamic animations,
-          edit gameobject properties in intuitive popups, and auto-populate
-          fields based on selected types. Customize collision logic, generate
-          types and fields from config files, and design maps and levels with
-          preview images and snap grids. Effortlessly switch between level
-          editing and gameplay.
-        </p>
-        <p>
-          Proudly presented to you by: Arnav Narula, Kenny Li, Jeffrey Lin, and
-          Buwei Chen
-        </p>
-      </div>
-    </section>
+- **GameObject Creation**: Design unique structures and entities with ease.
+- **Bitmap Import and Animation**: Import bitmap files, animate them, and adjust settings with real-time previews.
+- **Animation Segmentation**: Utilize bitmap segments for dynamic animations.
+- **Property Editing**: Modify game object properties through intuitive popups, with auto-population based on selected types.
+- **Custom Collision Logic**: Define and customize collision behaviors.
+- **Configuration Integration**: Generate types and fields from configuration files.
+- **Map and Level Design**: Create maps and levels with preview images and snap grids.
+- **Seamless Mode Switching**: Effortlessly toggle between level editing and gameplay modes.
 
-    <section id="screenshots">
-      <h2
-        style="
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          font-size: 2em;
-        "
-      >
-        <img
-          src="assets/table6.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table6.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table6.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        Screenshots
-        <img
-          src="assets/table6.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table6.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table6.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-      </h2>
-      <div
-        style="
-          display: grid;
-          grid-template-columns: repeat(2, auto);
-          gap: 40px; /* Increased gap */
-          justify-content: center;
-          align-items: center;
-        "
-      >
-        <img
-          src="assets/screenshot1.png"
-          alt="Screenshot 1"
-          style="
-            width: 100%;
-            max-width: 400px; /* Increased the max-width */
-            height: 300px; /* Set fixed height */
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          "
-        />
-        <img
-          src="assets/screenshot2.png"
-          alt="Screenshot 2"
-          style="
-            width: 100%;
-            max-width: 400px; /* Increased the max-width */
-            height: 300px; /* Set fixed height */
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          "
-        />
-        <img
-          src="assets/screenshot3.png"
-          alt="Screenshot 3"
-          style="
-            width: 100%;
-            max-width: 400px; /* Increased the max-width */
-            height: 300px; /* Set fixed height */
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          "
-        />
-        <img
-          src="assets/screenshot4.png"
-          alt="Screenshot 4"
-          style="
-            width: 100%;
-            max-width: 400px; /* Increased the max-width */
-            height: 300px; /* Set fixed height */
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          "
-        />
-      </div>
-    </section>
+## Demo
 
-    <section id="download">
-      <h2
-        style="
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          font-size: 2em;
-        "
-      >
-        <img
-          src="assets/table7.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table7.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table7.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        Download and Compilation Instructions
-        <img
-          src="assets/table7.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table7.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table7.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-      </h2>
-      <div style="text-align: center; margin: 20px 0">
-        <a
-          href="assets/thetableengine.zip"
-          download
-          style="
-            display: inline-block;
-            padding: 10px 20px;
-            font-size: 1.2em;
-            color: #fff;
-            background-color: #007bff;
-            text-decoration: none;
-            border-radius: 5px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          "
-          >Download TheTableEngine.zip</a
-        >
-      </div>
+Experience The Table Engine in action by visiting our [demo page](https://kli63.github.io/EngineDocs/).
 
-      <div
-        style="
-          text-align: center;
-          font-size: 1.2em;
-          margin: 20px auto;
-          line-height: 1.6;
-          background-color: rgba(255, 255, 255, 0.8);
-          padding: 20px 10%;
-          border-radius: 15px;
-          box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          max-width: 800px;
-        "
-      >
-        <p>To compile the project</p>
-        <div style="text-align: left; margin: 0 auto; max-width: 800px;">
-          <pre>
-            <code>
-              1. Download the project zip file from the link above.
-              2. Extract the contents of the zip file.
-              3. Open a terminal window at the project root directory.
-              4. cd Engine
-              5. chmod +x run.sh
-              6. ./run.sh
-              7. From the GUI, you can load the demo, or create your own game.
-            </code>
-          </pre>
-        </div>
-      </div>
-    </section>
+## Screenshots
 
-    <section id="documentation">
-      <h2
-        style="
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          font-size: 2em;
-        "
-      >
-        <img
-          src="assets/table2.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table2.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table2.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
+![Screenshot 1](https://kli63.github.io/EngineDocs/screenshot1.png)
+![Screenshot 2](https://kli63.github.io/EngineDocs/screenshot2.png)
+![Screenshot 3](https://kli63.github.io/EngineDocs/screenshot3.png)
+![Screenshot 4](https://kli63.github.io/EngineDocs/screenshot4.png)
 
-        Documentation
-        <img
-          src="assets/table2.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table2.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table2.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-      </h2>
-      <p style="text-align: center; font-size: 1.2em; margin: 20px 0">
-        Below is an embedded view of the project's documentation. If you prefer
-        to open it in a new tab,
-        <a
-          href="public/Documentation/index.html"
-          target="_blank"
-          style="color: #007bff; text-decoration: none"
-          >click here</a
-        >.
-      </p>
+## Download and Compilation Instructions
 
-      <!-- Embedded documentation -->
-      <div style="display: flex; justify-content: center">
-        <iframe
-          src="public/Documentation/index.html"
-          width="80%"
-          height="600px"
-          style="border-radius: 15px; border: 1px solid #ccc"
-        ></iframe>
-      </div>
-    </section>
+To get started with The Table Engine:
 
-    <section id="class-hierarchy">
-      <h2
-        style="
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          font-size: 2em;
-        "
-      >
-        <img
-          src="assets/table3.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table3.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table3.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        Class Hierarchy Graph
-        <img
-          src="assets/table3.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table3.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table3.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-      </h2>
-      <div style="text-align: center">
-        <!-- Embedded image of the class hierarchy graph -->
-        <img
-          src="assets/architecture.png"
-          alt="Class Hierarchy Graph"
-          style="
-            width: 40%;
-            max-width: 800px;
-            height: auto;
-            border-radius: 15px;
-          "
-        />
-      </div>
-    </section>
+1. **Download**: [TheTableEngine.zip](https://kli63.github.io/EngineDocs/TheTableEngine.zip)
+2. **Extract**: Unzip the downloaded file.
+3. **Navigate**: Open a terminal and navigate to the project's root directory.
+4. **Compile**:
+   - Change directory: `cd Engine`
+   - Make the script executable: `chmod +x run.sh`
+   - Run the script: `./run.sh`
+5. **Launch**: Use the GUI to load the demo or start creating your own game.
 
-    <section id="post-mortem">
-      <h2
-        style="
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          gap: 10px;
-          font-size: 2em;
-        "
-      >
-        <img
-          src="assets/table4.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table4.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table4.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        Post Mortem
-        <img
-          src="assets/table4.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table4.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-        <img
-          src="assets/table4.png"
-          alt="Table Illustration"
-          style="width: 50px; height: auto"
-        />
-      </h2>
-      <div style="display: flex; justify-content: center; padding: 20px">
-        <div
-          style="
-            text-align: left;
-            max-width: 800px;
-            background-color: rgba(255, 255, 255, 0.8);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-          "
-        >
-          <p style="line-height: 1.6; font-size: 1.1em">
-            The final project was both challenging and very rewarding. We spent
-            the first half of the project setting up pybind and developing a
-            test dungeon crawler game, which, looking back, was a great way to
-            ease into the complexities of C++ without diving straight into
-            engine code. We had a lot of fun tinkering with various components,
-            creating several different states for animation, and coding custom
-            camera movement. After learning good C++ coding fundamentals, we
-            decided to code our frontend GUI with Python’s tkinter library. Our
-            goal was to create tiling software, equipped with a grid canvas and
-            sprite map editor, and we ended up accomplishing this goal
-            completely. In terms of difficulty, the frontend GUI was a pain to
-            debug because we underestimated how much effort it would take to fix
-            minute bugs. For example, small nuances like saving data states
-            across different button presses or throwing a warning if multiple
-            game objects had the same name were necessary for a seamless UI
-            experience but ended up taking a lot of time to fix. At the same
-            time, we created a backend pipeline to save GUI data from the tile
-            editor to render game objects in-game. We definitely could have done
-            better preplanning: we ended up modifying our exact
-            structure/approach for converting JSON data many hours into the
-            backend process, but we were able to get past that obstacle once we
-            stepped back to analyze our approach. With more time, we would have
-            loved to implement more features, such as a more robust animation
-            system and adding a variety of weapons and enemies. We would also
-            have liked to add more custom scripting support and more components
-            to be used at the disposal of the user to make the engine more
-            versatile. Overall, our team had really good teamwork, brainstorming
-            ideas at CEID and drawing big-picture concepts and implementations
-            on the whiteboard. If you look past the sleepless hours as we
-            approached presentation day, it was a truly amazing experience.
-            Seeing the GUI work in real-time and making a video presentation to
-            highlight the engine’s strengths made it one of our top 3 projects
-            at Yale!
-          </p>
-        </div>
-      </div>
-    </section>
-  </body>
-</html>
+## Documentation
+
+Comprehensive documentation is available to guide you through The Table Engine's functionalities. Access it [here](https://kli63.github.io/EngineDocs/).
+
+## Class Hierarchy
+
+For an in-depth understanding of the engine's architecture, refer to the class hierarchy graph:
+
+![Class Hierarchy Graph](https://kli63.github.io/EngineDocs/class_hierarchy.png)
+
+## Post Mortem
+
+Reflecting on our development journey, we found the project both challenging and rewarding. Initially, we focused on setting up pybind and developing a test dungeon crawler game, which provided a solid foundation in C++. Transitioning to the frontend, we utilized Python's tkinter library to create a tiling software equipped with a grid canvas and sprite map editor. Debugging the GUI presented challenges, particularly in managing data states and ensuring a seamless user experience. On the backend, we developed a pipeline to render game objects based on GUI data, encountering and overcoming obstacles related to data conversion and structure. With additional time, we would have enhanced the animation system, expanded weapon and enemy varieties, and incorporated more custom scripting support to increase the engine's versatility. Our collaborative efforts, brainstorming sessions, and problem-solving experiences made this project an invaluable learning opportunity.
+
+For a detailed overview, visit our [post mortem page](https://kli63.github.io/EngineDocs/post_mortem.html).
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](https://github.com/kli63/EngineDocs/blob/main/LICENSE) file for details.
+
+## Acknowledgments
+
+We extend our gratitude to our mentors and peers who provided guidance and support throughout this project.
+
+---
+
+_Note: For the latest updates and contributions, visit our [GitHub repository](https://github.com/kli63/EngineDocs)._
+::contentReference[oaicite:0]{index=0}
